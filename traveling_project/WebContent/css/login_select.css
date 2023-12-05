@@ -1,0 +1,80 @@
+body {
+    background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+  }
+  
+  main{
+      margin: 140px auto 100px;
+      padding: 50px 0;
+      width:1700px;
+      border:1px solid #ccc;
+      background:#fff;
+      border-radius:10px;
+      font-family: 'Gowun Dodum', sans-serif;
+  }
+
+  #content1{
+      width:80%;
+      margin:0 auto;
+      margin-top: 50px;    
+      padding:50px 150px;      
+      border-top: 2px solid #ccc;
+      border-bottom: 2px solid #ccc;
+      display:flex;
+      justify-content: space-between;      
+      align-items: center;
+  }
+
+  #content1 img{
+    width:500px;        
+  }
+
+  #content1 h2{    
+    font-size:32px;
+  } 
+  
+  #join{
+      width:80%;
+      margin:50px auto 0;
+      display:flex;
+      justify-content: center;      
+  }
+  
+  #join li{
+      width:50%;
+      border:1px solid #999;
+      text-align:center;
+      padding:50px 0;
+      border-radius:10px 0 0 10px;
+  }
+  
+  #join li:last-child{
+      border-radius:0 10px 10px 0;
+      border-left:none;
+  }
+  
+  #join li h3{
+      font-size:32px;
+      margin-bottom: 10px;
+  }
+  
+  #join li p{
+      text-transform: uppercase;
+      font-size:24px;
+      font-weight:bold;
+      color:#1aa3ff;
+      margin-bottom: 20px;
+  }
+  
+  #join li a input[type="button"]{
+      width:200px;
+      height:40px;
+      background:#1aa3ff;  
+      color:#fff;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+  }
+  
+  #join li a input[type="button"]:hover{
+      background:#000;
+  }

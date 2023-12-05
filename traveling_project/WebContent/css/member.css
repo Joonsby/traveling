@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+#member_status {
+    background-color: #151515;
+    color: #fff;
+    box-sizing: border-box;
+    width: 100%;
+    height: 550px;
+}
+
+#status_wrap {
+    display: flex;
+    padding-top: 200px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#member_info {
+    flex: 2;
+}
+
+#member_info *, #member_grade * {
+    margin: 0 auto;
+}
+
+#member_info h2 {
+    font-size: 35px;
+    padding-top: 20px;
+}
+
+#member_info p {
+    font-size: 15px;
+    padding-top: 35px;
+}
+
+#member_info p:last-child {
+    padding-top: 5px;
+}
+
+#member_grade, #member_content {
+    flex: 1;
+}
+
+#member_grade h2 {
+    font-size: 35px;
+    padding-top: 20px;
+}
+
+#member_grade p {
+    font-size: 14px;
+    padding-top: 35px;
+}
+
+#member_content div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#member_content div ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.content_img {
+    display: flex;
+    justify-content: center;
+}
+
+#won_img {
+    width: 29px;
+    height: 29px;
+    margin: 0;
+    background-image: url(https://butlerlounge.com/images/my_page/icon_1.jpg);
+}
+
+#point_img {
+    width: 29px;
+    height: 29px;
+    margin: 0;
+    background-image: url(https://butlerlounge.com/images/my_page/icon_2.jpg);
+}
+
+#coupon_img {
+    width: 37px;
+    height: 37px;
+    position: relative;
+    top: -4px;
+    margin: 0;
+    background-image: url(https://butlerlounge.com/images/my_page/icon_3.jpg);
+}
+
+#member_info a, #member_grade a {
+    font-size: 13px;
+    color: #777;
+    display: inline-block;
+}
+
+#member_coupon a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.content_text  {
+    padding-top: 49px;
+    font-size: 13px;
+    color: #777;
+}
+
+.content_text_last {
+    padding-top: 49px;
+    font-size: 13px;
+    color: #777;
+}
