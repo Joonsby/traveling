@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+li {
+  list-style: none;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.screen_out {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.ir_pm {
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+/* 위로 가기 버튼 */
+.go_top {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #000;
+  position: fixed;
+  bottom: 50px;
+  right: 100px;
+  background: url(../images/go_top.png) no-repeat center white;
+  cursor: pointer;
+  border-radius: 20px;
+}

@@ -1,0 +1,637 @@
+@charset "UTF-8";
+
+#video {
+	width: 100%;
+	height: 1080px;
+	margin: 0px auto;
+	position: relative;
+	top: 0;
+	overflow: hidden;
+}
+
+#video video {
+	min-width: 100%;
+	min-height: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+main {		
+	background:#fff;
+}
+
+section {
+	margin-top: 20px;	
+}
+
+.slider {
+	display: flex;
+	justify-content: space-between;
+	user-select:none;
+}
+
+/* 호텔 추천 */
+.hotel_recommend {
+	width: 1200px;
+	margin: 5% auto;
+}
+
+/* 제목 */
+.hotel_recommend h2 {
+	display: inline-block;
+	margin: 20px 10px;	
+}
+
+/* 슬라이더 화살표 */
+.rec_slider>button {
+	opacity: 0.5;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: -50px;
+	width: 48px;
+	height: 48px;
+	text-indent: -9999px;
+	background: url(../images/expand_circle_left.png) no-repeat center/contain;
+	cursor: pointer;
+	border: none;
+}
+
+.rec_slider>button.slick-next {
+	left: auto;
+	right: -50px;
+	background-image: url(../images/expand_circle_right.png);
+}
+
+.rec_slider>button:hover {
+	opacity: 0.8;
+}
+
+.rec_slider>button.slick-disabled {
+	opacity: 0.1;
+}
+
+/* 글씨 */
+.hotel_recommend .slider div p, .hotel_recommend .slider div h3 {
+	margin: 10px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+
+.hotel_recommend .slider div h3 {
+	font-size: 16px;	
+}
+
+.hotel_recommend .slider div p {
+	font-size: 14px
+}
+
+.hotel_recommend .slider div p:last-child {
+	font-weight: bold;
+}
+
+.review {
+	background: #F5EFE7;
+	border: 1px solid #ccc;
+	margin: 10px;
+	padding: 2px;
+	overflow: hidden;
+	border-radius: 5px;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	font-size: 12px;
+	line-height: 20px;
+	display: -webkit-box;
+	word-break: break-word;
+}
+
+/* view all */
+.hotel_recommend>a {
+	float: right;
+	margin: 20px 10px 0 0;
+	width: 157px;
+}
+
+/* 바깥 슬라이더 */
+.hotel_recommend>.rec_slider>.slick-list>.slick-track>.slick-slide {
+	border: 1px solid rgb(179, 179, 179);
+	margin: 0 10px;
+	border-radius: 10px;
+	overflow: hidden;
+	white-space:nowrap;
+}
+
+.rec_slider .slick-dots {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 바깥 슬라이더  dots */
+.rec_slider>.slick-dots {
+	position: absolute;
+	bottom: -25px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.rec_slider>.slick-dots li button {
+	text-indent: -9999px;
+	width: 10px;
+	height: 10px;
+	background: #000;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.rec_slider>.slick-dots li:hover button {
+	opacity: 0.7;
+}
+
+.rec_slider>.slick-dots li.slick-active button {
+	opacity: 1;
+}
+
+/* 이미지 슬라이더 */
+.image_slider>button {
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	transform: translateY(-50%);
+	z-index: 100;
+	text-indent: -9999px;
+	width: 30px;
+	height: 30px;
+	background: #fff url(../images/arrow_back.png) no-repeat center/contain;
+	border: none;
+	cursor: pointer;
+	opacity: 0;
+	transition: all 0.2s ease 0s;
+}
+
+.image_slider:hover button {
+	opacity: 0.8;
+}
+
+.image_slider>button.slick-next {
+	background-image: url(../images/arrow_forward.png);
+	left: auto;
+	right: 5%;
+}
+
+/* 이미지 슬라이더 dots */
+.hotel_recommend>.rec_slider>.slick-list>.slick-track>.slick-slide .slick-dots li button {
+	opacity: 0;
+	text-indent: -9999px;
+	display: block;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+}
+
+.hotel_recommend>.rec_slider>.slick-list>.slick-track>.slick-slide .slick-dots li button:hover {
+	background: #c0c0c0;
+}
+
+.hotel_recommend>.rec_slider>.slick-list>.slick-track>.slick-slide .slick-dots li.slick-active button {
+	border-radius: 100%;
+	background: #000;
+}
+
+.hotel_recommend>.rec_slider>.slick-list>.slick-track .image_slider:hover ul.slick-dots li button {
+	opacity: 1;
+}
+
+/* 리뷰 모두 보기 */
+.hotel_recommend>.show_review {
+	margin: 30px 0;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+}
+
+.hotel_recommend>.show_review:hover {
+	color: #1200ff;
+}
+
+/* 국내 인기 여행지  */
+.korea_popular_region {
+	margin: 100px 0;
+}
+
+.korea_popular_region .slider {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.korea_popular_region>h2 {
+	text-align: center;
+	margin: 20px 0;
+}
+
+.korea_popular_region .slider div {
+	width: 140px;
+	height: 140px;
+	border-radius: 158px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.korea_popular_region .slider div:hover img {
+	transform: scale(1.2, 1.2);
+}
+
+.korea_popular_region .slider a h2, .korea_popular_region .slider a p {
+	text-align: center;
+}
+
+.korea_popular_region .slider a p {
+	margin: 10px 0 20px;
+}
+
+.korea_popular_region .slider div img {
+	width: 140px;
+	transition: all 0.3s ease 0s;
+}
+
+/* 내 근처 숙소 */
+.accomodation_near_me {
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/* 이미지 슬라이더 dots */
+.accomodation_near_me .image_slider ul.slick-dots {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.accomodation_near_me .image_slider ul.slick-dots li button {
+	text-indent: -9999px;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+	opacity: 0;
+	transition: all 0.2s ease 0s;
+}
+
+.accomodation_near_me .image_slider:hover ul.slick-dots li button {
+	opacity: 1;
+}
+
+.accomodation_near_me .image_slider ul.slick-dots li button:hover {
+	background: #c0c0c0
+}
+
+.accomodation_near_me .image_slider ul.slick-dots li.slick-active button {
+	background: #000;
+}
+
+.accomodation_near_me .swiper>h2 {
+	display: inline-block;	
+	margin: 0 0 20px;
+}
+
+.accomodation_near_me .swiper>a {
+	float: right;
+	width: 157px;
+}
+
+/* progress bar */
+.accomodation_near_me .swiper-pagination {
+	position: static;
+	margin: 20px 0;
+}
+
+.accomodation_near_me .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+	background: #000;
+	opacity: 0.5;
+}
+
+/* swiper slide */
+.accomodation_near_me .swiper-wrapper .swiper-slide {
+	border: 1px solid rgb(179, 179, 179);
+}
+
+.accomodation_near_me .slider>div {
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+/* slider 버튼 */
+.accomodation_near_me .swiper-button-prev, .accomodation_near_me .swiper-button-next {
+	left: -60px;
+	opacity: 0.7;
+	width: 48px;
+	height: 48px;
+	background: url(../images/expand_circle_left.png) no-repeat center/contain;
+}
+
+.accomodation_near_me .swiper-button-next {
+	background-image: url(../images/expand_circle_right.png);
+	left: auto;
+	right: -60px;
+}
+
+.accomodation_near_me .swiper-button-prev:after, .accomodation_near_me .swiper-button-next:after {
+	content: "";
+}
+
+.accomodation_near_me .swiper-button-prev:hover, .accomodation_near_me .swiper-button-next:hover {
+	opacity: 1;
+}
+
+/* 글씨 */
+.accomodation_near_me .slider div h3, .accomodation_near_me .slider div p {
+	width: auto;
+	margin: 10px;
+	font-size: 14px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;        
+}
+
+.accomodation_near_me .slider div p {
+	font-size: 12px;
+}
+
+.accomodation_near_me .slider div p:last-of-type {
+	font-weight: bold;
+}
+
+.accomodation_near_me .slider div img {
+	width: 100%;
+}
+
+/* 인기 숙소 */
+.popular_accomodation {
+	width: 1200px;
+	margin: 100px auto 0;
+}
+
+/* 제목 */
+.popular_accomodation h2 {
+	display: inline-block;
+	margin: 20px 10px;	
+}
+
+.popular_accomodation .slider {
+	flex-wrap: wrap;
+}
+
+.popular_accomodation .slider div {
+	overflow: hidden;
+}
+
+.popular_accomodation .slider div:nth-child(4) ~ div {
+	margin: 20px 0;
+}
+
+.popular_accomodation .slider div img {
+	width: 410px;
+}
+
+.popular_accomodation .slider div p, .popular_accomodation .slider div h3 {
+	margin: 10px;
+}
+
+/* 슬라이더 화살표 */
+.pop_slider>button {
+	opacity: 0.5;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: -50px;
+	width: 48px;
+	height: 48px;
+	text-indent: -9999px;
+	background: url(../images/expand_circle_left.png) no-repeat center/contain;
+	cursor: pointer;
+	border: none;
+}
+
+.pop_slider>button.slick-next {
+	left: auto;
+	right: -50px;
+	background-image: url(../images/expand_circle_right.png);
+}
+
+.pop_slider>button:hover {
+	opacity: 0.8;
+}
+
+.pop_slider>button.slick-disabled {
+	opacity: 0.1;
+}
+
+/* 글씨 */
+.popular_accomodation .slider div p, .popular_accomodation .slider div h3 {
+	margin: 10px;
+}
+
+.popular_accomodation .slider div h3 {
+	font-size: 16px;
+}
+
+.popular_accomodation .slider div p {
+	font-size: 14px
+}
+
+.popular_accomodation .slider div p:last-child {
+	font-weight: bold;
+}
+
+/* view all */
+.popular_accomodation>a {
+	float: right;
+	margin: 20px 10px 0 0;
+	width: 157px;
+}
+
+/* 바깥 슬라이더 */
+.popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide {
+	border: 1px solid rgb(179, 179, 179);
+	margin: 0 10px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.pop_slider .slick-dots {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 바깥 슬라이더  dots */
+.pop_slider>.slick-dots {
+	position: absolute;
+	bottom: -25px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.pop_slider>.slick-dots li button {
+	text-indent: -9999px;
+	width: 10px;
+	height: 10px;
+	background: #000;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.pop_slider>.slick-dots li:hover button {
+	opacity: 0.7;
+}
+
+.pop_slider>.slick-dots li.slick-active button {
+	opacity: 1;
+}
+
+/* 이미지 슬라이더 dots */
+.popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide .slick-dots li button {
+	opacity: 0;
+	text-indent: -9999px;
+	display: block;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+}
+
+.popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide .slick-dots li button:hover {
+	background: #c0c0c0;
+}
+
+.popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide .slick-dots li.slick-active button {
+	border-radius: 100%;
+	background: #000;
+}
+
+.popular_accomodation>.pop_slider>.slick-list>.slick-track .image_slider:hover ul.slick-dots li button {
+	opacity: 1;
+}
+
+/* 리뷰 모두 보기 */
+.popular_accomodation>.show_review {
+	margin: -10px 0 50px;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+}
+
+.popular_accomodation>.after_style:hover {
+	color: #1200ff;
+}
+
+/* 이벤트 */
+.event h2 {
+	display: block;
+	width: auto;
+	text-align: center;
+	margin: 0 0 30px;
+}
+
+.event {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.event .event_slider a {
+	margin: 0 5px;
+	overflow: hidden;
+}
+
+.event .event_slider a:hover img {
+	transform: scale(1.1, 1.1);
+}
+
+.event .event_slider img {
+	width: 100%;
+	transition: all 0.2s ease 0s;
+}
+
+.event .event_slider .slick-arrow {
+	border: none;
+	opacity: 0.5;
+	text-indent: -9999px;
+	width: 48px;
+	height: 48px;
+	background: url(../images/left_arrow.png) no-repeat center/contain;
+	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	transform: translateY(-50%);
+	left: -50px;
+}
+
+.event .event_slider .slick-arrow:hover {
+	opacity: 0.7
+}
+
+.event .event_slider .slick-next {
+	background-image: url(../images/right_arrow.png);
+	left: auto;
+	right: -50px;
+}
+
+.event .event_slider .slick-dots {
+	width: 200px;
+	margin: 30px auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.event .event_slider .slick-dots button {
+	border: none;
+	width: 10px;
+	height: 10px;
+	background: #000;
+	border-radius: 100%;
+	text-indent: -9999px;
+	cursor: pointer;
+	opacity: 0.4
+}
+
+.event .event_slider .slick-dots button:hover {
+	opacity: 0.6
+}
+
+.event .event_slider .slick-dots .slick-active button {
+	opacity: 0.9
+}
+
+/* 마이페이지 section */
+.mypage-section {
+	margin: 0;
+}

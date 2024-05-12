@@ -1,0 +1,34 @@
+aside {
+	width: 400px;	
+	padding-top: 50px;
+	padding-left: 20px;		
+}
+
+aside ul li:first-child {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+aside ul li {	
+	width: 180px;
+	font-size: 14px;
+	padding: 10px 0;
+	position: relative;
+	user-select:none;
+}
+
+aside ul li:last-child {
+	margin-bottom: 20px;
+}
+
+aside ul li .add_stay_btn{
+	width:180px;
+	height:auto;
+	background:#fff;
+	line-height:1;
+	font-size:14px;
+	font-weight:normal;
+	text-align:left;	
+	border:0;
+	cursor:pointer;
+}

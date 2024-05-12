@@ -1,0 +1,287 @@
+body {
+  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+main {
+  margin: 140px auto 100px;
+  padding: 50px 0;
+  width: 1200px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 10px;
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+#img {
+  margin: 30px 0;
+  text-align: center;
+}
+
+#sign_up_section img {
+  width: 300px;
+  margin: 0 auto;
+}
+
+#step {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 50px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  width: 80%;
+  user-select: none;
+}
+
+#step li {
+  width: 25%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  background: #f5f5f5;
+}
+
+#step li:nth-child(3) {
+  background: #1aa3ff;
+  color: #fff;
+}
+
+#step li:last-child {
+  border: 0;
+}
+
+#sign_up_table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 80%;  
+  background: #f5f5f5;
+  font-family: 'Gowun Dodum', sans-serif;  
+  color: #1aa3ff;  
+  border-top: 1px solid #fff;  
+}
+
+/* 회원가입 제목 */
+
+th {
+  width: 200px;
+  text-align: left;  
+  padding: 10px;
+  background: #f8f8fa;
+  border:1px solid #e4e7eb;
+  height:50px;  
+}
+
+td {
+  padding: 10px;
+  background: #fff;
+  border:1px solid #e4e7eb;    
+  align-items:center;  
+}
+
+
+/* input 전체설정 */
+#sign_up_table td input,
+#sign_up_table td select,
+#sign_up_table td option {
+  width: 40%;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #999;
+  border-radius: 7px;
+  padding-left: 5px;
+  font-size: 16px;  
+}
+
+#sign_up_table td select {
+  cursor: pointer;
+  outline:none;  
+}
+
+#sign_up_table td input:focus,
+#sign_up_table td select:focus,
+#sign_up_table td option:focus {
+  border: 3px solid #1aa3ff;
+  outline: none;
+}
+
+#sign_up_table td input#post_search_btn:focus {
+  border: none;
+}
+
+/* 통신사 */
+#agency_td{  
+  border-left:0;
+}
+
+#agency_td div{
+  border-radius:8px;
+}
+
+#agency_td label {  
+  float:left;
+  font-size: 14px;
+  width: 16.665%;
+  height: 30px;
+  line-height: 30px;
+  background: #fff;
+  border: 1px solid #999;	
+  border-right: 0;
+  text-align: center;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#agency_td label:first-of-type {
+  border-radius: 5px 0 0 5px;
+}
+
+#agency_td label:last-of-type {
+  border-radius: 0 5px 5px 0;
+  border-right: 1px solid #999;
+}
+
+#agency_td input[type='radio']:checked + label {
+  border-right: 0;
+  background: #1aa3ff;
+  color: #fff;
+  font-weight: bold;
+}
+
+#agency_text{
+  margin-top: 5px;
+  font-size:13px;  
+  text-align:center;  
+  color: red;
+  font-weight:bold;
+}
+
+/* 사업자 등록번호 */
+#sign_up_table .business_num{
+  width:20%;
+}
+
+/* 이메일 */
+#sign_up_table #email + span {
+  color: #000;
+}
+
+
+/* 생년월일 */
+#sign_up_table #birth select {
+  width: 20%;
+  height: 30px;
+}
+
+/* 성별 */
+input[type='radio'] {
+  display: none;
+}
+
+#gender_td{	
+	border-top:0;
+}
+
+#gender_td label {	
+  width: 10%;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #999;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);	
+  float:left;
+}
+
+#gender_td label:first-of-type {
+	border-right:0;
+  border-radius: 5px 0 0 5px;
+}
+
+#gender_td label:last-of-type {
+	border-left:0;
+  border-radius: 0 5px 5px 0;	
+}
+
+#gender_td input[type='radio']:checked + label {
+  background:#1aa3ff;
+  color: #fff;
+	font-weight:bold;
+}
+
+/* 주소 */
+#sign_up_table .addr_td{
+	border-top:0;	
+}
+
+#sign_up_table tr .last_addr_td{
+	border-bottom:1px solid #ccc;
+}
+
+input#post_search_btn {  
+  height: 30px;
+  background: #1aa3ff;  
+  cursor: pointer;
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+#sign_up_table td #sample4_postcode,
+#sign_up_table td #sample4_roadAddress,
+#sign_up_table td #sample4_jibunAddress,
+#sign_up_table td #sample4_extraAddress{
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+#sign_up_table td #sample4_postcode:focus,
+#sign_up_table td #sample4_roadAddress:focus,
+#sign_up_table td #sample4_jibunAddress:focus,
+#sign_up_table td #sample4_extraAddress:focus {
+  border: 1px solid #999;
+  outline: none;	
+}
+
+#sign_up_table #sample4_postcode {
+  width: 19.6%;
+}
+
+#sign_up_table #post_search_btn{
+	width:19.6%;
+}
+
+/* 회원가입, 취소 버튼 */
+#btn{
+	text-align: center;			
+}
+
+input#sign_up_btn,
+input#sign_up_cancel {
+	width:20%;	
+	padding:10px;
+  font-weight: bold;  
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;	
+	margin:40px 0 0;
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+input#sign_up_btn {
+  background: #1aa3ff;	
+}
+
+input#sign_up_cancel {
+  background: #0000004d;
+}
+
+input#sign_up_btn:hover,
+input#sign_up_cancel:hover {
+  background: #000;
+  color: #fff;
+}
+
+.error_text{  
+  font-size: 13px;
+  font-weight: bold;
+  margin-top:5px;  
+  color: red;   
+}
