@@ -68,10 +68,9 @@ header {
 
 #accomodation_search input[type='text']:focus,
 #accomodation_search input[type='date']:focus {
-  background: #fff;   
+  background: #fff;
 }
 
-/* 달력 */
 input[type='date'] {
   position: relative;
   padding-right: 20px;
@@ -106,7 +105,6 @@ input[type='date']:valid::before {
   display: none;
 }
 
-/* 인원 수 */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -146,7 +144,6 @@ input[type='number']::-webkit-outer-spin-button {
 	margin:0 5px;
 }
 
-/* 숙소 검색 버튼 */
 #accomodation_search #search_btn {
   width: 15%;
   height:40px;
