@@ -45,9 +45,11 @@ $(document).ready(function() {
     date.css('color', '#000');
     date.on('focus', function() {
         $(this).css('background-color', '#fff');
+//        $(this).after('<p id="a">체크인</p>')
     });
     date.on('blur', function() {
         $(this).css('background-color', '#f5f5f5');
+//        $('#a').remove();
     });
     date.hover(function() {
         $(this).css('background-color', '#ececec');
