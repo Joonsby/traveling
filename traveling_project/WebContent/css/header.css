@@ -1,17 +1,3 @@
-/* #a{
-	position:absolute;		
-	background:#fff;
-	font-size:18px;
-	width:180px;
-	height:50px;
-	left:260px;
-	z-index:100;
-	text-align:center;
-	line-height:50px;
-	border-radius:30px;
-	font-weight:normal;
-} */
-
 header {
   width: 100%;
   height: 80px;
@@ -68,6 +54,8 @@ header {
 #accomodation_search input[type='text']:hover,
 #accomodation_search input[type='button']:hover{
   background-color:#ececec;
+  color:#000;
+  font-weight:bold;
 }
 
 #accomodation_search input[type='text'],
@@ -80,71 +68,10 @@ header {
 	cursor:pointer;
 }
 
-#accomodation_search input[type='text']:focus,
-#accomodation_search input[type='date']:focus {
-  background: #fff;
-}
-
-input[type=date]::-webkit-datetime-edit-text {
-    -webkit-appearance: none;
-    display: none;
-}
-
-input[type=date]::-webkit-datetime-edit-month-field{
-    -webkit-appearance: none;
-    display: none;
-}
-
-input[type=date]::-webkit-datetime-edit-day-field {
-    -webkit-appearance: none;
-    display: none;
-}
-
-input[type=date]::-webkit-datetime-edit-year-field {
-    -webkit-appearance: none;
-    display: none;
-}
-
-input[type='date'] {
-  position: relative;
-  padding-right: 20px;
-  background: #f5f5f5 url(../images/calendar.png) no-repeat 170px/26px auto;  
-  text-align: center;
-  color:#000;
-}
-
-input[type='date']::before {
-  content: attr(data-placeholder);
-  display:block;
-  margin-top:25px;
-  width: 100%;
-}
-
-input[type='date']::-webkit-clear-button,
-input[type='date']::-webkit-inner-spin-button {
-  display: none;
-}
-
-input[type='date']::-webkit-calendar-picker-indicator {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  color: transparent;
-  cursor: pointer;
-}
-
-input[type='date']:focus::before,
-input[type='date']:valid::before {
-  display: none;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
+#accomodation_search input[type='text']:focus {
+   background: #fff;
+   color:#000;
+   font-weight:bold;
 }
 
 #guests-dropdown{
@@ -176,8 +103,39 @@ input[type='number']::-webkit-outer-spin-button {
 	background:#f5f5f5;
 }
 
-#number{
-	margin:0 5px;
+.calendar_image{
+	content:'';
+	display:block;
+	width:24px;
+	height:24px;
+	background:url(../images/calendar.png) no-repeat center/contain;
+	position:absolute;
+	top:13px;
+	left:415px;
+	opacity:0.3;
+}
+
+.calendar_image:last-of-type{
+	left:680px;
+}
+
+#check_in_date{
+	padding-left:60px;
+}
+
+#check_out_date{
+	padding-left:45px;
+}
+
+#check_in_date::placeholder,
+#check_out_date::placeholder{
+	text-align:left;
+}
+
+#check_in_date,
+#check_out_date,
+#people_num{
+	cursor:pointer;
 }
 
 #accomodation_search #search_btn {
@@ -196,13 +154,8 @@ input[type='number']::-webkit-outer-spin-button {
   color: #fff;
 }
 
-.menu li a {
-  display: block;
-  color: #f7e6c4;
-  text-shadow: 1.5px 1.5px 1.5px rgb(0, 0, 0);
-}
-
 #menu_nav .menu {
+  position:relative;
   display: flex;
   justify-content: space-between;
   width: 475px;

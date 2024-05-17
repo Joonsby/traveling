@@ -1,4 +1,25 @@
 $(document).ready(function() {
+	
+	$('.date').datepicker({
+	    format: 'yyyy-mm-dd',
+	    autoclose: true,
+	    startDate: '-0d'
+	})
+	.on('changeDate',function(e){
+		var checkInVal = $('#check_in_date').val()
+		var checkOutVal = $('#check_out_date').val()		
+		if(checkInVal != '' && checkInVal != null && checkOutVal != '' && checkOutVal != null && checkInVal >= checkOutVal){
+			alert('날짜를 올바르게 선택해주세요.');
+			$(this).attr('min','');
+			return;
+		} else{
+			$(this).next().hide();
+			$(this).css('padding','0')
+			$(this).css('text-align','center');
+			$(this).css('background','#fff');
+			$(this).css('color','#666');
+		}
+	});
 
     // 내 정보 아이콘 클릭시 a 링크 막기
     const loginIcon = $('#menu_nav .right_menu a:eq(0)');
@@ -44,12 +65,10 @@ $(document).ready(function() {
     })
     date.css('color', '#000');
     date.on('focus', function() {
-        $(this).css('background-color', '#fff');
-//        $(this).after('<p id="a">체크인</p>')
+        $(this).css('background-color', '#fff');        
     });
     date.on('blur', function() {
-        $(this).css('background-color', '#f5f5f5');
-//        $('#a').remove();
+        $(this).css('background-color', '#f5f5f5');        
     });
     date.hover(function() {
         $(this).css('background-color', '#ececec');
