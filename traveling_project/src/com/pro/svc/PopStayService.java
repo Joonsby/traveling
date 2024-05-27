@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.pro.controller.ControlQuery;
 import com.pro.dao.StayManagementDAO;
 import com.pro.dto.FilterStayInfo;
+import com.pro.dto.StayInfo;
 
 public class PopStayService implements ControlQuery {
 	static PopStayService ps = new PopStayService();
@@ -21,7 +22,7 @@ public class PopStayService implements ControlQuery {
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
-		List<FilterStayInfo> stayList = stayManagementDAO.popStaySelect();
+		List<StayInfo> stayList = stayManagementDAO.popStaySelect();
 		req.setAttribute("stayList", stayList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("all_stays.jsp");
 		dispatcher.forward(req, res);

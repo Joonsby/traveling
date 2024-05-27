@@ -75,7 +75,7 @@ public class IndexDAO{
 				rowCount++;
 			}
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		} finally {
 			close();
 		}

@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.pro.dto.FilterStayInfo" %>
+<%@ page import="com.pro.dto.StayInfo" %>
 <%@ page import="java.text.NumberFormat" %>
 <%
-	List<FilterStayInfo> stayList = (List<FilterStayInfo>) request.getAttribute("stayList");
-	List<FilterStayInfo> filterList = (List<FilterStayInfo>) request.getAttribute("filterList");
+	List<StayInfo> stayList = (List<StayInfo>) request.getAttribute("stayList");
+	List<StayInfo> filterList = (List<StayInfo>) request.getAttribute("filterList");
 	String path = request.getContextPath();
 	NumberFormat nf = NumberFormat.getInstance();	
 %>
@@ -45,7 +46,7 @@
 		      			<input type="hidden" class="price-val" value="<%= nf.format(stayList.get(i).getMin_room_price()) %>">
 		      			<input type="hidden" class="name-val" value="<%= stayList.get(i).getStay_name() %>">
 		      			<h2 class="stay-name"><%= stayList.get(i).getStay_name() %></h2>
-		            	<p class="avg-rating"><%=stayList.get(i).getAvg_rating() + " (" + stayList.get(i).getRating_count() + ")" %></p>
+		            	<p class="avg-rating"><%=stayList.get(i).getRating_avg() + " (" + stayList.get(i).getRating_count() + ")" %></p>
 		            	<p class="road-addr"><%= stayList.get(i).getRoad_addr() %></p>
 		            	<p class="room-price">₩ <%= nf.format(stayList.get(i).getMin_room_price()) %> ~</p>
 		      		</div>

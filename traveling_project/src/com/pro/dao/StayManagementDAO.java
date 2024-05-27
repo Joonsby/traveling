@@ -65,14 +65,29 @@ public class StayManagementDAO {
 		s.close();
 	}	
 	
-	
 	// 인기 숙소 선택
-	public List<FilterStayInfo> popStaySelect() {
+	public List<StayInfo> popStaySelect() {
 		SqlSession s = f.openSession();
-		List<FilterStayInfo> stayList = s.selectList("popStaySelect");
+		List<StayInfo> stayList = s.selectList("popStaySelect");		
 		s.close();
 		return stayList;
-	}	
+	}
+	
+	// 리뷰 높은 숙소 선택
+	public List<StayInfo> bestReviewStaySelect(){
+		SqlSession s = f.openSession();
+		List<StayInfo> stayList = s.selectList("bestReviewStaySelect");		
+		s.close();
+		return stayList;
+	}
+	
+	// 가격이 저렴한 숙소 선택
+	public List<StayInfo> cheepStaySelect(){
+		SqlSession s = f.openSession();
+		List<StayInfo> stayList = s.selectList("cheepStaySelect");
+		s.close();
+		return stayList;
+	}
 	
 	// 필터링된 숙소 선택
 	public String getParameterOrNull(HttpServletRequest req, String paramName) {
@@ -115,8 +130,8 @@ public class StayManagementDAO {
 	    	maxPrice = Integer.parseInt(maxPriceParam);
 	    }
 		Map<String, Object> filter = new HashMap<>();
-		filter.put("minPrice", minPrice);
-		filter.put("maxPrice", maxPrice);
+		filter.put("min_price", minPrice);
+		filter.put("max_price", maxPrice);
 		filter.put("rating",rating);
 		filter.put("parking",parking);
 		filter.put("wireless_internet",wireless_internet);
@@ -135,7 +150,7 @@ public class StayManagementDAO {
 		filter.put("breakfast",breakfast);
 		filter.put("clean_service",clean_service);
 		filter.put("luggage_storage",luggage_storage);
-		List<FilterStayInfo> stayList = s.selectList("filterStaySelect", filter);		
+		List<FilterStayInfo> stayList = s.selectList("filterStaySelect", filter);
 		s.close();
 		return stayList;
 	}
@@ -143,7 +158,7 @@ public class StayManagementDAO {
 	// 숙소 상세 정보
 	public List<StayInfo> selectStayInfo(int stay_id) {
 		SqlSession s = f.openSession();		
-		List<StayInfo> detailStayList =  s.selectList("detailStaySelect",stay_id);		
+		List<StayInfo> detailStayList =  s.selectList("detailStaySelect",stay_id);
 		s.close();
 		return detailStayList;
 	}

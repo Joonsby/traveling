@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.pro.index.IndexDAO" %>
+<%@ page import="com.pro.dao.StayManagementDAO" %>
 <%@ page import="com.pro.dto.PopStayInfo" %>
+<%@ page import="com.pro.dto.StayInfo" %>
 <%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
 <%
  	IndexDAO indexDAO = new IndexDAO(); 
+	StayManagementDAO stayManagementDAO = new StayManagementDAO();
  	String path = request.getContextPath();
- 	HashMap<Integer, PopStayInfo> popStays = indexDAO.selectPopStays();
- 	HashMap<Integer, PopStayInfo> bestReviewStays = indexDAO.selectBestReviewStays();
- 	HashMap<Integer, PopStayInfo> cheepStays = indexDAO.selectCheepStays();
+ 	List<StayInfo> popStays = stayManagementDAO.popStaySelect();
+ 	List<StayInfo> bestReviewStays = stayManagementDAO.bestReviewStaySelect();
+ 	List<StayInfo> cheepStays = stayManagementDAO.cheepStaySelect();
+ 	NumberFormat nf = NumberFormat.getInstance();
 %> 	
 <!DOCTYPE html>
 <html>
@@ -16,6 +23,11 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
 	<%@ include file="header.jsp"%>	
+	<style>
+		h2{
+			font-size:24px;
+		}
+	</style>
 </head>
 <body>
 	<section id="video">
@@ -24,7 +36,7 @@
 		</video>
 	</section>	
 	<main>
-		<!-- 호텔 추천 -->
+		<!-- 가장 인기가 많은 숙소 -->
 		<section class="hotel_recommend">
 			<h2>가장 인기가 많은 숙소</h2>
 			<a href="pop_stays.condb?comm=pop_stays"><img src="images/view_all.png" alt="" /></a>
@@ -38,14 +50,14 @@
  			                <img src="<%=path %>/images/stay_images/<%=popStays.get(i).getImage1() %>" alt="이미지1" /> 
  			                <img src="<%=path %>/images/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" />
  			            </div>
- 			            <h3><%=popStays.get(i).getStayName() %></h3>
-			            <p><%=popStays.get(i).getStayAddr() %></p>
- 			            <p>₩ <%=popStays.get(i).getPrice() %> ~</p>
- 			            <div class="rec_review review">"<%=popStays.get(i).getReviewContent() %>"</div>
+ 			            <h3><%=popStays.get(i).getStay_name() %></h3>
+			            <p><%=popStays.get(i).getRoad_addr() %></p>
+ 			            <p>₩ <%=nf.format(popStays.get(i).getMin_room_price()) %> ~</p>
+ 			            <div class="rec_review review">"<%=popStays.get(i).getReview_content() %>"</div>
  			        </a>
  			    </div>
 			    <%
-			        }
+			        	}
 			    %>
 			</div>
 			<span id="rec_show_review" class="show_review">리뷰 모두 보기</span>
@@ -98,7 +110,7 @@
 				</a>
 			</div>
 		</section>
-		<!-- 내 근처 숙소  -->
+		<!-- 가장 평점이 높은 숙소  -->
 		<section class="accomodation_near_me">
 			<div class="swiper mySwiper banner">
 				<h2>가장 평점이 높은 숙소</h2>
@@ -111,14 +123,14 @@
  								<img src="<%=path %>/images/stay_images/<%=bestReviewStays.get(i).getImage1() %>" alt="이미지1" />
  								<img src="<%=path %>/images/stay_images/<%=bestReviewStays.get(i).getImage2() %>" alt="이미지1" />
  							</div>
- 							<h3><%=bestReviewStays.get(i).getStayName() %></h3>
- 							<p><%=bestReviewStays.get(i).getStayAddr() %></p>
- 							<p>₩ <%=bestReviewStays.get(i).getPrice() %>~</p>
+ 							<h3><%=bestReviewStays.get(i).getStay_name() %></h3>
+ 							<p><%=bestReviewStays.get(i).getStay_addr() %></p>
+	 			            <p>₩ <%=nf.format(bestReviewStays.get(i).getMin_room_price()) %> ~</p>
  						</a>
  					</div>
-					<%
-						}
-					%>					
+				<%
+					}
+				%>
 				</div>
 			</div>
 			<div class="swiper-button-next"></div>
@@ -126,7 +138,7 @@
 			<div class="swiper-pagination"></div>
 		</section>
 
-		<!-- 인기 숙소 -->
+		<!-- 가격이 저렴한 숙소 -->
  		<section class="popular_accomodation">
 			<h2>가격이 저렴한 숙소</h2>
 			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
@@ -138,10 +150,10 @@
  							<img src="<%=path %>/images/stay_images/<%=cheepStays.get(i).getImage1() %>" alt="이미지1" />
  							<img src="<%=path %>/images/stay_images/<%=cheepStays.get(i).getImage2() %>" alt="이미지2" />
  						</div>
- 						<h3><%=cheepStays.get(i).getStayName() %></h3>
- 						<p><%=cheepStays.get(i).getStayAddr() %></p>
- 						<p>₩ <%=cheepStays.get(i).getPrice() %>~</p>
- 						<div class="review pop_review">"<%=cheepStays.get(i).getReviewContent() %>"</div>
+ 						<h3><%=cheepStays.get(i).getStay_name() %></h3>
+ 						<p><%=cheepStays.get(i).getStay_addr() %></p>
+ 			            <p>₩ <%=nf.format(cheepStays.get(i).getMin_room_price()) %> ~</p>
+ 						<div class="review pop_review">"<%=cheepStays.get(i).getReview_content() %>"</div>
  					</a>
  				</div>
 				<%

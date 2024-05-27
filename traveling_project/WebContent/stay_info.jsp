@@ -46,7 +46,7 @@
 					<tr>
 						<th>숙소 이름</th>
 						<td colspan="2">
-							<p id="stay-name" class="info"><%=stayInfo.get(0).getStayName() %></p>
+							<p id="stay-name" class="info"><%=stayInfo.get(0).getStay_name() %></p>
 							<input id="stay-name-edit" type="button" value="수정하기">
 						</td>						
 					</tr>
@@ -54,11 +54,11 @@
 						<th rowspan="2">숙소 주소</th>
 						<td colspan="2" id="addr-td">
 							<div id="addr-box">
-								<p class="info">우편번호 : <%=stayInfo.get(0).getPostCode() %></p>
-								<p class="info">도로명 주소 : <%=stayInfo.get(0).getRoadAddr() %></p>
-								<p class="info">지번 주소 : <%=stayInfo.get(0).getJibunAddr() %></p>
-								<p class="info">상세 주소 : <%=stayInfo.get(0).getDetailAddr() %></p>
-								<p class="info">참고 사항 : <%=stayInfo.get(0).getReferenceAddr() %></p>
+								<p class="info">우편번호 : <%=stayInfo.get(0).getPost_code() %></p>
+								<p class="info">도로명 주소 : <%=stayInfo.get(0).getRoad_addr() %></p>
+								<p class="info">지번 주소 : <%=stayInfo.get(0).getJibun_addr() %></p>
+								<p class="info">상세 주소 : <%=stayInfo.get(0).getDetail_addr() %></p>
+								<p class="info">참고 사항 : <%=stayInfo.get(0).getReference_addr() %></p>
 							</div>
 							<input type="button" id="addr-edit-btn" value="수정하기">
 						</td>
@@ -73,7 +73,7 @@
 					<tr>
 						<th>연락받을 전화번호</th>
 						<td>
-							<p id="host-phone" class="info"><%=stayInfo.get(0).getHostPhone() %></p>
+							<p id="host-phone" class="info"><%=stayInfo.get(0).getHost_phone() %></p>
 							<input id="phone-edit-btn" type="button" value="수정하기">
 						</td>
 					</tr>
@@ -120,12 +120,12 @@
 									        <div>${stayInfo[0].tub}</div>
 									    </c:when>
 									    
-										<c:when test="${not empty stayInfo[0].bathSupplies}">
-											<div>${stayInfo[0].bathSupplies}</div>
+										<c:when test="${not empty stayInfo[0].bath_supplies}">
+											<div>${stayInfo[0].bath_supplies}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].hairDryer}">
-											<div>${stayInfo[0].hairDryer}</div>
+										<c:when test="${not empty stayInfo[0].hair_dryer}">
+											<div>${stayInfo[0].hair_dryer}</div>
 										</c:when>
 										
 										<c:when test="${not empty stayInfo[0].towel}">
@@ -136,20 +136,20 @@
 											<div>${stayInfo[0].bedding}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].washingMachine}">
-											<div>${stayInfo[0].washingMachine}</div>
+										<c:when test="${not empty stayInfo[0].washing_machine}">
+											<div>${stayInfo[0].washing_machine}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].dryingMachine}">
-											<div>${stayInfo[0].dryingMachine}</div>
+										<c:when test="${not empty stayInfo[0].drying_machine}">
+											<div>${stayInfo[0].drying_machine}</div>
 										</c:when>
 										
 										<c:when test="${not empty stayInfo[0].pool}">
 											<div>${stayInfo[0].pool}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].arcadeGame}">
-											<div>${stayInfo[0].arcadeGame}</div>
+										<c:when test="${not empty stayInfo[0].arcade_game}">
+											<div>${stayInfo[0].arcade_game}</div>
 										</c:when>
 										
 										<c:when test="${not empty stayInfo[0].gym}">
@@ -160,12 +160,12 @@
 											<div>${stayInfo[0].tv}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].boardGame}">
-											<div>${stayInfo[0].boardGame}</div>
+										<c:when test="${not empty stayInfo[0].board_game}">
+											<div>${stayInfo[0].board_game}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].airConditioner}">
-											<div>${stayInfo[0].airConditioner}</div>
+										<c:when test="${not empty stayInfo[0].air_conditioner}">
+											<div>${stayInfo[0].air_conditioner}</div>
 										</c:when>
 										
 										<c:when test="${not empty stayInfo[0].fan}">
@@ -173,11 +173,11 @@
 										</c:when>
 										
 										<c:when test="${not empty stayInfo[0].heatingSystem}">
-											<div>${stayInfo[0].heatingSystem}</div>
+											<div>${stayInfo[0].heating_system}</div>
 										</c:when>
 										
-										<c:when test="${not empty stayInfo[0].carbonMonoxideAlarm}">
-											<div>${stayInfo[0].carbonMonoxideAlarm}</div>
+										<c:when test="${not empty stayInfo[0].carbon_monoxide_alarm}">
+											<div>${stayInfo[0].carbon_monoxide_alarm}</div>
 										</c:when>
 										
 									</c:choose>																		
