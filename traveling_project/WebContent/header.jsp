@@ -32,10 +32,8 @@
         </h1>
         <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
-          <input type="date" name="check_in_date" id="check_in_date" class="date" required/>
-          <span class="calendar_image"></span>
-          <input type="date" name="check_out_date" id="check_out_date" class="date" required/>
-          <span class="calendar_image"></span>
+          <input type="date" name="check_in_date" id="check_in_date" class="date" required/>          
+          <input type="date" name="check_out_date" id="check_out_date" class="date" required/>          
           <input type="text" name="people_num" id="people_num" placeholder="인원 수를 선택하세요" readonly/>
           <input id="search_btn" type="submit" value="검색하기" />
         </form>

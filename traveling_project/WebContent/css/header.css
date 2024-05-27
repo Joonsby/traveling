@@ -103,33 +103,17 @@ header {
 	background:#f5f5f5;
 }
 
-.calendar_image{
-	content:'';
-	display:block;
-	width:24px;
-	height:24px;
-	background:url(../images/calendar.png) no-repeat center/contain;
-	position:absolute;
-	top:13px;
-	left:415px;
-	opacity:0.3;
+input[type="text"]::placeholder {color:#000;}
+input[type="text"]::-webkit-input-placeholder{color:#000;}
+input[type="text"]:-ms-input-placeholder {color:#000;}
+
+input[type="date"]{
+	text-align:center;
+	background:#f5f5f5;
 }
 
-.calendar_image:last-of-type{
-	left:680px;
-}
-
-#check_in_date{
-	padding-left:60px;
-}
-
-#check_out_date{
-	padding-left:45px;
-}
-
-#check_in_date::placeholder,
-#check_out_date::placeholder{
-	text-align:left;
+input[type="date"]:hover{
+	background:#ececec;
 }
 
 #check_in_date,
