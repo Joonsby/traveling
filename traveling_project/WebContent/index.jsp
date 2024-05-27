@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="com.pro.index.IndexDAO" %>
 <%@ page import="com.pro.dao.StayManagementDAO" %>
-<%@ page import="com.pro.dto.PopStayInfo" %>
 <%@ page import="com.pro.dto.StayInfo" %>
-<%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
-<%
- 	IndexDAO indexDAO = new IndexDAO(); 
+<% 	
 	StayManagementDAO stayManagementDAO = new StayManagementDAO();
  	String path = request.getContextPath();
  	List<StayInfo> popStays = stayManagementDAO.popStaySelect();

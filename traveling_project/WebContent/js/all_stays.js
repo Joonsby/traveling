@@ -34,12 +34,10 @@ function sendFilterRequest(filterData) {
     type: "POST",
     data: filterData,
     success: function (data) {
-      var parsedData = JSON.parse(data);
-      var accommodationBox = $("#accomodation_info_box");
-      accommodationBox.empty();
-
-      // 위치와 가격 정보를 저장할 객체를 초기화합니다.
-      var locations = {};
+      var parsedData 		= JSON.parse(data);
+      var accommodationBox 	= $("#accomodation_info_box");
+      var locations 		= {};
+      accommodationBox.empty();      
 
       if (Array.isArray(parsedData.result)) {
         parsedData.result.forEach(function (item) {
@@ -79,7 +77,6 @@ function sendFilterRequest(filterData) {
       }
     },
     error: function (request, status, error) {
-      // 오류 처리를 위한 콜백 함수를 추가할 수 있습니다.
       console.error("Ajax Request Error:", status, error);
     }
   });
