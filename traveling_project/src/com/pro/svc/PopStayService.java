@@ -24,7 +24,7 @@ public class PopStayService implements ControlQuery {
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		List<StayInfo> stayList = stayManagementDAO.popStaySelect();
 		req.setAttribute("stayList", stayList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("all_stays.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/all_stays.jsp");
 		dispatcher.forward(req, res);
 		return null;
 	}

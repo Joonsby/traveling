@@ -22,9 +22,9 @@ public class StaySelectService implements ControlQuery{
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		String stayId =  Integer.toString(stayManagementDAO.countStayId(hostId));
 		if(stayId.equals("0")) {
-			req.setAttribute("result", "false");
+			req.setAttribute("result", false);
 		} else {
-			req.setAttribute("result", "true");
+			req.setAttribute("result", true);
 		}
 		return stayId;
 	}
