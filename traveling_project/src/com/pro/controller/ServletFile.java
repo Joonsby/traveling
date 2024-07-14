@@ -34,7 +34,7 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("hostData")) {
 				inter = ReservationSelectService.instance();
 				inter.dataCon(req, res);
-				RequestDispatcher dispatcher = req.getRequestDispatcher("host_index.jsp");
+				RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/host/host_index.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("stay_ins")) {
 				inter = StayInsertService.instance();

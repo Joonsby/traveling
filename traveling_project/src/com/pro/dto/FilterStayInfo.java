@@ -1,7 +1,5 @@
 package com.pro.dto;
 
-import java.util.List;
-
 public class FilterStayInfo {		
 	String stay_name, road_addr, image1, parking;
 	int stay_id, min_room_price, rating_count;

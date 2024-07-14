@@ -19,7 +19,7 @@ public class ReservationAcception {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 			stmt = conn.createStatement();
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class ReservationAcception {
 			stmt.close();
 			conn.close();
 		} catch (Exception e){
-			System.out.println(e);
+			e.printStackTrace();
 		}		
 	}
 	
@@ -63,7 +63,7 @@ public class ReservationAcception {
 				arr.add(rsInfo);
 			}
 		} catch(Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -100,7 +100,7 @@ public class ReservationAcception {
 				arr.add(rsInfo);
 			}
 		} catch(Exception e) {
-			System.out.println(e);			
+			e.printStackTrace();
 		}
 		return arr;
 	}
@@ -135,7 +135,7 @@ public class ReservationAcception {
 				arr.add(rsInfo);
 			}
 		} catch(Exception e) {
-			System.out.println(e);			
+			e.printStackTrace();
 		}
 		return arr;
 	}
@@ -170,7 +170,7 @@ public class ReservationAcception {
 					arr.add(rsInfo);
 				}
 			} catch(Exception e) {
-				System.out.println(e);			
+				e.printStackTrace();
 			}
 			return arr;
 		}
@@ -182,7 +182,7 @@ public class ReservationAcception {
 			stmt.executeUpdate("UPDATE reservation SET status='예약 확정' WHERE status='예약 대기' AND reservation_id ='" + reservationId + "';");
 			reservationToPlanner(reservationId);
 		} catch(Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -194,7 +194,7 @@ public class ReservationAcception {
 			connect();
 			stmt.executeUpdate("INSERT INTO planner (reservation_id, modified_date) VALUES (" + reservationId + ", now());");
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -207,7 +207,7 @@ public class ReservationAcception {
 			connect();
 			stmt.executeUpdate("update reservation set status='예약 거부' where status='예약 대기' and reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		} finally {
 			close();
 		}
