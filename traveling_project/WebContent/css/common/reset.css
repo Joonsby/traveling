@@ -30,7 +30,6 @@ li {
   text-indent: -9999px;
 }
 
-/* 위로 가기 버튼 */
 .go_top {
   width: 80px;
   height: 80px;
@@ -38,7 +37,7 @@ li {
   position: fixed;
   bottom: 50px;
   right: 100px;
-  background: url(../images/go_top.png) no-repeat center white;
+  background: url(../../images/go_top.png) no-repeat center white;
   cursor: pointer;
   border-radius: 20px;
 }

@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<% String id = (String) session.getAttribute("id");%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% String id = (String) session.getAttribute("id");%>
 <c:set var="uid" value="<%=id %>" />
 <html>
   <head>
     <meta charset="UTF-8" />
     <!-- css -->
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/header.css" />  
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/common/reset.css" />
+    <link rel="stylesheet" href="../css/header/header.css" />  
+    <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />    
     <!-- font -->
