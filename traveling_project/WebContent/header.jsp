@@ -7,6 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <!-- css -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="../css/common/reset.css" />
     <link rel="stylesheet" href="../css/header/header.css" />  
     <link rel="stylesheet" href="../css/style.css" />
@@ -32,8 +33,8 @@
         </h1>
         <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
-          <input type="date" name="check_in_date" id="check_in_date" data-placeholder="체크인" required aria-required="true" />
-          <input type="date" name="check_out_date" id="check_out_date" data-placeholder="체크 아웃" required aria-required="true" />
+          <input type="text" name="check_in_date" id="check_in_date"/>
+          <input type="text" name="check_out_date" id="check_out_date"/>
           <input type="button" name="people_num" id="people_num" value="인원 수를 입력해주세요."/>
           <input id="search_btn" type="submit" value="검색하기" />
         </form>
@@ -44,11 +45,11 @@
 	        	<input type="button" id="plus" value="+">
 	        </div>        	
         </div>
-        <div class="right_menu">
-          <a href="#" class="ir_pm">내 정보</a>
-          <a href="#" class="ir_pm">언어 선택</a>
-          <a href="#" class="ir_pm">고객 센터</a>
-        </div>
+        <ul class="right_menu">
+          <li class="ir_pm">내 정보</li>
+          <li class="ir_pm">언어 선택</li>
+          <li class="ir_pm">고객 센터</li>
+        </ul>
         <ul id="my_info">
         	<c:choose>
     			<c:when test="${not empty uid}">

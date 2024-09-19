@@ -20,10 +20,14 @@
 	<meta charset="UTF-8" />
     <!-- favicon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/dist/ax5calendar.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/ax5ui/ax5ui-picker/dist/ax5picker.css">
     <link rel="stylesheet" href="css/common/reset.css" />
     <link rel="stylesheet" href="css/header/header.css" />
     <link rel="stylesheet" href="css/main/style.css" />
-    <link rel="stylesheet" href="css/footer/footer.css" />    
+    <link rel="stylesheet" href="css/footer/footer.css" />
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <!-- font -->
@@ -31,7 +35,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
     <!-- script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>	    
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/dist/ax5calendar.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-formatter/dist/ax5formatter.min.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>   
     <script src="js/header/header.js"></script>
@@ -46,8 +55,10 @@
         </h1>
         <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
-          <input type="date" name="check_in_date" id="check_in_date" class="date" required/>          
-          <input type="date" name="check_out_date" id="check_out_date" class="date" required/>          
+          <div class="input-group" data-ax5picker="basic">
+	          <input type="text" id="check_in_date" class="form-control" name="check_in_date" placeholder="체크인 날짜" readonly/>
+	          <input type="text" id="check_out_date" class="form-control" name="check_out_date" placeholder="체크아웃 날짜" readonly/>
+          </div>
           <input type="text" name="people_num" id="people_num" placeholder="인원 수를 선택하세요" readonly/>
           <input id="search_btn" type="submit" value="검색하기" />
         </form>
@@ -216,7 +227,13 @@
 		<section class="event">
 			<h2>이벤트</h2>
 			<div class="slider event_slider">
-				<a href="#"><img src="images/event1.webp" alt="" /></a> <a href="#"><img src="images/event2.webp" alt="" /></a> <a href="#"><img src="images/event3.webp" alt="" /></a> <a href="#"><img src="images/event4.webp" alt="" /></a> <a href="#"><img src="images/event5.webp" alt="" /></a> <a href="#"><img src="images/event6.webp" alt="" /></a> <a href="#"><img src="images/event7.webp" alt="" /></a>
+				<a href="#"><img src="images/event1.webp" alt="" /></a>
+				<a href="#"><img src="images/event2.webp" alt="" /></a>
+				<a href="#"><img src="images/event3.webp" alt="" /></a>
+				<a href="#"><img src="images/event4.webp" alt="" /></a>
+				<a href="#"><img src="images/event5.webp" alt="" /></a>
+				<a href="#"><img src="images/event6.webp" alt="" /></a>
+				<a href="#"><img src="images/event7.webp" alt="" /></a>
 			</div>
 		</section>
 	</main>

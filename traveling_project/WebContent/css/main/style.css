@@ -39,8 +39,9 @@ section {
 }
 
 /* 제목 */
-.hotel_recommend h2 {
+h2 {
 	display: inline-block;
+	font-size:28px;
 	margin: 20px 10px;	
 }
 
@@ -237,6 +238,7 @@ section {
 }
 
 .korea_popular_region>h2 {
+	display:block;
 	text-align: center;
 	margin: 20px 0;
 }
@@ -254,6 +256,7 @@ section {
 }
 
 .korea_popular_region .slider a h2, .korea_popular_region .slider a p {
+	display:block;
 	text-align: center;
 }
 
