@@ -22,8 +22,8 @@
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/dist/ax5calendar.css">
-	<link rel="stylesheet" href="https://cdn.rawgit.com/ax5ui/ax5ui-picker/dist/ax5picker.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <link rel="stylesheet" href="css/common/reset.css" />
     <link rel="stylesheet" href="css/header/header.css" />
     <link rel="stylesheet" href="css/main/style.css" />
@@ -32,17 +32,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
     <!-- script -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-calendar/dist/ax5calendar.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-formatter/dist/ax5formatter.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-picker/master/dist/ax5picker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>   
+    <script src="js/common/common.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="js/header/header.js"></script>
     <script src="js/main/main.js"></script>
     <title>Traveling</title>
@@ -54,21 +53,14 @@
           <a href="index.jsp"><img src="images/logo.png" alt=""/></a>
         </h1>
         <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
-          <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
-          <div class="input-group" data-ax5picker="basic">
-	          <input type="text" id="check_in_date" class="form-control" name="check_in_date" placeholder="체크인 날짜" readonly/>
-	          <input type="text" id="check_out_date" class="form-control" name="check_out_date" placeholder="체크아웃 날짜" readonly/>
+          <div class="input-group">
+	          <input type="text" id="region" name="region" class="form-control" placeholder="어디로 떠나시나요?" />
+	          <input type="text" id="check_in_date" name="check_in_date" class="form-control" placeholder="체크인 날짜" readonly />
+	          <input type="text" id="check_out_date" name="check_out_date" class="form-control" placeholder="체크아웃 날짜" readonly />
+	          <input type="number" id="people_num" name="people_num" class="form-control" placeholder="인원 수를 선택하세요" min="1" max="15"/>
+	          <input type="submit" id="search_btn" class="form-control" value="검색하기" />
           </div>
-          <input type="text" name="people_num" id="people_num" placeholder="인원 수를 선택하세요" readonly/>
-          <input id="search_btn" type="submit" value="검색하기" />
         </form>
-        <div id="guests-dropdown">
-	        <div id="button-box">
-	        	<input type="button" id="minus" value="-">
-	        	<span id="number">1</span>
-	        	<input type="button" id="plus" value="+">
-	        </div>        	
-        </div>
         <div class="right_menu">
           <a href="#" class="ir_pm">내 정보</a>
           <a href="#" class="ir_pm">언어 선택</a>
@@ -237,7 +229,6 @@
 			</div>
 		</section>
 	</main>
-	<div class="go_top"></div>
 	<footer>
       <div class="footerInner">
         <ul>
@@ -262,5 +253,22 @@
         </ul>
       </div>
     </footer>
+    <!-- Modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="ModalLabel"></h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body"></div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- go_top -->
+	<div class="go_top"></div>
 </body>
 </html>

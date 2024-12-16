@@ -208,6 +208,7 @@
 		si.stay_name AS stay_name,
 		si.road_addr AS road_addr,
 		si.image1 AS image1,
+		si.image2 AS image2,
 		si.latitude AS latitude,
 		si.longitude AS longitude,
 		MIN(ri.price) AS min_room_price,

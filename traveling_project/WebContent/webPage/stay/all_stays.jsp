@@ -8,7 +8,9 @@
 	List<StayInfo> stayList = (List<StayInfo>) request.getAttribute("stayList");
 	List<StayInfo> filterList = (List<StayInfo>) request.getAttribute("filterList");
 	String path = request.getContextPath();
-	NumberFormat nf = NumberFormat.getInstance();	
+	String URIPath = request.getRequestURI();
+	String realPath = request.getRequestURI();
+	NumberFormat nf = NumberFormat.getInstance();
 %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
     <!-- css -->    
-    <link rel="stylesheet" href="css/all_stays.css" />
+    <link rel="stylesheet" href="traveling_project/css/stay/all_stays.css" />
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- script -->

@@ -68,7 +68,7 @@ public class StayManagementDAO {
 	// 인기 숙소 선택
 	public List<StayInfo> popStaySelect() {
 		SqlSession s = f.openSession();
-		List<StayInfo> stayList = s.selectList("popStaySelect");		
+		List<StayInfo> stayList = s.selectList("popStaySelect");
 		s.close();
 		return stayList;
 	}
