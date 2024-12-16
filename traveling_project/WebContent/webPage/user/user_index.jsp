@@ -33,9 +33,9 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="../../js/header/header.js"></script>
     <script src="../../js/main/main.js"></script>
-	<%@ include file="../header/header.jsp"%>
 </head>
 <body>
+	<%@ include file="../header/header.jsp"%>
 	<section id="video">
 		<video autoplay loop muted>
 			<source src="../../video/Banner.mp4" type="video/mp4" width="100%" />

@@ -17,14 +17,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="<%=path %>/images/logo.png" type="image/x-icon" />
     <!-- css -->    
-    <link rel="stylesheet" href="traveling_project/css/stay/all_stays.css" />
+    <link rel="stylesheet" href="<%=path %>/css/stay/all_stays.css" />
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- script -->
     <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
-    <script src="js/all_stays.js"></script>    
+    <script src="<%=path %>/js/stay/all_stays.js"></script>    
     <title>인기 숙소 정보</title>
   </head>
   <body>
@@ -62,7 +62,7 @@
       </section>
       <div id="map"></div>
       <div id="map-close">목록 보기</div>            
-    </main>    
-    <%@ include file="../footer/footer.jsp"%>    
+    </main>
+    <%@ include file="../footer/footer.jsp"%>
   </body>
 </html>
