@@ -22,7 +22,7 @@ public class StayInsertService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
+	public String dataCon(HttpServletRequest rq, HttpServletResponse res) throws Exception {
 		HttpSession session = rq.getSession();
 		StayInfo stayInfo = new StayInfo();
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
@@ -165,7 +165,7 @@ public class StayInsertService implements ControlQuery {
 			e.printStackTrace();
 		}
 
-		rs.setCharacterEncoding("UTF-8");
+		res.setCharacterEncoding("UTF-8");
 		stayInfo.setHost_id(hostId);
 		stayInfo.setStay_name(stayName);
 		stayInfo.setLatitude(latitude);
@@ -215,6 +215,7 @@ public class StayInsertService implements ControlQuery {
 		stayInfo.setLuggage_storage(luggageStorage);
 		
 		stayManagementDAO.stayInsert(stayInfo);
+		res.sendRedirect("webPage/stay/add_stay_result.jsp");
 		return null;
 	}
 }

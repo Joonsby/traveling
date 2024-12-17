@@ -57,7 +57,7 @@
 			<div>
 			<%
 				List<CheckInInfo> checkInInfo = (List<CheckInInfo>) request.getAttribute("checkInlist");
-				if (checkInInfo.size() != 0) {
+				if (checkInInfo.size() > 0) {
 					out.println("<table>"+
 						"<thead>"+
 							"<tr>" +								

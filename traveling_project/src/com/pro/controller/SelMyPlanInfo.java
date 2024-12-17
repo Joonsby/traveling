@@ -2,6 +2,7 @@ package com.pro.controller;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,6 +31,8 @@ public class SelMyPlanInfo implements ControlQuery {
 		List<MyPlanner> selList = selinfo.sel(mp);
 		
 		req.setAttribute("selList", selList);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/user/planner.jsp");
+		dispatcher.forward(req, res);
 		return null;
 	}
 

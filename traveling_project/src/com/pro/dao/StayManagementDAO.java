@@ -30,7 +30,7 @@ public class StayManagementDAO {
 	public List<CheckInInfo> checkInSelect(CheckInInfo checkInInfo) {
 		SqlSession s = f.openSession();		
 		List<CheckInInfo> checkInList = s.selectList("checkInInfoSelect", checkInInfo);		
-		s.close();		
+		s.close();
 		return checkInList;
 	}
 	
@@ -97,7 +97,7 @@ public class StayManagementDAO {
 	
 	public List<FilterStayInfo> filterStay(HttpServletRequest req, HttpServletResponse res) {
 		SqlSession s = f.openSession();
-		double rating = 0.0; // 기본값을 0으로 초기화
+		double rating = 0.0;
 		int minPrice = 0;
 		int maxPrice = 500000;
 		String parking = getParameterOrNull(req, "parking");

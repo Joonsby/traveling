@@ -7,13 +7,14 @@
 <%@ page import="java.text.NumberFormat" %>
 <% 	
 	StayManagementDAO stayManagementDAO = new StayManagementDAO();
- 	String path = request.getContextPath();
  	List<StayInfo> popStays = stayManagementDAO.popStaySelect();
  	List<StayInfo> bestReviewStays = stayManagementDAO.bestReviewStaySelect();
  	List<StayInfo> cheepStays = stayManagementDAO.cheepStaySelect();
  	NumberFormat nf = NumberFormat.getInstance();
  	String id = (String) session.getAttribute("id");
+ 	String path = request.getContextPath();
 %>
+<c:set var="uid" value="<%=id %>"/>
 <!DOCTYPE html>
 <html>
 <head>

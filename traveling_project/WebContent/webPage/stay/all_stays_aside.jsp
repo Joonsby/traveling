@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 하기</title>
-<link rel="stylesheet" href="css/all_stays_aside.css" />
+<link rel="stylesheet" href="<c:url value="/css/stay/all_stays_aside.css"/>" />
 </head>
 <body>
 	<aside>

@@ -2,6 +2,7 @@ package com.pro.svc;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +24,8 @@ public class SelectStayInfoService implements ControlQuery{
 		String host_id = req.getParameter("host_id");
 		List<StayInfo> stayInfo =  stayManagementDAO.selectStayInfo(host_id);
 		req.setAttribute("stayInfo", stayInfo);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_info.jsp");
+		dispatcher.forward(req, res);
 		return null;
 	}
 

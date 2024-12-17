@@ -2,7 +2,7 @@
 
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="query_ex">
+<mapper namespace="com/pro/mybatis/map.xml">
 
 	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner" parameterType="com.pro.dto.MyPlanner">
 		SELECT s.stay_name, s.location,
@@ -264,7 +264,7 @@
 		ORDER BY min_room_price ASC, rating_avg DESC, last_review_time DESC;
 	</select>
 
-	<select id="filterStaySelect" parameterType="map" resultType="com.pro.dto.StayInfo">
+	<select id="filterStaySelect" parameterType="map" resultType="com.pro.dto.FilterStayInfo">
 		SELECT si.stay_id AS stay_id,
 		si.stay_name AS stay_name,
 		si.road_addr AS road_addr,

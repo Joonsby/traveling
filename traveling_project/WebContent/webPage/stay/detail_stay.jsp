@@ -28,15 +28,15 @@
 <meta charset="UTF-8">
 <title>traveling</title>
 <!-- favicon -->
-<link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon"/>
+<link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
 <!-- css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="css/detail_stay.css">
+<link rel="stylesheet" href="<c:url value="/css/stay/detail_stay.css"/>" />
 <!-- js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
-<script src="js/detail_stay.js"></script>
+<script src="<c:url value="/js/stay/detail_stay.js"/>"></script>
 </head>
 <body>
 	<jsp:include page="../header/header.jsp" />
@@ -296,6 +296,6 @@
 		</div>
 	</section>
 	<div class="go_top"></div>
-	<jsp:include page="../footer/footer.jsp" />
+	<%@ include file="../footer/footer.jsp"%>
 </body>
 </html>

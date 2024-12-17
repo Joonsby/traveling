@@ -1,5 +1,6 @@
 package com.pro.svc;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,8 @@ public class StaySelectService implements ControlQuery{
 		} else {
 			req.setAttribute("result", true);
 		}
-		return stayId;
+		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_sel_result.jsp");
+		dispatcher.forward(req, res);
+		return null;
 	}
 }

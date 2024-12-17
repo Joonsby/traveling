@@ -1,19 +1,41 @@
 $(document).ready(function() {
-	const errorTextTr = $('tr:has(#error_text)');
-	const errorText = $('#error_text');
-
 	$("#login_btn").click(function(e) {
-		var idval = $('#id').val();
-		var pwval = $('#pw').val();
-		if (idval == '') {
+		if ($('#id').val() == '') {
 			e.preventDefault();
-			errorTextTr.show();
-			errorText.html('아이디를 입력해주세요.');
-		} else if (pwval == '') {
+			$('tr:has(#error_text)').show();
+			$('#error_text').html('아이디를 입력해주세요.');
+		} else if ($('#pw').val() == '') {
 			e.preventDefault();
-			errorTextTr.show();
-			errorText.html('비밀번호를 입력해주세요.');
+			$('tr:has(#error_text)').show();
+			$('#error_text').html('비밀번호를 입력해주세요.');
 		}
 	});
-
+	
+	$('#id').keydown(function(e){
+		if(e.keyCode == 13){
+			if ($('#id').val() == '') {
+				e.preventDefault();
+				$('tr:has(#error_text)').show();
+				$('#error_text').html('아이디를 입력해주세요.');
+			} else if ($('#pw').val() == '') {
+				e.preventDefault();
+				$('tr:has(#error_text)').show();
+				$('#error_text').html('비밀번호를 입력해주세요.');
+			}
+		}
+	})
+	
+	$('#pw').keydown(function(e){
+		if(e.keyCode == 13){
+			if ($('#id').val() == '') {
+				e.preventDefault();
+				$('tr:has(#error_text)').show();
+				$('#error_text').html('아이디를 입력해주세요.');
+			} else if ($('#pw').val() == '') {
+				e.preventDefault();
+				$('tr:has(#error_text)').show();
+				$('#error_text').html('비밀번호를 입력해주세요.');
+			}
+		}
+	})
 });

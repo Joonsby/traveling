@@ -1,43 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- favicon -->
-  <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-  <!-- css -->
-  <link rel="stylesheet" href="../../css/common/reset.css" />
-  <link rel="stylesheet" href="../../css/header/header.css" />
-  <link rel="stylesheet" href="../../css/login/login_select.css">
-  <link rel="stylesheet" href="../../css/footer/footer.css" />
-  <!-- jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="../../js/signup/signup.js"></script>
-  <script src="../../js/header/header.js"></script>
+  <link rel="stylesheet" href="<c:url value="/css/login/login_select.css"/>" />
   <title>로그인 선택</title>
   <body>
-    <%@ include file="../header/header.jsp"%>
     <main>
       <div id="content1">
-        <img src="../../images/logo.png" alt="">
+        <img src="<c:url value="/images/logo.png"/>" alt="로고">
         <h2>로그인할 유형을 선택해주세요</h2>
       </div>
       <ul id="join">
         <li>
           <h3>개인 회원</h3>
           <p>individual</p>
-          <a href="user_login.html"><input type="button" value="로그인하기" /></a>
+          <a href="login.jsp?requestType=user"><input type="button" value="로그인하기" /></a>
         </li>
         <li>
           <h3>호스트</h3>
           <p>host</p>
-          <a href="host_login.html"><input type="button" value="로그인하기" /></a>
+          <a href="login.jsp?requestType=host"><input type="button" value="로그인하기" /></a>
         </li>
       </ul>
     </main>

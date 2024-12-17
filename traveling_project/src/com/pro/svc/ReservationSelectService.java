@@ -2,6 +2,7 @@ package com.pro.svc;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,15 +20,17 @@ public class ReservationSelectService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest re, HttpServletResponse rs) throws Exception {
-		HttpSession session = re.getSession();
-		rs.setCharacterEncoding("UTF-8");
+	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		HttpSession session = req.getSession();
+		res.setCharacterEncoding("UTF-8");
 		StayManagementDAO stmd = StayManagementDAO.instance();
 		CheckInInfo checkInInfo = new CheckInInfo();
 		String hostId = (String) session.getAttribute("host_id");
 		checkInInfo.setHostId(hostId);
 		List<CheckInInfo> checkInlist = stmd.checkInSelect(checkInInfo);		
-		re.setAttribute("checkInlist", checkInlist);
+		req.setAttribute("checkInlist", checkInlist);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/host/host_index.jsp");
+		dispatcher.forward(req, res);
 		return null;
 	}
 }

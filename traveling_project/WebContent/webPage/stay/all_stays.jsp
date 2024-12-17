@@ -4,31 +4,24 @@
 <%@ page import="com.pro.dto.FilterStayInfo" %>
 <%@ page import="com.pro.dto.StayInfo" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ include file="../header/header.jsp"%>
 <%
 	List<StayInfo> stayList = (List<StayInfo>) request.getAttribute("stayList");
 	List<StayInfo> filterList = (List<StayInfo>) request.getAttribute("filterList");
-	String path = request.getContextPath();
-	String URIPath = request.getRequestURI();
-	String realPath = request.getRequestURI();
 	NumberFormat nf = NumberFormat.getInstance();
 %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="<%=path %>/images/logo.png" type="image/x-icon" />
-    <!-- css -->    
-    <link rel="stylesheet" href="<%=path %>/css/stay/all_stays.css" />
-    <!-- jquery -->
+    <link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
+    <link rel="stylesheet" href="<c:url value="/css/stay/all_stays.css"/>" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- script -->
     <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
-    <script src="<%=path %>/js/stay/all_stays.js"></script>    
+    <script src="<c:url value="/js/stay/all_stays.js"/>"></script>
     <title>인기 숙소 정보</title>
   </head>
   <body>
-    <%@ include file="../header/header.jsp"%>
     <main class="clearfix">
     <%@ include file="all_stays_aside.jsp" %>
       <section id="accomodation_info" class="clearfix">

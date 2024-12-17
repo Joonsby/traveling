@@ -54,6 +54,11 @@ main {
 	margin: 17px 0;
 	padding: 0 10px;
 	font-size: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	white-space: nowrap;
+	word-break:break-all;
+	width: 100%;
 }
 
 #accomodation_info .accomodation_box div:last-child p:first-of-type {
@@ -66,7 +71,7 @@ main {
 	content: '';
 	width: 21px;
 	height: 21px;
-	background: url(../images/star.png) no-repeat center/contain;
+	background: url(../../images/star.png) no-repeat center/contain;
 	position: absolute;
 	top: 2px;
 	left: 10px;

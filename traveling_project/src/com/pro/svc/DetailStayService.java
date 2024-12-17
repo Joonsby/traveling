@@ -2,6 +2,7 @@ package com.pro.svc;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,21 +21,16 @@ public class DetailStayService implements ControlQuery{
 
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		
 		int stay_id = Integer.parseInt((String) req.getParameter("stay_id"));	
-		
 		StayManagementDAO stayManagementDAO = new StayManagementDAO();
-		
 		List<StayInfo> detailStayList =  stayManagementDAO.selectStayInfo(stay_id);
-		
 		List<RoomInfo> roomList = stayManagementDAO.selectRoomInfo(stay_id);		
-		
 		List<ReviewInfo> reviewList = stayManagementDAO.selectReview(stay_id);
-		
-		
 		req.setAttribute("detailStayList", detailStayList);		
 		req.setAttribute("roomList", roomList);
 		req.setAttribute("reviewList", reviewList);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/detail_stay.jsp");
+		dispatcher.forward(req, res);
 		return null;
 	}	
 }

@@ -1,20 +1,26 @@
 package com.pro.dto;
 
 public class FilterStayInfo {		
-	String stay_name, road_addr, image1, parking;
-	int stay_id, min_room_price, rating_count;
-	double avg_rating, rating, latitude, longitude;
-	public double getLatitude() {
-		return latitude;
+	private int stay_id, min_room_price, rating_count;
+	private String stay_name, road_addr, image1, parking;
+	private double avg_rating, rating, latitude, longitude;
+	public int getStay_id() {
+		return stay_id;
 	}
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+	public void setStay_id(int stay_id) {
+		this.stay_id = stay_id;
 	}
-	public double getLongitude() {
-		return longitude;
+	public int getMin_room_price() {
+		return min_room_price;
 	}
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+	public void setMin_room_price(int min_room_price) {
+		this.min_room_price = min_room_price;
+	}
+	public int getRating_count() {
+		return rating_count;
+	}
+	public void setRating_count(int rating_count) {
+		this.rating_count = rating_count;
 	}
 	public String getStay_name() {
 		return stay_name;
@@ -40,24 +46,6 @@ public class FilterStayInfo {
 	public void setParking(String parking) {
 		this.parking = parking;
 	}
-	public int getStay_id() {
-		return stay_id;
-	}
-	public void setStay_id(int stay_id) {
-		this.stay_id = stay_id;
-	}
-	public int getMin_room_price() {
-		return min_room_price;
-	}
-	public void setMin_room_price(int min_room_price) {
-		this.min_room_price = min_room_price;
-	}
-	public int getRating_count() {
-		return rating_count;
-	}
-	public void setRating_count(int rating_count) {
-		this.rating_count = rating_count;
-	}
 	public double getAvg_rating() {
 		return avg_rating;
 	}
@@ -70,5 +58,17 @@ public class FilterStayInfo {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+		
 }

@@ -5,9 +5,9 @@
 <%@ page import="com.pro.dto.StayInfo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
+<%@ include file="../header/header.jsp"%>
 <%
 	StayManagementDAO stayManagementDAO = new StayManagementDAO();
-	String path = request.getContextPath();
 	List<StayInfo> popStays = stayManagementDAO.popStaySelect();
 	List<StayInfo> bestReviewStays = stayManagementDAO.bestReviewStaySelect();
 	List<StayInfo> cheepStays = stayManagementDAO.cheepStaySelect();
@@ -35,7 +35,6 @@
     <script src="../../js/main/main.js"></script>
 </head>
 <body>
-	<%@ include file="../header/header.jsp"%>
 	<section id="video">
 		<video autoplay loop muted>
 			<source src="../../video/Banner.mp4" type="video/mp4" width="100%" />

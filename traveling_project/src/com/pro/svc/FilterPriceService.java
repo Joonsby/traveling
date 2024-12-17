@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.pro.controller.ControlQuery;
 import com.pro.dao.StayManagementDAO;
 import com.pro.dto.FilterStayInfo;
@@ -46,6 +47,6 @@ public class FilterPriceService implements ControlQuery{
 	        }
 	    }
 	    result.append("]}");
-	    return result.toString();				
+	    return result.toString();
 	}
 }
