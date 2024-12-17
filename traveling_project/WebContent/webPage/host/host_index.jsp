@@ -2,31 +2,19 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.pro.dto.CheckInInfo"%>
 <%@ page import="java.text.DecimalFormat" %>
-<%
-	String hostId = (String) session.getAttribute("host_id");
-	String name = (String) session.getAttribute("name");	
-%>
+<%@ include file="../header/host_header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- css -->
 <link rel="stylesheet" href="css/host/host_index.css" />
-<!-- favicon -->
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-<!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- script -->
+<script src="<c:url value="/js/host/host_index.js"/>"></script>
 <title>호스트 페이지</title>
 </head>
 <body>
-	<%@ include file="../header/host_header.jsp"%>
 	<%
 		hostId = (String) session.getAttribute("hostId");
 		name = (String) session.getAttribute("name");

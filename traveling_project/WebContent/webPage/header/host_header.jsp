@@ -1,40 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	/* String hostId = (String) session.getAttribute("host_id");
-	String name = (String) session.getAttribute("name"); */	
+	String hostId = (String) session.getAttribute("host_id");
+	String name = (String) session.getAttribute("name");
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- css -->
-<link rel="stylesheet" href="css/common/reset.css" />
-<link rel="stylesheet" href="css/header/header.css" />
-<link rel="stylesheet" href="css/header/host_header.css" />
-<link rel="stylesheet" href="css/host/host_aside.css" />
-<link rel="stylesheet" href="css/footer/footer.css" />
 <!-- favicon -->
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+<link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
+<!-- css -->
+<link rel="stylesheet" href="<c:url value="/css/common/reset.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/header/header.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/header/host_header.css"/>" />
 <!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"/>
-<!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- script -->
-<script src="js/header/header.js"></script>
-<script src="js/header/host_header.js"></script>
-<script src="js/host/host_index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="<c:url value="/js/header/header.js"/>"></script>
+<script src="<c:url value="/js/header/host_header.js"/>"></script>
 </head>
 <body>
-	<%-- <input type="hidden" id="host_id" value="<%= hostId %>"> --%>
 	<header>
 		<nav id="menu_nav">
 			<h1 id="logo">
-				<a href="host_index.condb?comm=hostData"><img src="images/logo.png" alt="" /></a>
+				<a href="host_index.condb?comm=hostData"><img src="<c:url value="/images/logo.png"/>" alt="" /></a>
 			</h1>
 			<ul class="lnb">
 				<li>숙소 관리</li>
@@ -44,7 +36,7 @@
 			</ul>
 			<ul class="lnb_menu">
 				<li>
-					<input type="button" id="add_stay_btn" value="숙소 등록하기">
+					<a href="#" id="add_stay_btn">숙소 등록하기</a>
 					<a href="add_room.jsp">객실 등록하기</a>
 					<a href="#">숙소 정보</a>
 					<a href="#">객실 정보</a>

@@ -20,6 +20,7 @@ $(document).ready(function() {
             success : function(result) {
                 const data = result.trim();                
                 if (data == "true") {
+                	e.preventDefault();
                     $("#myModal").fadeIn('fast');
                     $("#closeModal").click(function() {
                         $("#myModal").fadeOut('fast');

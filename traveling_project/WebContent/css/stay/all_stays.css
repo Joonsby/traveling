@@ -135,7 +135,7 @@ footer .footerInner {
       content: '';
       display: block;
       position: absolute;
-      top: 49px;
+      top: 65px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
@@ -148,10 +148,10 @@ footer .footerInner {
       border-width: 8px 6px 0px 6.5px;
       content: '';
       display: block;
+      position: absolute;
+      top: 64px;
       left: 50%;
       transform:translateX(-50%);
-      position: absolute;
-      top: 48px;
       width: 0;
       z-index: 1;
 }

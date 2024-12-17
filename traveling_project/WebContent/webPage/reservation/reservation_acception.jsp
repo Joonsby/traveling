@@ -37,7 +37,6 @@
 	<%@ include file="../header/host_header.jsp"%>
 	<jsp:useBean id="reservationAcception" class="com.pro.reservation.ReservationAcception" scope="page" />
 	<%
-		String hostId = (String) session.getAttribute("host_id");
 		// 예약 대기중인 예약 테이블 객체 배열
 		ArrayList<ReservationInfo> rwArr = reservationAcception.reservationWaiting(hostId);
 		// 예약 확정된 예약 테이블 객체 배열

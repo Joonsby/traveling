@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.pro.dto.StayInfo" %>
 <%@ page import="java.util.List" %>
-<% String hostId = (String) session.getAttribute("host_id"); %>
+<%@ include file="../header/host_header.jsp"%>
 <% 
 	List<StayInfo> stayInfo = (List<StayInfo>) request.getAttribute("stayInfo");
 	String path = request.getContextPath();	
@@ -36,7 +36,6 @@
 <title>숙소 등록</title>
 </head>
 <body>	
-	<%@ include file="../header/host_header.jsp"%>
 	<main>
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>	
@@ -183,28 +182,6 @@
 									</c:choose>																		
 								</div>
 								<div>
-<%-- 									<c:choose>
-									    <c:when test="${not empty stayInfo[0].tub}">
-									    	<div>${stayInfo[0].fire_extinguisher}</div>
-									        <div>${stayInfo[0].aid_kit}</div>
-									        <div>${stayInfo[0].fire_alarm}</div>
-									        <div>${stayInfo[0].workspace}</div>
-									        <div>${stayInfo[0].wireless_internet}</div>
-									        <div>${stayInfo[0].barbecue_tool}</div>
-									        <div>${stayInfo[0].basic_cookware}</div>
-									        <div>${stayInfo[0].dining_table}</div>
-									        <div>${stayInfo[0].cutlery}</div>
-									        <div>${stayInfo[0].refrigerator}</div>
-									        <div>${stayInfo[0].microwave}</div>
-									        <div>${stayInfo[0].electric_rice_cooker}</div>
-									        <div>${stayInfo[0].gas_stove_or_induction}</div>
-									        <div>${stayInfo[0].electric_vehicle_charging_facilities}</div>
-									        <div>${stayInfo[0].parking}</div>
-									        <div>${stayInfo[0].breakfast}</div>
-									        <div>${stayInfo[0].clean_service}</div>
-									        <div>${stayInfo[0].luggage_storage}</div>									        
-									    </c:when>    
-									</c:choose> --%>
 									<div>화재 경보기</div>
 									<div>업무 전용 공간</div>
 									<div>무선 인터넷</div>

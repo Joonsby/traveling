@@ -36,8 +36,7 @@
 	cursor: default;
 }
 
-.lnb_menu li a,
-.lnb_menu li input{
+.lnb_menu li a{
 	width:100%;
 	display: block;
 	height: 50px;
@@ -49,8 +48,7 @@
 	cursor:pointer;
 }
 
-.lnb_menu li a:hover,
-.lnb_menu li input:hover {
+.lnb_menu li a:hover{
 	color: #1aa3ff;
 }
 
@@ -71,7 +69,6 @@ ul#my_info li:hover a:after {
 	transform-origin: 0% 50%;
 }
 
-/* 모달 스타일 */
 .main_modal {
     display: none;
     position: fixed;

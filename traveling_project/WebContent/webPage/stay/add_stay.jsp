@@ -1,34 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<% String hostId = (String) session.getAttribute("host_id"); %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/host_header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- css -->
-<link rel="stylesheet" href="../../css/common/reset.css" />
 <link rel="stylesheet" href="css/add_stay.css" />
 <link rel="stylesheet" href="css/host_common.css" />
-<!-- favicon -->
-<link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-<!-- font -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"
-	rel="stylesheet" />
-<!-- jquery -->
+<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- 카카오 api -->
 <script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
 <!-- script -->
 <title>숙소 등록</title>
 </head>
 <body>	
-	<%@ include file="../header/host_header.jsp"%>
 	<main>
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>	
