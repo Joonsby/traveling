@@ -14,7 +14,7 @@
 			throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 		}
 		sta = con.createStatement();
-		ResultSet rs = sta.executeQuery("SELECT email FROM project.user_info WHERE email = '" + email + "';");
+		ResultSet rs = sta.executeQuery("SELECT email FROM user_info WHERE email = '" + email + "';");
 		if (rs.next()) {
 			result = "true";
 		}

@@ -62,7 +62,7 @@ main {
   border-top: 1px solid #fff;  
 }
 
-/* 회원가입 제목 */
+/* �쉶�썝媛��엯 �젣紐� */
 
 th {
   width: 200px;
@@ -81,7 +81,6 @@ td {
 }
 
 
-/* input 전체설정 */
 #sign_up_table td input,
 #sign_up_table td select,
 #sign_up_table td option {
@@ -110,7 +109,6 @@ td {
   border: none;
 }
 
-/* 통신사 */
 #agency_td{  
   border-left:0;
 }
@@ -157,24 +155,20 @@ td {
   font-weight:bold;
 }
 
-/* 사업자 등록번호 */
 #sign_up_table .business_num{
   width:20%;
 }
 
-/* 이메일 */
 #sign_up_table #email + span {
   color: #000;
 }
 
 
-/* 생년월일 */
 #sign_up_table #birth select {
   width: 20%;
   height: 30px;
 }
 
-/* 성별 */
 input[type='radio'] {
   display: none;
 }
@@ -209,7 +203,6 @@ input[type='radio'] {
 	font-weight:bold;
 }
 
-/* 주소 */
 #sign_up_table .addr_td{
 	border-top:0;	
 }
@@ -248,7 +241,6 @@ input#post_search_btn {
 	width:19.6%;
 }
 
-/* 회원가입, 취소 버튼 */
 #btn{
 	text-align: center;			
 }
@@ -279,9 +271,16 @@ input#sign_up_cancel:hover {
   color: #fff;
 }
 
-.error_text{  
+.error_text{
   font-size: 13px;
   font-weight: bold;
-  margin-top:5px;  
-  color: red;   
+  margin:5px 0 0;
+  color: red;
+}
+
+.available_text{
+  font-size: 13px;
+  font-weight: bold;
+  margin:5px 0 0;
+  color: #1aa3ff;
 }

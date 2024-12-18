@@ -63,8 +63,8 @@
 				<a href="#" class="ir_pm">고객 센터</a>
 			</div>
 			<ul id="my_info">
-				<li><a href="login_select.jsp">내 정보</a></li>
-				<li><a href="host_logout.jsp">로그 아웃</a></li>
+				<li><a href="#">내 정보</a></li>
+				<li><a href="<c:url value="/webPage/login/host_logout.jsp"/>">로그 아웃</a></li>
 			</ul>
 		</nav>
 	</header>

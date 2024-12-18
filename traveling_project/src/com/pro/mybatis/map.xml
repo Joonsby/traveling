@@ -49,15 +49,9 @@
 		jibun_addr AS jibunAddr,
 		detail_addr AS detailAddr,
 		reference_addr AS referenceAddr,
-		latitude,
-		longitude,
+		latitude, longitude,
 		host_phone AS hostPhone,
-		image1,
-		image2,
-		image3,
-		image4,
-		image5,
-		content,		
+		image1, image2, image3, image4, image5, content,		
 		luggage_storage AS luggageStorage,
 		CASE WHEN tub = 'yes' THEN '욕조' END as 'tub',
 		CASE WHEN bath_supplies = 'yes' THEN '샤워 용품' END as bath_supplies,
@@ -97,32 +91,24 @@
 	</select>
 
 	<select id="checkInInfoSelect" resultType="com.pro.dto.CheckInInfo" parameterType="com.pro.dto.CheckInInfo">
-		SELECT
-		hi.host_id AS hostId,
-		r.reservation_id AS
-		reservationId,
-		u.name as userName,
-		r.room_id as roomId,
-		ro.room_name AS
-		roomName,
+		SELECT hi.host_id AS hostId,
+		r.reservation_id AS reservationId,
+		u.name AS userName,
+		r.room_id AS roomId,
+		ro.room_name AS roomName,
 		r.check_in_date AS checkInDate,
-		r.check_out_date AS
-		checkOutDate,
+		r.check_out_date AS checkOutDate,
 		CAST(r.check_in_time as CHAR) AS checkInTime,
 		CAST(r.check_out_time as CHAR) AS checkOutTime,
 		r.people AS people,
 		r.price AS price,
 		CAST(r.payment_time AS CHAR) AS paymentTime
-		FROM
-		reservation r
+		FROM reservation r
 		JOIN user_info u ON r.user_id = u.user_id
-		JOIN room_info
-		ro ON r.room_id = ro.room_id
-		JOIN stay_info si ON ro.stay_id =
-		si.stay_id
+		JOIN room_info ro ON r.room_id = ro.room_id
+		JOIN stay_info si ON ro.stay_id = si.stay_id
 		JOIN host_info hi ON si.host_id = hi.host_id
-		WHERE hi.host_id
-		= #{hostId}
+		WHERE hi.host_id = #{hostId}
 		AND r.check_in_date = curdate()
 		AND r.status = '예약 확정';
 	</select>

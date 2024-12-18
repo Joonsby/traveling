@@ -53,7 +53,11 @@
 						<td><input type="submit" id="login_btn" value="로그인"></td>
 					</tr>
 					<tr>
-						<td id="search"><a href="#"><u>아이디 찾기</u></a> <a href="#"><u>비밀번호 찾기</u></a> <a href="signup_select.jsp"><u>회원가입</u></a></td>
+						<td id="search">
+							<a href="#">아이디 찾기</a>
+							<a href="#">비밀번호 찾기</a>
+							<a href="<c:url value="/webPage/signup/signup_select.jsp"/>">회원가입</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

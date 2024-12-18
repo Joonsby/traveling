@@ -74,6 +74,7 @@ tr:has(#error_text){
 
 #search a {
   color: rgba(0,0,0,.5);
+  text-decoration : underline;
 }
 
 #search a:hover {

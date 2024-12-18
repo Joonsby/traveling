@@ -1,31 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- favicon -->
-    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- css  -->
-    <link rel="stylesheet" href="../../css/common/reset.css" />
-    <link rel="stylesheet" href="css/../../css/header/header.css" />
-    <link rel="stylesheet" href="css/signup_select.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <script src="js/signup.js"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="../../js/header/header.js"></script>
+    <link rel="stylesheet" href="<c:url value="/css/signup/signup_select.css"/>" />
+    <script src="<c:url value="/js/signup/signup.js"/>"></script>
     <title>회원가입</title>
   </head>
   <body>
-    <%@ include file="../header/header.jsp"%>
     <main>
       <ul id="step">
         <li>01.회원 선택</li>
@@ -45,12 +27,12 @@
         <li>
           <h3>개인 회원</h3>
           <p>individual</p>
-          <a href="agree.jsp"><input type="button" value="가입하기" /></a>
+          <a href="agree.jsp?requestType=user"><input type="button" value="가입하기" /></a>
         </li>
         <li>
           <h3>호스트</h3>
           <p>host</p>
-          <a href="host_agree.jsp"><input type="button" value="가입하기" /></a>
+          <a href="agree.jsp?requestType=host"><input type="button" value="가입하기" /></a>
         </li>
       </ul>
     </main>

@@ -18,5 +18,6 @@
 	<mappers>
 		<mapper resource="com/pro/mybatis/map.xml"/>
 		<mapper resource="com/pro/login/mapper/login.xml"/>
+		<mapper resource="com/pro/signup/mapper/signup.xml"/>
 	</mappers>
 </configuration>

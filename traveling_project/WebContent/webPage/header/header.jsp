@@ -38,7 +38,7 @@
 	<header>
       <nav id="menu_nav">
         <h1 id="logo">
-          <a href="<c:url value="/index.jsp"/>"><img src="<c:url value="/images/logo.png"/>" alt=""/></a>
+          <a href="<c:url value="/index.jsp"/>"><img src="<c:url value="/images/logo.png"/>" alt="로고 이미지"/></a>
         </h1>
         <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
           <div class="input-group">

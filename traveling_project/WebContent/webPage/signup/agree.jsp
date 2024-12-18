@@ -1,36 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- favicon -->
-    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- css  -->
-    <link rel="stylesheet" href="../../css/common/reset.css" />
-    <link rel="stylesheet" href="css/../../css/header/header.css" />
-    <link rel="stylesheet" href="css/agree.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <!-- 우편 번호 -->
+    <link rel="stylesheet" href="<c:url value="/css/signup/agree.css"/>" />
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="js/agree.js"></script>
-    <script src="../../js/header/header.js"></script>
-    <title>회원가입</title>
+    <script src="<c:url value="/js/signup/agree.js"/>"></script>
+    <c:choose>
+    	<c:when test="${param.requestType eq 'user'}">
+    		<title>회원가입</title>
+    	</c:when>
+    	<c:when test="${param.requestType eq 'host'}">
+    		<title>호스트 회원가입</title>
+    	</c:when>
+    </c:choose>
   </head>
   <body>
-    <%@ include file="../header/header.jsp"%>
     <main>
+   	  <c:choose>
+        <c:when test="${param.requestType eq 'user'}">
+            <c:set var="actionUrl" value="/webPage/signup/signup.jsp?requestType=user" />
+        </c:when>
+        <c:when test="${param.requestType eq 'host'}">
+            <c:set var="actionUrl" value="/webPage/signup/signup.jsp?requestType=host" />
+        </c:when>
+   	  </c:choose>
       <section id="section">
         <div id="img">
-          <img src="../../images/logo.png" alt="logo" />
+          <img src="<c:url value="/images/logo.png"/>" alt="logo" />
         </div>
         <div id="agree1" class="agree">
           <ul id="step">
@@ -264,7 +261,7 @@
         </div>
         
         <p>
-          <a href="signup.html">
+          <a href="${actionUrl}">
             <input type="button" id="agree_btn" value="동의합니다." />
           </a>
         </p>

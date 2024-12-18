@@ -22,5 +22,14 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>/webPage/login/LoginServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>signup</servlet-name>
+		<servlet-class>com.pro.signup.controller.SignupServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signup</servlet-name>
+		<url-pattern>/webPage/signup/SignupServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>

@@ -37,7 +37,7 @@ public class StayManagementDAO {
 	// 숙소 등록
 	public void stayInsert(StayInfo stayInfo) {		
 		SqlSession s = f.openSession();
-		s.insert("stayInfoInsert", stayInfo);			
+		s.insert("stayInfoInsert", stayInfo);
 		s.commit();
 		s.close();
 	}

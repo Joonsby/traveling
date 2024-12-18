@@ -1,28 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- css -->
-    <link rel="stylesheet" href="../../css/common/reset.css" />     
-    <link rel="stylesheet" href="css/signup_complete.css"> 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- script -->
-    <script src="../../js/header/header.js"></script>
+    <link rel="stylesheet" href="<c:url value="/css/signup/signup_complete.css"/>" />
     <title>가입 완료</title>
   </head>
   <body>
-    <%@ include file="../header/header.jsp"%>
     <main>
       <ul id="step">
         <li>01.회원 선택</li>
@@ -31,7 +15,7 @@
         <li>04.가입 완료</li>
       </ul>
       <div id="content1">
-        <img src="../../images/logo.png" alt="">
+        <img src="<c:url value="/images/logo.png"/>" alt="">
         <h2>회원가입이 완료되었습니다!</h2>        
       </div>
       <div id="btn">
