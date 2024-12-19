@@ -17,8 +17,6 @@
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <link rel="stylesheet" href="<c:url value="/css/common/reset.css"/>" />
     <link rel="stylesheet" href="<c:url value="/css/header/header.css"/>" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -29,10 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>	    
-    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>   
     <script src="<c:url value="/js/header/header.js"/>"></script>
-    <title>Traveling</title>
   </head>
 <body>
 	<header>
@@ -40,7 +35,7 @@
         <h1 id="logo">
           <a href="<c:url value="/index.jsp"/>"><img src="<c:url value="/images/logo.png"/>" alt="로고 이미지"/></a>
         </h1>
-        <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
+        <form action="/webPage/stay/StayServlet?requestType=getPopStayInfo" id="accomodation_search" method="post">
           <div class="input-group">
 	          <input type="text" id="region" name="region" class="form-control" placeholder="어디로 떠나시나요?" />
 	          <input type="text" id="check_in_date" name="check_in_date" class="form-control datepicker" placeholder="체크인 날짜" readonly />
@@ -59,7 +54,7 @@
     			<c:when test="${not empty uid}">
         			<!-- uid가 있는 경우에 실행할 코드 -->
         			<li><a id="my-info" href="<c:url value="/webPage/login/my_info.jsp"/>">내 정보</a></li>
-          			<li><a id="my-plan" href="myplan.condb?comm=myplan">내 일정</a></li>
+          			<li><a id="my-plan" href="/webPage/plan/PlanServlet?requestType=myplan">내 일정</a></li>
           			<li><a id="log-out" href="<c:url value="/webPage/login/logout.jsp"/>">로그아웃</a></li>
     			</c:when>
     			<c:otherwise>
@@ -71,5 +66,20 @@
         </ul>
       </nav>
     </header>
+    <!-- Modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="ModalLabel"></h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body"><p></p></div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>

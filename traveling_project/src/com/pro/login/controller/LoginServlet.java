@@ -20,6 +20,7 @@ public class LoginServlet extends HttpServlet{
 	
 		req.setCharacterEncoding("UTF-8");
 		String requestType = req.getParameter("requestType");
+		System.out.println("requestType=" + requestType);
 		try {
 			switch(requestType) {
 			case "getUserInfo":

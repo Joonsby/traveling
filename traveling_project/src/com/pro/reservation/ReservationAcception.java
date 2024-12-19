@@ -11,8 +11,6 @@ public class ReservationAcception {
 	Statement stmt = null;
 	ResultSet rs = null;
 	
-	// Connection
-	// db 비밀번호
 	public void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,7 +21,6 @@ public class ReservationAcception {
 		}
 	}
 	
-	// Close	
 	public void close() {
 		try {
 			stmt.close();

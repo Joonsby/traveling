@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#add_stay_btn').click(function(e) {
         $.ajax({
             type : "POST",
-            url : "stay_sel.condb?comm=stay_sel",
+            url : "/webPage/stay/StayServlet?requestType=getStayCnt",
             data : {
                 hostId : hostId
             },

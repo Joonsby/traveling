@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/nav.css" />
+<link rel="stylesheet" href="<c:url value="/css/reservation/nav.css"/>" />
 </head>
 <body>
 	<nav id="member_contents_nav">
@@ -16,7 +14,7 @@
 			<li><a href="./my_info.jsp">예약정보</a></li>
 			<li><a href="#">취소/환불정보</a></li>
 			<li><a href="#">찜 목록</a></li>
-			<li><a href="myplan.condb?comm=myplan">내 일정</a></li>
+			<li><a href="/webPage/plan/PlanServlet?requestType=myplan">내 일정</a></li>
 			<li><a href="#">메시지</a></li>
 			<li><a href="./review_control.jsp">리뷰관리</a></li>
 		</ul>

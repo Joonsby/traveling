@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.pro.db.DBCon;
 import com.pro.login.dto.HostInfo;
 import com.pro.login.dto.UserInfo;
-import com.pro.mybatis.DBCon;
 
 public class LoginDAO {
 	static LoginDAO loginDAO = new LoginDAO();

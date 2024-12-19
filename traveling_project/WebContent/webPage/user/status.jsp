@@ -1,18 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- css -->
 <link rel="stylesheet" href="../../css/common/reset.css" />
-<link rel="stylesheet" href="css/member.css" />
-<link rel="stylesheet" href="css/my_info.css" />
+<link rel="stylesheet" href="<c:url value="/css/login/member.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/login/my_info.css"/>" />
 <!-- jquery -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- js -->
-<script src="js/user_status.js"></script>
+<script src="<c:url value="/js/user/user_status.js"/>"></script>
 </head>
 <body>
 	<div id="status_wrap">

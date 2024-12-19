@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.pro.dto.CheckInInfo"%>
+<%@ page import="com.pro.stay.dto.CheckInInfo"%>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ include file="../header/host_header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/host/host_index.css" />
+<link rel="stylesheet" href="<c:url value="/css/host/host_index.css"/>" />
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
@@ -29,7 +29,7 @@
 						out.println(name + " 님, 안녕하세요!");				
 					%>
 				</h2>
-				<input type="button" class="add_stay_btn" value="숙소 등록하기">	
+				<input type="button" class="add_stay_btn" value="숙소 등록하기">
 			</div>
 			<span id="underline"></span>
 			<div>

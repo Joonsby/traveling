@@ -61,7 +61,7 @@ $(document).ready(function() {
         var pid = $("#pid_hidden").val();
         
 		$.ajax({
-			url: "delete_plan.condb?comm=delPlan",
+			url: "delete_plan.condb?requestType=delPlan",
 			method: "POST",
 			data: {
 				pid : pid
@@ -78,7 +78,7 @@ $(document).ready(function() {
 			        var pcon = schedule.find(".pcon").val();
 			        
 			        $.ajax({
-			        	url: "insert_plan.condb?comm=insPlan",
+			        	url: "insert_plan.condb?requestType=insPlan",
 			        	method: "POST",
 			        	data: {
 			        		pid : pid,
@@ -90,7 +90,7 @@ $(document).ready(function() {
 			        	success: function(res) {
 			        		// 삭제 및 삽입 작업이 성공한 후에 업데이트 작업 수행
 		                    $.ajax({
-		                        url: "update_plan.condb?comm=upPlan",
+		                        url: "update_plan.condb?requestType=upPlan",
 		                        method: "POST",
 		                        data: {
 		                            pid: pid
@@ -117,7 +117,7 @@ $(document).ready(function() {
 	        
 	        // 먼저 일정을 삭제하는 AJAX 요청
 	        $.ajax({
-	            url: "delete_plan.condb?comm=delPlan",
+	            url: "/webPage/plan/PlanServlet?requestType=delPlan",
 	            type: "POST",
 	            data: { pid: pid },
 	            success: function(response) {
@@ -152,7 +152,7 @@ $(document).ready(function() {
 	        
 	        // 새 일정을 삽입하는 AJAX 요청
 	        $.ajax({
-	            url: "insert_plan.condb?comm=insPlan",
+	            url: "/webPage/plan/PlanServlet?requestType=insPlan",
 	            type: "POST",
 	            data: {
 	                pid: planId,
@@ -181,7 +181,7 @@ $(document).ready(function() {
 	function updateSchedule(planId) {
 	    // 일정을 업데이트하는 AJAX 요청
 	    $.ajax({
-	        url: "update_plan.condb?comm=upPlan",
+	        url: "/webPage/plan/PlanServlet?requestType=upPlan",
 	        type: "POST",
 	        data: { pid: planId },
 	        success: function(response) {
@@ -265,7 +265,7 @@ function createDaysTabs(countDays, checkInDate, planId) {
 	    (function (currentTab) {
 	        // AJAX 요청을 수행
 	        $.ajax({
-	            url: "planner.condb?comm=plan_sel",
+	            url: "/webPage/plan/PlanServlet?requestType=plan_sel",
 	            method: "POST",
 	            data: {
 	                planId: planId,

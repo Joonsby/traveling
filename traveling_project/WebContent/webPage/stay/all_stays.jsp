@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.pro.dto.FilterStayInfo" %>
-<%@ page import="com.pro.dto.StayInfo" %>
+<%@ page import="com.pro.stay.dto.FilterStayInfo" %>
+<%@ page import="com.pro.stay.dto.StayInfo" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ include file="../header/header.jsp"%>
 <%
@@ -30,7 +30,7 @@
 	      	for(int i = 0; i < stayList.size(); i++){
 	      %>
       	<div class="accomodation">
-	      	<a href="stay_info.condb?comm=stay_info&stay_id=<%=stayList.get(i).getStay_id()%>">
+	      	<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=stayList.get(i).getStay_id()%>">
 	      		<div class="accomodation_box">
 		      		<div>
 		      			<img class="image" src="<%=path %>/images/stay_images/<%=stayList.get(i).getImage1() %>" alt="이미지1" />

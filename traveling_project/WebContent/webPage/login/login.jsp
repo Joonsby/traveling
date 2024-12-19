@@ -64,6 +64,6 @@
 			<br />
 		</form>
 	</main>
-	<%@ include file='../footer/footer.jsp'%>	
+	<%@ include file='../footer/footer.jsp'%>
 </body>
 </html>

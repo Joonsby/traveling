@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$.ajax({
-		url : "select_user_status.jsp",
+		url : "/webPage/user/select_user_status.jsp",
 		dataType : "html",
 		success : function(data) {
 			var ugrade = $(data).find("#ugrade").text();

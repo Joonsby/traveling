@@ -26,7 +26,7 @@
 	<header>
 		<nav id="menu_nav">
 			<h1 id="logo">
-				<a href="host_index.condb?comm=hostData"><img src="<c:url value="/images/logo.png"/>" alt="" /></a>
+				<a href="/webPage/stay/StayServlet?requestType=getCheckInList"><img src="<c:url value="/images/logo.png"/>" alt="" /></a>
 			</h1>
 			<ul class="lnb">
 				<li>숙소 관리</li>

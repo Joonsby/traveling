@@ -31,7 +31,7 @@ function collectFilterData() {
 function sendFilterRequest(filterData) {
 	console.log(filterData);
   $.ajax({
-    url: "priceFilter.condb?comm=filter",
+    url: "/webPage/stay/StayServlet?requestType=filter",
     type: "POST",
     data: filterData,
     success: function (data) {
@@ -56,7 +56,7 @@ function sendFilterRequest(filterData) {
           // 숙박 정보 HTML을 구성하고 페이지에 추가합니다.
           var accommodationHTML = `
             <div class="accomodation">
-              <a href="stay_info.condb?comm=stay_info&stay_id=${item.stayId}">
+              <a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${item.stayId}">
                 <div class="accomodation_box">
                   <div>
                     <img class="image" src="/traveling_project/images/stay_images/${item.image}" alt="이미지1" />

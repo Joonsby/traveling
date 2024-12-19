@@ -34,7 +34,7 @@
 			<a href="add_room.jsp">
 				<input type="button" id="login" value="객실 추가 등록하기">
 			</a>
-			<a href="host_index.condb?comm=hostData">
+			<a href="/webPage/stay/StayServlet?requestType=getCheckInList">
 				<input type="button"id="main" value="메인 화면">
 			</a>
 		</div>

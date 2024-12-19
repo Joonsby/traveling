@@ -19,7 +19,7 @@
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>	
 			<h2>숙소 등록하기</h2>			
-			<form action="insert.condb?comm=stay_ins&name=<%= hostId %>" method="post" enctype="multipart/form-data">					
+			<form action="/webPage/stay/StayServlet?requestType=insertStayInfo&name=<%= hostId %>" method="post" enctype="multipart/form-data">					
 				<table>
 					<tr>
 						<th>숙소 이름</th>

@@ -33,7 +33,7 @@ public class HostLoginService implements ControlQuery {
 			session.setAttribute("host_id", hostList.get(0).getHost_id());
 			session.setAttribute("pw", hostList.get(0).getPw());
 			session.setAttribute("name", hostList.get(0).getName());
-			res.sendRedirect(homePath + "/hostLogin.condb?comm=hostData");
+			res.sendRedirect(homePath + "/webPage/stay/StayServlet?requestType=getCheckInList");
 		} else {
 			res.sendRedirect(homePath + "/webPage/login/login.jsp?requestType=host&loginfail=Y");
 		}

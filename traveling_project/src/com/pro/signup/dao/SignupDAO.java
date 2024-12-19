@@ -3,7 +3,7 @@ package com.pro.signup.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.pro.mybatis.DBCon;
+import com.pro.db.DBCon;
 import com.pro.signup.dto.HostInfo;
 import com.pro.signup.dto.UserInfo;
 

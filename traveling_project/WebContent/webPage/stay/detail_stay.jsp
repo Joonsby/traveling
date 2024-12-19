@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.pro.dto.StayInfo" %>
-<%@ page import="com.pro.dto.RoomInfo" %>
-<%@ page import="com.pro.dto.ReviewInfo" %>
+<%@ include file="../header/header.jsp"%>
+<%@ page import="com.pro.stay.dto.StayInfo" %>
+<%@ page import="com.pro.stay.dto.RoomInfo" %>
+<%@ page import="com.pro.stay.dto.ReviewInfo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
 <%
 	List<StayInfo> detailStayList = (List<StayInfo>) request.getAttribute("detailStayList");
 	List<RoomInfo> roomList = (List<RoomInfo>) request.getAttribute("roomList");
 	List<ReviewInfo> reviewList = (List<ReviewInfo>) request.getAttribute("reviewList");
-	String path = request.getContextPath();
 	NumberFormat formatter = NumberFormat.getNumberInstance();
     String rawPhone = detailStayList.get(0).getHost_phone();
-    String formattedPhone;    
+    String formattedPhone = null;
 
     if(rawPhone != null && rawPhone.length() == 11) {
         formattedPhone = rawPhone.substring(0, 3) + "-" 
@@ -26,20 +25,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>traveling</title>
-<!-- favicon -->
-<link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
+<title>숙소 상세 정보</title>
 <!-- css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="<c:url value="/css/stay/detail_stay.css"/>" />
 <!-- js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
 <script src="<c:url value="/js/stay/detail_stay.js"/>"></script>
 </head>
 <body>
-	<jsp:include page="../header/header.jsp" />
 	<h1 id="stay_name"><%=detailStayList.get(0).getStay_name() %></h1>
 	<!-- Swiper -->
 	<div id="swiper-box">

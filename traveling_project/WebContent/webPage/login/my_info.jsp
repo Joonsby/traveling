@@ -1,32 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ include file="../header/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <title>my page (예약정보)</title>
-<!-- favicon -->
-<link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-<!-- fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-<style> <!-- 나눔고딕 폰트 -->
-  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-</style>
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- css -->
-<link rel="stylesheet" href="../../css/common/reset.css" />
-<link rel="stylesheet" href="../../css/login/member.css" />
-<link rel="stylesheet" href="../../css/login/my_info.css" />
-<link rel="stylesheet" href="../../css/review/review_modal.css" />
+<link rel="stylesheet" href="<c:url value="/css/login/member.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/login/my_info.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/review/review_modal.css"/>" />
 <!-- js -->
-<script src="js/review_modal.js"></script>
-<script src="js/my_info.js"></script>
+<script src="<c:url value="/js/review/review_modal.js"/>"></script>
+<script src="<c:url value="/js/user/my_info.js"/>"></script>
 </head>
 <body>
-	<jsp:include page="../header/header.jsp"/>
 	<!-- 마이페이지 공통 배너 -->
 	<section id="member_status">
 		<jsp:include page="../user/status.jsp"/>
@@ -125,7 +111,6 @@
 		</section>
 	</main>
 	<div class="go_top"></div>
-	<jsp:include page="../footer/footer.jsp"/>
+	<%@ include file='../footer/footer.jsp'%>
 </body>
-
 </html>

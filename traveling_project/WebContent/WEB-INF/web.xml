@@ -6,12 +6,12 @@
 	id="WebApp_ID" version="3.1">
 
 	<servlet>
-		<servlet-name>condb</servlet-name>
-		<servlet-class>com.pro.controller.ServletFile</servlet-class>
+		<servlet-name>plan</servlet-name>
+		<servlet-class>com.pro.plan.controller.PlanServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>condb</servlet-name>
-		<url-pattern>*.condb</url-pattern>
+		<servlet-name>plan</servlet-name>
+		<url-pattern>/webPage/plan/PlanServlet</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
@@ -30,6 +30,15 @@
 	<servlet-mapping>
 		<servlet-name>signup</servlet-name>
 		<url-pattern>/webPage/signup/SignupServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>stay</servlet-name>
+		<servlet-class>com.pro.stay.controller.StayServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>stay</servlet-name>
+		<url-pattern>/webPage/stay/StayServlet</url-pattern>
 	</servlet-mapping>
 
 </web-app>
