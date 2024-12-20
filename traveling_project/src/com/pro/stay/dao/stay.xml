@@ -4,173 +4,76 @@
 
 <mapper namespace="com/pro/stay/dao/stay.xml">
 
-	<select id="checkInInfoSelect"
-		resultType="com.pro.stay.dto.CheckInInfo" parameterType="String">
-		SELECT hi.host_id
-		AS hostId,
-		r.reservation_id AS reservationId,
-		u.name AS userName,
-		r.room_id AS roomId,
-		ro.room_name AS roomName,
-		r.check_in_date AS
-		checkInDate,
-		r.check_out_date AS checkOutDate,
-		CAST(r.check_in_time as
-		CHAR) AS checkInTime,
-		CAST(r.check_out_time as CHAR) AS checkOutTime,
-		r.people AS people,
-		r.price AS price,
-		CAST(r.payment_time AS CHAR) AS
-		paymentTime
+	<select id="checkInInfoSelect" resultType="com.pro.stay.dto.CheckInInfo" parameterType="String">
+		SELECT hi.host_id AS hostId, r.reservation_id AS reservationId, u.name AS userName,
+		r.room_id AS roomId, ro.room_name AS roomName, r.check_in_date AS checkInDate, r.check_out_date AS checkOutDate,
+		CAST(r.check_in_time as CHAR) AS checkInTime, CAST(r.check_out_time as CHAR) AS checkOutTime,
+		r.people AS people, r.price AS price, CAST(r.payment_time AS CHAR) AS paymentTime
 		FROM reservation r
 		JOIN user_info u ON r.user_id = u.user_id
 		JOIN room_info ro ON r.room_id = ro.room_id
-		JOIN stay_info si ON
-		ro.stay_id = si.stay_id
+		JOIN stay_info si ON ro.stay_id = si.stay_id
 		JOIN host_info hi ON si.host_id = hi.host_id
 		WHERE hi.host_id = #{hostId}
-		AND r.check_in_date = curdate()
-		AND
-		r.status = '예약 확정';
+		AND r.check_in_date = curdate() AND r.status = '예약 확정';
 	</select>
 
 	<insert id="stayInfoInsert" parameterType="com.pro.stay.dto.StayInfo">
-		INSERT INTO stay_info(
-		host_id, stay_name, location, post_code,
-		road_addr,
-		jibun_addr,
-		detail_addr, reference_addr, latitude, longitude,
-		host_phone, image1,
-		image2, image3, image4, image5, content,
-		tub, bath_supplies,
-		hair_dryer,
-		towel, bedding, washing_machine, drying_machine,
-		pool,
-		arcade_game, gym, tv,board_game,
-		air_conditioner, fan, heating_system,
-		carbon_monoxide_alarm, fire_extinguisher, aid_kit, fire_alarm,
-		workspace,wireless_internet,
-		barbecue_tool,basic_cookware,
-		dining_table, cutlery, refrigerator, microwave, electric_rice_cooker,
-		gas_stove_or_induction,
-		electric_vehicle_charging_facilities,
-		parking,
-		breakfast, clean_service, luggage_storage
-		)
-		VALUES (
-		#{hostId},
-		#{stay_name},
-		SUBSTRING_INDEX(#{road_addr}, ' ', 2),
-		#{post_code},
-		#{road_addr}, #{jibun_addr}, #{detail_addr},
-		#{reference_addr},
-		#{latitude},
-		#{longitude}, #{host_phone}, #{image1}, #{image2},
-		#{image3}, #{image4},
-		#{image5}, #{content},
-		#{tub}, #{bath_supplies},
-		#{hair_dryer},
-		#{towel},
-		#{bedding}, #{washing_machine},
-		#{drying_machine},
-		#{pool}, #{arcade_game},
-		#{gym}, #{tv},#{board_game},
-		#{air_conditioner}, #{fan},
-		#{heating_system},
-		#{carbon_monoxide_alarm},
-		#{fire_extinguisher},
-		#{aid_kit},
-		#{fire_alarm},
-		#{workspace},#{wireless_internet},
-		#{barbecue_tool},#{basic_cookware},
-		#{dining_table}, #{cutlery},
-		#{refrigerator}, #{microwave},
-		#{electric_rice_cooker},
-		#{gas_stove_or_induction},
-		#{electric_vehicle_charging_facilities},
-		#{parking_lot},
-		#{breakfast},
-		#{clean_service}, #{luggage_storage}
-		);
+		INSERT INTO stay_info(host_id, stay_name, location, post_code, road_addr, jibun_addr, detail_addr,
+		reference_addr, latitude, longitude, host_phone, image1, image2, image3, image4, image5, content,
+		tub, bath_supplies, hair_dryer, towel, bedding, washing_machine, drying_machine, pool,
+		arcade_game, gym, tv,board_game, air_conditioner, fan, heating_system, carbon_monoxide_alarm, fire_extinguisher, aid_kit, fire_alarm,
+		workspace,wireless_internet, barbecue_tool,basic_cookware, dining_table, cutlery, refrigerator, microwave, electric_rice_cooker,
+		gas_stove_or_induction, electric_vehicle_charging_facilities, parking, breakfast, clean_service, luggage_storage )
+		VALUES ( #{hostId}, #{stay_name}, SUBSTRING_INDEX(#{road_addr}, ' ', 2), #{post_code}, #{road_addr}, #{jibun_addr}, #{detail_addr},
+		#{reference_addr}, #{latitude}, #{longitude}, #{host_phone}, #{image1}, #{image2}, #{image3}, #{image4}, #{image5}, #{content},
+		#{tub}, #{bath_supplies}, #{hair_dryer}, #{towel}, #{bedding}, #{washing_machine}, #{drying_machine}, #{pool}, #{arcade_game}, #{gym}, #{tv},#{board_game},
+		#{air_conditioner}, #{fan}, #{heating_system}, #{carbon_monoxide_alarm}, #{fire_extinguisher}, #{aid_kit}, #{fire_alarm}, #{workspace},#{wireless_internet},
+		#{barbecue_tool},#{basic_cookware}, #{dining_table}, #{cutlery}, #{refrigerator}, #{microwave}, #{electric_rice_cooker}, #{gas_stove_or_induction},
+		#{electric_vehicle_charging_facilities}, #{parking_lot}, #{breakfast}, #{clean_service}, #{luggage_storage});
 	</insert>
 	
 	<select id="selectStayInfo" resultType="com.pro.stay.dto.StayInfo" parameterType="String">
-		SELECT
-		stay_id AS stayId,
-		stay_name AS stayName,
-		post_code AS postCode,
-		road_addr AS roadAddr,
-		jibun_addr AS jibunAddr,
-		detail_addr AS detailAddr,
-		reference_addr AS referenceAddr,
-		latitude, longitude,
-		host_phone AS hostPhone,
-		image1, image2, image3, image4, image5, content,		
-		luggage_storage AS luggageStorage,
-		CASE WHEN tub = 'yes' THEN '욕조' END as 'tub',
-		CASE WHEN bath_supplies = 'yes' THEN '샤워 용품' END as bath_supplies,
-		CASE WHEN hair_dryer = 'yes' THEN '헤어 드라이어' END as hair_dryer,
-		CASE WHEN towel = 'yes' THEN '수건' END as towel,
-		CASE WHEN bedding = 'yes' THEN '침구류' END as bedding,
-		CASE WHEN washing_machine = 'yes' THEN '세탁기' END as washing_machine,
-		CASE WHEN drying_machine = 'yes' THEN '건조기' END as drying_machine,
-		CASE WHEN pool = 'yes' THEN '수영장' END as pool,
-		CASE WHEN arcade_game = 'yes' THEN '오락실 게임' END as arcade_game,
-		CASE WHEN gym = 'yes' THEN '헬스장' END as gym,
-		CASE WHEN tv = 'yes' THEN 'TV' END as tv,
-		CASE WHEN board_game = 'yes' THEN '보드게임' END as board_game,
-		CASE WHEN air_conditioner = 'yes' THEN '에어컨' END as air_conditioner,
-		CASE WHEN fan = 'yes' THEN '선풍기' END as fan,
-		CASE WHEN heating_system = 'yes' THEN '난방' END as heating_system,
-		CASE WHEN carbon_monoxide_alarm = 'yes' THEN '일산화탄소 경보기' END as carbon_monoxide_alarm,
-		CASE WHEN fire_extinguisher = 'yes' THEN '소화기' END as fire_extinguisher,
-		CASE WHEN aid_kit = 'yes' THEN '구급 상자' END as aid_kit,
-		CASE WHEN fire_alarm = 'yes' THEN '화재 경보기' END as fire_alarm,
-		CASE WHEN workspace = 'yes' THEN '업무 전용 공간' END as workspace,
-		CASE WHEN wireless_internet = 'yes' THEN '무선 인터넷' END as wireless_internet,
-		CASE WHEN barbecue_tool = 'yes' THEN '바베큐 도구' END as barbecue_tool,
-		CASE WHEN basic_cookware = 'yes' THEN '기본 조리도구' END as basic_cookware,
-		CASE WHEN dining_table = 'yes' THEN '식탁' END as dining_table,
-		CASE WHEN cutlery = 'yes' THEN '식기류' END as cutlery,
-		CASE WHEN refrigerator = 'yes' THEN '냉장고' END as refrigerator,
-		CASE WHEN microwave = 'yes' THEN '전자레인지' END as microwave,
-		CASE WHEN electric_rice_cooker = 'yes' THEN '전기밥솥' END as electric_rice_cooker,
+		SELECT stay_id AS stayId, stay_name AS stayName, post_code AS postCode,
+		road_addr AS roadAddr, jibun_addr AS jibunAddr, detail_addr AS detailAddr,
+		reference_addr AS referenceAddr, latitude, longitude, host_phone AS hostPhone,
+		image1, image2, image3, image4, image5, content, luggage_storage AS luggageStorage,
+		CASE WHEN tub = 'yes' THEN '욕조' END as 'tub', CASE WHEN bath_supplies = 'yes' THEN '샤워 용품' END as bath_supplies,
+		CASE WHEN hair_dryer = 'yes' THEN '헤어 드라이어' END as hair_dryer, CASE WHEN towel = 'yes' THEN '수건' END as towel,
+		CASE WHEN bedding = 'yes' THEN '침구류' END as bedding, CASE WHEN washing_machine = 'yes' THEN '세탁기' END as washing_machine,
+		CASE WHEN drying_machine = 'yes' THEN '건조기' END as drying_machine, CASE WHEN pool = 'yes' THEN '수영장' END as pool,
+		CASE WHEN arcade_game = 'yes' THEN '오락실 게임' END as arcade_game, CASE WHEN gym = 'yes' THEN '헬스장' END as gym,
+		CASE WHEN tv = 'yes' THEN 'TV' END as tv, CASE WHEN board_game = 'yes' THEN '보드게임' END as board_game,
+		CASE WHEN air_conditioner = 'yes' THEN '에어컨' END as air_conditioner, CASE WHEN fan = 'yes' THEN '선풍기' END as fan,
+		CASE WHEN heating_system = 'yes' THEN '난방' END as heating_system, CASE WHEN carbon_monoxide_alarm = 'yes' THEN '일산화탄소 경보기' END as carbon_monoxide_alarm,
+		CASE WHEN fire_extinguisher = 'yes' THEN '소화기' END as fire_extinguisher, CASE WHEN aid_kit = 'yes' THEN '구급 상자' END as aid_kit,
+		CASE WHEN fire_alarm = 'yes' THEN '화재 경보기' END as fire_alarm, CASE WHEN workspace = 'yes' THEN '업무 전용 공간' END as workspace,
+		CASE WHEN wireless_internet = 'yes' THEN '무선 인터넷' END as wireless_internet, CASE WHEN barbecue_tool = 'yes' THEN '바베큐 도구' END as barbecue_tool,
+		CASE WHEN basic_cookware = 'yes' THEN '기본 조리도구' END as basic_cookware, CASE WHEN dining_table = 'yes' THEN '식탁' END as dining_table,
+		CASE WHEN cutlery = 'yes' THEN '식기류' END as cutlery, CASE WHEN refrigerator = 'yes' THEN '냉장고' END as refrigerator,
+		CASE WHEN microwave = 'yes' THEN '전자레인지' END as microwave, CASE WHEN electric_rice_cooker = 'yes' THEN '전기밥솥' END as electric_rice_cooker,
 		CASE WHEN gas_stove_or_induction = 'yes' THEN '가스레인지 또는 인덕션' END as gas_stove_or_induction,
 		CASE WHEN electric_vehicle_charging_facilities = 'yes' THEN '전기차 충전시설' END as electric_vehicle_charging_facilities,
-		CASE WHEN parking = 'yes' THEN '주차장' END as parking_lot,
-		CASE WHEN breakfast = 'yes' THEN '아침 식사' END as breakfast,
-		CASE WHEN clean_service = 'yes' THEN '청소 서비스' END as clean_service,
-		CASE WHEN luggage_storage = 'yes' THEN '짐 보관' END as luggage_storage
+		CASE WHEN parking = 'yes' THEN '주차장' END as parking_lot, CASE WHEN breakfast = 'yes' THEN '아침 식사' END as breakfast,
+		CASE WHEN clean_service = 'yes' THEN '청소 서비스' END as clean_service, CASE WHEN luggage_storage = 'yes' THEN '짐 보관' END as luggage_storage
 		FROM stay_info where host_id = #{host_id}
 	</select>
 	
 	<select id="stayIdCount" resultType="int" parameterType="String">
-		SELECT
-		count(stay_id) FROM stay_info where host_id = #{hostId};
+		SELECT count(*) FROM stay_info where host_id = #{hostId};
 	</select>
 	
 	<select id="popStaySelect" resultType="com.pro.stay.dto.StayInfo">
-		SELECT si.stay_id AS stay_id,
-		si.stay_name AS stay_name,
-		si.road_addr AS road_addr,
-		si.image1 AS image1,
-		si.image2 AS image2,
-		si.latitude AS latitude,
-		si.longitude AS longitude,
-		MIN(ri.price) AS min_room_price,
-		MAX(rev.review_time) AS latest_review_time,
-		SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content,
-		COUNT(res.room_id) AS room_count,
-		ROUND(AVG(rev.rating), 2) AS rating_avg,
-		COUNT(rev.rating) AS rating_count
+		SELECT si.stay_id AS stay_id, si.stay_name AS stay_name, si.road_addr AS road_addr, si.image1 AS image1,
+		si.image2 AS image2, si.latitude AS latitude, si.longitude AS longitude, MIN(ri.price) AS min_room_price,
+		MAX(rev.review_time) AS latest_review_time, SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content,
+		COUNT(res.room_id) AS room_count, ROUND(AVG(rev.rating), 2) AS rating_avg, COUNT(rev.rating) AS rating_count
 		FROM stay_info si
 		JOIN room_info ri ON si.stay_id = ri.stay_id
 		LEFT JOIN reservation res ON ri.room_id = res.room_id
 		LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id
-		GROUP
-		BY si.stay_id, si.stay_name, si.road_addr, si.image1
-		ORDER BY
-		COUNT(res.room_id) DESC
+		GROUP BY si.stay_id, si.stay_name, si.road_addr, si.image1
+		ORDER BY COUNT(res.room_id) DESC
 	</select>
 	
 	<select id="bestReviewStaySelect" resultType="com.pro.stay.dto.StayInfo">
@@ -285,8 +188,7 @@
 	</select>
 	
 	<select id="detailStaySelect" resultType="com.pro.stay.dto.StayInfo" parameterType="int">
-		SELECT
-		si.stay_name AS stay_name,
+		SELECT si.stay_name AS stay_name,
 		si.content AS content,
 		si.road_addr AS road_addr,
 		si.latitude AS latitude,

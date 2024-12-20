@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/webPage/header/header.jsp"%>
 <%@ page import="com.pro.stay.dao.StayManagementDAO" %>
 <%@ page import="com.pro.stay.dto.StayInfo" %>
@@ -6,12 +7,12 @@
 <%@ page import="java.text.NumberFormat" %>
 <% 	
 	StayManagementDAO stayManagementDAO = new StayManagementDAO();
- 	List<StayInfo> popStays = stayManagementDAO.popStaySelect();
- 	List<StayInfo> bestReviewStays = stayManagementDAO.bestReviewStaySelect();
+ 	pageContext.setAttribute("popStays",stayManagementDAO.popStaySelect());
+ 	pageContext.setAttribute("bestReviewStays",stayManagementDAO.bestReviewStaySelect());
+ 	pageContext.setAttribute("cheepStays",stayManagementDAO.cheepStaySelect());
  	List<StayInfo> cheepStays = stayManagementDAO.cheepStaySelect();
  	NumberFormat nf = NumberFormat.getInstance();
 %>
-<c:set var="uid" value="<%=id %>"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,26 +36,22 @@
 		<!-- 가장 인기가 많은 숙소 -->
 		<section class="hotel_recommend">
 			<h2>가장 인기가 많은 숙소</h2>
-			<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo"><img src="images/view_all.png" alt="" /></a>
+			<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo"><img src="images/view_all.png" alt="모두 보기" /></a>
 			<div class="slider rec_slider">
-				<%
-				        for (int i = 0; i < 8; i++) {
-	    		%>
- 			    <div>
- 			        <a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=popStays.get(i).getStay_id()%>">
- 			            <div class="image_slider">
- 			                <img src="<%=path %>/images/stay_images/<%=popStays.get(i).getImage1() %>" alt="이미지1" /> 
- 			                <img src="<%=path %>/images/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" />
- 			            </div>
- 			            <h3><%=popStays.get(i).getStay_name() %></h3>
-			            <p><%=popStays.get(i).getRoad_addr() %></p>
- 			            <p>₩ <%=nf.format(popStays.get(i).getMin_room_price()) %> ~</p>
- 			            <div class="rec_review review">"<%=popStays.get(i).getReview_content() %>"</div>
- 			        </a>
- 			    </div>
-			    <%
-			        	}
-			    %>
+ 			    <c:forEach var="popStay" items="${popStays}" begin="0" end="7">
+	 			    <div>
+	 			        <a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${popStay.stay_id}">
+	 			            <div class="image_slider">
+	 			                <img src="<c:url value="/images/stay_images/${popStay.image1}" />" alt="이미지1" />
+	 			                <img src="<c:url value="/images/stay_images/${popStay.image2}" />" alt="이미지2" />
+	 			            </div>
+	 			            <h3>${popStay.stay_name}</h3>
+				            <p>${popStay.road_addr}</p>
+	 			            <p>₩ <fmt:formatNumber value="${popStay.min_room_price}" type="number" pattern="#,##0" /> ~</p>
+	 			            <div class="rec_review review">${popStay.review_content}</div>
+	 			        </a>
+	 			    </div>
+	 			</c:forEach>
 			</div>
 			<span id="rec_show_review" class="show_review">리뷰 모두 보기</span>
 		</section>
@@ -64,42 +61,42 @@
 			<div class="slider">
 				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
 					<div>
-						<img src="images/jeju.jpg" alt="" />
+						<img src="images/jeju.jpg" alt="제주" />
 					</div>
 					<h2>제주</h2>
 					<p>숙소 4,878개</p>
 				</a>
 				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
 					<div>
-						<img src="images/seoul.jpg" alt="" />
+						<img src="images/seoul.jpg" alt="서울" />
 					</div>
 					<h2>서울</h2>
 					<p>숙소 5,923개</p>
 				</a>
 				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
 					<div>
-						<img src="images/busan.jpg" alt="" />
+						<img src="images/busan.jpg" alt="부산" />
 					</div>
 					<h2>부산</h2>
 					<p>숙소 2,719개</p>
 				</a>
 				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
 					<div>
-						<img src="images/sokcho.jpg" alt="" />
+						<img src="images/sokcho.jpg" alt="속초" />
 					</div>
 					<h2>속초</h2>
 					<p>숙소 797개</p>
 				</a>
 				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
 					<div>
-						<img src="images/incheon.jpg" alt="" />
+						<img src="images/incheon.jpg" alt="인천" />
 					</div>
 					<h2>인천</h2>
 					<p>숙소 2,154개</p>
 				</a>
 				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
 					<div>
-						<img src="images/gangneung.jpg" alt="" />
+						<img src="images/gangneung.jpg" alt="강릉" />
 					</div>
 					<h2>강릉</h2>
 					<p>숙소 1,181개</p>
@@ -107,26 +104,24 @@
 			</div>
 		</section>
 		<!-- 가장 평점이 높은 숙소  -->
-		<section class="accomodation_near_me">
+		<section id="best-review-stays">
 			<div class="swiper mySwiper banner">
 				<h2>가장 평점이 높은 숙소</h2>
 				<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 				<div class="slider swiper-wrapper">
-				<% for(int i = 0; i < 9; i++){ %>
- 					<div class="swiper-slide banner">
- 						<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=bestReviewStays.get(i).getStay_id()%>">
- 							<div class="image_slider">
- 								<img src="<%=path %>/images/stay_images/<%=bestReviewStays.get(i).getImage1() %>" alt="이미지1" />
- 								<img src="<%=path %>/images/stay_images/<%=bestReviewStays.get(i).getImage2() %>" alt="이미지1" />
- 							</div>
- 							<h3><%=bestReviewStays.get(i).getStay_name() %></h3>
- 							<p><%=bestReviewStays.get(i).getStay_addr() %></p>
-	 			            <p>₩ <%=nf.format(bestReviewStays.get(i).getMin_room_price()) %> ~</p>
- 						</a>
- 					</div>
-				<%
-					}
-				%>
+					<c:forEach var="bestReviewStay" items="${bestReviewStays}" begin="0" end="7">
+	 					<div class="swiper-slide banner">
+	 						<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${bestReviewStay.stay_id}">
+	 							<div class="image_slider">
+		 			                <img src="<c:url value="/images/stay_images/${bestReviewStay.image1}" />" alt="이미지1" />
+		 			                <img src="<c:url value="/images/stay_images/${bestReviewStay.image2}" />" alt="이미지2" />
+	 							</div>
+		 			            <h3>${bestReviewStay.stay_name}</h3>
+					            <p>${bestReviewStay.stay_addr}</p>
+		 			            <p>₩ <fmt:formatNumber value="${bestReviewStay.min_room_price}" type="number" pattern="#,##0" /> ~</p>
+	 						</a>
+	 					</div>
+	 				</c:forEach>
 				</div>
 			</div>
 			<div class="swiper-button-next"></div>
@@ -140,18 +135,20 @@
 			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider pop_slider">
 				<%for(int i = 0; i < 8; i++) {%>
- 				<div>
- 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=cheepStays.get(i).getStay_id()%>">
- 						<div class="image_slider">
- 							<img src="<%=path %>/images/stay_images/<%=cheepStays.get(i).getImage1() %>" alt="이미지1" />
- 							<img src="<%=path %>/images/stay_images/<%=cheepStays.get(i).getImage2() %>" alt="이미지2" />
- 						</div>
- 						<h3><%=cheepStays.get(i).getStay_name() %></h3>
- 						<p><%=cheepStays.get(i).getStay_addr() %></p>
- 			            <p>₩ <%=nf.format(cheepStays.get(i).getMin_room_price()) %> ~</p>
- 						<div class="review pop_review">"<%=cheepStays.get(i).getReview_content() %>"</div>
- 					</a>
- 				</div>
+				<c:forEach var="cheepStay" items="${cheepStays}" begin="0" end="7">
+	 				<div>
+	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=cheepStays.get(i).getStay_id()%>">
+	 						<div class="image_slider">
+	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image1}" />" alt="이미지1" />
+	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image2}" />" alt="이미지2" />	 							
+	 						</div>
+	 						<h3>${cheepStay.stay_name}</h3>
+	 						<p>${cheepStay.road_addr}</p>
+	 			            <p>₩ <fmt:formatNumber value="${cheepStay.min_room_price}" type="number" pattern="#,##0" /> ~</p>
+	 						<div class="review pop_review">${cheepStay.review_content}</div>
+	 					</a>
+	 				</div>
+	 			</c:forEach>
 				<%
 					}
 				%>				

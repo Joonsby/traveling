@@ -269,15 +269,15 @@ h2 {
 	transition: all 0.3s ease 0s;
 }
 
-/* 내 근처 숙소 */
-.accomodation_near_me {
+/* 가장 평점이 높은 숙소 */
+#best-review-stays {
 	position: relative;
 	width: 1200px;
 	margin: 0 auto;
 }
 
 /* 이미지 슬라이더 dots */
-.accomodation_near_me .image_slider ul.slick-dots {
+#best-review-stays .image_slider ul.slick-dots {
 	position: absolute;
 	bottom: 10px;
 	left: 50%;
@@ -287,7 +287,7 @@ h2 {
 	justify-content: space-between;
 }
 
-.accomodation_near_me .image_slider ul.slick-dots li button {
+#best-review-stays .image_slider ul.slick-dots li button {
 	text-indent: -9999px;
 	width: 10px;
 	height: 10px;
@@ -299,51 +299,51 @@ h2 {
 	transition: all 0.2s ease 0s;
 }
 
-.accomodation_near_me .image_slider:hover ul.slick-dots li button {
+#best-review-stays .image_slider:hover ul.slick-dots li button {
 	opacity: 1;
 }
 
-.accomodation_near_me .image_slider ul.slick-dots li button:hover {
+#best-review-stays .image_slider ul.slick-dots li button:hover {
 	background: #c0c0c0
 }
 
-.accomodation_near_me .image_slider ul.slick-dots li.slick-active button {
+#best-review-stays .image_slider ul.slick-dots li.slick-active button {
 	background: #000;
 }
 
-.accomodation_near_me .swiper>h2 {
+#best-review-stays .swiper>h2 {
 	display: inline-block;	
 	margin: 0 0 20px;
 }
 
-.accomodation_near_me .swiper>a {
+#best-review-stays .swiper>a {
 	float: right;
 	width: 157px;
 }
 
 /* progress bar */
-.accomodation_near_me .swiper-pagination {
+#best-review-stays .swiper-pagination {
 	position: static;
 	margin: 20px 0;
 }
 
-.accomodation_near_me .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+#best-review-stays .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
 	background: #000;
 	opacity: 0.5;
 }
 
 /* swiper slide */
-.accomodation_near_me .swiper-wrapper .swiper-slide {
+#best-review-stays .swiper-wrapper .swiper-slide {
 	border: 1px solid rgb(179, 179, 179);
 }
 
-.accomodation_near_me .slider>div {
+#best-review-stays .slider>div {
 	overflow: hidden;
 	border-radius: 10px;
 }
 
 /* slider 버튼 */
-.accomodation_near_me .swiper-button-prev, .accomodation_near_me .swiper-button-next {
+#best-review-stays .swiper-button-prev, #best-review-stays .swiper-button-next {
 	left: -60px;
 	opacity: 0.7;
 	width: 48px;
@@ -351,22 +351,22 @@ h2 {
 	background: url(../../images/expand_circle_left.png) no-repeat center/contain;
 }
 
-.accomodation_near_me .swiper-button-next {
+#best-review-stays .swiper-button-next {
 	background-image: url(../../images/expand_circle_right.png);
 	left: auto;
 	right: -60px;
 }
 
-.accomodation_near_me .swiper-button-prev:after, .accomodation_near_me .swiper-button-next:after {
+#best-review-stays .swiper-button-prev:after, #best-review-stays .swiper-button-next:after {
 	content: "";
 }
 
-.accomodation_near_me .swiper-button-prev:hover, .accomodation_near_me .swiper-button-next:hover {
+#best-review-stays .swiper-button-prev:hover, #best-review-stays .swiper-button-next:hover {
 	opacity: 1;
 }
 
 /* 글씨 */
-.accomodation_near_me .slider div h3, .accomodation_near_me .slider div p {
+#best-review-stays .slider div h3, #best-review-stays .slider div p {
 	width: auto;
 	margin: 10px;
 	font-size: 14px;
@@ -375,15 +375,15 @@ h2 {
 	overflow: hidden;        
 }
 
-.accomodation_near_me .slider div p {
+#best-review-stays .slider div p {
 	font-size: 12px;
 }
 
-.accomodation_near_me .slider div p:last-of-type {
+#best-review-stays .slider div p:last-of-type {
 	font-weight: bold;
 }
 
-.accomodation_near_me .slider div img {
+#best-review-stays .slider div img {
 	width: 100%;
 }
 

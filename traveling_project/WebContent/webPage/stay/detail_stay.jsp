@@ -169,8 +169,7 @@
 			            <c:if test="${not empty detailStayList[0].gas_stove_or_induction}"><span>가스레인지 또는 인덕션</span></c:if>						        
 				    </p>
 				</c:if>
-				<c:if test="${not empty detailStayList[0].electric_vehicle_charging_facilities or						             
-				             not empty detailStayList[0].parking_lot}">
+				<c:if test="${not empty detailStayList[0].electric_vehicle_charging_facilities or not empty detailStayList[0].parking_lot}">
 				    <p class="amenity-category">
 				        <b>주차</b>
 				        <hr>						        
@@ -178,9 +177,7 @@
 			            <c:if test="${not empty detailStayList[0].parking_lot}"><span>주차장</span></c:if>						        
 				    </p>
 				</c:if>
-				<c:if test="${not empty detailStayList[0].breakfast or						             
-				             not empty detailStayList[0].clean_service or 
-				             not empty detailStayList[0].luggage_storage}">
+				<c:if test="${not empty detailStayList[0].breakfast or not empty detailStayList[0].clean_service or not empty detailStayList[0].luggage_storage}">
 				    <p class="amenity-category">
 				        <b>서비스</b>
 				        <hr>						        
