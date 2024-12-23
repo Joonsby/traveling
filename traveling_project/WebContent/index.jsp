@@ -143,7 +143,7 @@
 	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image2}" />" alt="이미지2" />	 							
 	 						</div>
 	 						<h3>${cheepStay.stay_name}</h3>
-	 						<p>${cheepStay.road_addr}</p>
+	 						<p>${cheepStay.stay_addr}</p>
 	 			            <p>₩ <fmt:formatNumber value="${cheepStay.min_room_price}" type="number" pattern="#,##0" /> ~</p>
 	 						<div class="review pop_review">${cheepStay.review_content}</div>
 	 					</a>

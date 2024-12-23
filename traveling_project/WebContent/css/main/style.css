@@ -124,6 +124,10 @@ h2 {
 	white-space:nowrap;
 }
 
+.slick-dots{
+	margin-bottom:0;
+}
+
 .rec_slider .slick-dots {
 	position: absolute;
 	bottom: 10px;
@@ -132,6 +136,7 @@ h2 {
 	width: 30px;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom:0;
 }
 
 /* 바깥 슬라이더  dots */
@@ -279,7 +284,7 @@ h2 {
 /* 이미지 슬라이더 dots */
 #best-review-stays .image_slider ul.slick-dots {
 	position: absolute;
-	bottom: 10px;
+	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 30px;
