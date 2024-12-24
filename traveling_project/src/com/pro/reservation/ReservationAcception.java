@@ -185,25 +185,24 @@ public class ReservationAcception {
 		}
 	}
 	
-	// 예약 승인 -> 플래너 등록
-	public void reservationToPlanner(String reservationId) {
-		try {
-			connect();
-			stmt.executeUpdate("INSERT INTO planner (reservation_id, modified_date) VALUES (" + reservationId + ", now());");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-	}
-	
-	
 	// 예약 거부
 	public void reservationReject(String reservationId) {
 		try {
 			connect();
 			stmt.executeUpdate("update reservation set status='예약 거부' where status='예약 대기' and reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+	
+	// 예약 승인 -> 플래너 등록
+	public void reservationToPlanner(String reservationId) {
+		try {
+			connect();
+			stmt.executeUpdate("INSERT INTO planner (reservation_id, modified_date) VALUES (" + reservationId + ", now());");
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();

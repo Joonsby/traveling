@@ -1,28 +1,27 @@
-window.onload = function () {
-    
-    buildCalendar();
-    buildNextMonthCalendar(); // 다음 달 달력도 빌드
-    
-    // 버튼에 이벤트 리스너를 추가합니다.
-    document.getElementById("people-minus").addEventListener('click', decreaseGuestCount);
-    document.getElementById("people-plus").addEventListener('click', increaseGuestCount);
-    
-    baseRoomPrice = parseInt($("#room-price").val());
-    baseStandardPeople = parseInt($("#standard-people").val());
-    baseMaximumPeople = parseInt($("#maximum-people").val());
-};
-
-let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달로 초기화
-let today = new Date();     // 페이지를 로드한 날짜를 저장
+var nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달로 초기화
+var today = new Date();     // 페이지를 로드한 날짜를 저장
 today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초기화
 
 //선택된 체크인 및 체크아웃 날짜를 저장하기 위한 변수들
-let checkInDate = null;
-let checkOutDate = null;
+var checkInDate = null;
+var checkOutDate = null;
 
-let baseRoomPrice; // 1박당 금액
-let baseStandardPeople; // 기준인원
-let baseMaximumPeople; // 최대인원
+var baseRoomPrice; // 1박당 금액
+var baseStandardPeople; // 기준인원
+var baseMaximumPeople; // 최대인원
+
+$(document).ready(function(){
+	buildCalendar();
+	buildNextMonthCalendar(); // 다음 달 달력도 빌드
+	
+	// 버튼에 이벤트 리스너를 추가합니다.
+	document.getElementById("people-minus").addEventListener('click', decreaseGuestCount);
+	document.getElementById("people-plus").addEventListener('click', increaseGuestCount);
+	
+	baseRoomPrice = parseInt($("#room-price").val());
+	baseStandardPeople = parseInt($("#standard-people").val());
+	baseMaximumPeople = parseInt($("#maximum-people").val());
+});    
 
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
@@ -45,11 +44,9 @@ function buildCalendar() {
     }
 
     for (let nowDay = firstDate; nowDay <= lastDate; nowDay.setDate(nowDay.getDate() + 1)) {   // day는 날짜를 저장하는 변수, 이번달 마지막날까지 증가시키며 반복  
-
         let nowColumn = nowRow.insertCell();        // 새 열을 추가하고
-
-
         let newDIV = document.createElement("p");
+        
         newDIV.innerHTML = leftPad(nowDay.getDate());        // 추가한 열에 날짜 입력
         newDIV.setAttribute('data-date', formatDate(new Date(nowMonth.getFullYear(), nowMonth.getMonth(), nowDay.getDate())));
         nowColumn.appendChild(newDIV);
@@ -292,12 +289,10 @@ function formatNumber(number) {
 
 // 숙박 일수가 변경될 때 요금 업데이트
 function handleDateChange() {
-
     updatePricing(); // 요금 업데이트
 }
 
 // 이용인원 변경 시 요금 업데이트
 function handleGuestCountChange() {
-
     updatePricing(); // 요금 업데이트
 }

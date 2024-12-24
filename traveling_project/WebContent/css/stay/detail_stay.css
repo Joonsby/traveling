@@ -141,6 +141,15 @@ section {
 	height:320px;	
 }
 
+.room-item-info h2{
+	font-size:24px;
+}
+
+.room-item-info h4,
+.room-item-info p{
+	font-size:16px;
+}
+
 .room-info-name {
 	margin-bottom: 10px;
 }
@@ -148,6 +157,10 @@ section {
 .room-info-list li span {
 	font-size: 15.5px;
 	font-weight: lighter;	
+}
+
+.room-content{
+	margin-bottom:10px;
 }
 
 .room-content span{
@@ -158,6 +171,11 @@ section {
 	display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+}
+
+.room-min-people h4,
+.room-max-people h4{
+	margin:0;
 }
 
 .room-to-reservation {
@@ -261,6 +279,21 @@ section {
 .stay-review-content {
 	text-align: left;
 	margin-left:10px;
+}
+
+.stay-review-content h3{
+	font-size:19px;
+}
+
+.stay-review-content h4,
+.stay-review-content h4{
+	font-size:16px;
+}
+
+.stay-review-content h3,
+.stay-review-content h4,
+.stay-review-content p{
+	margin:0;
 }
 
 .review-writter {	

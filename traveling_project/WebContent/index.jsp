@@ -134,10 +134,10 @@
 			<h2>가격이 저렴한 숙소</h2>
 			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider pop_slider">
-				<%for(int i = 0; i < 8; i++) {%>
+				<%-- <%for(int i = 0; i < 8; i++) {%> --%>
 				<c:forEach var="cheepStay" items="${cheepStays}" begin="0" end="7">
 	 				<div>
-	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=cheepStays.get(i).getStay_id()%>">
+	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${cheepStay.stay_id}">
 	 						<div class="image_slider">
 	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image1}" />" alt="이미지1" />
 	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image2}" />" alt="이미지2" />	 							
@@ -149,9 +149,9 @@
 	 					</a>
 	 				</div>
 	 			</c:forEach>
-				<%
+				<%-- <%
 					}
-				%>				
+				%> --%>				
 			</div>
 			<span id="pop_show_review" class="show_review">리뷰 모두 보기</span>
 		</section>

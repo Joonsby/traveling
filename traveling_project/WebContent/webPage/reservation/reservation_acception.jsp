@@ -1,40 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/host_header.jsp"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.pro.reservation.ReservationInfo"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- css -->
-<link rel="stylesheet" href="../../css/common/reset.css" />
-<link rel="stylesheet" href="css/../../css/header/header.css" />
-<link rel="stylesheet" href="css/host_../../css/header/header.css" />
-<link rel="stylesheet" href="css/host_aside.css" />
-<link rel="stylesheet" href="css/host_common.css" />
-<link rel="stylesheet" href="css/reservation_acception.css" />
-<link rel="stylesheet" href="css/footer.css" />
-<!-- favicon -->
-<link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-<!-- slider -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<link rel="stylesheet" href="<c:url value="/css/host/host_common.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/host/host_aside.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/reservation/reservation_acception.css"/>" />
 <!-- script -->
-<script src="js/host_header.js"></script>
-<script src="js/reservation_acception.js"></script>
+<script src="<c:url value="/js/host/host_header.js"/>"></script>
+<script src="<c:url value="/js/reservation/reservation_acception.js"/>"></script>
 <title>호스트 페이지</title>
 </head>
 <body>
-	<%@ include file="../header/host_header.jsp"%>
 	<jsp:useBean id="reservationAcception" class="com.pro.reservation.ReservationAcception" scope="page" />
 	<%
 		// 예약 대기중인 예약 테이블 객체 배열
@@ -74,7 +53,7 @@
 							for (int i = 0; i < rwArr.size(); i++) {
 					%>
 						<tr>
-							<input id="reservation-id-value" type="hidden" value="<%=rwArr.get(i).getReservationId()%>">
+							<td><input id="reservation-id-value" type="hidden" value="<%=rwArr.get(i).getReservationId()%>"></td>
 							<td><%=rwArr.get(i).getReservationId()%></td>
 							<td><%=rwArr.get(i).getUserId()%></td>
 							<td><%=rwArr.get(i).getRoomName()%></td>

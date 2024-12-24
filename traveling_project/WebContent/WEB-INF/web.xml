@@ -40,5 +40,14 @@
 		<servlet-name>stay</servlet-name>
 		<url-pattern>/webPage/stay/StayServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>reservation</servlet-name>
+		<servlet-class>com.pro.reservation.controller.ReservationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reservation</servlet-name>
+		<url-pattern>/webPage/reservation/ReservationServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>

@@ -193,7 +193,7 @@
 		si.road_addr AS road_addr,
 		si.latitude AS latitude,
 		si.longitude AS longitude,
-		si.host_phone AS hostPhone,
+		si.host_phone AS host_phone,
 		si.image1 AS image1,
 		si.image2 AS image2,
 		si.image3 AS image3,

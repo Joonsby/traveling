@@ -62,7 +62,7 @@ $(document).ready(function() {
         if (!userID) {
             e.preventDefault();
             if (confirm("예약 하려면 로그인이 필요합니다. 로그인 화면으로 이동하시겠습니까?")) {
-                window.location.href = 'user_login.html';
+                window.location.href = '/webPage/login/login.jsp?requestType=user';
             }
         }
     })

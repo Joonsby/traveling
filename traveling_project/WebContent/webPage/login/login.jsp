@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link rel="stylesheet" href="<c:url value="/css/login/login.css"/>" />
 <script src="<c:url value="/js/login/login.js"/>"></script>
 <title>로그인 화면</title>
