@@ -113,7 +113,7 @@
 		ORDER BY min_room_price ASC, rating_avg DESC, last_review_time DESC;
 	</select>
 	
-	<select id="filterStaySelect" parameterType="map" resultType="com.pro.stay.dto.FilterStayInfo">
+	<select id="filterStaySelect" resultType="com.pro.stay.dto.FilterStayInfo" parameterType="map">
 		SELECT si.stay_id AS stay_id,
 		si.stay_name AS stay_name,
 		si.road_addr AS road_addr,

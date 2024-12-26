@@ -17,6 +17,15 @@
   </head>
   <body>
     <main>
+	  <c:choose>
+	      <c:when test="${param.requestType eq 'user'}">
+	          <c:set var="actionUrl" value="/webPage/signup/SignupServlet?requestType=insertUserInfo" />
+	      </c:when>
+	      <c:when test="${param.requestType eq 'host'}">
+	          <c:set var="actionUrl" value="/webPage/signup/SignupServlet?requestType=insertHostInfo" />
+	      </c:when>
+	  </c:choose>
+	  <input type="hidden" id="requestType" name="requestType" value="${param.requestType}">
       <section id="sign_up_section">
         <div id="img">
           <img src="<c:url value="/images/logo.png"/>" alt="logo" />
@@ -27,7 +36,7 @@
           <li>03.회원 정보 입력</li>
           <li>04.가입 완료</li>
         </ul>
-        <form name="sign_up" action="/webPage/signup/SignupServlet?requestType=insertUserInfo" method="post">
+        <form name="sign_up" action="${actionUrl}" method="post">
           <!-- 회원가입 테이블 -->
           <table id="sign_up_table">
             <tbody>

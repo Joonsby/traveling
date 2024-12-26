@@ -1,4 +1,5 @@
 var isIdAvailable = false;
+var isEmailAvailable = false;
 var isPwAvailable = false;
 var isPwChkAvailable = false;
 var isNameAvailable = false;
@@ -19,7 +20,6 @@ function setAvailableTxt(id,msg){
 }
 
 $(document).ready(function () {
-    
   //모든 공백 체크 정규식
   const empJ = /\s/g;
   //아이디 정규식
@@ -43,32 +43,126 @@ $(document).ready(function () {
   }
   
   // 아이디 중복 처리 & 유효성 검사
-  $('#id').blur(function () {
-    const user_id = $('#id').val();
-    $.ajax({
-      type: 'POST',
-      url: '/webPage/signup/SignupServlet',
-      data: {
-    	  requestType : "checkUserId",
-    	  user_id: user_id
-      },
-      success: function (result) {
-        const data = result.trim();
-        if (data == 'true') {
-        	setErrorTxt('id','중복된 아이디입니다. 다시 입력해주세요.');
-        	isIdAvailable = false;
-        } else if (data == 'false') {
-          if (idJ.test(user_id) && !empJ.test(user_id)) {
-        	setAvailableTxt('id','사용가능한 아이디 입니다.');
-            isIdAvailable = true;
-          } else {
-        	setErrorTxt('id','특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.')
-        	isIdAvailable = false;
-          }
-        }
-      },
-    });
-  });
+  if($('#requestType').val() == 'user'){
+	  $('#id').blur(function () {
+		  const user_id = $('#id').val();
+		  $.ajax({
+			  type: 'POST',
+			  url: '/webPage/signup/SignupServlet',
+			  data: {
+				  requestType : "checkUserId",
+				  user_id: user_id
+			  },
+			  success: function (result) {
+				  const data = result.trim();
+				  console.log(data);
+				  if (data == 'true') {
+					  setErrorTxt('id','중복된 아이디입니다. 다시 입력해주세요.');
+					  isIdAvailable = false;
+				  } else if (data == 'false') {
+					  if (idJ.test(user_id) && !empJ.test(user_id)) {
+						  setAvailableTxt('id','사용가능한 아이디 입니다.');
+						  isIdAvailable = true;
+					  } else {
+						  setErrorTxt('id','특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.')
+						  isIdAvailable = false;
+					  }
+				  }
+			  },
+		  });
+	  });
+	  
+
+	  // 이메일 유효성 검사
+	  $('#email').blur(function () {
+	    const emailValue = $('#email').val();
+	    console.log(emailValue);
+	    $.ajax({
+	    	type: 'POST',
+	    	url: '/webPage/signup/SignupServlet',
+	    	data: {
+	    		requestType : "checkHostEmail",
+	    		email : emailValue
+	    	},
+	    	success: function (result) {
+	    		const data = result.trim();
+	    		if (data == 'true') {
+	    	    	$('#email-txt').hide();
+	    	    	$('#email').css('border','1px solid red');
+	    	    	$('#email_address').after('<p id="email-txt" class="error_text">이미 가입된 이메일 입니다. 다시 입력해주세요.</p>');
+	    		} else if (data == 'false') {
+	    		    if (!emailJ.test(emailValue)) {
+	    		    	$('#email-txt').hide();
+	    		    	$('#email').css('border','1px solid red');
+	    		    	$('#email_address').after('<p id="email-txt" class="error_text">올바른 이메일 형식을 입력해주세요.</p>');
+	    		    } else {
+	    		    	$('#email-txt').hide();
+	    		    	$('#email').css('border', '1px solid #1aa3ff');
+	    		    }
+	    		}
+	    	}
+	    });
+	  });
+	  
+	  
+  } else{
+	  $('#id').blur(function () {
+		  const hostId = $('#id').val();
+		  $.ajax({
+			  type: 'POST',
+			  url: '/webPage/signup/SignupServlet',
+			  data: {
+				  requestType : "checkHostId",
+				  hostId: hostId
+			  },
+			  success: function (result) {
+				  const data = result.trim();
+				  if (data == 'true') {
+					  setErrorTxt('id','중복된 아이디입니다. 다시 입력해주세요.');
+					  isIdAvailable = false;
+				  } else if (data == 'false') {
+					  if (idJ.test(hostId) && !empJ.test(hostId)) {
+						  setAvailableTxt('id','사용가능한 아이디 입니다.');
+						  isIdAvailable = true;
+					  } else {
+						  setErrorTxt('id','특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.')
+						  isIdAvailable = false;
+					  }
+				  }
+			  },
+		  });
+	  });
+	  
+	  // 이메일 유효성 검사
+	  $('#email').blur(function () {
+	    const emailValue = $('#email').val();
+	    $.ajax({
+	    	type: 'POST',
+	    	url: '/webPage/signup/SignupServlet',
+	    	data: {
+	    		requestType : "checkUserEmail",
+	    		email : emailValue
+	    	},
+	    	success: function (result) {
+	    		const data = result.trim();
+	    		if (data == 'true') {
+	    	    	$('#email-txt').hide();
+	    	    	$('#email').css('border','1px solid red');
+	    	    	$('#email_address').after('<p id="email-txt" class="error_text">이미 가입된 이메일 입니다. 다시 입력해주세요.</p>');
+	    		} else if (data == 'false') {
+	    		    if (!emailJ.test(emailValue)) {
+	    		    	$('#email-txt').hide();
+	    		    	$('#email').css('border','1px solid red');
+	    		    	$('#email_address').after('<p id="email-txt" class="error_text">올바른 이메일 형식을 입력해주세요.</p>');
+	    		    } else {
+	    		    	$('#email-txt').hide();
+	    		    	$('#email').css('border', '1px solid #1aa3ff');
+	    		    }
+	    		}
+	    	}
+	    });
+	  });
+  }
 
   // 비밀번호 유효성 검사
   $('#pw').blur(function () {
@@ -132,19 +226,6 @@ $(document).ready(function () {
     } else {
       $('#phone').css('border', '1px solid #1aa3ff');
       $('#phone-txt').hide();
-    }
-  });
-
-  // 이메일 유효성 검사
-  $('#email').blur(function () {
-    const emailValue = $('#email').val();
-    if (!emailJ.test(emailValue)) {
-    	$('#email-txt').hide();
-    	$('#email').css('border','1px solid red');
-    	$('#email_address').after('<p id="email-txt" class="error_text">올바른 이메일 형식을 입력해주세요.</p>');
-    } else {
-    	$('#email-txt').hide();
-    	$('#email').css('border', '1px solid #1aa3ff');
     }
   });
 
