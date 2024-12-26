@@ -101,7 +101,7 @@ td {
 #sign_up_table td input:focus,
 #sign_up_table td select:focus,
 #sign_up_table td option:focus {
-  border: 3px solid #1aa3ff;
+  border: 1px solid #1aa3ff;
   outline: none;
 }
 

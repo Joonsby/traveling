@@ -19,12 +19,12 @@ public class InsertHostInfoService implements ControlQuery{
 		HostInfo hostInfo = new HostInfo();
 		
 		req.setCharacterEncoding("UTF-8");
-		hostInfo.setHost_id(req.getParameter("host_id"));
+		hostInfo.setHost_id(req.getParameter("id"));
 		hostInfo.setPw(req.getParameter("pw"));
 		hostInfo.setName(req.getParameter("name"));
 		hostInfo.setNews_agency(req.getParameter("news_agency"));
-		hostInfo.setBusiness_num(req.getParameter("business_num1"));
-		hostInfo.setPhone(req.getParameter("phone"));
+		hostInfo.setPhone(req.getParameter("phone").substring(0,3) + "-" + req.getParameter("phone").substring(3,7) + "-" + req.getParameter("phone").substring(7,11));
+		hostInfo.setBusiness_num(req.getParameter("business_num1") + "-" + req.getParameter("business_num2") + "-" + req.getParameter("business_num3"));
 		hostInfo.setMail(req.getParameter("email") + "@" + req.getParameter("email_address"));
 		hostInfo.setBirth(req.getParameter("birth_year") + "-" + req.getParameter("birth_month") + "-" + req.getParameter("birth_day"));
 		hostInfo.setGender(req.getParameter("gender"));

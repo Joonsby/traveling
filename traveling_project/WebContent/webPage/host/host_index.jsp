@@ -15,20 +15,12 @@
 <title>호스트 페이지</title>
 </head>
 <body>
-	<%
-		hostId = (String) session.getAttribute("hostId");
-		name = (String) session.getAttribute("name");
-	%>
 	<main>
 		<%@ include file="host_aside.jsp"%>
 		<section>
-		<input type="hidden" id="host_id" value="<%= hostId %>">
+		<input type="hidden" id="host_id" value="${hostId}">
 			<div>
-				<h2>
-					<%						
-						out.println(name + " 님, 안녕하세요!");				
-					%>
-				</h2>
+				<h2>${name} 님, 안녕하세요!</h2>
 				<input type="button" class="add_stay_btn" value="숙소 등록하기">
 			</div>
 			<span id="underline"></span>

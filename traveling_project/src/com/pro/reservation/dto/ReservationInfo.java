@@ -2,13 +2,7 @@ package com.pro.reservation.dto;
 
 public class ReservationInfo {
 	private int reservationId, roomId, people, price;
-	private String userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
-	public String getRoomName() {
-		return roomName;
-	}
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
+	private String hostId, userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
 	public int getReservationId() {
 		return reservationId;
 	}
@@ -32,6 +26,12 @@ public class ReservationInfo {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public String getHostId() {
+		return hostId;
+	}
+	public void setHostId(String hostId) {
+		this.hostId = hostId;
 	}
 	public String getUserId() {
 		return userId;
@@ -74,6 +74,12 @@ public class ReservationInfo {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
 	
 }

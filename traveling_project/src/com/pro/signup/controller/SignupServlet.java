@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.ControlQuery;
+import com.pro.signup.service.HostEmailCheckService;
 import com.pro.signup.service.HostIdCheckService;
 import com.pro.signup.service.InsertHostInfoService;
 import com.pro.signup.service.InsertUserInfoService;
+import com.pro.signup.service.UserEmailCheckService;
 import com.pro.signup.service.UserIdCheckService;
 
 public class SignupServlet extends HttpServlet{
@@ -29,6 +31,8 @@ public class SignupServlet extends HttpServlet{
 					inter.dataCon(req, res);
 					break;
 				case "checkUserEmail":
+					inter = UserEmailCheckService.instance();
+					inter.dataCon(req, res);
 					break;
 				case "insertUserInfo":
 					inter = InsertUserInfoService.instance();
@@ -39,6 +43,8 @@ public class SignupServlet extends HttpServlet{
 					inter.dataCon(req, res);
 					break;
 				case "checkHostEmail":
+					inter = HostEmailCheckService.instance();
+					inter.dataCon(req, res);
 					break;
 				case "insertHostInfo":
 					inter = InsertHostInfoService.instance();

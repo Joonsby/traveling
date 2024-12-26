@@ -17,7 +17,8 @@ public class HostIdCheckService  implements ControlQuery{
 		SignupDAO signupDAO = new SignupDAO();
 		String hostId = req.getParameter("hostId");
 		int cnt = signupDAO.checkHostId(hostId);
-		if(cnt > 0) return "true";
-		else return "false";
+		if(cnt > 0) res.getWriter().write("true");
+		else res.getWriter().write("false");
+		return null;
 	}
 }

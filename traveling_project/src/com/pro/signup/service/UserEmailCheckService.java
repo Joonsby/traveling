@@ -15,8 +15,10 @@ public class UserEmailCheckService implements ControlQuery{
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		SignupDAO signupDAO = new SignupDAO();
-		String userEmail = req.getParameter("");
+		String userEmail = req.getParameter("email");
+		int cnt = signupDAO.checkUserEmail(userEmail);
+		if(cnt > 0) res.getWriter().write("true");
+		else res.getWriter().write("false");
 		return null;
 	}
-	
 }

@@ -23,6 +23,13 @@ public class SignupDAO {
 		return cnt;
 	}
 	
+	public int checkUserEmail(String userEmail) {
+		SqlSession s = f.openSession();
+		int cnt = s.selectOne("checkUserEmail", userEmail);
+		s.close();
+		return cnt;
+	}
+	
 	public int insertUserInfo(UserInfo userInfo) {
 		SqlSession s = f.openSession();
 		int cnt = s.insert("insertUserInfo",userInfo);
@@ -34,6 +41,13 @@ public class SignupDAO {
 	public int checkHostId(String hostId) {
 		SqlSession s = f.openSession();
 		int cnt = s.selectOne("checkHostId", hostId);
+		s.close();
+		return cnt;
+	}
+	
+	public int checkHostEmail(String hostEmail) {
+		SqlSession s = f.openSession();
+		int cnt = s.selectOne("checkHostEmail", hostEmail);
 		s.close();
 		return cnt;
 	}

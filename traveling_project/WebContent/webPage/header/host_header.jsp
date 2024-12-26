@@ -43,7 +43,7 @@
 				</li>
 				<li>
 					<a href="#">예약 정보 조회</a>
-					<a href="<c:url value="/webPage/reservation/reservation_acception.jsp"/>">예약 승인/거부</a>
+					<a href="/webPage/reservation/ReservationServlet?requestType=reservationAccept">예약 승인/거부</a>
 					<a href="#">지난 예약 내역</a>
 				</li>
 				<li>
