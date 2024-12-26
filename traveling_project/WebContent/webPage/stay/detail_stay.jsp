@@ -1,31 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="../header/header.jsp"%>
-<%@ page import="com.pro.stay.dto.StayInfo" %>
-<%@ page import="com.pro.stay.dto.RoomInfo" %>
-<%@ page import="com.pro.stay.dto.ReviewInfo" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.text.NumberFormat" %>
 <%
-	List<StayInfo> detailStayList = (List<StayInfo>) request.getAttribute("detailStayList");
-	List<RoomInfo> roomList = (List<RoomInfo>) request.getAttribute("roomList");
-	List<ReviewInfo> reviewList = (List<ReviewInfo>) request.getAttribute("reviewList");
-	
 	pageContext.setAttribute("detailStayList", request.getAttribute("detailStayList")); 
 	pageContext.setAttribute("roomList", request.getAttribute("roomList")); 
 	pageContext.setAttribute("reviewList", request.getAttribute("reviewList"));
-	
-	NumberFormat formatter = NumberFormat.getNumberInstance();
-    String rawPhone = detailStayList.get(0).getHost_phone();
-    String formattedPhone = null;
-    if(rawPhone != null && rawPhone.length() == 11) {
-        formattedPhone = rawPhone.substring(0, 3) + "-" 
-                         + rawPhone.substring(3, 7) + "-" 
-                         + rawPhone.substring(7, 11);
-    } else {
-        formattedPhone = rawPhone;
-    }
-    pageContext.setAttribute("formattedPhone",formattedPhone);
 %>
 <!DOCTYPE html>
 <html>
@@ -265,7 +245,9 @@
 			</div>
 			<div class="stay-location-info">
 				<address data-latitude="${detailStayList[0].latitude}" data-longitude="${detailStayList[0].longitude}"> ${detailStayList[0].road_addr}</address>
-				<span>T. ${formattedPhone}</span>
+				<%-- <span>T. ${detailStayList[0].host_phone}</span> --%>
+				<c:set var="hostPhone" value="${detailStayList[0].host_phone}"/>
+				<span>T. ${fn:substring(hostPhone,0,3)} - ${fn:substring(hostPhone,4,8)} - ${fn:substring(hostPhone,9,13)}</span>
 			</div>
 		</div>
 	</section>
