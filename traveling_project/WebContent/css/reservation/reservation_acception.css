@@ -4,7 +4,7 @@ main {
 
 section {
 	margin: 50px 0 0;
-	height: 700px;
+	height: 765px;
 	display: inline-block;
 	border: 1px solid #ccc;
 	padding: 50px 0;
@@ -22,7 +22,7 @@ section h2 {
 	border: 1px solid #ccc;
 	background: #e2e2e2;
 	width: 1220px;
-	height: 500px;
+	height: 590px;
 	padding: 0;
 	margin: 0 auto;
 	float: none;
@@ -41,12 +41,14 @@ th {
 	background: #7ac5ff;
 	padding:3px;
 	cursor:default;
+	font-size:13px;
 }
 
 td {
 	border: 1px solid #ccc;
 	background: #fff;
 	padding: 5px;
+	font-size:13px;
 }
 
 th#note{
@@ -56,12 +58,12 @@ th#note{
 .accept_btn, .reject_btn {
 	display:inline-block;
 	width: 50px;
-	height: 25px;
+	height: 15px;
 	background: #ddd;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	cursor: pointer;
-	font-size:16px;
+	font-size:9px;
 }
 
 .reject_btn{

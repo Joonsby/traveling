@@ -37,13 +37,13 @@
 			<ul class="lnb_menu">
 				<li>
 					<a href="#" id="add_stay_btn">숙소 등록하기</a>
-					<a href="add_room.jsp">객실 등록하기</a>
+					<a href="<c:url value="/webPage/room/add_room.jsp"/>">객실 등록하기</a>
 					<a href="#">숙소 정보</a>
 					<a href="#">객실 정보</a>
 				</li>
 				<li>
 					<a href="#">예약 정보 조회</a>
-					<a href="/webPage/reservation/ReservationServlet?requestType=reservationAccept">예약 승인/거부</a>
+					<a href="/webPage/reservation/ReservationServlet?requestType=getReservationStatus">예약 승인/거부</a>
 					<a href="#">지난 예약 내역</a>
 				</li>
 				<li>

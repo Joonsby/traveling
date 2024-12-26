@@ -1,5 +1,6 @@
 package com.pro.reservation.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -23,5 +24,13 @@ public class ReservationManageDAO {
 		List<ReservationInfo> reservationList = s.selectList("getReservationInfo",hostId);
 		s.close();
 		return reservationList;
+	}
+	
+	public int reservationUpdate(HashMap<String,String> updateInfo) {
+		SqlSession s = f.openSession();
+		int cnt = s.update("reservationUpdate",updateInfo);
+		s.commit();
+		s.close();
+		return cnt;
 	}
 }

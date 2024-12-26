@@ -3,9 +3,9 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com/pro/reservation/dao/reservation.xml">
-	<select id="getReservationInfo" resultType="com.pro.reservation.dto.ReservationInfo" parameterType="String">
+	<select id="getReservationInfo" resultType="com.pro.reservation.dto.ReservationAcceptionDTO" parameterType="String">
 		SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,
-		r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status 
+		r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status
 		FROM reservation r  
 		JOIN room_info ro ON ro.room_id = r.room_id 
 		JOIN stay_info s ON s.stay_id = ro.stay_id 
@@ -13,4 +13,9 @@
 		INNER JOIN user_info u ON u.user_id = r.user_id
 		order by r.status
 	</select>
+	
+	<update id="reservationUpdate" parameterType="map">
+		update reservation set status = #{status}
+		where reservation_id = #{reservationId} and status = '예약 대기' 
+	</update>
 </mapper>

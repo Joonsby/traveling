@@ -31,7 +31,7 @@ public class ReservationServlet extends HttpServlet{
 				inter = ReservationStatusService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "reservationAccept":
+			case "reservationUpdate":
 				inter = ReservationAcceptService.instance();
 				inter.dataCon(req, res);
 				break;

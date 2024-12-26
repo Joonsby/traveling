@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="../header/host_header.jsp"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.pro.stay.dto.CheckInInfo"%>
 <%@ page import="java.text.DecimalFormat"%>
@@ -10,25 +11,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- css -->
 <link rel="stylesheet" href="css/host_common.css" />
-<link rel="stylesheet" href="css/add_stay.css" />
-<link rel="stylesheet" href="css/add_room.css" />
+<link rel="stylesheet" href="<c:url value="/css/stay/add_stay.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/room/add_room.css"/>" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
 
-<!-- favicon -->
-<link rel="shortcut icon" href="../../images/logo.png" type="image/x-icon" />
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
 <!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <!-- script -->
-<script src="js/add_room.js"></script>
+<script src="<c:url value="/js/room/add_room.js"/>"></script>
 <title>호스트 페이지</title>
 </head>
 <body>
-	<%@ include file="../header/host_header.jsp"%>
 	<main>
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>
