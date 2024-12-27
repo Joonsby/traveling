@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.ControlQuery;
 import com.pro.stay.service.CheckInListService;
+import com.pro.stay.service.CheckOutListService;
 import com.pro.stay.service.DetailStayInfoService;
 import com.pro.stay.service.InsertStayInfoService;
 import com.pro.stay.service.PopStayInfoService;
@@ -30,6 +31,10 @@ public class StayServlet extends HttpServlet {
 			switch (requestType) {
 			case "getCheckInList":
 				inter = CheckInListService.instance();
+				inter.dataCon(req, res);
+				break;
+			case "getCheckOutList":
+				inter = CheckOutListService.instance();
 				inter.dataCon(req, res);
 				break;
 			case "insertStayInfo":

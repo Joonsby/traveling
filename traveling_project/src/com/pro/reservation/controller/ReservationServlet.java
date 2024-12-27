@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.ControlQuery;
+import com.pro.reservation.service.CheckInInfoService;
 import com.pro.reservation.service.ReservationAcceptService;
 import com.pro.reservation.service.ReservationRejectService;
 import com.pro.reservation.service.ReservationStatusService;

@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="<c:url value="/js/common/common.js"/>"></script>
 <script src="<c:url value="/js/header/header.js"/>"></script>
 <script src="<c:url value="/js/header/host_header.js"/>"></script>
 </head>

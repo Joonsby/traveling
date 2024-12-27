@@ -9,3 +9,14 @@ function showModal(modalId,headerTxt,bodyTxt){
 	$('body').css('overflow','auto');
 	$('body').css('padding-right','0');
 }
+
+function ajaxAsync(url,data,successFunc){
+	$.ajax({
+		type: 'POST',
+		url :url,
+		data : data,
+		success: function (result){
+			successFunc(result);
+		}
+	});
+}

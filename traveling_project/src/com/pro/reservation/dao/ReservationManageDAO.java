@@ -26,6 +26,7 @@ public class ReservationManageDAO {
 		return reservationList;
 	}
 	
+	// 예약 승인/거부
 	public int reservationUpdate(HashMap<String,String> updateInfo) {
 		SqlSession s = f.openSession();
 		int cnt = s.update("reservationUpdate",updateInfo);

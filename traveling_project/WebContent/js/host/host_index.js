@@ -1,20 +1,72 @@
+var selectedId = 'check_in_btn';
+
 $(document).ready(function() {
+	const hostId = $('#host_id').val();
     const buttons = $(".btn");
-    const checkInBtn = $("#check_in_btn");
-    const checkOutBtn = $("#check_out_btn");
-    const hostinBtn = $("#hosting_btn");
-    const emptyReview = $("#empty_review");
-    const addStayBtn = $(".add_stay_btn");
-    const hostId = $('#host_id').val();
+    
+    let data = {
+    		requestType : 'getCheckInList',
+    		hostId : hostId
+    	}
+    ajaxAsync('/webPage/stay/StayServlet',data,setTable);
+    data = null;
 
     buttons.click(function() {
-        buttons.not(this).css({
-            background : "#fff",
-            color : "#000",
-        });
-        $(this).css({
-            background : "#1aa3ff",
-            color : "#fff",
-        });
+    	var id = $(this).attr('id');
+    	// 선택된 탭은 ajax 통신을 하지 않도록 막음
+    	if(selectedId == id){
+    		return;
+    	}
+    	selectedId = id;
+    	$('.btn').removeClass('active');
+    	$(this).addClass('active');
+        if(id == 'check_in_btn'){
+        	const data = {
+        		requestType : 'getCheckInList',
+        		hostId : hostId
+        	}
+        	ajaxAsync('/webPage/stay/StayServlet',data,setTable)
+        } else if(id == 'check_out_btn'){
+        	const data = {
+        		requestType : 'getCheckOutList',
+        		hostId : hostId
+        	}
+        	ajaxAsync('/webPage/stay/StayServlet',data,setTable);
+        } else if(id=='hosting_btn'){
+        	console.log('hosting_btn');
+        } else if(id=='empty_review'){
+        	console.log('empty_reivew');
+        }
     });
 });
+
+function setTable(result){
+	const data = JSON.parse(result);
+	$('#table-div').empty();
+	if(data.length > 0){
+		$('#table-div').append('<table><thead></thead><tbody></tbody></table>')
+		$('#table-div thead').append('<tr></tr>');
+		$('#table-div thead tr').append('<th>예약 번호</th>');
+		$('#table-div thead tr').append('<th>방 이름</th>');
+		$('#table-div thead tr').append('<th>사용자 이름</th>');
+		$('#table-div thead tr').append('<th>인원 수</th>');
+		$('#table-div thead tr').append('<th>가격</th>');
+		$('#table-div thead tr').append('<th>체크인 날짜</th>');
+		$('#table-div thead tr').append('<th>체크아웃 날짜</th>');
+		$('#table-div thead tr').append('<th>체크인 시간</th>');
+		$('#table-div thead tr').append('<th>체크아웃 시간</th>');
+		$('#table-div thead tr').append('<th>결제 시간</th>');
+		$.each(data, function (index, item){
+			let row = '<tr>';
+			$.each(item, function (key, value){
+				if(key != 'roomId' && key != 'hostId'){
+					row += `<td>${value}</td>`
+				}
+			});
+			row += '</tr>';
+			$('#table-div tbody').append(row);
+		});
+	} else {
+		$('#table-div').append('<p>오늘의 체크인 정보가 없습니다.</p>');
+	}
+}

@@ -6,20 +6,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- css -->
-<link rel="stylesheet" href="css/host_common.css" />
+<link rel="stylesheet" href="<c:url value="/css/host/host_common.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/stay/add_stay.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/room/add_room.css"/>" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css" />
-
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <!-- script -->
 <script src="<c:url value="/js/room/add_room.js"/>"></script>
-<title>호스트 페이지</title>
+<title>객실 등록</title>
 </head>
 <body>
 	<main>
@@ -39,10 +35,10 @@
 						<tr>
 							<th>객실 설명</th>
 							<td>
-								<p style="line-height: 1">
+								<div style="line-height: 1">
 									<p id="content_error_text" class='error_text'>객실 설명을 입력해주세요.</p>
 									<textarea id="content" name="content" placeholder="객실에 대한 상세한 정보를 입력해주세요."></textarea>
-								</p>								
+								</div>
 							</td>
 						</tr>
 						<tr>

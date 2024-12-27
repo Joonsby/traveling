@@ -34,7 +34,7 @@
 					<h1 id="room-name">${rv.room_name}</h1>
 				</div>
 				<div class="room-info-text">
-					<h3>${rv.content}</h3>
+					<p>${rv.content}</p>
 				</div>
 			</div>
 			<div class="room-info-images">

@@ -17,6 +17,20 @@
 		WHERE hi.host_id = #{hostId}
 		AND r.check_in_date = curdate() AND r.status = '예약 확정';
 	</select>
+	
+	<select id="checkOutInfoSelect" resultType="com.pro.stay.dto.CheckInInfo" parameterType="String">
+		SELECT hi.host_id AS hostId, r.reservation_id AS reservationId, u.name AS userName,
+		r.room_id AS roomId, ro.room_name AS roomName, r.check_in_date AS checkInDate, r.check_out_date AS checkOutDate,
+		CAST(r.check_in_time as CHAR) AS checkInTime, CAST(r.check_out_time as CHAR) AS checkOutTime,
+		r.people AS people, r.price AS price, CAST(r.payment_time AS CHAR) AS paymentTime
+		FROM reservation r
+		JOIN user_info u ON r.user_id = u.user_id
+		JOIN room_info ro ON r.room_id = ro.room_id
+		JOIN stay_info si ON ro.stay_id = si.stay_id
+		JOIN host_info hi ON si.host_id = hi.host_id
+		WHERE hi.host_id = #{hostId}
+		AND r.check_out_date = curdate() AND r.status = '예약 확정';
+	</select>
 
 	<insert id="stayInfoInsert" parameterType="com.pro.stay.dto.StayInfo">
 		INSERT INTO stay_info(host_id, stay_name, location, post_code, road_addr, jibun_addr, detail_addr,

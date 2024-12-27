@@ -33,6 +33,14 @@ public class StayManagementDAO {
 		s.close();
 		return checkInList;
 	}
+	
+	// 체크아웃 정보
+	public List<CheckInInfo> checkOutSelect(String hostId){
+		SqlSession s = f.openSession();
+		List<CheckInInfo> checkOutList = s.selectList("checkOutInfoSelect", hostId);
+		s.close();
+		return checkOutList;
+	}
 
 	// 숙소 등록
 	public void stayInsert(StayInfo stayInfo) {
