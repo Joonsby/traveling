@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.pro.stay.dto.FilterStayInfo" %>
-<%@ page import="com.pro.stay.dto.StayInfo" %>
+<%@ page import="com.traveling.stay.dto.FilterStayInfo" %>
+<%@ page import="com.traveling.stay.dto.StayInfo" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ include file="../header/header.jsp"%>
 <%

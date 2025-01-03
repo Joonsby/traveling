@@ -1,4 +1,4 @@
-var selectedId = 'check_in_btn';
+const selectedId = 'check_in_btn';
 
 $(document).ready(function() {
 	const hostId = $('#host_id').val();
@@ -12,7 +12,7 @@ $(document).ready(function() {
     data = null;
 
     buttons.click(function() {
-    	var id = $(this).attr('id');
+    	const id = $(this).attr('id');
     	// 선택된 탭은 ajax 통신을 하지 않도록 막음
     	if(selectedId == id){
     		return;
@@ -42,20 +42,21 @@ $(document).ready(function() {
 
 function setTable(result){
 	const data = JSON.parse(result);
+	const tr = $('#table-div thead tr');
 	$('#table-div').empty();
 	if(data.length > 0){
 		$('#table-div').append('<table><thead></thead><tbody></tbody></table>')
 		$('#table-div thead').append('<tr></tr>');
-		$('#table-div thead tr').append('<th>예약 번호</th>');
-		$('#table-div thead tr').append('<th>방 이름</th>');
-		$('#table-div thead tr').append('<th>사용자 이름</th>');
-		$('#table-div thead tr').append('<th>인원 수</th>');
-		$('#table-div thead tr').append('<th>가격</th>');
-		$('#table-div thead tr').append('<th>체크인 날짜</th>');
-		$('#table-div thead tr').append('<th>체크아웃 날짜</th>');
-		$('#table-div thead tr').append('<th>체크인 시간</th>');
-		$('#table-div thead tr').append('<th>체크아웃 시간</th>');
-		$('#table-div thead tr').append('<th>결제 시간</th>');
+		tr.append('<th>예약 번호</th>');
+		tr.append('<th>방 이름</th>');
+		tr.append('<th>사용자 이름</th>');
+		tr.append('<th>인원 수</th>');
+		tr.append('<th>가격</th>');
+		tr.append('<th>체크인 날짜</th>');
+		tr.append('<th>체크아웃 날짜</th>');
+		tr.append('<th>체크인 시간</th>');
+		tr.append('<th>체크아웃 시간</th>');
+		tr.append('<th>결제 시간</th>');
 		$.each(data, function (index, item){
 			let row = '<tr>';
 			$.each(item, function (key, value){

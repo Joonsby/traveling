@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/host_header.jsp"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="com.pro.reservation.ReservationInfo"%>
+<%@ page import="com.traveling.reservation.ReservationInfo"%>
 <!DOCTYPE html>
 <html>
 <head>

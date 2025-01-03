@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/planner.css">
   </head>
 <%@ page import="java.util.List" %>
-<%@ page import="com.pro.plan.dto.MyPlanner" %>
+<%@ page import="com.traveling.plan.dto.MyPlanner" %>
 
   <body>
     <jsp:include page="../header/header.jsp" />

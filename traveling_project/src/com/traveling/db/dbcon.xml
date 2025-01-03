@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/project?characterEncoding=utf-8" />
+				<property name="username" value="root" />
+				<property name="password" value="xhddlf336!" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/traveling/login/dao/login.xml"/>
+		<mapper resource="com/traveling/signup/dao/signup.xml"/>
+		<mapper resource="com/traveling/stay/dao/stay.xml"/>
+		<mapper resource="com/traveling/room/dao/room.xml"/>
+		<mapper resource="com/traveling/plan/dao/plan.xml"/>
+		<mapper resource="com/traveling/reservation/dao/reservation.xml"/>
+	</mappers>
+</configuration>

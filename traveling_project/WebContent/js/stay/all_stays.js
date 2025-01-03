@@ -76,22 +76,8 @@ function sendFilterRequest(filterData) {
         // 지도에 오버레이를 생성합니다.
         createOverlays(locations);
       }
-    },
-    error: function (request, status, error) {
-      console.error("Ajax Request Error:", status, error);
     }
   });
-}
-
-
-//오버레이를 지도에서 제거하는 함수
-function removeOverlays() {
-for (var key in overlayMap) {
- if (overlayMap.hasOwnProperty(key)) {
-   overlayMap[key].setMap(null); // 오버레이를 지도에서 제거
- }
-}
-overlayMap = {}; // 오버레이 객체를 비웁니다.
 }
 
 //오버레이를 생성하고 지도에 표시하는 함수
@@ -114,6 +100,16 @@ function createOverlays(locations) {
       overlayMap[key] = customOverlay; // 생성된 오버레이를 객체에 추가합니다.
     }
   }
+}
+
+//오버레이를 지도에서 제거하는 함수
+function removeOverlays() {
+for (var key in overlayMap) {
+ if (overlayMap.hasOwnProperty(key)) {
+   overlayMap[key].setMap(null); // 오버레이를 지도에서 제거
+ }
+}
+overlayMap = {}; // 오버레이 객체를 비웁니다.
 }
 
 $(document).ready(function () {            
