@@ -20,7 +20,6 @@ public class PlanManageDAO {
 	
 	public List<DetailPlan> sel(DetailPlan dp) {
 		SqlSession s = f.openSession();
-		
 		List<DetailPlan> dpList = s.selectList("planSelect", dp);
 		s.close();
 		return dpList;
@@ -28,16 +27,13 @@ public class PlanManageDAO {
 	
 	public void ins(DetailPlan dp) {
 		SqlSession s = f.openSession();
-		
 		s.insert("planInsert", dp);
-
 		s.commit();
 		s.close();
 	}
 	
 	public void update(DetailPlan dp) {
 		SqlSession s = f.openSession();
-		
 		s.update("planUpdate", dp);
 		s.commit();
 		s.close();
@@ -45,7 +41,6 @@ public class PlanManageDAO {
 	
 	public void del(DetailPlan dp) {
 		SqlSession s = f.openSession();
-		
 		s.delete("planDelete", dp);
 		s.commit();
 		s.close();
@@ -53,11 +48,8 @@ public class PlanManageDAO {
 	
 	public List<MyPlanner> sel(MyPlanner mp) {
 		SqlSession s = f.openSession();
-		
 		List<MyPlanner> selList = s.selectList("myPlannerSelect", mp);
-		
 		s.close();
-		
 		return selList;
 	}
 }

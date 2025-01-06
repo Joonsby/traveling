@@ -15,7 +15,7 @@ public class InsertUserInfoService implements ControlQuery{
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
-		SignupDAO signupDAO = new SignupDAO();
+		SignupDAO signupDAO = SignupDAO.instance();
 		UserInfo userInfo = new UserInfo();
 		
 		req.setCharacterEncoding("UTF-8");

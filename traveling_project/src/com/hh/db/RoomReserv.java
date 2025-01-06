@@ -5,8 +5,6 @@ public class RoomReserv {
 	private int room_id, stay_id, price, standard_people, maximum_people;
 	private String room_name, content, check_in_time, check_out_time;
 	private String image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
-
-	
 	
 	public int getRoom_id() {
 		return room_id;

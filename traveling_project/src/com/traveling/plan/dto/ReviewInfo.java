@@ -1,7 +1,7 @@
 package com.traveling.plan.dto;
 
 public class ReviewInfo {
-	String room_name,review_title,review_content,review_image1,review_image2,review_image3,review_image4,review_image5,user_id;
+	private String room_name,review_title,review_content,review_image1,review_image2,review_image3,review_image4,review_image5,user_id;
 	
 	public String getRoom_name() {
 		return room_name;

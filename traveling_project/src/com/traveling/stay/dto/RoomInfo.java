@@ -1,8 +1,8 @@
 package com.traveling.stay.dto;
 
 public class RoomInfo {
-	String roomName, content,checkInTime,checkOutTime, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
-	int stayId, room_id, price, stdPeople, maxPeople;
+	private String roomName, content,checkInTime,checkOutTime, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
+	private int stayId, room_id, price, stdPeople, maxPeople;
 	
 	public String getCheckInTime() {
 		return checkInTime;

@@ -16,6 +16,6 @@
 	
 	<update id="reservationUpdate" parameterType="map">
 		update reservation set status = #{status}
-		where reservation_id = #{reservationId} and status = '예약 대기' 
+		where reservation_id = #{reservationId} and status = '예약 대기'
 	</update>
 </mapper>

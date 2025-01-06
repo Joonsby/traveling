@@ -22,5 +22,6 @@
 		<mapper resource="com/traveling/room/dao/room.xml"/>
 		<mapper resource="com/traveling/plan/dao/plan.xml"/>
 		<mapper resource="com/traveling/reservation/dao/reservation.xml"/>
+		<mapper resource="com/traveling/review/dao/review.xml"/>
 	</mappers>
 </configuration>

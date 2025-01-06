@@ -8,10 +8,10 @@ $(document).ready(function() {
       }
     });
     
-    $(".reject_btn").click(function(){        
+    $(".reject_btn").click(function(){
         var tr = $(this).closest('tr');
         var reservationId = tr.find('input[type="hidden"]').val();
-        if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 거부하시겠습니까?")){          
+        if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 거부하시겠습니까?")){
         	location.href="/webPage/reservation/ReservationServlet?requestType=reservationUpdate&status=예약 거부&reservationId=" + reservationId
         }
       });

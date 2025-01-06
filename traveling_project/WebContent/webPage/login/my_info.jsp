@@ -39,7 +39,7 @@
 					<div class="review_modal_wrap">
 						<div id="review_modal_index">
 							<button class="close_btn">&times;</button>
-							<form action="review_insert.jsp" id="review_form" method="post" enctype="multipart/form-data">
+							<form action="/webPage/review/ReviewServlet?requestType=reviewInsert" id="review_form" method="post" enctype="multipart/form-data">
 								<!-- 리뷰 form -->
 								<input type="hidden" name="rid" id="rid_hidden" value="">
 								<div id="rm_header">

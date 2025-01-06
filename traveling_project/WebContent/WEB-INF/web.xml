@@ -49,5 +49,14 @@
 		<servlet-name>reservation</servlet-name>
 		<url-pattern>/webPage/reservation/ReservationServlet</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>review</servlet-name>
+		<servlet-class>com.traveling.review.controller.ReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>review</servlet-name>
+		<url-pattern>/webPage/review/ReviewServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>

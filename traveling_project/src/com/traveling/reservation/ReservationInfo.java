@@ -1,8 +1,8 @@
 package com.traveling.reservation;
 
 public class ReservationInfo {
-	int reservationId, roomId, people, price;
-	String userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
+	private int reservationId, roomId, people, price;
+	private String userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
 	public String getRoomName() {
 		return roomName;
 	}

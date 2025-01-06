@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="getInfo" class="com.hh.db.ControlDB" />
-
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.hh.db.MyPageObj"%>
 <%@ page import="com.hh.db.ReservationSort"%>
-
 <%
 	String id = (String) session.getAttribute("id");
-
 	ArrayList<MyPageObj> rinfoList = getInfo.getReservInfo(id);
-
 	ReservationSort.sortByCheckInDate(rinfoList);
-
 	List<Integer> reservReview = getInfo.hasReview(id);
 %>
 <html>
@@ -72,13 +67,13 @@
 		<!-- 리뷰 작성이 아직 안 된 경우 -->
 		<li><button class='review_modal' onclick="modal(event)" data-reservation_id="<%=rid%>">작성하기</button></li>
 		<%
+				}
 			}
-					}
 		%>
 	</ul>
 	<%
-		}
-		}
+				}
+			}
 	%>
 </body>
 </html>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="getInfo" class="com.hh.db.ControlDB" />
-
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.hh.db.MyPageObj"%>
@@ -9,9 +8,7 @@
 
 <%
 	String id = (String) session.getAttribute("id");
-
 	ArrayList<MyPageObj> rivConList = getInfo.reviewControlPage(id);
-	
 	ReservationSort.sortByCheckInDate(rivConList);
 %>
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 package com.hh.db;
 
 public class LoginObj {
-	String id, pw;
+	private String id, pw;
 
 	public String getId() {
 		return id;
