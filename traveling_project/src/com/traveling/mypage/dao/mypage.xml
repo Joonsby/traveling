@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com/traveling/mypage/dao/mypage.xml">
+
+	<select id="getStatusPrice" parameterType="String" resultType="int">
+		select sum(price) from reservation where user_id = #{id}
+	</select>
+	
+	<select id="getLastTravel" parameterType="String" resultType="int">
+		<![CDATA[
+			select datediff(now(),max(check_out_date)) cnt
+			from reservation
+			where user_id = #{id}
+			and check_out_date < curdate()
+		]]>
+	</select>
+	
+	<select id="getTotalStays" parameterType="String" resultType="int">
+		<![CDATA[
+			select sum(datediff(check_out_date,check_in_date)) total_stay
+			from reservation
+			where user_id = #{id}
+			and check_out_date < curdate()
+		]]>
+	</select>
+	
+	<select id="getTotalMileage" parameterType="String" resultType="int">
+		select total_mileage from mileage where user_id = #{id}
+	</select>
+</mapper>

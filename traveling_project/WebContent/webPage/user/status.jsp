@@ -3,12 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="../../css/common/reset.css" />
+<link rel="stylesheet" href="<c:url value="/css/common/reset.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/login/member.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/login/my_info.css"/>" />
-<!-- jquery -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- js -->
 <script src="<c:url value="/js/user/user_status.js"/>"></script>
 </head>
 <body>
@@ -18,7 +16,7 @@
 			<h2 id="user_status_id"><%= session.getAttribute("id") %></h2>
 			<!-- 현재 로그인 한 회원의 ID를 추출해서 출력 -->
 			<p>
-				마지막으로 여행을 다녀온지 <u id="last_trip"></u>이
+				마지막으로 여행을 다녀온지 <span id="last_trip"></span>이
 				<!-- 마지막 체크아웃 날짜를 통해 연산해서 n일로 표시 -->
 			</p>
 			<p>지났습니다.</p>

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.traveling.db.DBCon;
 import com.traveling.reservation.dto.ReservationInfo;
+import com.traveling.review.dto.MyPageInfo;
 
 public class ReservationManageDAO {
 	static ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
@@ -18,12 +19,20 @@ public class ReservationManageDAO {
 	
 	SqlSessionFactory f = DBCon.getSqlSession();
 	
-	// 예약정보
-	public List<ReservationInfo> getReservationInfo(String hostId){
+	// 예약정보(호스트)
+	public List<ReservationInfo> getHostReservationInfo(String hostId){
 		SqlSession s = f.openSession();
-		List<ReservationInfo> reservationList = s.selectList("getReservationInfo",hostId);
+		List<ReservationInfo> reservationList = s.selectList("getHostReservationInfo",hostId);
 		s.close();
 		return reservationList;
+	}
+	
+	// 예약정보(사용자)
+	public List<MyPageInfo> getReservationInfo(String userId){
+		SqlSession s = f.openSession();
+		List<MyPageInfo> reservationInfoList = s.selectList("getUserReservationInfo",userId);
+		s.close();
+		return reservationInfoList;
 	}
 	
 	// 예약 승인/거부

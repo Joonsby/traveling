@@ -9,4 +9,26 @@
 		#{image_path01},#{image_path02},#{image_path03},#{image_path04},#{image_path05})
 	</insert>
 	
+	<select id="hasReview" parameterType="String" resultType="int">
+		select b.reservation_id review_exists
+		from reservation a
+		left join review_info b on a.reservation_id = b.reservation_id
+		where a.user_id = #{id}
+	</select>
+	
+	<select id="getReviewList" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
+		select a.reservation_id, c.stay_name, c.location, date_format(a.check_in_date, '%y.%m.%d') check_in_date,
+		date_format(a.check_out_date, '%y.%m.%d') check_out_date, date_format(d.review_time, '%y.%m.%d') review_time
+		from reservation a
+		join room_info b on a.room_id = b.room_id
+		join stay_info c on b.stay_id = c.stay_id
+		join review_info d on a.reservation_id = d.reservation_id
+		where a.user_id = #{id} and d.review_time is not null
+	</select>
+	
+	<select id="getReviewList" parameterType="String" resultType="com.traveling.review.dto.ReviewInfo">
+		select review_title,review_content,rating,image_path01,image_path02,image_path03,image_path04,image_path05
+		from review_info where reservation_id = #{reservationId}		
+	</select>
+	
 </mapper>

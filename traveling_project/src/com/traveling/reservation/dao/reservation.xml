@@ -3,7 +3,7 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com/traveling/reservation/dao/reservation.xml">
-	<select id="getReservationInfo" resultType="com.traveling.reservation.dto.ReservationAcceptionDTO" parameterType="String">
+	<select id="getHostReservationInfo" resultType="com.traveling.reservation.dto.ReservationAcceptionDTO" parameterType="String">
 		SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,
 		r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status
 		FROM reservation r  
@@ -12,6 +12,13 @@
 		JOIN host_info h ON h.host_id = s.host_id AND h.host_id = #{hostId}
 		INNER JOIN user_info u ON u.user_id = r.user_id
 		order by r.status
+	</select>
+	
+	<select id="getUserReservationInfo" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
+		SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') check_in_date,
+		DATE_FORMAT(r.check_out_date, '%Y.%m.%d') check_out_date, r.people, r.status,si.stay_name, si.location
+		FROM reservation r " + "JOIN room_info ri ON r.room_id = ri.room_id
+		JOIN stay_info si ON ri.stay_id = si.stay_id WHERE user_id = #{userId}
 	</select>
 	
 	<update id="reservationUpdate" parameterType="map">

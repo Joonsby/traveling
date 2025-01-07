@@ -1,34 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<jsp:useBean id="stadb" class="com.hh.db.ControlDB"/>
-<jsp:useBean id="memsta" class="com.hh.db.MemberStatus"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="myPageManageDAO" class="com.traveling.mypage.dao.MyPageManageDAO"/>
 <%
     String id = (String)session.getAttribute("id");
-    int sum = stadb.statusPrice(id);
-    int ndays = stadb.lastTravel(id);
-    int tstay = stadb.totalStay(id);
-    int tmil = stadb.totalMileage(id);
-
-    String grade = memsta.userGrade(sum);
-    int per = memsta.gradePer(grade);
+    int sum = myPageManageDAO.statusPrice(id);
+    int ndays = myPageManageDAO.lastTravel(id);
+    int tstay = myPageManageDAO.totalStay(id);
+    int tmil = myPageManageDAO.totalMileage(id);
+    
+	String grade = null;
+	if (sum >= 3000000) { // 결제금액 300만원 이상
+		grade = "VIP";
+	} else if (sum >= 1000000) { // 100만원 이상
+		grade = "GOLD";
+	} else {
+		grade = "SILVER"; // 기본 등급
+	}
+	
+	int per = 0;	
+	if (grade.equals("VIP")) {
+		per = 5;
+	} else if (grade.equals("GOLD")) {
+		per = 3;
+	} else {
+		per = 1;
+	}
+	
+	request.setAttribute("sum",sum);
+	request.setAttribute("grade",grade);
+	request.setAttribute("per",per);
+	request.setAttribute("tstay",tstay);
+	request.setAttribute("tmil",tmil);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
-</head>
 <body>
-<!-- 마지막 여행 ~ -->
-<div><p id="ndays"><%=ndays %></p></div>
-<!-- 등급 연산 추출 -->
-<div><p id="ugrade"><%=grade %></p></div>
-<!-- 등급에 맞는 적립율 추출 -->
-<div><p id="uper"><%=per %></p></div>
-<!-- 총 숙박일수 -->
-<div><p id="tstay"><%=tstay %></p></div>
-<!-- 누적 마일리지 -->
-<div><p id="tmil"><%=tmil %></p></div>
-
+	<div><p id="ndays"><c:out value="${ndays}"/></p></div>
+	<div><p id="ugrade"><c:out value="${grade}"/></p></div>
+	<div><p id="uper"><c:out value="${per}"/></p></div>
+	<div><p id="tstay"><c:out value="${tstay}"/></p></div>
+	<div><p id="tmil"><c:out value="${tmil}"/></p></div>
 </body>
-</html>

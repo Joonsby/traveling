@@ -22,7 +22,7 @@ public class ReservationStatusService implements ControlQuery {
 		HttpSession session = req.getSession();
 		String hostId = (String) session.getAttribute("host_id");
 		ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
-		List<ReservationInfo> reservationList =  reservationManageDAO.getReservationInfo(hostId);
+		List<ReservationInfo> reservationList =  reservationManageDAO.getHostReservationInfo(hostId);
 		req.setAttribute("reservationList", reservationList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp");
 		dispatcher.forward(req, res);

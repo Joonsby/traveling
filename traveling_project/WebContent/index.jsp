@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/webPage/header/header.jsp"%>
 <%@ page import="com.traveling.stay.dao.StayManagementDAO" %>
 <%@ page import="com.traveling.stay.dto.StayInfo" %>
@@ -133,8 +132,7 @@
  		<section class="popular_accomodation">
 			<h2>가격이 저렴한 숙소</h2>
 			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
-			<div class="slider pop_slider">
-				<%-- <%for(int i = 0; i < 8; i++) {%> --%>
+			<div class="slider pop_slider">				
 				<c:forEach var="cheepStay" items="${cheepStays}" begin="0" end="7">
 	 				<div>
 	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${cheepStay.stay_id}">
@@ -148,10 +146,7 @@
 	 						<div class="review pop_review">${cheepStay.review_content}</div>
 	 					</a>
 	 				</div>
-	 			</c:forEach>
-				<%-- <%
-					}
-				%> --%>				
+	 			</c:forEach>								
 			</div>
 			<span id="pop_show_review" class="show_review">리뷰 모두 보기</span>
 		</section>

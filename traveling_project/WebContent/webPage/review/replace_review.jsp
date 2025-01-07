@@ -1,44 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="com.hh.db.ReviewObj"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page import="com.traveling.review.dto.ReviewInfo"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
-<jsp:useBean id="selReview" class="com.hh.db.ControlDB" />
+<jsp:useBean id="reviewManageDAO" class="com.traveling.review.dao.ReviewManageDAO" />
 <%
-	String rid = request.getParameter("reservationId");
-
-	ReviewObj riv = selReview.reviewReplace(rid);
+	String reservationId = request.getParameter("reservationId");
+	pageContext.setAttribute("reviewList",reviewManageDAO.reviewReplace(reservationId));
 %>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <body>
-	<div>
-		<p id="riv_title"><%=riv.getRtitle()%></p>
-	</div>
-	<div>
-		<p id="riv_content"><%=riv.getRcontent()%></p>
-	</div>
-	<div>
-		<p id="riv_rating"><%=riv.getRating()%></p>
-	</div>
-	
-	<div>
-		<img id="riv_img1" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path01() %>" alt="<%= riv.getImage_path01() %>">
-	</div>
-	<div>
-		<img id="riv_img2" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path02() %>" alt="<%= riv.getImage_path02() %>">
-	</div>
-	<div>
-		<img id="riv_img3" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path03() %>" alt="<%= riv.getImage_path03() %>">
-	</div>
-	<div>
-		<img id="riv_img4" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path04() %>" alt="<%= riv.getImage_path04() %>">
-	</div>
-	<div>
-		<img id="riv_img5" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path05() %>" alt="<%= riv.getImage_path05() %>">
-	</div>
-
+	<div><p id="riv_title">${reviewList[0].rtitle}</p></div>
+	<div><p id="riv_content">${reviewList[0].rcontent()}</p></div>
+	<div><p id="riv_rating">${reviewList[0].rating}</p></div>	
+	<div><img id="riv_img1" src="<c:url value="/images/review/${reviewList[0].image_path01}"/>" alt="${reviewList[0].image_path01}"/></div>
+	<div><img id="riv_img2" src="<c:url value="/images/review/${reviewList[0].image_path02}"/>" alt="${reviewList[0].image_path02}"/></div>
+	<div><img id="riv_img3" src="<c:url value="/images/review/${reviewList[0].image_path03}"/>" alt="${reviewList[0].image_path03}"/></div>
+	<div><img id="riv_img4" src="<c:url value="/images/review/${reviewList[0].image_path04}"/>" alt="${reviewList[0].image_path04}"/></div>
+	<div><img id="riv_img5" src="<c:url value="/images/review/${reviewList[0].image_path05}"/>" alt="${reviewList[0].image_path05}"/></div>
 </body>
-</html>
