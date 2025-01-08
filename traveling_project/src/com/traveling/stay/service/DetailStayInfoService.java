@@ -23,7 +23,7 @@ public class DetailStayInfoService implements ControlQuery  {
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		int stay_id = Integer.parseInt((String) req.getParameter("stay_id"));
-		StayManagementDAO stayManagementDAO = new StayManagementDAO();
+		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		List<StayInfo> detailStayList =  stayManagementDAO.selectStayInfo(stay_id);
 		List<RoomInfo> roomList = stayManagementDAO.selectRoomInfo(stay_id);
 		List<ReviewInfo> reviewList = stayManagementDAO.selectReview(stay_id);

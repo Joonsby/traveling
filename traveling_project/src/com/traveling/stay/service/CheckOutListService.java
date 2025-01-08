@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
+import com.traveling.common.ParsingCommon;
 import com.traveling.controller.ControlQuery;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.CheckInInfo;
@@ -16,7 +16,6 @@ public class CheckOutListService implements ControlQuery{
 		return checkOutListService;
 	}
 	
-	Gson gson = new Gson();
 
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -25,7 +24,7 @@ public class CheckOutListService implements ControlQuery{
 		StayManagementDAO stmd = StayManagementDAO.instance();
 		String hostId = req.getParameter("hostId");
 		List<CheckInInfo> checkOutlist = stmd.checkOutSelect(hostId);
-		res.getWriter().write(gson.toJson(checkOutlist));
+		res.getWriter().write(ParsingCommon.gson.toJson(checkOutlist));
 		return null;
 	}
 }

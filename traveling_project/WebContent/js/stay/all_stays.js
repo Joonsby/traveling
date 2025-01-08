@@ -29,7 +29,6 @@ function collectFilterData() {
 
 //중복된 AJAX 요청 로직을 처리하는 함수
 function sendFilterRequest(filterData) {
-	console.log(filterData);
   $.ajax({
     url: "/webPage/stay/StayServlet?requestType=filter",
     type: "POST",

@@ -11,6 +11,7 @@ import com.traveling.controller.ControlQuery;
 import com.traveling.stay.service.CheckInListService;
 import com.traveling.stay.service.CheckOutListService;
 import com.traveling.stay.service.DetailStayInfoService;
+import com.traveling.stay.service.FilterStayInfoService;
 import com.traveling.stay.service.InsertStayInfoService;
 import com.traveling.stay.service.PopStayInfoService;
 import com.traveling.stay.service.StayCntService;
@@ -55,6 +56,10 @@ public class StayServlet extends HttpServlet {
 				break;
 			case "getDetailStayInfo":
 				inter = DetailStayInfoService.instance();
+				inter.dataCon(req, res);
+				break;
+			case "getFilterStayInfo":
+				inter = FilterStayInfoService.instance();
 				inter.dataCon(req, res);
 				break;
 			}

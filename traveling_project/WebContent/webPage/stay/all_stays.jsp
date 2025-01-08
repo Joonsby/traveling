@@ -1,14 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.traveling.stay.dto.FilterStayInfo" %>
-<%@ page import="com.traveling.stay.dto.StayInfo" %>
-<%@ page import="java.text.NumberFormat" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/header.jsp"%>
 <%
-	List<StayInfo> stayList = (List<StayInfo>) request.getAttribute("stayList");
-	List<StayInfo> filterList = (List<StayInfo>) request.getAttribute("filterList");
-	NumberFormat nf = NumberFormat.getInstance();
+	pageContext.setAttribute("stayList",request.getAttribute("stayList"));
+	pageContext.setAttribute("filterList",request.getAttribute("filterList"));
 %>
 <!DOCTYPE html>
 <html>
@@ -26,31 +20,27 @@
     <%@ include file="all_stays_aside.jsp" %>
       <section id="accomodation_info" class="clearfix">
       	<div id="accomodation_info_box">
-	      <%	      
-	      	for(int i = 0; i < stayList.size(); i++){
-	      %>
-      	<div class="accomodation">
-	      	<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=<%=stayList.get(i).getStay_id()%>">
-	      		<div class="accomodation_box">
-		      		<div>
-		      			<img class="image" src="<%=path %>/images/stay_images/<%=stayList.get(i).getImage1() %>" alt="이미지1" />
-		      		</div>
-		      		<div>		      			
-		      			<input type="hidden" class="latitude" value="<%=stayList.get(i).getLatitude()%>">
-		      			<input type="hidden" class="longitude" value="<%=stayList.get(i).getLongitude()%>">
-		      			<input type="hidden" class="price-val" value="<%= nf.format(stayList.get(i).getMin_room_price()) %>">
-		      			<input type="hidden" class="name-val" value="<%= stayList.get(i).getStay_name() %>">
-		      			<h2 class="stay-name"><%= stayList.get(i).getStay_name() %></h2>
-		            	<p class="avg-rating"><%=stayList.get(i).getRating_avg() + " (" + stayList.get(i).getRating_count() + ")" %></p>
-		            	<p class="road-addr"><%= stayList.get(i).getRoad_addr() %></p>
-		            	<p class="room-price">₩ <%= nf.format(stayList.get(i).getMin_room_price()) %> ~</p>
-		      		</div>
-	      		</div>	      			      		
-	      	</a>
-	      </div>	      
-	      <%
-	      	}
-	      %>
+      		<c:forEach var="stay" items="${stayList}">
+      			<div class="accomodation">
+      				<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${stay.stay_id}">
+      					<div class="accomodation_box">
+      						<div>
+      							<img class="image" src="<c:url value="/images/stay_images/${stay.image1}"/>" alt="숙소이미지">
+      						</div>
+      						<div>
+      							<input type="hidden" class="latitude" value="${stay.latitude}">
+      							<input type="hidden" class="longitude" value="${stay.longitude}">
+      							<input type="hidden" class="price-val" value="${stay.min_room_price}">
+      							<input type="hidden" class="name-val" value="${stay.stay_name}">
+      							<h2 class="stay-name">${stay.stay_name}</h2>
+      							<p class="avg-rating">${stay.rating_avg}</p>
+      							<p class="road-addr">${stay.road_addr}</p>
+      							<p class="room-price">₩ ${stay.min_room_price} ~ </p>
+      						</div>
+      					</div>
+      				</a>
+      			</div>
+      		</c:forEach>
 	     </div>	         	
       </section>
       <div id="map"></div>
