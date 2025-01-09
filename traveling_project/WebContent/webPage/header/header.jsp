@@ -5,7 +5,7 @@
 <%
 	String path = request.getContextPath();
 %>
-<c:set var="uid" value="${sessionScope.id}"/>
+<c:set var="userId" value="${sessionScope.id}"/>
 <!DOCTYPE html>
 <html>
   <head>
@@ -52,14 +52,12 @@
         </div>
         <ul id="my_info">
         	<c:choose>
-    			<c:when test="${not empty uid}">
-        			<!-- uid가 있는 경우에 실행할 코드 -->
+    			<c:when test="${not empty userId}">
         			<li><a id="my-info" href="<c:url value="/webPage/login/my_info.jsp"/>">내 정보</a></li>
           			<li><a id="my-plan" href="/webPage/plan/PlanServlet?requestType=myplan">내 일정</a></li>
           			<li><a id="log-out" href="<c:url value="/webPage/login/logout.jsp"/>">로그아웃</a></li>
     			</c:when>
     			<c:otherwise>
-        			<!-- uid가 없는 경우에 실행할 코드 -->
         			<li><a id="login" href="<c:url value="/webPage/login/login_select.jsp"/>">로그인</a></li>
           			<li><a id="sign-up" href="<c:url value="/webPage/signup/signup_select.jsp"/>">회원 가입</a></li>
     			</c:otherwise>

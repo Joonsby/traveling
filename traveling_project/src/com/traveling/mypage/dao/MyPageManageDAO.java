@@ -41,7 +41,8 @@ public class MyPageManageDAO {
 	// 로그인 한 사용자의 누적 마일리지 추출
 	public int totalMileage(String id) {
 		SqlSession s = f.openSession();
-		int totalMileage = s.selectOne("getTotalMileage",id);
+		Integer cnt = s.selectOne("getTotalMileage",id);
+		int totalMileage = (cnt != null) ? cnt : 0; // 기본값 0 설정
 		s.close();
 		return totalMileage;
 	}

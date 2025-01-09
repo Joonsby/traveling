@@ -36,35 +36,6 @@ public class ControlDB {
 		}
 	}
 	
-	// 리뷰 수정 update
-	public void reviewUpdate(ReviewObj obj) {
-		try {
-			conn();
-			stmt.executeUpdate("UPDATE review_info SET review_title = '" + obj.getRtitle()
-							+ "', review_content = '" + obj.getRcontent()
-							+ "', rating = " + obj.getRating()
-							+ ", review_time = now(), image_path01 = '" + obj.getImage_path01() + "', image_path02 = '" + obj.getImage_path02()
-							+ "', image_path03 = '" + obj.getImage_path03() + "', image_path04 = '" + obj.getImage_path04() + "', image_path05 = '" + obj.getImage_path05()
-							+ "' WHERE reservation_id = " + obj.getReservation_id() + ";");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-	}
-	
-	// 리뷰 삭제
-	public void reviewDelete(String rid) {
-		try {
-			conn();
-			stmt.executeUpdate("DELETE FROM review_info WHERE reservation_id = " + rid + ";");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-	}
-	
 	public RoomReserv roomDetail(int rid) {
 		RoomReserv rv = new RoomReserv();
 		

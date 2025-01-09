@@ -17,8 +17,9 @@
 	<select id="getUserReservationInfo" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
 		SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') check_in_date,
 		DATE_FORMAT(r.check_out_date, '%Y.%m.%d') check_out_date, r.people, r.status,si.stay_name, si.location
-		FROM reservation r " + "JOIN room_info ri ON r.room_id = ri.room_id
+		FROM reservation r JOIN room_info ri ON r.room_id = ri.room_id
 		JOIN stay_info si ON ri.stay_id = si.stay_id WHERE user_id = #{userId}
+		order by check_in_date
 	</select>
 	
 	<update id="reservationUpdate" parameterType="map">

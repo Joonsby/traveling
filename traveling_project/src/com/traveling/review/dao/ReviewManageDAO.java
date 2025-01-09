@@ -1,8 +1,6 @@
 package com.traveling.review.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,7 +21,7 @@ public class ReviewManageDAO {
 	// 리뷰 신규 등록
 	public int insertReviewInfo(ReviewInfo reviewInfo) {
 		SqlSession s = f.openSession();
-		int cnt = s.insert("insertReviewInfo");
+		int cnt = s.insert("insertReviewInfo",reviewInfo);
 		s.commit();
 		s.close();
 		return cnt;
@@ -31,23 +29,16 @@ public class ReviewManageDAO {
 	
 	// 리뷰 유무 검증
 	public List<Integer> hasReview(String id){
-		Map<String, List<Integer>> userReviewCache = new HashMap<>();
-		List<Integer> cachedReviews = userReviewCache.get(id);
-		if(cachedReviews != null) {
-			return cachedReviews;
-		} else {
-			SqlSession s = f.openSession();
-			List<Integer> reviews = s.selectList("hasReview",id);
-			s.close();
-			userReviewCache.put(id,reviews);
-			return reviews;
-		}
+		SqlSession s = f.openSession();
+		List<Integer> reviews = s.selectList("hasReview",id);
+		s.close();
+		return reviews;
 	}
 	
 	// 작성한 리뷰 목록 추출
 	public List<MyPageInfo> getReviewList(String id){
 		SqlSession s = f.openSession();
-		List<MyPageInfo> reviewList = s.selectList("getReviewList",id);
+		List<MyPageInfo> reviewList = s.selectList("getUserReviewList",id);
 		s.close();
 		return reviewList;
 	}
@@ -57,5 +48,21 @@ public class ReviewManageDAO {
 		List<ReviewInfo> reviewList = s.selectList("getReviewList",reservationId);
 		s.close();
 		return reviewList;
+	}
+	
+	public int updateReview(ReviewInfo reviewInfo){
+		SqlSession s = f.openSession();
+		int cnt = s.update("updateReview",reviewInfo);
+		s.commit();
+		s.close();
+		return cnt;
+	}
+	
+	public int reviewDelete(String reservationId) {
+		SqlSession s = f.openSession();
+		int cnt = s.delete("reviewDelete",reservationId);
+		s.commit();
+		s.close();
+		return cnt;
 	}
 }

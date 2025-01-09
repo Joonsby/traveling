@@ -11,18 +11,26 @@ import com.traveling.controller.ControlQuery;
 import com.traveling.review.dao.ReviewManageDAO;
 import com.traveling.review.dto.ReviewInfo;
 
-public class ReviewInsertService implements ControlQuery{
-	static ReviewInsertService reviewInsertService = new ReviewInsertService(); // 싱글톤 방식으로 객체 생성
-	public static ReviewInsertService instance() {
-		return reviewInsertService;
+public class ReviewUpdateService implements ControlQuery {
+	
+	static ReviewUpdateService reviewUpdateService = new ReviewUpdateService(); // 싱글톤 방식으로 객체 생성
+	public static ReviewUpdateService instance() {
+		return reviewUpdateService;
 	}
-	
-	
+
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
+		ReviewInfo reviewInfo = new ReviewInfo();
 		String uploadPath = req.getServletContext().getRealPath("/images/review");
 		int size = 10 * 1024 * 1024;
+		
+		// 리뷰 정보
+		int rid = 0;
+		String rtitle = "";
+		String rcontent = "";
+		double rating = 0;
+
 		// 이미지
 		String imagename1 = "";
 		String imagename2 = "";
@@ -38,13 +46,17 @@ public class ReviewInsertService implements ControlQuery{
 		try {
 			MultipartRequest multi = new MultipartRequest(req, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
 			Enumeration files = multi.getFileNames();
-			ReviewInfo reviewInfo = new ReviewInfo();
-			ReviewManageDAO reviewManageDAO = ReviewManageDAO.instance();
-			
-			reviewInfo.setReservation_id(Integer.parseInt(multi.getParameter("rid")));
-			reviewInfo.setRtitle(multi.getParameter("rtitle"));
-			reviewInfo.setRcontent(multi.getParameter("rcontent"));
-			reviewInfo.setRating(Double.parseDouble(multi.getParameter("rating")));
+
+			rid = Integer.parseInt(multi.getParameter("rid"));
+			rtitle = multi.getParameter("rtitle");
+			rcontent = multi.getParameter("rcontent");
+			rating = Double.parseDouble(multi.getParameter("rating"));
+
+			imagename1 = multi.getParameter("r_image1");
+			imagename2 = multi.getParameter("r_image2");
+			imagename3 = multi.getParameter("r_image3");
+			imagename4 = multi.getParameter("r_image4");
+			imagename5 = multi.getParameter("r_image5");
 
 			// 이미지 업로드
 			String[] fieldNames = { "r_image1", "r_image2", "r_image3", "r_image4", "r_image5" };
@@ -52,32 +64,32 @@ public class ReviewInsertService implements ControlQuery{
 			for (int i = 0; i < fieldNames.length; i++) {
 				String fieldName = fieldNames[i];
 				String imageName = multi.getFilesystemName(fieldName);
-				System.out.println(imageName);
-				switch(i) {
-					case 0:
-						reviewInfo.setImage_path01(imageName);
-						break;
-					case 1:
-						reviewInfo.setImage_path02(imageName);
-						break;
-					case 2:
-						reviewInfo.setImage_path03(imageName);
-						break;
-					case 3:
-						reviewInfo.setImage_path04(imageName);
-						break;
-					case 4:
-						reviewInfo.setImage_path05(imageName);
-						break;
+
+				if (i == 0) {
+					reviewInfo.setImage_path01(imageName);
+				} else if (i == 1) {
+					reviewInfo.setImage_path02(imageName);
+				} else if (i == 2) {
+					reviewInfo.setImage_path03(imageName);
+				} else if (i == 3) {
+					reviewInfo.setImage_path04(imageName);
+				} else if (i == 4) {
+					reviewInfo.setImage_path05(imageName);
 				}
 			}
-			int cnt = reviewManageDAO.insertReviewInfo(reviewInfo);
-			if(cnt > 0) {
-				res.sendRedirect("/webPage/login/my_info.jsp");
-			}
+
+			reviewInfo.setReservation_id(rid);
+			reviewInfo.setRtitle(rtitle);
+			reviewInfo.setRcontent(rcontent);
+			reviewInfo.setRating(rating);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		ReviewManageDAO reviewManageDAO = ReviewManageDAO.instance();
+		int cnt = reviewManageDAO.updateReview(reviewInfo);
 		return null;
 	}
+	
 }

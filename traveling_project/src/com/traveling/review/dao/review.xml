@@ -16,7 +16,7 @@
 		where a.user_id = #{id}
 	</select>
 	
-	<select id="getReviewList" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
+	<select id="getUserReviewList" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
 		select a.reservation_id, c.stay_name, c.location, date_format(a.check_in_date, '%y.%m.%d') check_in_date,
 		date_format(a.check_out_date, '%y.%m.%d') check_out_date, date_format(d.review_time, '%y.%m.%d') review_time
 		from reservation a
@@ -30,5 +30,16 @@
 		select review_title,review_content,rating,image_path01,image_path02,image_path03,image_path04,image_path05
 		from review_info where reservation_id = #{reservationId}		
 	</select>
+	
+	<update id="updateReview" parameterType="com.traveling.review.dto.ReviewInfo">
+		update review_info set review_title = #{rtitle}, review_content = #{rcontent}, rating = #{rating},
+		review_time = now(), image_path01 = #{image_path01}, image_path02 = #{image_path02}, image_path03 = #{image_path03},
+		image_path04 = #{image_path04}, image_path05 = #{image_path05}
+		where reservation_id = #{reservation_id}
+	</update>
+	
+	<delete id="reviewDelete" parameterType="String">
+		delete from review_info where reservation_id = #{reservation_id}
+	</delete>
 	
 </mapper>

@@ -29,8 +29,7 @@
 	String origimagename5 = "";
 
 	try {
-		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8",
-				new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
 		Enumeration files = multi.getFileNames();
 
 		rid = Integer.parseInt(multi.getParameter("rid"));

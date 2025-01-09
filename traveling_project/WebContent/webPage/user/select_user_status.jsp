@@ -26,6 +26,7 @@
 		per = 1;
 	}
 	
+	request.setAttribute("ndays",ndays);
 	request.setAttribute("sum",sum);
 	request.setAttribute("grade",grade);
 	request.setAttribute("per",per);

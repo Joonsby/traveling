@@ -1,15 +1,12 @@
 package com.traveling.stay.dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.traveling.common.ParsingCommon;
 import com.traveling.db.DBCon;
 import com.traveling.stay.dto.CheckInInfo;
 import com.traveling.stay.dto.FilterStayInfo;

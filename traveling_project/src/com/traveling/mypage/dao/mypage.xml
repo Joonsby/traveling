@@ -29,4 +29,5 @@
 	<select id="getTotalMileage" parameterType="String" resultType="int">
 		select total_mileage from mileage where user_id = #{id}
 	</select>
+	
 </mapper>

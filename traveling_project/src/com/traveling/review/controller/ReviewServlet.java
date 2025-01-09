@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.controller.ControlQuery;
+import com.traveling.review.service.ReviewDeleteService;
 import com.traveling.review.service.ReviewInsertService;
+import com.traveling.review.service.ReviewUpdateService;
 
 public class ReviewServlet extends HttpServlet{
 
@@ -25,6 +27,12 @@ public class ReviewServlet extends HttpServlet{
 					inter = ReviewInsertService.instance();
 					inter.dataCon(req, res);
 					break;
+				case "reviewUpdate":
+					inter = ReviewUpdateService.instance();
+					inter.dataCon(req, res);
+				case "reviewDelete":
+					inter = ReviewDeleteService.instance();
+					inter.dataCon(req, res);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
