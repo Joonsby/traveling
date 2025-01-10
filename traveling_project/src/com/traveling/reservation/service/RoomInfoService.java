@@ -5,14 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.ControlQuery;
 
-public class ReservationToPlannerService implements ControlQuery {
-	static ReservationToPlannerService reservationToPlannerService = new ReservationToPlannerService(); // 싱글톤 방식으로 객체 생성
-	public static ReservationToPlannerService instance() {
-		return reservationToPlannerService;
+public class RoomInfoService implements ControlQuery{
+	static RoomInfoService roomInfoService = new RoomInfoService();
+	public static RoomInfoService instance() {
+		return roomInfoService;
 	}
+	
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }

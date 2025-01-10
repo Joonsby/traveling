@@ -50,13 +50,22 @@
 		<url-pattern>/webPage/reservation/ReservationServlet</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	<servlet>
 		<servlet-name>review</servlet-name>
 		<servlet-class>com.traveling.review.controller.ReviewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>review</servlet-name>
 		<url-pattern>/webPage/review/ReviewServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>mypage</servlet-name>
+		<servlet-class>com.traveling.mypage.controller.MyPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mypage</servlet-name>
+		<url-pattern>/webPage/mypage/MyPageServlet</url-pattern>
 	</servlet-mapping>
 
 </web-app>

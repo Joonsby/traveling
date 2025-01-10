@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String hostId = (String) session.getAttribute("host_id");
-	String name = (String) session.getAttribute("name");
-%>
+<c:set var="hostId" value="${sessionScope.host_id}"/>
+<c:set var="name" value="${sessionScope.name}"/>
 <!DOCTYPE html>
 <html>
 <head>

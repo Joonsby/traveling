@@ -1,9 +1,12 @@
 package com.traveling.mypage.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.traveling.db.DBCon;
+import com.traveling.mypage.dto.MyPageInfo;
 
 public class MyPageManageDAO {
 	static MyPageManageDAO myPageManageDAO = new MyPageManageDAO();
@@ -13,6 +16,22 @@ public class MyPageManageDAO {
 	}
 	
 	SqlSessionFactory f = DBCon.getSqlSession();
+	
+	// 예약정보(사용자)
+	public List<MyPageInfo> getUserReservationInfo(String userId){
+		SqlSession s = f.openSession();
+		List<MyPageInfo> reservationInfoList = s.selectList("getUserReservationInfo",userId);
+		s.close();
+		return reservationInfoList;
+	}
+	
+	// 리뷰 유무 검증
+	public List<Integer> hasReview(String id){
+		SqlSession s = f.openSession();
+		List<Integer> reviews = s.selectList("hasReview",id);
+		s.close();
+		return reviews;
+	}
 	
 	// 마이페이지 상태창 - 합산 가격 추출
 	public int statusPrice(String id) {

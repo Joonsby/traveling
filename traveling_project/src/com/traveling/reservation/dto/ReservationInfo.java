@@ -2,7 +2,7 @@ package com.traveling.reservation.dto;
 
 public class ReservationInfo {
 	private int reservationId, roomId, people, price;
-	private String hostId, userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
+	private String hostId, userId, name, stayName, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
 	public int getReservationId() {
 		return reservationId;
 	}
@@ -38,6 +38,18 @@ public class ReservationInfo {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getStayName() {
+		return stayName;
+	}
+	public void setStayName(String stayName) {
+		this.stayName = stayName;
 	}
 	public String getCheckInDate() {
 		return checkInDate;
@@ -81,5 +93,4 @@ public class ReservationInfo {
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
 	}
-	
 }

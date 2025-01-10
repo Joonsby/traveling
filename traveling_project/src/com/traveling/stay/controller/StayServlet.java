@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.stay.service.CheckInListService;
 import com.traveling.stay.service.CheckOutListService;
 import com.traveling.stay.service.DetailStayInfoService;
@@ -27,7 +27,7 @@ public class StayServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String requestType = req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		System.out.println("requestType = " + requestType);
 		try {
 			switch (requestType) {
 			case "getCheckInList":

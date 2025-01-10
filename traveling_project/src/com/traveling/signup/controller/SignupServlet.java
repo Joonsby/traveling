@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.signup.service.HostEmailCheckService;
 import com.traveling.signup.service.HostIdCheckService;
 import com.traveling.signup.service.InsertHostInfoService;

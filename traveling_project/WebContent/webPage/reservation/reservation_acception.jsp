@@ -1,21 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/host_header.jsp"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="com.traveling.reservation.ReservationInfo"%>
+<c:set var="reservationList" value="${requestScope.reservationList}" />
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="<c:url value="/css/host/host_common.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/host/host_aside.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/reservation/reservation_acception.css"/>" />
-<!-- script -->
 <script src="<c:url value="/js/reservation/reservation_acception.js"/>"></script>
 <title>호스트 페이지</title>
 </head>
 <body>
-	<%
-		pageContext.setAttribute("reservationList",request.getAttribute("reservationList"));
-	%>
 	<main>
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>
@@ -44,17 +39,17 @@
 								<c:forEach var="reservation" items="${reservationList}" varStatus="status">
 									<tr>
 										<td style="display:none"><input id="reservation-id-value" type="hidden" value="${reservation.reservation_id}"></td>
-										<td>${reservation.reservation_id }</td>
-										<td>${reservation.name }</td>
-										<td>${reservation.room_name }</td>
-										<td>${reservation.check_in_date }</td>
-										<td>${reservation.check_out_date }</td>
-										<td>${reservation.check_in_time }</td>
-										<td>${reservation.check_out_time }</td>
-										<td>${reservation.people }</td>
-										<td>${reservation.price }</td>
-										<td>${reservation.payment_time }</td>
-										<td>${reservation.status }</td>
+										<td>${reservation.reservation_id}</td>
+										<td>${reservation.name}</td>
+										<td>${reservation.room_name}</td>
+										<td>${reservation.check_in_date}</td>
+										<td>${reservation.check_out_date}</td>
+										<td>${reservation.check_in_time}</td>
+										<td>${reservation.check_out_time}</td>
+										<td>${reservation.people}</td>
+										<td>${reservation.price}</td>
+										<td>${reservation.payment_time}</td>
+										<td>${reservation.status}</td>
 										<c:choose>
 											<c:when test="${reservation.status eq '예약 대기'}">
 												<td><input type="button" class='accept_btn' value="승인"><input type='button' class='reject_btn' value='거부'></td>
@@ -73,9 +68,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-				                <tr>
-                    				<td colspan="12" style="text-align:center; color:#000; user-select:none; height:455px; line-height:455px;">예약 정보가 없습니다.</td>
-                				</tr>
+				                <tr><td colspan="12" style="text-align:center; color:#000; user-select:none; height:455px; line-height:455px;">예약 정보가 없습니다.</td></tr>
 							</c:otherwise>
 						</c:choose>
 					</tbody>

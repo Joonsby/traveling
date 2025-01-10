@@ -16,15 +16,15 @@ $(document).ready(function () {
     	
         // 객체 만들어서 DB insert 및 결제창 넘길 용도
         const customer = {
-            uid: $("#customer-id").val(),
+            userId: $("#customer-id").val(),
             price: parseInt($("#final-price").text().replace(/[^0-9]/g, ""), 10),
-            rname: $("#room-name").text(),
-            rid: $("#room-id").val(),
-            chk_in: $("#check-in-date").text(),
-            chk_out: $("#check-out-date").text(),
+            roomName: $("#room-name").text(),
+            roomId: $("#room-id").val(),
+            checkInDate: $("#check-in-date").text(),
+            checkOutDate: $("#check-out-date").text(),
             people: parseInt($("#guest-txt").text(), 10),
-            chk_in_time: $("#check-in-time").val(),
-            chk_out_time: $("#check-out-time").val()
+            checkInTime: $("#check-in-time").val(),
+            checkOutTime: $("#check-out-time").val()
         };
         
         requestPayment(customer);
@@ -104,11 +104,11 @@ function requestPayment(customer) {
 	button.addEventListener("click", function () {
 		paymentWidget.requestPayment({
 			orderId: orderId,
-			orderName: customer.rname,                 
-			successUrl: window.location.origin + "/traveling_project/pay_success.jsp?customer=" + encodedCustomer,
+			orderName: customer.roomName,
+			successUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=payment&customer=" + encodedCustomer,
 			failUrl: window.location.origin + "/fail",
 			customerEmail: "customer123@gmail.com",
-			customerName: customer.uid
+			customerName: customer.userId
 		})
 	})	
 }

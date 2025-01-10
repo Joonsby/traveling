@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
+import com.traveling.reservation.service.PaymentService;
 import com.traveling.reservation.service.ReservationAcceptService;
 import com.traveling.reservation.service.ReservationRejectService;
 import com.traveling.reservation.service.ReservationStatusService;
 import com.traveling.reservation.service.ReservationToPlannerService;
+import com.traveling.reservation.service.RoomInfoService;
 
 public class ReservationServlet extends HttpServlet{
 
@@ -23,7 +25,7 @@ public class ReservationServlet extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		String requestType = req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		System.out.println("requestType = " + requestType);
 		
 		try{
 			switch(requestType) {
@@ -41,6 +43,14 @@ public class ReservationServlet extends HttpServlet{
 				break;
 			case "reservationToPlanner":
 				inter = ReservationToPlannerService.instance();
+				inter.dataCon(req, res);
+				break;
+			case "getRoomInfo":
+				inter = RoomInfoService.instance();
+				inter.dataCon(req, res);
+				break;
+			case "payment":
+				inter = PaymentService.instance();
 				inter.dataCon(req, res);
 				break;
 			}

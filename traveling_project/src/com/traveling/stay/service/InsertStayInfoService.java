@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.StayInfo;
 

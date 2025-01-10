@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.plan.dao.PlanManageDAO;
 import com.traveling.plan.dto.MyPlanner;
 
@@ -20,17 +20,12 @@ public class SelectMyPlanService implements ControlQuery {
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
-		
-		// 세션 가져오기
         HttpSession session = req.getSession();
-        // 세션에서 사용자 ID 가져오기
-        String user_id = (String) session.getAttribute("id");
-        MyPlanner mp = new MyPlanner();
-        mp.setUser_id(user_id);
-		
-		List<MyPlanner> selList = planManageDAO.sel(mp);
-		
-		req.setAttribute("selList", selList);
+        String userId = (String) session.getAttribute("id");
+        MyPlanner myPlanner = new MyPlanner();
+        myPlanner.setUser_id(userId);
+		List<MyPlanner> planList = planManageDAO.sel(myPlanner);
+		req.setAttribute("planList", planList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/user/planner.jsp");
 		dispatcher.forward(req, res);
 		return null;

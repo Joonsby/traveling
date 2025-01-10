@@ -24,6 +24,7 @@
 		join stay_info c on b.stay_id = c.stay_id
 		join review_info d on a.reservation_id = d.reservation_id
 		where a.user_id = #{id} and d.review_time is not null
+		order by check_in_date
 	</select>
 	
 	<select id="getReviewList" parameterType="String" resultType="com.traveling.review.dto.ReviewInfo">

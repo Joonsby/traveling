@@ -6,7 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.ReviewInfo;
 import com.traveling.stay.dto.RoomInfo;

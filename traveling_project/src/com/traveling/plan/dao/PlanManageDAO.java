@@ -10,46 +10,46 @@ import com.traveling.plan.dto.DetailPlan;
 import com.traveling.plan.dto.MyPlanner;
 
 public class PlanManageDAO {
-	static PlanManageDAO plmd = new PlanManageDAO();
+	static PlanManageDAO planManageDAO = new PlanManageDAO();
 
 	public static PlanManageDAO instance() {
-		return plmd;
+		return planManageDAO;
 	}
 	
 	SqlSessionFactory f = DBCon.getSqlSession();
 	
-	public List<DetailPlan> sel(DetailPlan dp) {
+	public List<DetailPlan> sel(DetailPlan detailPlan) {
 		SqlSession s = f.openSession();
-		List<DetailPlan> dpList = s.selectList("planSelect", dp);
+		List<DetailPlan> detailPlanList = s.selectList("planSelect", detailPlan);
 		s.close();
-		return dpList;
+		return detailPlanList;
 	}
 	
-	public void ins(DetailPlan dp) {
+	public void ins(DetailPlan detailPlan) {
 		SqlSession s = f.openSession();
-		s.insert("planInsert", dp);
+		s.insert("planInsert", detailPlan);
 		s.commit();
 		s.close();
 	}
 	
-	public void update(DetailPlan dp) {
+	public void update(DetailPlan detailPlan) {
 		SqlSession s = f.openSession();
-		s.update("planUpdate", dp);
+		s.update("planUpdate", detailPlan);
 		s.commit();
 		s.close();
 	}
 	
-	public void del(DetailPlan dp) {
+	public void del(DetailPlan detailPlan) {
 		SqlSession s = f.openSession();
-		s.delete("planDelete", dp);
+		s.delete("planDelete", detailPlan);
 		s.commit();
 		s.close();
 	}
 	
-	public List<MyPlanner> sel(MyPlanner mp) {
+	public List<MyPlanner> sel(MyPlanner myPlanner) {
 		SqlSession s = f.openSession();
-		List<MyPlanner> selList = s.selectList("myPlannerSelect", mp);
+		List<MyPlanner> planList = s.selectList("myPlannerSelect", myPlanner);
 		s.close();
-		return selList;
+		return planList;
 	}
 }

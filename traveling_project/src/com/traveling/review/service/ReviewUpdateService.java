@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.review.dao.ReviewManageDAO;
 import com.traveling.review.dto.ReviewInfo;
 
@@ -65,16 +65,22 @@ public class ReviewUpdateService implements ControlQuery {
 				String fieldName = fieldNames[i];
 				String imageName = multi.getFilesystemName(fieldName);
 
-				if (i == 0) {
-					reviewInfo.setImage_path01(imageName);
-				} else if (i == 1) {
-					reviewInfo.setImage_path02(imageName);
-				} else if (i == 2) {
-					reviewInfo.setImage_path03(imageName);
-				} else if (i == 3) {
-					reviewInfo.setImage_path04(imageName);
-				} else if (i == 4) {
-					reviewInfo.setImage_path05(imageName);
+				switch(i) {
+					case 0:
+						reviewInfo.setImage_path01(imageName);
+						break;
+					case 1:
+						reviewInfo.setImage_path02(imageName);
+						break;
+					case 2:
+						reviewInfo.setImage_path03(imageName);
+						break;
+					case 3:
+						reviewInfo.setImage_path04(imageName);
+						break;
+					case 4:
+						reviewInfo.setImage_path05(imageName);
+						break;
 				}
 			}
 

@@ -3,7 +3,7 @@ package com.traveling.review.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.review.dao.ReviewManageDAO;
 
 public class ReviewDeleteService implements ControlQuery{

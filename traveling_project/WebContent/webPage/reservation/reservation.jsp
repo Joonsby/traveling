@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/header.jsp"%>
-<%@ page import="com.hh.db.RoomReserv" %>
-<jsp:useBean id="sel" class="com.hh.db.ControlDB" />
+<%@ page import="com.traveling.reservation.dao.ReservationManageDAO" %>
 <% 
-	int rid = new Integer(request.getParameter("room_id"));
-	String uid = (String) session.getAttribute("id");
-	pageContext.setAttribute("rv",sel.roomDetail(rid));
-	RoomReserv rv = sel.roomDetail(rid);
+	int room_id = new Integer(request.getParameter("room_id"));
+	String userId = (String) session.getAttribute("id");
+	ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
+	pageContext.setAttribute("roomList",reservationManageDAO.getRoomInfo(room_id));
 %>
 <!DOCTYPE html>
 <html>
@@ -31,31 +30,31 @@
 		<div class="room-info-wrap">
 			<div class="room-info-content">
 				<div class="room-info-name">
-					<h1 id="room-name">${rv.room_name}</h1>
+					<h1 id="room-name">${roomList[0].room_name}</h1>
 				</div>
 				<div class="room-info-text">
-					<p>${rv.content}</p>
+					<p>${roomList[0].content}</p>
 				</div>
 			</div>
 			<div class="room-info-images">
 				<div class="room-info-image">
-					<img src="<c:url value='/images/room_images/${rv.image1}'/>" alt="숙소 이미지1" width="580px" height="480px" />
+					<img src="<c:url value='/images/room_images/${roomList[0].image1}'/>" alt="숙소 이미지1" width="580px" height="480px" />
 				</div>
 				<div class="images-others">
 					<div class="others-row">
-						<img src="<c:url value='/images/room_images/${rv.image2}'/>" alt="숙소 이미지2" width="190px" />
-						<img src="<c:url value='/images/room_images/${rv.image3}'/>" alt="숙소 이미지3" width="190px" />
-						<img src="<c:url value='/images/room_images/${rv.image4}'/>" alt="숙소 이미지4" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image2}'/>" alt="숙소 이미지2" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image3}'/>" alt="숙소 이미지3" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image4}'/>" alt="숙소 이미지4" width="190px" />
 					</div>
 					<div class="others-row">
-						<img src="<c:url value='/images/room_images/${rv.image5}'/>" alt="숙소 이미지5" width="190px" />
-						<img src="<c:url value='/images/room_images/${rv.image6}'/>" alt="숙소 이미지6" width="190px" />
-						<img src="<c:url value='/images/room_images/${rv.image7}'/>" alt="숙소 이미지7" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image5}'/>" alt="숙소 이미지5" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image6}'/>" alt="숙소 이미지6" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image7}'/>" alt="숙소 이미지7" width="190px" />
 					</div>
 					<div class="others-row">
-						<img src="<c:url value='/images/room_images/${rv.image8}'/>" alt="숙소 이미지8" width="190px" />
-						<img src="<c:url value='/images/room_images/${rv.image9}'/>" alt="숙소 이미지9" width="190px" />
-						<img src="<c:url value='/images/room_images/${rv.image10}'/>" alt="숙소 이미지10" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image8}'/>" alt="숙소 이미지8" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image9}'/>" alt="숙소 이미지9" width="190px" />
+						<img src="<c:url value='/images/room_images/${roomList[0].image10}'/>" alt="숙소 이미지10" width="190px" />
 					</div>
 				</div>
 			</div>
@@ -121,24 +120,24 @@
 									<span id="leave-stay"><b id="leave-stay-txt"></b>박</span>
 									<div id="date-display">
 										<span id="check-in-date">체크인</span> ~ <span id="check-out-date">체크아웃</span>
-										<input type="hidden" id="check-in-time" value="${rv.check_in_time}">
-										<input type="hidden" id="check-out-time" value="${rv.check_out_time}">
+										<input type="hidden" id="check-in-time" value="${roomList[0].check_in_time}">
+										<input type="hidden" id="check-out-time" value="${roomList[0].check_out_time}">
 									</div>
 								</div>
 							</li>
 							<li class="option-people">
 								<strong>이용인원</strong>
-								<input type="hidden" id="standard-people" value="${rv.standard_people}">
-								<input type="hidden" id="maximum-people" value="${rv.maximum_people}">
+								<input type="hidden" id="standard-people" value="${roomList[0].standard_people}">
+								<input type="hidden" id="maximum-people" value="${roomList[0].maximum_people}">
 								<div class="option-txt">
 									<button type="button" class="people-change" id="people-minus">-</button>
-									<span id="guest"><b id="guest-txt">${rv.standard_people}</b>명</span>
+									<span id="guest"><b id="guest-txt">${roomList[0].standard_people}</b>명</span>
 									<button type="button" class="people-change" id="people-plus">+</button>
 								</div>
 							</li>
 							<li class="option-result">
 								<strong>요금안내</strong>
-								<input type="hidden" id="room-price" value="${rv.price}">
+								<input type="hidden" id="room-price" value="${roomList[0].price}">
 								<table border="1" id="total-price-table">
 									<tbody>
 										<tr id="default-price">
@@ -156,7 +155,7 @@
 									</tbody>
 								</table>
 								<button type="button" id="reservation-next">예약하기</button>
-								<input type="hidden" id="customer-id" value="${uid}">
+								<input type="hidden" id="customer-id" value="${userId}">
 							</li>
 						</ul>
 					</div>
@@ -169,12 +168,11 @@
 			<div id="toss-window"></div>
 			<div id="toss-window-btn">
 				<button type="button" id="payment-btn">결제</button>
-				<input type="hidden" id="room-id" value="${uid}">
+				<input type="hidden" id="room-id" value="${userId}">
 				<button type="button" id="payment-cancel">취소</button>
 			</div>			
 		</div>
 	</section>
-	
 	<div class="go_top"></div>
 	<%@ include file='../footer/footer.jsp'%>
 </body>

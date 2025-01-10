@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<%
-	String path = request.getContextPath();
-%>
 <c:set var="userId" value="${sessionScope.id}"/>
 <!DOCTYPE html>
 <html>
@@ -53,9 +49,9 @@
         <ul id="my_info">
         	<c:choose>
     			<c:when test="${not empty userId}">
-        			<li><a id="my-info" href="<c:url value="/webPage/login/my_info.jsp"/>">내 정보</a></li>
+        			<li><a id="my-info" href="<c:url value="/webPage/mypage/MyPageServlet?requestType=getMyPageInfo"/>">내 정보</a></li>
           			<li><a id="my-plan" href="/webPage/plan/PlanServlet?requestType=myplan">내 일정</a></li>
-          			<li><a id="log-out" href="<c:url value="/webPage/login/logout.jsp"/>">로그아웃</a></li>
+          			<li><a id="log-out" href="<c:url value="/webPage/login/LoginServlet?requestType=logOut"/>">로그아웃</a></li>
     			</c:when>
     			<c:otherwise>
         			<li><a id="login" href="<c:url value="/webPage/login/login_select.jsp"/>">로그인</a></li>

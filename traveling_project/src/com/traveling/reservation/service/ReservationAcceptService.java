@@ -7,7 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.reservation.dao.ReservationManageDAO;
 
 public class ReservationAcceptService implements ControlQuery {

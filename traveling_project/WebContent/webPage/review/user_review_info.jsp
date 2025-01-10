@@ -2,13 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List"%>
 <%@ page import="com.traveling.review.dto.MyPageInfo"%>
-<%@ page import="com.hh.db.ReservationSort" %>
 <jsp:useBean id="reviewManageDAO" class="com.traveling.review.dao.ReviewManageDAO" />
 <%
 	String id = (String) session.getAttribute("id");
 	List<MyPageInfo> reviewList = reviewManageDAO.getReviewList(id);
 	pageContext.setAttribute("reviewList",reviewManageDAO.getReviewList(id));
-	ReservationSort.sortByCheckInDate(reviewList);
 %>
 <body>
 	<c:choose>

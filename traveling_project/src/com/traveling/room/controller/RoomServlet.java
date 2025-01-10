@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.room.service.RoomInsertService;
 
 public class RoomServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class RoomServlet extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 		String requestType = req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		System.out.println("requestType = " + requestType);
 		
 		try {
 			switch(requestType) {

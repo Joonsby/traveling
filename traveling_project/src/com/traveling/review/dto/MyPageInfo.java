@@ -51,6 +51,4 @@ public class MyPageInfo {
 	public void setPeople(int people) {
 		this.people = people;
 	}
-	
-	
 }

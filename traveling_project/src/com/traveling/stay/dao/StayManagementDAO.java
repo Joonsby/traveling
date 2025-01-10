@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.traveling.common.ParsingCommon;
 import com.traveling.db.DBCon;
 import com.traveling.stay.dto.CheckInInfo;
 import com.traveling.stay.dto.FilterStayInfo;

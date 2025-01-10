@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.traveling.common.ControlQuery;
 import com.traveling.common.ParsingCommon;
-import com.traveling.controller.ControlQuery;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.CheckInInfo;
 

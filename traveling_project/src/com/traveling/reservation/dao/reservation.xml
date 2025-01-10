@@ -26,4 +26,22 @@
 		update reservation set status = #{status}
 		where reservation_id = #{reservationId} and status = '예약 대기'
 	</update>
+	
+	<select id="getRoomInfo" parameterType="int" resultType="com.traveling.reservation.dto.RoomInfo">
+		select room_id,stay_id,room_name,content,check_in_time,check_out_time,price,standard_people,maximum_people,
+		image1,image2,image3,image4,image5,image6,image7,image8,image9,image10
+		from room_info where room_id = #{room_id}
+	</select>
+	
+	<select id="getRoomInfo2" parameterType="map" resultType="com.traveling.reservation.dto.ReservationInfo">
+		SELECT a.name name, b.stay_name stayName, c.room_name roomName
+		FROM user_info a, stay_info b
+		JOIN room_info c ON ri.stay_id = b.stay_id
+		WHERE a.user_id = #{userId} AND c.room_id = #{roomId}
+	</select>
+	
+	<insert id="getMyPageInfo" parameterType="map">
+		INSERT INTO reservation (user_id, room_id, check_in_date, check_out_date,check_in_time,check_out_time,people,price,payment_time,status)
+		VALUES (#{userId},#{roomId},#{checkInDate},#{checkOutDate},#{checkInTime},#{checkOutTime},#{people},#{price},now(),'예약 대기');
+	</insert>
 </mapper>

@@ -3,7 +3,7 @@ package com.traveling.signup.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.controller.ControlQuery;
+import com.traveling.common.ControlQuery;
 import com.traveling.signup.dao.SignupDAO;
 
 public class UserIdCheckService implements ControlQuery{
