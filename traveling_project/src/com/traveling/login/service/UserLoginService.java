@@ -15,7 +15,7 @@ public class UserLoginService implements ControlQuery {
 		return userLoginService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		String homePath = req.getContextPath();
@@ -31,7 +31,6 @@ public class UserLoginService implements ControlQuery {
 		} else {
 			res.sendRedirect(homePath + "/webPage/login/login.jsp?requestType=user&loginfail=Y");
 		}
-		return null;
 	}
 	
 }

@@ -18,7 +18,7 @@ public class SelectMyPlanService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
         HttpSession session = req.getSession();
         String userId = (String) session.getAttribute("id");
@@ -28,6 +28,5 @@ public class SelectMyPlanService implements ControlQuery {
 		req.setAttribute("planList", planList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/user/planner.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 }

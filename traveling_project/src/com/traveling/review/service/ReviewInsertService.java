@@ -19,7 +19,7 @@ public class ReviewInsertService implements ControlQuery{
 	
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		String uploadPath = req.getServletContext().getRealPath("/images/review");
 		int size = 10 * 1024 * 1024;
@@ -78,6 +78,5 @@ public class ReviewInsertService implements ControlQuery{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 }

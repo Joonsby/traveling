@@ -20,7 +20,7 @@ public class InsertStayInfoService implements ControlQuery  {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		StayInfo stayInfo = new StayInfo();
@@ -215,7 +215,6 @@ public class InsertStayInfoService implements ControlQuery  {
 		
 		stayManagementDAO.stayInsert(stayInfo);
 		res.sendRedirect("webPage/stay/add_stay_result.jsp");
-		return null;
 	}
 
 }

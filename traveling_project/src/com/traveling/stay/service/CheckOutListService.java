@@ -18,13 +18,12 @@ public class CheckOutListService implements ControlQuery{
 	
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		res.setCharacterEncoding("UTF-8");
 		StayManagementDAO stmd = StayManagementDAO.instance();
 		String hostId = req.getParameter("hostId");
 		List<CheckInInfo> checkOutlist = stmd.checkOutSelect(hostId);
 		res.getWriter().write(ParsingCommon.gson.toJson(checkOutlist));
-		return null;
 	}
 }

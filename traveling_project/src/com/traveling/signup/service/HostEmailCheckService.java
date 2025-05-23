@@ -12,13 +12,12 @@ public class HostEmailCheckService implements ControlQuery {
 		return hostEmailCheckService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		SignupDAO signupDAO = new SignupDAO();
 		String hostEmail = req.getParameter("email");
 		int cnt = signupDAO.checkHostEmail(hostEmail);
 		if(cnt > 0) res.getWriter().write("true");
 		else res.getWriter().write("false");
-		return null;
 	}
 }

@@ -12,13 +12,12 @@ public class HostIdCheckService  implements ControlQuery{
 		return hostIdCheckService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		SignupDAO signupDAO = new SignupDAO();
 		String hostId = req.getParameter("hostId");
 		int cnt = signupDAO.checkHostId(hostId);
 		if(cnt > 0) res.getWriter().write("true");
 		else res.getWriter().write("false");
-		return null;
 	}
 }

@@ -19,7 +19,7 @@ public class ReviewUpdateService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		ReviewInfo reviewInfo = new ReviewInfo();
 		String uploadPath = req.getServletContext().getRealPath("/images/review");
@@ -95,7 +95,6 @@ public class ReviewUpdateService implements ControlQuery {
 		
 		ReviewManageDAO reviewManageDAO = ReviewManageDAO.instance();
 		int cnt = reviewManageDAO.updateReview(reviewInfo);
-		return null;
 	}
 	
 }

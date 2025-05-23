@@ -13,10 +13,9 @@ public class UserLogOutService implements ControlQuery {
 	}
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		res.sendRedirect("/index.jsp");
-		return null;
 	}
 }

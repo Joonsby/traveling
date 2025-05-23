@@ -1,4 +1,5 @@
-const selectedId = 'check_in_btn';
+let selectedId = 'check_in_btn';
+let status = null;
 
 $(document).ready(function() {
 	const hostId = $('#host_id').val();
@@ -21,20 +22,24 @@ $(document).ready(function() {
     	$('.btn').removeClass('active');
     	$(this).addClass('active');
         if(id == 'check_in_btn'){
+        	status = 'checkIn';
         	const data = {
         		requestType : 'getCheckInList',
         		hostId : hostId
         	}
-        	ajaxAsync('/webPage/stay/StayServlet',data,setTable)
+        	ajaxAsync('/webPage/stay/StayServlet',data,setTable);
         } else if(id == 'check_out_btn'){
+        	status = 'checkOut';
         	const data = {
         		requestType : 'getCheckOutList',
         		hostId : hostId
         	}
         	ajaxAsync('/webPage/stay/StayServlet',data,setTable);
         } else if(id=='hosting_btn'){
+        	status = 'hosting';
         	console.log('hosting_btn');
         } else if(id=='empty_review'){
+        	status = 'emptyReview';
         	console.log('empty_reivew');
         }
     });
@@ -68,6 +73,19 @@ function setTable(result){
 			$('#table-div tbody').append(row);
 		});
 	} else {
-		$('#table-div').append('<p>오늘의 체크인 정보가 없습니다.</p>');
+		switch(status){
+		case "checkIn":
+			$('#table-div').append('<p>오늘의 체크인 정보가 없습니다.</p>');
+			break;
+		case "checkOut":
+			$('#table-div').append('<p>오늘의 체크아웃 정보가 없습니다.</p>');
+			break;
+		case "hosting":
+			$('#table-div').append('<p>현재 호스팅중인 정보가 없습니다.</p>');
+			break;
+		case "emptyReview":
+			$('#table-div').append('<p>답변 안한 후기가 없습니다.</p>');
+			break;
+		}
 	}
 }

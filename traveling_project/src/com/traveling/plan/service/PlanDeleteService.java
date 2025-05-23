@@ -15,7 +15,7 @@ public class PlanDeleteService implements ControlQuery{
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
 		
 		int pid = new Integer(req.getParameter("pid"));
@@ -24,8 +24,5 @@ public class PlanDeleteService implements ControlQuery{
 		dp.setPlan_id(pid);
 		
 		planManageDAO.del(dp);
-		
-		
-		return null;
 	}
 }

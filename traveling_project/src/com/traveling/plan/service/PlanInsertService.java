@@ -15,7 +15,7 @@ public class PlanInsertService implements ControlQuery {
 	}
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
 		
 		DetailPlan dp = new DetailPlan();
@@ -32,6 +32,5 @@ public class PlanInsertService implements ControlQuery {
 		dp.setPlan_content(pcon);
 		
 		planManageDAO.ins(dp);
-		return null;
 	}
 }

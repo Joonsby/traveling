@@ -20,7 +20,7 @@ public class DetailStayInfoService implements ControlQuery  {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		int stay_id = Integer.parseInt((String) req.getParameter("stay_id"));
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
@@ -32,7 +32,6 @@ public class DetailStayInfoService implements ControlQuery  {
 		req.setAttribute("reviewList", reviewList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/stay/detail_stay.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 
 }

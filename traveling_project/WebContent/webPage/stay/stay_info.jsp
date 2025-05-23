@@ -40,7 +40,7 @@
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>	
 			<h2>숙소 정보</h2>			
-			<form action="/webPage/stay/StayServlet?requestType=insertStayInfo&name=<%= hostId %>" method="post" enctype="multipart/form-data">					
+			<form action="/webPage/stay/StayServlet?requestType=insertStayInfo&name=${hostId}" method="post" enctype="multipart/form-data">					
 				<table>
 					<tr>
 						<th>숙소 이름</th>

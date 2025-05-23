@@ -11,7 +11,7 @@ header {
 
 #menu_nav {
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 80px;
   margin: 0 auto;
 }
@@ -45,14 +45,11 @@ header {
 #accomodation_search input {
   font-size: 18px;
   font-family: 'Gowun Dodum', sans-serif;
+  text-align:center;
 }
 
-
-
-#accomodation_search input[type='text']:hover,
-#accomodation_search input[type='number']:hover,
-#accomodation_search input[type='button']:hover{
-  background-color:#ececec;
+#accomodation_search input:hover{
+	  background-color:#ececec;
   color:#000;
   font-weight:bold;
 }

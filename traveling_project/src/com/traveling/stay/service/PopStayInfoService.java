@@ -18,14 +18,13 @@ public class PopStayInfoService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		List<StayInfo> stayList = stayManagementDAO.popStaySelect();
 		req.setAttribute("stayList", stayList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/stay/all_stays.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 
 }

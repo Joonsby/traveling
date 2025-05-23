@@ -17,7 +17,7 @@ public class ReservationAcceptService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
 		HashMap<String,String> updateInfo = new HashMap<String,String>();
@@ -28,6 +28,5 @@ public class ReservationAcceptService implements ControlQuery {
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/reservation/ReservationServlet?requestType=getReservationStatus");
 			dispatcher.forward(req, res);
 		}
-		return null;
 	}
 }

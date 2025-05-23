@@ -12,9 +12,8 @@ public class RoomInfoService implements ControlQuery{
 	}
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }

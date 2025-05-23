@@ -32,7 +32,7 @@
 			<li><a href="#">FAQ</a></li>
 		</ul>
 		<h3>로그아웃</h3>
-		<a href="logout.jsp">로그아웃</a>
+		<a href="/webPage/login/LoginServlet?requestType=logOut">로그아웃</a>
 	</nav>
 
 </body>

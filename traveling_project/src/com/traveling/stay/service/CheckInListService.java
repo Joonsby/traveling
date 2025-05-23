@@ -21,7 +21,7 @@ public class CheckInListService implements ControlQuery {
 	}
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		res.setCharacterEncoding("UTF-8");
@@ -29,7 +29,6 @@ public class CheckInListService implements ControlQuery {
 		String hostId = (String) session.getAttribute("host_id");
 		List<CheckInInfo> checkInlist = stmd.checkInSelect(hostId);
 		res.getWriter().write(ParsingCommon.gson.toJson(checkInlist));
-		return null;
 	}
 
 }

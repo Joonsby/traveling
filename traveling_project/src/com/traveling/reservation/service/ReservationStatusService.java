@@ -17,7 +17,7 @@ public class ReservationStatusService implements ControlQuery {
 		return reservationStatusService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		String hostId = (String) session.getAttribute("host_id");
@@ -26,7 +26,6 @@ public class ReservationStatusService implements ControlQuery {
 		req.setAttribute("reservationList", reservationList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 	
 }

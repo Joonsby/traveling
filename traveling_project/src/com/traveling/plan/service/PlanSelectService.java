@@ -18,7 +18,7 @@ public class PlanSelectService implements ControlQuery {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
 		
 		int pid = new Integer(req.getParameter("planId"));
@@ -48,7 +48,5 @@ public class PlanSelectService implements ControlQuery {
 	    PrintWriter out = res.getWriter();
 	    out.print(data);
 	    out.flush();
-		
-		return null;
 	}
 }

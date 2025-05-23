@@ -20,7 +20,7 @@ public class FilterStayInfoService implements ControlQuery {
 	}
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		StayManagementDAO stayManagementDAO =StayManagementDAO.instance();
 		double rating = 0.0;
 		int minPrice = 0;
@@ -64,7 +64,6 @@ public class FilterStayInfoService implements ControlQuery {
 		
 		List<FilterStayInfo> filterStayInfo = stayManagementDAO.getFilterStay(stayInfo);
 		res.getWriter().write(ParsingCommon.gson.toJson(filterStayInfo));
-		return null;
 	}
 	
 	// 필터링된 숙소 선택

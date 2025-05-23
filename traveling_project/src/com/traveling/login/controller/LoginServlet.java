@@ -20,8 +20,8 @@ public class LoginServlet extends HttpServlet{
 		ControlQuery inter = null;
 	
 		req.setCharacterEncoding("UTF-8");
-		String requestType = req.getParameter("requestType");
-		System.out.println("requestType = " + requestType);
+		String requestType=req.getParameter("requestType");
+		System.out.println("requestType=" + requestType);
 		try {
 			switch(requestType) {
 			case "getUserInfo":

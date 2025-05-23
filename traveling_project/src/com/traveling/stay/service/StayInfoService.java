@@ -18,7 +18,7 @@ public class StayInfoService implements ControlQuery  {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		String host_id = req.getParameter("host_id");
@@ -26,7 +26,6 @@ public class StayInfoService implements ControlQuery  {
 		req.setAttribute("stayInfo", stayInfo);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_info.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 
 }

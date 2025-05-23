@@ -13,7 +13,7 @@ public class InsertUserInfoService implements ControlQuery{
 		return insertUserInfoService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		SignupDAO signupDAO = SignupDAO.instance();
 		UserInfo userInfo = new UserInfo();
@@ -37,7 +37,6 @@ public class InsertUserInfoService implements ControlQuery{
 		if (cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
 		}
-		return null;
 	}
 		
 }

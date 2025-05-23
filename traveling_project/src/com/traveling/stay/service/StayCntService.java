@@ -16,7 +16,7 @@ public class StayCntService implements ControlQuery  {
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		String hostId = (String) session.getAttribute("host_id");		
@@ -29,7 +29,6 @@ public class StayCntService implements ControlQuery  {
 		}
 		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_sel_result.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 
 }

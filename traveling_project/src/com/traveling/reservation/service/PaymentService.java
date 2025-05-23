@@ -21,7 +21,7 @@ public class PaymentService implements ControlQuery {
 		return paymentService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String customerParam = req.getParameter("customer");
 		HttpSession session = req.getSession();
 		Map<String,String> reservationInfo = new HashMap<String,String>();
@@ -57,6 +57,5 @@ public class PaymentService implements ControlQuery {
 			dispatcher.forward(req, res);
 		}
 		jsonReader.close();
-		return null;
 	}
 }

@@ -13,7 +13,7 @@ public class InsertHostInfoService implements ControlQuery{
 		return insertHostInfoService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		SignupDAO signupDAO = new SignupDAO();
 		HostInfo hostInfo = new HostInfo();
@@ -38,6 +38,5 @@ public class InsertHostInfoService implements ControlQuery{
 		if(cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
 		}
-		return null;
 	}
 }

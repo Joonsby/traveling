@@ -12,10 +12,9 @@ public class ReviewDeleteService implements ControlQuery{
 		return reviewDeleteService;
 	}
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		ReviewManageDAO reviewManageDAO = ReviewManageDAO.instance();
 		reviewManageDAO.reviewDelete(req.getParameter("reservationId"));
-		return null;
 	}
 }

@@ -18,7 +18,7 @@ public class MyPageService implements ControlQuery {
 	}
 	
 	@Override
-	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("id");
 		MyPageManageDAO myPageManageDAO = MyPageManageDAO.instance();
@@ -29,7 +29,6 @@ public class MyPageService implements ControlQuery {
 		req.setAttribute("reviewList", reviewList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/login/my_info.jsp");
 		dispatcher.forward(req, res);
-		return null;
 	}
 	
 }
