@@ -78,9 +78,9 @@ public class StayManagementDAO {
 	}
 
 	// 가격이 저렴한 숙소 선택
-	public List<StayInfo> cheepStaySelect() {
+	public List<StayInfo> cheapStaySelect() {
 		SqlSession s = f.openSession();
-		List<StayInfo> stayList = s.selectList("cheepStaySelect");
+		List<StayInfo> stayList = s.selectList("cheapStaySelect");
 		s.close();
 		return stayList;
 	}

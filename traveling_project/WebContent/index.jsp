@@ -1,28 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/webPage/header/header.jsp"%>
-<%@ page import="com.traveling.stay.dao.StayManagementDAO" %>
-<%@ page import="com.traveling.stay.dto.StayInfo" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.text.NumberFormat" %>
-<% 	
-	StayManagementDAO stayManagementDAO = new StayManagementDAO();
- 	pageContext.setAttribute("popStays",stayManagementDAO.popStaySelect());
- 	pageContext.setAttribute("bestReviewStays",stayManagementDAO.bestReviewStaySelect());
- 	pageContext.setAttribute("cheepStays",stayManagementDAO.cheepStaySelect());
- 	List<StayInfo> cheepStays = stayManagementDAO.cheepStaySelect();
- 	NumberFormat nf = NumberFormat.getInstance();
-%>
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="<c:url value="/css/main/style.css"/>" />
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>  
-    <script src="<c:url value="/js/main/main.js"/>"></script>
+    <script src="<c:url value="/js/main/main.js"/>" ></script>
     <title>메인페이지</title>
 </head>
 <body>
@@ -35,7 +21,7 @@
 		<!-- 가장 인기가 많은 숙소 -->
 		<section class="hotel_recommend">
 			<h2>가장 인기가 많은 숙소</h2>
-			<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo"><img src="images/view_all.png" alt="모두 보기" /></a>
+			<a href="<c:url value="/webPage/stay/StayServlet?requestType=getPopStayInfo"/>"><img src="images/view_all.png" alt="모두 보기" /></a>
 			<div class="slider rec_slider">
  			    <c:forEach var="popStay" items="${popStays}" begin="0" end="7">
 	 			    <div>
@@ -133,17 +119,17 @@
 			<h2>가격이 저렴한 숙소</h2>
 			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider pop_slider">				
-				<c:forEach var="cheepStay" items="${cheepStays}" begin="0" end="7">
+				<c:forEach var="cheapStay" items="${cheapStays}" begin="0" end="7">
 	 				<div>
-	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${cheepStay.stay_id}">
+	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${cheapStay.stay_id}">
 	 						<div class="image_slider">
-	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image1}" />" alt="이미지1" />
-	 			                <img src="<c:url value="/images/stay_images/${cheepStay.image2}" />" alt="이미지2" />	 							
+	 			                <img src="<c:url value="/images/stay_images/${cheapStay.image1}" />" alt="이미지1" />
+	 			                <img src="<c:url value="/images/stay_images/${cheapStay.image2}" />" alt="이미지2" />	 							
 	 						</div>
-	 						<h3>${cheepStay.stay_name}</h3>
-	 						<p>${cheepStay.stay_addr}</p>
-	 			            <p>₩ <fmt:formatNumber value="${cheepStay.min_room_price}" type="number" pattern="#,##0" /> ~</p>
-	 						<div class="review pop_review">${cheepStay.review_content}</div>
+	 						<h3>${cheapStay.stay_name}</h3>
+	 						<p>${cheapStay.stay_addr}</p>
+	 			            <p>₩ <fmt:formatNumber value="${cheapStay.min_room_price}" type="number" pattern="#,##0" /> ~</p>
+	 						<div class="review pop_review">${cheapStay.review_content}</div>
 	 					</a>
 	 				</div>
 	 			</c:forEach>								

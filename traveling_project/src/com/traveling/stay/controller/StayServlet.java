@@ -13,6 +13,7 @@ import com.traveling.stay.service.CheckOutListService;
 import com.traveling.stay.service.DetailStayInfoService;
 import com.traveling.stay.service.FilterStayInfoService;
 import com.traveling.stay.service.InsertStayInfoService;
+import com.traveling.stay.service.StayMainService;
 import com.traveling.stay.service.PopStayInfoService;
 import com.traveling.stay.service.StayCntService;
 import com.traveling.stay.service.StayInfoService;
@@ -26,45 +27,52 @@ public class StayServlet extends HttpServlet {
 		ControlQuery inter = null;
 
 		req.setCharacterEncoding("UTF-8");
-		String requestType=req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		String requestType = req.getParameter("requestType");
+		
+        if (requestType == null || requestType.trim().equals("")) {
+            requestType = "main";
+        }
+		
+		System.out.println("requestType = " + requestType);
 		try {
 			switch (requestType) {
+			case "main":
+				inter = StayMainService.instance();
+				break;
 			case "getCheckInList":
 				inter = CheckInListService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "getCheckOutList":
 				inter = CheckOutListService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "insertStayInfo":
 				inter = InsertStayInfoService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "getStayInfo":
 				inter = StayInfoService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "getStayCnt":
 				inter = StayCntService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "getPopStayInfo":
 				inter = PopStayInfoService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "getDetailStayInfo":
 				inter = DetailStayInfoService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "getFilterStayInfo":
 				inter = FilterStayInfoService.instance();
-				inter.dataCon(req, res);
 				break;
+            default:
+                inter = StayMainService.instance();
+                break;
 			}
+            if (inter != null) {
+                inter.dataCon(req, res);
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new ServletException("StayServlet 처리 중 오류 발생", e);
 		}
 	}
 
