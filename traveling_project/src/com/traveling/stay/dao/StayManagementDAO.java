@@ -50,6 +50,7 @@ public class StayManagementDAO {
 	public List<StayInfo> selectStayInfo(String host_id) {
 		SqlSession s = f.openSession();
 		List<StayInfo> stayInfo = s.selectList("selectStayInfo", host_id);
+		s.close();
 		return stayInfo;
 	}
 
@@ -113,6 +114,7 @@ public class StayManagementDAO {
 	public List<ReviewInfo> selectReview(int stay_id) {
 		SqlSession s = f.openSession();
 		List<ReviewInfo> reviewList = s.selectList("reviewList", stay_id);
+		s.close();
 		return reviewList;
 	}
 }

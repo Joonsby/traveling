@@ -21,7 +21,6 @@ public class StayMainService implements ControlQuery {
 		req.setAttribute("bestReviewStays", stayManagementDAO.bestReviewStaySelect());
 		req.setAttribute("cheapStays", stayManagementDAO.cheapStaySelect());
 		
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(req, res);
+        req.getRequestDispatcher("index.jsp").forward(req, res);
 	}
 }

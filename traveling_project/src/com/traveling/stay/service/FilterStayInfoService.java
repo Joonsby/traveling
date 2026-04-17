@@ -44,23 +44,6 @@ public class FilterStayInfoService implements ControlQuery {
 		stayInfo.put("min_price", minPrice);
 		stayInfo.put("max_price", maxPrice);
 		stayInfo.put("rating", rating);
-		stayInfo.put("parking", getParameterOrNull(req, "parking"));
-		stayInfo.put("wireless_internet", getParameterOrNull(req, "wireless_internet"));
-		stayInfo.put("tub", getParameterOrNull(req, "tub"));
-		stayInfo.put("washing_machine", getParameterOrNull(req, "washing_machine"));
-		stayInfo.put("drying_machine", getParameterOrNull(req, "drying_machine"));
-		stayInfo.put("air_conditioner",getParameterOrNull(req, "air_conditioner"));
-		stayInfo.put("fan", getParameterOrNull(req, "fan"));
-		stayInfo.put("heating_system", getParameterOrNull(req, "heating_system"));
-		stayInfo.put("pool", getParameterOrNull(req, "pool"));
-		stayInfo.put("arcade_game", getParameterOrNull(req, "arcade_game"));
-		stayInfo.put("gym", getParameterOrNull(req, "gym"));
-		stayInfo.put("board_game", getParameterOrNull(req, "board_game"));
-		stayInfo.put("barbecue_tool", getParameterOrNull(req, "barbecue_tool"));
-		stayInfo.put("basic_cookware", getParameterOrNull(req, "basic_cookware"));
-		stayInfo.put("breakfast", getParameterOrNull(req, "breakfast"));
-		stayInfo.put("clean_service", getParameterOrNull(req, "clean_service"));
-		stayInfo.put("luggage_storage", getParameterOrNull(req, "luggage_storage"));
 		
 		List<FilterStayInfo> filterStayInfo = stayManagementDAO.getFilterStay(stayInfo);
 		res.getWriter().write(ParsingCommon.gson.toJson(filterStayInfo));
