@@ -35,7 +35,7 @@
       							<h2 class="stay-name">${stay.stay_name}</h2>
       							<p class="avg-rating">${stay.rating_avg}</p>
       							<p class="road-addr">${stay.road_addr}</p>
-      							<p class="room-price">₩ ${stay.min_room_price} ~ </p>
+      							<p class="room-price">₩ <fmt:formatNumber value="${stay.min_room_price}" pattern="#,###" /> ~</p>
       						</div>
       					</div>
       				</a>

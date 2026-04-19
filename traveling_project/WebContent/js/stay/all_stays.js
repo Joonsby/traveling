@@ -30,25 +30,25 @@ function collectFilterData() {
 //중복된 AJAX 요청 로직을 처리하는 함수
 function sendFilterRequest(filterData) {
   $.ajax({
-    url: "/webPage/stay/StayServlet?requestType=filter",
+    url: "/webPage/stay/StayServlet?requestType=getFilterStayInfo",
     type: "POST",
     data: filterData,
+    dataType: "json",
     success: function (data) {
-      var parsedData 		= JSON.parse(data);
       var accommodationBox 	= $("#accomodation_info_box");
       var locations 		= {};
       accommodationBox.empty();      
 
-      if (Array.isArray(parsedData.result)) {
-        parsedData.result.forEach(function (item) {
-          var formattedPrice = parseInt(item.price).toLocaleString();
+      if (Array.isArray(data)) {
+    	  data.forEach(function (item) {
+          var formattedPrice = Number(item.min_room_price).toLocaleString();
           var key = parseFloat(item.latitude) + "_" + parseFloat(item.longitude);
           
           // locations 객체를 생성합니다.
           locations[key] = {
             lat: parseFloat(item.latitude),
             lng: parseFloat(item.longitude),
-            stayName: item.stayName,
+            stayName: item.stay_name,
             price: formattedPrice
           };
 
@@ -58,12 +58,12 @@ function sendFilterRequest(filterData) {
               <a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${item.stayId}">
                 <div class="accomodation_box">
                   <div>
-                    <img class="image" src="/traveling_project/images/stay_images/${item.image}" alt="이미지1" />
+                    <img class="image" src="/images/stay_images/${item.image1}" alt="이미지1" />
                   </div>
                   <div>
-                    <h2 class="stay-name">${item.stayName}</h2>
-                    <p class="avg-rating">${item.avgRating}</p>
-                    <p class="road-addr">${item.roadAddr}</p>
+                    <h2 class="stay-name">${item.stay_name}</h2>
+                    <p class="avg-rating">${item.avg_rating}</p>
+                    <p class="road-addr">${item.road_addr}</p>
                     <p class="room-price">₩ ${formattedPrice} ~</p>
                   </div>
                 </div>
@@ -127,7 +127,7 @@ $(document).ready(function () {
       lat: latitude,
       lng: longitude,
       stayName: $(".name-val")[index].value,
-      price: $(".price-val")[index].value
+      price: Number($(".price-val")[index].value).toLocaleString()
     };    
   });
   

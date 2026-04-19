@@ -46,13 +46,6 @@ public class FilterStayInfoService implements ControlQuery {
 		stayInfo.put("rating", rating);
 		
 		List<FilterStayInfo> filterStayInfo = stayManagementDAO.getFilterStay(stayInfo);
-		res.getWriter().write(ParsingCommon.gson.toJson(filterStayInfo));
+		ParsingCommon.writeJson(res, filterStayInfo);
 	}
-	
-	// 필터링된 숙소 선택
-	private String getParameterOrNull(HttpServletRequest req, String paramName) {
-		String paramValue = req.getParameter(paramName);
-		return (paramValue != null && paramValue.isEmpty()) ? null : paramValue;
-	}
-	
 }
