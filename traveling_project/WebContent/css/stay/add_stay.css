@@ -151,11 +151,11 @@ table tr td #att_zone div label {
 	color: #999;
 	line-height: 18;
 	user-select: none;
-	background: url(../images/image.png) no-repeat center/60px;
+	background: url(/images/image.png) no-repeat center/60px;
 }
 
 table tr td #att_zone div label:hover {
-	background-image: url(../images/image_hover.png);
+	background-image: url(/images/image_hover.png);
 	color: #000;
 	font-weight: bold;
 }
@@ -192,11 +192,11 @@ table td>div>div label {
 }
 
 table td>div>div label:first-of-type {
-	background: url(../images/check_circle.png) no-repeat center/contain;
+	background: url(/images/check_circle.png) no-repeat center/contain;
 }
 
 table td>div>div label:last-of-type {
-	background: url(../images/cancel.png) no-repeat center/cover;
+	background: url(/images/cancel.png) no-repeat center/cover;
 }
 
 input[type="radio"] {
@@ -204,11 +204,11 @@ input[type="radio"] {
 }
 
 input[type="radio"]:first-of-type:checked+label {
-	background: url(../images/check_circle_filled.png) no-repeat center/contain;
+	background: url(/images/check_circle_filled.png) no-repeat center/contain;
 }
 
 input[type="radio"]:last-of-type:checked+label {
-	background: url(../images/cancel_filled.png) no-repeat center/contain;
+	background: url(/images/cancel_filled.png) no-repeat center/contain;
 }
 .border_change{
 	border:2px solid red !important;

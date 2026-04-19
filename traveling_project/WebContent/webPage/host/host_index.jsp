@@ -18,7 +18,7 @@
 			<input type="hidden" id="host_id" value="${host_id}">
 			<div>
 				<h2>${name} 님, 안녕하세요!</h2>
-				<input type="button" class="add_stay_btn" value="숙소 등록하기">
+				<a href="<c:url value="/webPage/stay/add_stay.jsp"/>" class="add_stay_btn">숙소 등록하기</a>
 			</div>
 			<span id="underline"></span>
 			<div>

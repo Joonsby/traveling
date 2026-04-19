@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/add_stay.css" />
-<link rel="stylesheet" href="css/host_common.css" />
+<link rel="stylesheet" href="<c:url value="/css/stay/add_stay.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/host/host_common.css"/>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
@@ -19,13 +19,13 @@
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>	
 			<h2>숙소 등록하기</h2>			
-			<form action="/webPage/stay/StayServlet?requestType=insertStayInfo&name=${sessionScope.host_id}" method="post" enctype="multipart/form-data">					
+			<form action="/webPage/stay/StayServlet?requestType=insertStayInfo&name=<c:out value="{host_id}"/>"" method="post" enctype="multipart/form-data">					
 				<table>
 					<tr>
 						<th>숙소 이름</th>
 						<td>
 							<input type="text" id="stay_name" name="stay_name" placeholder="숙소 이름을 입력하세요." />
-							<p id="stay_name_text" class="error_text">숙소 이름을 입력해주세요.</p>				
+							<p id="stay_name_text" class="error_text">숙소 이름을 입력해주세요.</p>			
 						</td>						
 					</tr>
 					<tr>
@@ -427,6 +427,6 @@
 		</section>		
 	</main>
 	<%@ include file='../footer/footer.jsp'%>	
-	<script src="js/add_stay.js"></script>
+	<script src="<c:url value="/js/stay/add_stay.js"/>"></script>
 </body>
 </html>

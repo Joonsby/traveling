@@ -16,6 +16,6 @@ public class UserLogOutService implements ControlQuery {
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		res.sendRedirect("/index.jsp");
+		res.sendRedirect("/");
 	}
 }

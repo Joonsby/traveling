@@ -68,6 +68,8 @@ $(document).ready(function() {
 			showModal('#Modal','인원수 선택','여행하실 인원수를 선택해 주시기 바랍니다.');
 			return;
 		}
+		
+		
 	});
 	
 	// 인원수 체크
@@ -78,18 +80,23 @@ $(document).ready(function() {
 			return;
 		}
 	});
-	
-    $('#my_info').on('mouseleave', function() {
-        $(this).fadeOut(50);
-    });
-    
-    $('.right_menu').on('mouseenter',function(){
-    	$('#my_info').show();
-    });
     
     $('#my_info').on('mouseleave',function(){
     	$(this).hide();
     });
+    
+    // 로그아웃 버튼
+    $('#log-out').click(function(e){
+    	e.preventDefault();
+    	showConfirmModal(
+			'#confirmModal',
+			'로그아웃',
+			'정말 로그아웃하시겠습니까?',
+			function () {
+				window.location.href = $('#log-out').attr('href');
+			}
+		);
+    });  
 
     // 위로 가기 버튼
     $('div.go_top').hide();

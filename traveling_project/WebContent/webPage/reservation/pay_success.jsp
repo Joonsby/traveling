@@ -23,7 +23,7 @@
 				<p class="reservation-info"><strong>결제 금액 :</strong> ₩ <fmt:formatNumber value="${reservationInfo.price}"/></p>
 			</div>
 			<div id="go-mypage">
-				<a href="index.jsp" id="go-to-main">메인화면으로 이동하기</a> <a href="/webPage/mypage/MyPageServlet?requestType?getMyPageInfo" id="go-mypage-tag">마이페이지로 이동하기</a>
+				<a href="/" id="go-to-main">메인화면으로 이동하기</a> <a href="/webPage/mypage/MyPageServlet?requestType?getMyPageInfo" id="go-mypage-tag">마이페이지로 이동하기</a>
 			</div>
 		</div>
 	</section>

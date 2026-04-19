@@ -25,7 +25,7 @@
 	<header>
 		<nav id="menu_nav">
 			<h1 id="logo">
-				<a href="/webPage/stay/StayServlet?requestType=getCheckInList"><img src="<c:url value="/images/logo.png"/>" alt="로고이미지" /></a>
+				<a href="<c:url value="/webPage/host/host_index.jsp"/>"><img src="<c:url value="/images/logo.png"/>" alt="로고이미지" /></a>
 			</h1>
 			<ul class="lnb">
 				<li>숙소 관리</li>
@@ -35,7 +35,7 @@
 			</ul>
 			<ul class="lnb_menu">
 				<li>
-					<a href="#" id="add_stay_btn">숙소 등록하기</a>
+					<a href="<c:url value="/webPage/stay/add_stay.jsp"/>" id="add_stay_btn">숙소 등록하기</a>
 					<a href="<c:url value="/webPage/room/add_room.jsp"/>">객실 등록하기</a>
 					<a href="#">숙소 정보</a>
 					<a href="#">객실 정보</a>

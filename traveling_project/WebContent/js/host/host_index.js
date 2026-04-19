@@ -37,10 +37,8 @@ $(document).ready(function() {
         	ajaxAsync('/webPage/stay/StayServlet',data,setTable);
         } else if(id=='hosting_btn'){
         	status = 'hosting';
-        	console.log('hosting_btn');
         } else if(id=='empty_review'){
         	status = 'emptyReview';
-        	console.log('empty_reivew');
         }
     });
 });

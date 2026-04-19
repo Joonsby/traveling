@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.traveling.db.DBCon;
 import com.traveling.stay.dto.CheckInInfo;
+import com.traveling.stay.dto.FacilityInfo;
 import com.traveling.stay.dto.FilterStayInfo;
 import com.traveling.stay.dto.ReviewInfo;
 import com.traveling.stay.dto.RoomInfo;
@@ -116,5 +117,12 @@ public class StayManagementDAO {
 		List<ReviewInfo> reviewList = s.selectList("reviewList", stay_id);
 		s.close();
 		return reviewList;
+	}
+	
+	public List<FacilityInfo> selectFacility(int stay_id){
+		SqlSession s = f.openSession();
+		List<FacilityInfo> facilityList = s.selectList("facilityList", stay_id);
+		s.close();
+		return facilityList;
 	}
 }
