@@ -26,10 +26,10 @@
 				<a href="#">모든 예약</a>
 			</div>
 			<div>
-				<input type="button" id="check_in_btn" class='btn active' value="체크인 예정">
-				<input type="button" id="check_out_btn" class='btn' value="체크아웃 예정">
-				<input type="button" id="hosting_btn" class='btn' value="현재 호스팅">
-				<input type="button" id="empty_review" class='btn' value="답변 안한 후기">
+				<input type="button" id="check_in_btn" class='statusBtn active' value="체크인 예정">
+				<input type="button" id="check_out_btn" class='statusBtn' value="체크아웃 예정">
+				<input type="button" id="hosting_btn" class='statusBtn' value="현재 호스팅">
+				<input type="button" id="empty_review" class='statusBtn' value="답변 안한 후기">
 			</div>
 			<div id="table-div"></div>
 		</section>

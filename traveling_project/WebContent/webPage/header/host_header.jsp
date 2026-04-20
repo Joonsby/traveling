@@ -5,21 +5,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- favicon -->
-<link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
-<!-- css -->
-<link rel="stylesheet" href="<c:url value="/css/common/reset.css"/>" />
-<link rel="stylesheet" href="<c:url value="/css/header/header.css"/>" />
-<link rel="stylesheet" href="<c:url value="/css/header/host_header.css"/>" />
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="<c:url value="/js/common/common.js"/>"></script>
-<script src="<c:url value="/js/header/header.js"/>"></script>
-<script src="<c:url value="/js/header/host_header.js"/>"></script>
+	<!-- favicon -->
+	<link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
+	<!-- css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<c:url value="/css/common/reset.css"/>" />
+	<link rel="stylesheet" href="<c:url value="/css/common/common.css"/>" />
+	<link rel="stylesheet" href="<c:url value="/css/header/header.css"/>" />
+	<link rel="stylesheet" href="<c:url value="/css/header/host_header.css"/>" />
+	<!-- font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"/>
+	<!-- script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="<c:url value="/js/common/common.js"/>"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="<c:url value="/js/header/host_header.js"/>"></script>
 </head>
 <body>
 	<header>
@@ -56,22 +60,46 @@
 					<a href="#">자주 사용된 키워드</a>
 				</li>
 			</ul>
-			<div class="right_menu">
-				<a href="#" class="ir_pm">내정보</a>
-				<a href="#" class="ir_pm">언어 선택</a>
-				<a href="#" class="ir_pm">고객 센터</a>
-			</div>
-			<ul id="my_info">
+			<ul class="right_menu">
 				<li><a href="#">내 정보</a></li>
-				<li><a href="<c:url value="/webPage/login/host_logout.jsp"/>">로그 아웃</a></li>
+				<li><a id="log-out" href="<c:url value="/webPage/login/LoginServlet?requestType=logOut"/>">로그아웃</a></li>
 			</ul>
 		</nav>
 	</header>
-		<div class="main_modal" id="myModal">
-   		<div class="modal-content">
-        	<span class="close" id="closeModal"></span>
-        	<p>하나의 계정당 한개의 숙소만 등록 가능합니다.</p>
-    	</div>
+	
+    <!-- Modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="ModalLabel"></h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body"><p></p></div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- Confirm Modal -->
+	<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="confirmModalLabel">확인</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <p class="mb-0">정말 진행하시겠습니까?</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="confirmOkBtn" class="btn btn-primary">확인</button>
+	        <button type="button" id="confirmCancelBtn" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 </body>
 </html>

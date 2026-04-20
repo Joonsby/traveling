@@ -57,6 +57,7 @@
         </ul>
       </nav>
     </header>
+    
     <!-- Modal -->
 	<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered">

@@ -3,7 +3,7 @@ let status = null;
 
 $(document).ready(function() {
 	const hostId = $('#host_id').val();
-    const buttons = $(".btn");
+    const buttons = $(".statusBtn");
     
     let data = {
     		requestType : 'getCheckInList',
@@ -19,7 +19,7 @@ $(document).ready(function() {
     		return;
     	}
     	selectedId = id;
-    	$('.btn').removeClass('active');
+    	$('.statusBtn').removeClass('active');
     	$(this).addClass('active');
         if(id == 'check_in_btn'){
         	status = 'checkIn';
