@@ -1,25 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/header.jsp"%>
 <%@ page import="com.traveling.reservation.dao.ReservationManageDAO" %>
-<% 
-	int room_id = new Integer(request.getParameter("room_id"));
-	String userId = (String) session.getAttribute("id");
-	ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
-	pageContext.setAttribute("roomList",reservationManageDAO.getRoomInfo(room_id));
+<%
 %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8" />
 	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" href="<c:url value="/css/reservation/reservation.css"/>" />
 	<!-- js -->
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-	<script src="https://js.tosspayments.com/v1/payment-widget"></script>
-	<script src="<c:url value="/js/reservation/tosspay.js"/>"></script>
+	<script src="https://js.tosspayments.com/v2/standard"></script>
 	<script src="<c:url value="/js/reservation/reservation.js"/>"></script>
 	<title>예약</title>
 </head>
@@ -68,50 +60,6 @@
 					<h3>예약정보</h3>
 				</div>
 				<div class="calendar-container">
-					<table class="calendar calendar-left">
-			            <thead>
-			                <tr>
-			                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
-			                    <td colspan="5" class="year-month"><span id="calYearLeft">년</span><span id="calMonthLeft">월</span>
-			                    </td>
-			                    <td></td>
-			                </tr>
-			                <tr>
-			                    <td>일</td>
-			                    <td>월</td>
-			                    <td>화</td>
-			                    <td>수</td>
-			                    <td>목</td>
-			                    <td>금</td>
-			                    <td>토</td>
-			                </tr>
-			            </thead>
-			            <tbody>
-			            </tbody>
-			        </table>
-			        <table class="calendar calendar-right">
-			            <thead>
-			                <tr>
-			                    <td></td>
-			                    <td colspan="5" class="year-month">
-			                        <span id="calYearRight"></span>년
-			                        <span id="calMonthRight"></span>월
-			                    </td>
-			                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
-			                </tr>
-			                <tr>
-			                    <td>일</td>
-			                    <td>월</td>
-			                    <td>화</td>
-			                    <td>수</td>
-			                    <td>목</td>
-			                    <td>금</td>
-			                    <td>토</td>
-			                </tr>
-			            </thead>
-			            <tbody>
-			            </tbody>
-			        </table>
 			        <div class="reservation-option">
 						<ul class="detail-option">
 							<li class="option-days">
@@ -154,23 +102,14 @@
 										</tr>
 									</tbody>
 								</table>
-								<button type="button" id="reservation-next">예약하기</button>
+								<button type="button" id="btnReservation">예약하기</button>
 								<input type="hidden" id="customer-id" value="${userId}">
+								<input type="hidden" id="room-id" value="${roomList[0].room_id}">
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<section class="toss-modal">
-		<div id="toss-modal-wrap">
-			<div id="toss-window"></div>
-			<div id="toss-window-btn">
-				<button type="button" id="payment-btn">결제</button>
-				<input type="hidden" id="room-id" value="${userId}">
-				<button type="button" id="payment-cancel">취소</button>
-			</div>			
 		</div>
 	</section>
 	<div class="go_top"></div>

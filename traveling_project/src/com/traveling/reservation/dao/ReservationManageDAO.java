@@ -38,6 +38,7 @@ public class ReservationManageDAO {
 		return cnt;
 	}
 	
+	// 객실 정보
 	public List<RoomInfo> getRoomInfo(int room_id){
 		SqlSession s = f.openSession();
 		List<RoomInfo> roomList = s.selectList("getRoomInfo",room_id);
@@ -59,5 +60,4 @@ public class ReservationManageDAO {
 		s.close();
 		return cnt;
 	}
-	
 }

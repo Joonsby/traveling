@@ -25,7 +25,7 @@ $(document).ready(function() {
 			function(selectedDates, dateStr, instance){
 				checkInDate = Number(replaceAllString(dateStr,'-',''));
 				if(checkOutDate !=null && checkInDate > checkOutDate){
-					showModal('#Modal','체크인 날짜','체크인 날짜를 다시 선택하시기 바랍니다.');
+					showModal('체크인 날짜','체크인 날짜를 다시 선택하시기 바랍니다.');
 					$('#check_in_date').val('');
 					checkInDate = null;
 				}
@@ -38,7 +38,7 @@ $(document).ready(function() {
 			function(selectedDates, dateStr, instance){
 				checkOutDate = Number(replaceAllString(dateStr,'-',''));
 				if(Number(replaceAllString(dateStr,'-','')) <  checkInDate){
-					showModal('#Modal','체크아웃 날짜','체크아웃 날짜를 다시 선택하시기 바랍니다.');
+					showModal('체크아웃 날짜','체크아웃 날짜를 다시 선택하시기 바랍니다.');
 					$('#check_out_date').val('');
 					checkOutDate = null;
 				}
@@ -50,22 +50,22 @@ $(document).ready(function() {
 	$('#search_btn').click(function(e){
 		if($('#region').val() == null || $('#region').val() == ''){
 			e.preventDefault();
-			showModal('#Modal','여행 지역 선택','여행하실 지역을 입력해주시기 바랍니다.');
+			showModal('여행 지역 선택','여행하실 지역을 입력해주시기 바랍니다.');
 			return;
 		}
 		if($('#check_in_date').val() == null || $('#check_in_date').val() == ''){
 			e.preventDefault();
-			showModal('#Modal','체크인 날짜','체크인 날짜를 입력해주시기 바랍니다.');
+			showModal('체크인 날짜','체크인 날짜를 입력해주시기 바랍니다.');
 			return;
 		}
 		if($('#check_out_date').val() == null || $('#check_out_date').val() == ''){
 			e.preventDefault();
-			showModal('#Modal','체크아웃 날짜','체크아웃 날짜를 입력해주시기 바랍니다.');
+			showModal('체크아웃 날짜','체크아웃 날짜를 입력해주시기 바랍니다.');
 			return;
 		}
 		if($('#people_num').val() == null || $('#people_num').val() == ''){
 			e.preventDefault();
-			showModal('#Modal','인원수 선택','여행하실 인원수를 선택해 주시기 바랍니다.');
+			showModal('인원수 선택','여행하실 인원수를 선택해 주시기 바랍니다.');
 			return;
 		}
 		
@@ -75,7 +75,7 @@ $(document).ready(function() {
 	// 인원수 체크
 	$('#people_num').blur(function(){
 		if(parseInt($(this).val()) > 15){
-			showModal('#Modal','인원수 재입력','최대 인원수는 15명 입니다.');
+			showModal('인원수 재입력','최대 인원수는 15명 입니다.');
 			$(this).val(1);
 			return;
 		}
@@ -88,8 +88,7 @@ $(document).ready(function() {
     // 로그아웃 버튼
     $('#log-out').click(function(e){
     	e.preventDefault();
-    	showConfirmModal(
-			'#confirmModal',
+    	showConfirmModal(			
 			'로그아웃',
 			'정말 로그아웃하시겠습니까?',
 			function () {

@@ -2,18 +2,17 @@ function replaceAllString(source, find, replacement){
 	return source.split( find ).join( replacement );
 }
 
-function showModal(modalId, headerTxt, bodyTxt){
-	const modalEl = document.querySelector(modalId);
-
+function showModal(headerTxt, bodyTxt){
+	const modalEl = document.querySelector('#Modal');
 	modalEl.querySelector('.modal-title').textContent = headerTxt;
 	modalEl.querySelector('.modal-body p').textContent = bodyTxt;
-
+	
 	const bsModal = new bootstrap.Modal(modalEl);
 	bsModal.show();
 }
 
-function showConfirmModal(modalId, headerTxt, bodyTxt, confirmCallback) {
-	const modalEl = document.querySelector(modalId);
+function showConfirmModal(headerTxt, bodyTxt, confirmCallback) {
+	const modalEl = document.querySelector('#confirmModal');
 	const modalTitle = modalEl.querySelector('.modal-title');
 	const modalBody = modalEl.querySelector('.modal-body p');
 	const confirmBtn = modalEl.querySelector('#confirmOkBtn');

@@ -24,8 +24,7 @@ public class ReservationStatusService implements ControlQuery {
 		ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
 		List<ReservationInfo> reservationList =  reservationManageDAO.getHostReservationInfo(hostId);
 		req.setAttribute("reservationList", reservationList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp");
-		dispatcher.forward(req, res);
+		req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp").forward(req, res);;
 	}
 	
 }

@@ -35,8 +35,7 @@ $(document).ready(function() {
     // 로그아웃 버튼
     $('#log-out').click(function(e){
     	e.preventDefault();
-    	showConfirmModal(
-			'#confirmModal',
+    	showConfirmModal(			
 			'로그아웃',
 			'정말 로그아웃하시겠습니까?',
 			function () {

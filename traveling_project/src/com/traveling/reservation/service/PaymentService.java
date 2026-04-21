@@ -23,6 +23,13 @@ public class PaymentService implements ControlQuery {
 	@Override
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String customerParam = req.getParameter("customer");
+		
+		System.out.println("전체 queryString = " + req.getQueryString());
+		System.out.println("customerParam = " + req.getParameter("customerParam"));
+		System.out.println("paymentKey = " + req.getParameter("paymentKey"));
+		System.out.println("orderId = " + req.getParameter("orderId"));
+		System.out.println("amount = " + req.getParameter("amount"));
+		
 		HttpSession session = req.getSession();
 		Map<String,String> reservationInfo = new HashMap<String,String>();
 		ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();

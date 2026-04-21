@@ -7,23 +7,6 @@ function collectFilterData() {
     minPrice: $(".range-min").val(),
     maxPrice: $(".range-max").val(),
     rating: $(".rating:checked").val(),
-    parking: $("#parking").is(":checked") ? $("#parking").val() : null,
-    wireless_internet: $("#wireless_internet").is(":checked") ? $("#wireless_internet").val() : null,
-    tub: $("#tub").is(":checked") ? $("#tub").val() : null,
-    washing_machine: $("#washing_machine").is(":checked") ? $("#washing_machine").val() : null,
-    drying_machine: $("#drying_machine").is(":checked") ? $("#drying_machine").val() : null,
-    air_conditioner: $("#air_conditioner").is(":checked") ? $("#air_conditioner").val() : null,
-    fan: $("#fan").is(":checked") ? $("#fan").val() : null,
-    heating_system: $("#heating_system").is(":checked") ? $("#heating_system").val() : null,
-    pool: $("#pool").is(":checked") ? $("#pool").val() : null,
-    arcade_game: $("#arcade_game").is(":checked") ? $("#arcade_game").val() : null,
-    gym: $("#gym").is(":checked") ? $("#gym").val() : null,
-    board_game: $("#board_game").is(":checked") ? $("#board_game").val() : null,
-    barbecue_tool: $("#barbecue_tool").is(":checked") ? $("#barbecue_tool").val() : null,
-    basic_cookware: $("#basic_cookware").is(":checked") ? $("#basic_cookware").val() : null,
-    breakfast: $("#breakfast").is(":checked") ? $("#breakfast").val() : null,
-    clean_service: $("#clean_service").is(":checked") ? $("#clean_service").val() : null,
-    luggage_storage: $("#luggage_storage").is(":checked") ? $("#luggage_storage").val() : null,
   };
 }
 

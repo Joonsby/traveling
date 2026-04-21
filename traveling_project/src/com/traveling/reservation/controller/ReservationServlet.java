@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.ControlQuery;
+import com.traveling.reservation.service.CreatePendingReservationService;
 import com.traveling.reservation.service.PaymentService;
 import com.traveling.reservation.service.ReservationAcceptService;
+import com.traveling.reservation.service.ReservationPageService;
 import com.traveling.reservation.service.ReservationRejectService;
 import com.traveling.reservation.service.ReservationStatusService;
 import com.traveling.reservation.service.ReservationToPlannerService;
@@ -25,10 +27,18 @@ public class ReservationServlet extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		String requestType=req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		System.out.println("requestType = " + requestType);
 		
 		try{
 			switch(requestType) {
+			case "goReservationPage":
+				inter = ReservationPageService.instance();
+				inter.dataCon(req, res);
+				break;
+			case "createPendingReservation":
+				inter = CreatePendingReservationService.instance();
+				inter.dataCon(req, res);
+				break;
 			case "getReservationStatus":
 				inter = ReservationStatusService.instance();
 				inter.dataCon(req, res);
