@@ -37,6 +37,9 @@ public class InsertHostInfoService implements ControlQuery{
 		int cnt = signupDAO.insertHostInfo(hostInfo);
 		if(cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
+		} else {
+			req.setAttribute("errorMessage", "회원가입 중 오류가 발생했습니다.");
+			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
 		}
 	}
 }

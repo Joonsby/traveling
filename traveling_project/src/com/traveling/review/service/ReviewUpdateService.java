@@ -94,7 +94,7 @@ public class ReviewUpdateService implements ControlQuery {
 		}
 		
 		ReviewManageDAO reviewManageDAO = ReviewManageDAO.instance();
-		int cnt = reviewManageDAO.updateReview(reviewInfo);
+		reviewManageDAO.updateReview(reviewInfo);
 	}
 	
 }

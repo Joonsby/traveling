@@ -51,21 +51,117 @@ section {
 	margin-left: 10px;
 }
 
-.reservation-detail {
+#reservation-detail {
 	margin: 90px auto;
 }
 
-/* 예약 상세 */
-.reservation-option {
-	margin: 16px 0px 0px 16px;
+#reservation-calendar{
+	display: flex;
+	flex-wrap : wrap;
+	justify-content : space-between;
 }
 
+#detail-title{
+	flex: 0 0 100%
+}
+
+.air-datepicker{
+	width:100%;
+	font-size:16px;
+}
+
+#date-range {
+  width: 100%;
+}
+
+#datepicker {
+  width: 100%;
+}
+
+#datepicker .air-datepicker {
+  width: 100%;
+  height:420px;
+  border: 1px solid #dcdfe4;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+#datepicker .air-datepicker-nav {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+#datepicker .air-datepicker-nav--title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#datepicker .air-datepicker-body--day-names {
+  margin-top: 12px;
+}
+
+#datepicker .air-datepicker-body--day-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f97316;
+}
+
+#datepicker .air-datepicker-body--cells.-days- {
+  grid-auto-rows: 50px;
+}
+
+#datepicker .air-datepicker-cell {
+  height: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+#datepicker .air-datepicker-cell.-selected- {
+  background-color: #38bdf8;
+  color: #fff;
+}
+
+#datepicker .air-datepicker-cell.-in-range- {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+#datepicker .air-datepicker-cell.-range-from-,
+#datepicker .air-datepicker-cell.-range-to- {
+  background-color: #38bdf8;
+  color: #fff;
+}
+
+#date-range,
+#calendar-container{
+	flex: 0 0 49%;
+}
+
+#calendar-container{
+	height: 420px;
+}
+
+/* 예약 상세 */
 .option-txt, #total-price-table {
 	margin: 10px 0;
 }
 
 .option-result {
 	margin-top: 30px;
+}
+
+#datepicker .air-datepicker-body--cells.-days- {
+  grid-auto-rows: 52px;
+}
+
+#datepicker .air-datepicker-cell {
+  height: 52px;
+  line-height: 52px;
+  font-size: 16px;
 }
 
 #total-price-table {
@@ -97,11 +193,6 @@ section {
 
 .detail-option li:last-child {
 	margin-top: 10px;
-}
-
-ul.detail-option {
-	float: left;
-    margin-left: 14px;
 }
 
 #reservation-next {
@@ -139,13 +230,34 @@ ul.detail-option {
 
 .option-txt {
 	display: flex;
+	justify-content: space-between;
+}
+
+.option-txt div{
+	display:flex;
+	width:50%;
+	font-size:24px;
+}
+
+.option-txt div:nth-child(2) {
+	justify-content:flex-end;
+}
+
+.option-txt div:nth-child(2) p {
+	font-weight: bold;
+	margin-bottom:0;
+}
+
+.option-people .option-txt{
+	justify-content:flex-start;
 }
 
 #leave-stay {
-	width: 150px;
+	width:50%;
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 6px;
+	margin-left: 10px;
 }
 
 #guest {
@@ -160,46 +272,8 @@ ul.detail-option {
 	justify-content: space-between;
 }
 
-/* 토스 */
-#toss-modal-wrap {
-	position: fixed;
-	z-index: 1000;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.6); /* 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占� */
-	display: none;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-}
-
-#toss-window {
-    position: relative;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    margin: 140px auto;
-    padding: 20px 20px 70px;
-    border: 1px solid #888;
-}
-
-#toss-window-btn {
-	display: flex;
-    justify-content: center;
-    position: relative;
-    top: -21%;
-}
-
-#toss-window-btn button {
-    padding: 7px 20px;
-    margin-left: 20px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background: #1aa3ff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+#btnReservation{
+	width:100%;
+	border:0;
+	height:40px;
 }

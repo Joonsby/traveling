@@ -326,5 +326,4 @@
         ORDER BY c.sort_order,
                  f.sort_order;
     </select>
-
 </mapper>

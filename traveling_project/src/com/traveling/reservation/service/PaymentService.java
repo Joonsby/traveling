@@ -24,12 +24,6 @@ public class PaymentService implements ControlQuery {
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String customerParam = req.getParameter("customer");
 		
-		System.out.println("전체 queryString = " + req.getQueryString());
-		System.out.println("customerParam = " + req.getParameter("customerParam"));
-		System.out.println("paymentKey = " + req.getParameter("paymentKey"));
-		System.out.println("orderId = " + req.getParameter("orderId"));
-		System.out.println("amount = " + req.getParameter("amount"));
-		
 		HttpSession session = req.getSession();
 		Map<String,String> reservationInfo = new HashMap<String,String>();
 		ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
@@ -57,12 +51,17 @@ public class PaymentService implements ControlQuery {
 		reservationInfo.put("roomName", roomInfo.get(0).getRoomName());
 		reservationInfo.put("stayName", roomInfo.get(0).getStayName());
 		
-		int cnt = reservationManageDAO.reservationInsert(reservationInfo);
+		int cnt = reservationManageDAO.insertReservation(reservationInfo);
+		req.setAttribute("reservationInfo", reservationInfo);
+		
 		if(cnt > 0) {
-			req.setAttribute("reservationInfo", reservationInfo);
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/reservation/pay_success.jsp");
-			dispatcher.forward(req, res);
+			req.setAttribute("message", "예약 상태가 정상적으로 변경되었습니다.");
+			req.getRequestDispatcher("/webPage/reservation/pay_success.jsp").forward(req, res);
+		} else {
+			req.setAttribute("errorMessage", "예약 상태 변경에 실패했습니다.");
+			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
 		}
+		
 		jsonReader.close();
 	}
 }

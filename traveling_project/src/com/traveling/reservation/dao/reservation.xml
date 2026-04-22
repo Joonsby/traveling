@@ -51,4 +51,13 @@
 		INSERT INTO reservation (user_id, room_id, check_in_date, check_out_date,check_in_time,check_out_time,people,price,payment_time,status)
 		VALUES (#{userId},#{roomId},#{checkInDate},#{checkOutDate},#{checkInTime},#{checkOutTime},#{people},#{price},now(),'예약 대기');
 	</insert>
+	
+	<insert id="insertReservationInfo" parameterType="com.traveling.stay.dto.StayInfo">
+    	
+    </insert>
+    
+    <select id="getRoomPrice" resultType="int" parameterType="int" >
+    	SELECT price FROM room_info WHERE room_id = #{roomId}
+    </select>
+    
 </mapper>

@@ -61,7 +61,7 @@ public class MyPageManageDAO {
 	public int totalMileage(String id) {
 		SqlSession s = f.openSession();
 		Integer cnt = s.selectOne("getTotalMileage",id);
-		int totalMileage = (cnt != null) ? cnt : 0; // 기본값 0 설정
+		int totalMileage = cnt != null ? cnt : 0; // 기본값 0 설정
 		s.close();
 		return totalMileage;
 	}

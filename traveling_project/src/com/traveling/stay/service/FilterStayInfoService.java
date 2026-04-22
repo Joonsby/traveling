@@ -21,7 +21,7 @@ public class FilterStayInfoService implements ControlQuery {
 	
 	@Override
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		StayManagementDAO stayManagementDAO =StayManagementDAO.instance();
+		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		double rating = 0.0;
 		int minPrice = 0;
 		int maxPrice = 500000;

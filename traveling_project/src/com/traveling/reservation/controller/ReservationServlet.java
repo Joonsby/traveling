@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.traveling.common.ControlQuery;
 import com.traveling.reservation.service.CreatePendingReservationService;
+import com.traveling.reservation.service.PaymentFailService;
 import com.traveling.reservation.service.PaymentService;
+import com.traveling.reservation.service.PaymentSuccessService;
 import com.traveling.reservation.service.ReservationAcceptService;
 import com.traveling.reservation.service.ReservationPageService;
 import com.traveling.reservation.service.ReservationRejectService;
@@ -39,6 +42,14 @@ public class ReservationServlet extends HttpServlet{
 				inter = CreatePendingReservationService.instance();
 				inter.dataCon(req, res);
 				break;
+			case "paymentSuccess":
+			    inter = PaymentSuccessService.instance();
+			    inter.dataCon(req, res);
+			    break;
+			case "paymentFail":
+			    inter = PaymentFailService.instance();
+			    inter.dataCon(req, res);
+			    break;
 			case "getReservationStatus":
 				inter = ReservationStatusService.instance();
 				inter.dataCon(req, res);

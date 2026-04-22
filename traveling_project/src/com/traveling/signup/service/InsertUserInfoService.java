@@ -36,6 +36,8 @@ public class InsertUserInfoService implements ControlQuery{
 		int cnt = signupDAO.insertUserInfo(userInfo);
 		if (cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
+		} else {
+			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
 		}
 	}
 		

@@ -1,5 +1,6 @@
 package com.traveling.reservation.dao;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.traveling.db.DBCon;
 import com.traveling.reservation.dto.ReservationInfo;
 import com.traveling.reservation.dto.RoomInfo;
-import com.traveling.review.dto.MyPageInfo;
+import com.traveling.signup.dto.UserInfo;
 
 public class ReservationManageDAO {
 	static ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
@@ -53,9 +54,42 @@ public class ReservationManageDAO {
 		return roomList;
 	}
 	
-	public int reservationInsert(Map<String, String> reservationInfo) {
+	// 예약 버튼 누르고 결제 로직 처리하기 전에 PENDING으로 insert 
+	public int insertReservation(Map<String, String> reservationInfo) {
 		SqlSession s = f.openSession();
 		int cnt = s.insert("insertReservationInfo",reservationInfo);
+		s.commit();
+		s.close();
+		return cnt;
+	}
+	
+	// 객실 가격 정보 가져오기
+	public int getRoomPrice(int roomId) {
+		SqlSession s = f.openSession();
+		int basePrice = s.selectOne("getRoomPrice",roomId);
+		s.close();
+		return basePrice;
+	}
+	
+	// 예약 고객 사용자 정보
+	public UserInfo getUserInfo(String userId){
+		SqlSession s = f.openSession();
+		UserInfo userInfo = s.selectOne("getUserInfo", userId);
+		s.close();
+		return userInfo;
+	}
+	
+	// 
+	public List<ReservationInfo> getByOrderId(String orderId) {
+		SqlSession s = f.openSession();
+		List<ReservationInfo> reservationList = s.selectList("getByOrderId",orderId);
+		s.close();
+		return reservationList;
+	}
+	
+	public int updatePaymentSuccess(Map<String, Object> updateMap) {
+		SqlSession s = f.openSession();
+		int cnt = s.update("updatePaymentSuccess",updateMap);
 		s.commit();
 		s.close();
 		return cnt;

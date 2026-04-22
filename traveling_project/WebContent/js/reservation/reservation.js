@@ -1,9 +1,36 @@
+
 const clientKey = 'test_ck_6BYq7GWPVvGE7XOgAaELrNE5vbo1';
 const customerKey  = 'TOAajBuGbbEdCLN9lqa3p';
 const tossPayments = TossPayments(clientKey);
 const payment = tossPayments.payment({ customerKey });
+const localeKo = {
+    days: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+    daysShort: ['일', '월', '화', '수', '목', '금', '토'],
+    daysMin: ['일', '월', '화', '수', '목', '금', '토'],
+    months: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    monthsShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    today: '오늘',
+    clear: '초기화',
+    dateFormat: 'yyyy-MM-dd',
+    timeFormat: 'HH:mm',
+    firstDay: 0
+};
 
 $(document).ready(function () {
+    const today = new Date();
+    const tomorrow = addDays(today, 1);
+    
+    $("#check-in-date").text(formatDate(today));
+    $("#check-out-date").text(formatDate(tomorrow));
+    
+    new AirDatepicker('#datepicker', {
+    	startDate: today,
+    	range: true,
+        inline: true,
+        locale: localeKo,
+        minDate: today
+    });
+	
     $("#btnReservation").click(function () {
     	const reservation = {
     		roomId: $("#room-id").val(),
@@ -38,7 +65,16 @@ $(document).ready(function () {
 						orderId: res.orderId,
 						orderName: res.orderName,
 						successUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentSuccess",
-						failUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentfail"
+						failUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentfail",
+				        customerName: res.customerName,
+				        customerEmail: res.customerEmail,
+				        customerMobilePhone: res.customerMobilePhone,
+				        card: {
+				            useEscrow: false,
+				            flowMode: "DEFAULT",
+				            useCardPoint: false,
+				            useAppCardOnly: false
+				        }
     			});
     		}
     	});
@@ -57,6 +93,19 @@ $(document).ready(function () {
 //        requestPayment(customer);
     });
 });
+
+function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function addDays(date, days) {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() + days);
+    return newDate;
+}
 
 function requestPayment(customer) {
     // 결제를 요청하기 전에 orderId, amount를 서버에 저장하세요.

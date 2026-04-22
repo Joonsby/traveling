@@ -74,6 +74,9 @@ public class ReviewInsertService implements ControlQuery{
 			int cnt = reviewManageDAO.insertReviewInfo(reviewInfo);
 			if(cnt > 0) {
 				res.sendRedirect("/webPage/login/my_info.jsp");
+			} else {
+				req.setAttribute("errorMessage", "리뷰 수정 중 오류가 발생했습니다.");
+				req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
