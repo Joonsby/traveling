@@ -1,4 +1,3 @@
-
 const clientKey = 'test_ck_6BYq7GWPVvGE7XOgAaELrNE5vbo1';
 const customerKey  = 'TOAajBuGbbEdCLN9lqa3p';
 const tossPayments = TossPayments(clientKey);
@@ -15,8 +14,19 @@ const localeKo = {
     timeFormat: 'HH:mm',
     firstDay: 0
 };
+let currentDay 			= 1;
+let currentPeople 		= 0;
+let totalRoomPrice 		= 0;
+let totalPeoplePrice 	= 0;
+let finalPrice 			= 0;
+let roomPrice 			= 0;
+let additionalPeople 	= 0;
+let standardPeople 		= 0;
 
 $(document).ready(function () {
+	currentPeople = Number($('#standard-people').val());
+	roomPrice = Number($('#room-price').val());
+	standardPeople = Number($('#standard-people').val());
     const today = new Date();
     const tomorrow = addDays(today, 1);
     
@@ -28,8 +38,33 @@ $(document).ready(function () {
     	range: true,
         inline: true,
         locale: localeKo,
-        minDate: today
+        minDate: today,
+        onSelect({date, formattedDate}){
+            // range 선택일 경우 배열로 들어옴
+        	if(formattedDate.length == 2){
+        		currentDay = (new Date(formattedDate[1]) - new Date(formattedDate[0])) / (1000 * 60 * 60 * 24);
+        		$("#check-in-date").text(formattedDate[0]);
+        	    $("#check-out-date").text(formattedDate[1]);
+        	    $('#leave-stay').text(currentDay + '박 ' + (Number(currentDay) + 1 + "일"));
+        	    calRoomPrice();
+        	}
+        },
+        selectedDates: [today,tomorrow]
     });
+    
+    $('.people-change').click((e) => {
+    	if(e.target.id.includes("minus")){
+    		if(Number($('#guest-txt').text()) <= standardPeople) return; // 현재 인원이 기준 인원보다 적거나 같으면 return
+    		$('#guest-txt').text(--currentPeople);
+    		calRoomPrice();
+    	}
+    	if(e.target.id.includes("plus")){
+    		if(Number($('#guest-txt').text()) >= Number($('#maximum-people').val())) return; // 현재 인원이 최대 인원보다 크거나 같으면 return
+    		$('#guest-txt').text(++currentPeople);
+    		calRoomPrice();
+    	}
+    	
+    })
 	
     $("#btnReservation").click(function () {
     	const reservation = {
@@ -92,6 +127,7 @@ $(document).ready(function () {
         };*/
 //        requestPayment(customer);
     });
+    calRoomPrice();
 });
 
 function formatDate(date) {
@@ -133,3 +169,13 @@ function requestPayment(customer) {
       },
     });
   }
+
+function calRoomPrice(){
+	totalRoomPrice = currentDay * roomPrice; // 객실 요금
+	additionalPeople = currentPeople - standardPeople // 인원추가 요금
+	totalPeoplePrice = additionalPeople * 15000; // 총 요금
+	finalPrice = totalRoomPrice + totalPeoplePrice;
+    $('#total_room_price').text('￦' + totalRoomPrice.toLocaleString());
+    $('#total_pers_price').text('￦' + totalPeoplePrice.toLocaleString());
+    $('#final-price').text('￦' + finalPrice.toLocaleString());
+}

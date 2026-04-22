@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/header.jsp"%>
-<%@ page import="com.traveling.reservation.dao.ReservationManageDAO" %>
-<%
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,57 +61,62 @@
 				<div id="datepicker" class="cal"></div>
 			</div>
 			<div id="calendar-container">
-				<ul class="detail-option">
-					<li class="option-days">
-						<div class="option-txt" id="travel-days">
-							<div>
-								<strong>숙박 기간 : </strong><p id="leave-stay"><b id="leave-stay-txt"></b>1박 2일</p>
-							</div>
-							<div>
-								<p id="check-in-date">체크인</p> ~ <p id="check-out-date">체크아웃</p>
-								<input type="hidden" id="check-in-time" value="${roomList[0].check_in_time}">
-								<input type="hidden" id="check-out-time" value="${roomList[0].check_out_time}">
-							</div>
+				<div class="option-days">
+					<div class="option-txt" id="travel-days">
+						<div>
+							<strong>숙박 기간 : </strong>
+							<p id="leave-stay">1박 2일</p>
 						</div>
-					</li>
-					<li class="option-people">
-						<div class="option-txt">
-							<strong>이용인원 : </strong>
+						<div>
+							<p id="check-in-date">체크인</p> ~ <p id="check-out-date">체크아웃</p>
+						</div>
+					</div>
+				</div>
+				<div class="option-people">
+					<div class="option-txt">
+						<div>
+							<strong>이용 인원 : </strong>
+						</div>
+						<div>
 							<button type="button" class="people-change" id="people-minus">-</button>
 							<span id="guest"><b id="guest-txt">${roomList[0].standard_people}</b>명</span>
 							<button type="button" class="people-change" id="people-plus">+</button>
 						</div>
-						<input type="hidden" id="standard-people" value="${roomList[0].standard_people}">
-						<input type="hidden" id="maximum-people" value="${roomList[0].maximum_people}">
-					</li>
-					<li class="option-result">
-						<strong>요금안내</strong>
-						<input type="hidden" id="room-price" value="${roomList[0].price}">
-						<table border="1" id="total-price-table">
-							<tbody>
-								<tr id="default-price">
-									<th>객실 요금</th>
-									<td id="total_room_price">￦0</td>
-								</tr>
-								<tr id="add-people-price">
-									<th>인원추가 요금</th>
-									<td id="total_pers_price">￦0</td>
-								</tr>
-								<tr id="total-price">
-									<th>총 요금</th>
-									<td class="total" id="final-price">￦0</td>
-								</tr>
-							</tbody>
-						</table>
-						<button type="button" id="btnReservation">예약하기</button>
-						<input type="hidden" id="customer-id" value="${userId}">
-						<input type="hidden" id="room-id" value="${roomList[0].room_id}">
-					</li>
-				</ul>
+					</div>
+				</div>
+				<div class="option-result">
+					<strong>요금안내</strong>
+					<table border="1" id="total-price-table">
+						<tbody>
+							<tr id="default-price">
+								<th>객실 요금</th>
+								<td id="total_room_price">￦0</td>
+							</tr>
+							<tr id="add-people-price">
+								<th>인원추가 요금</th>
+								<td id="total_pers_price">￦0</td>
+							</tr>
+							<tr id="total-price">
+								<th>총 요금</th>
+								<td class="total" id="final-price">￦0</td>
+							</tr>
+						</tbody>
+					</table>
+					<button type="button" id="btnReservation">예약하기</button>
+				</div>
 			</div>
 		</div>
 	</section>
 	<div class="go_top"></div>
 	<%@ include file='../footer/footer.jsp'%>
+	<form id="reservation-form">
+		<input type="hidden" id="room-id" value="${roomList[0].room_id}">
+		<input type="hidden" id="customer-id" value="${userId}">
+		<input type="hidden" id="room-price" value="${roomList[0].price}">
+		<input type="hidden" id="check-in-time" value="${roomList[0].check_in_time}">
+		<input type="hidden" id="check-out-time" value="${roomList[0].check_out_time}">
+		<input type="hidden" id="standard-people" value="${roomList[0].standard_people}">
+		<input type="hidden" id="maximum-people" value="${roomList[0].maximum_people}">
+	</form>
 </body>
 </html>

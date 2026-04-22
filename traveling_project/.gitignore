@@ -1,1 +1,16 @@
-/build/
+# Eclipse
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+bin/
+target/
+build/
+
+# Logs
+*.log

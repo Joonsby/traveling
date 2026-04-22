@@ -80,7 +80,7 @@ section {
 
 #datepicker .air-datepicker {
   width: 100%;
-  height:420px;
+  height:474px;
   border: 1px solid #dcdfe4;
   border-radius: 14px;
   padding: 16px;
@@ -110,14 +110,7 @@ section {
 }
 
 #datepicker .air-datepicker-body--cells.-days- {
-  grid-auto-rows: 50px;
-}
-
-#datepicker .air-datepicker-cell {
-  height: 50px;
-  line-height: 50px;
-  font-size: 15px;
-  border-radius: 10px;
+  grid-auto-rows: 70px;
 }
 
 #datepicker .air-datepicker-cell.-selected- {
@@ -142,7 +135,7 @@ section {
 }
 
 #calendar-container{
-	height: 420px;
+	height: 474px;
 }
 
 /* 예약 상세 */
@@ -150,23 +143,21 @@ section {
 	margin: 10px 0;
 }
 
-.option-result {
-	margin-top: 30px;
-}
-
-#datepicker .air-datepicker-body--cells.-days- {
-  grid-auto-rows: 52px;
+#datepicker .air-datepicker-body--cells.-days-,
+#datepicker .air-datepicker-body--cells.-months-,
+#datepicker .air-datepicker-body--cells.-years- {
+  grid-auto-rows: 60px;
 }
 
 #datepicker .air-datepicker-cell {
-  height: 52px;
-  line-height: 52px;
-  font-size: 16px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
 }
 
 #total-price-table {
 	border: 1px solid #e1e1e1;
-	width: 410px;
+	width: 100%;
 	background: #fff;
 	border-collapse: collapse;
 }
@@ -182,6 +173,7 @@ section {
 	font-weight: bold;
 	background: #f7f7f7;
 	color: #5f5f5f;
+	border:1px solid #e1e1e1;
 }
 
 #total-price-table tbody td {
@@ -189,6 +181,7 @@ section {
 	padding: 5% 0;
 	font-size: 14px;
 	color: #7d7d7d;
+	border:1px solid #e1e1e1;
 }
 
 .detail-option li:last-child {
@@ -215,12 +208,13 @@ section {
 	color: #5F5F5F;
 }
 
-.option-result {
-	font-weight: bold;
+.option-result strong{
+	font-size:20px;
+	padding:10px;
 }
 
 .people-change {
-	width: 30px;
+	width: 40px;
 	border-radius: 100%;
 	font-size: 20px;
 	border: 1px solid #ccc;
@@ -231,12 +225,14 @@ section {
 .option-txt {
 	display: flex;
 	justify-content: space-between;
+	padding: 10px;
+	border-bottom:1px solid #ccc
 }
 
 .option-txt div{
 	display:flex;
 	width:50%;
-	font-size:24px;
+	font-size:20px;
 }
 
 .option-txt div:nth-child(2) {
@@ -252,12 +248,18 @@ section {
 	justify-content:flex-start;
 }
 
+.option-people .option-txt div button:first-child,
+.option-people .option-txt div span{
+	margin-right: 10px
+}
+
 #leave-stay {
 	width:50%;
 	text-align: center;
 	border: 1px solid #ccc;
 	border-radius: 6px;
 	margin-left: 10px;
+	margin-bottom : 0;	
 }
 
 #guest {
@@ -276,4 +278,11 @@ section {
 	width:100%;
 	border:0;
 	height:40px;
+	background:#1aa3ff;
+	border-radius:10px;
+	color:#fff;
+}
+
+#btnReservation:hover{
+	background:#000;
 }
