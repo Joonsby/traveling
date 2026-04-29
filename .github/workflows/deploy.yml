@@ -35,18 +35,19 @@ jobs:
           mkdir -p build/WEB-INF/classes
           mkdir -p build/WEB-INF/lib
 
-          # WebContent 기준 Dynamic Web Project 구조
-          cp -r WebContent/* build/
+          # Dynamic Web Project 구조 복사
+          cp -r traveling_project/WebContent/* build/
+
+          # Java 소스 목록 생성
+          find traveling_project/src -name "*.java" > sources.txt
 
           # Java 소스 컴파일
-          find src -name "*.java" > sources.txt
-
           javac -encoding UTF-8 \
-            -cp "WebContent/WEB-INF/lib/*" \
+            -cp "traveling_project/WebContent/WEB-INF/lib/*" \
             -d build/WEB-INF/classes \
             @sources.txt
 
-          # WAR 생성
+          # ROOT.war 생성
           cd build
           jar -cvf ../ROOT.war .
 
