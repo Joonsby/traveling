@@ -17,10 +17,11 @@ public class DBCon { // DB 연결옹 클래스
 
 	static {
 		try {
-			String resource = "com/traveling/db/dbcon.xml"; // xml 파일의 경로가 들어감 (패키지도 적어줘야 함)
+			String env = System.getProperty("env","local");
+			String resource = "mybatis/dbcon.xml"; // xml 파일의 경로가 들어감 (패키지도 적어줘야 함)
 			Reader reader = Resources.getResourceAsReader(resource); // resource(xml 파일)를 읽어줌
-			SqlSessionFactoryBuilder factory = new SqlSessionFactoryBuilder();
-			sqlSession = factory.build(reader);
+			SqlSessionFactoryBuilder factory = new SqlSessionFactoryBuilder();			
+			sqlSession = factory.build(reader, env);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
