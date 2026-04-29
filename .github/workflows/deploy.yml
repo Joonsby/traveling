@@ -1,10 +1,12 @@
 name: Deploy Dynamic Web Project
 
 on:
-  push:
-    branches:
-      - dev
-      - main
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: '배포할 브랜치 선택 (dev / main)'
+        required: true
+        default: 'dev'
 
 jobs:
   deploy:
@@ -13,6 +15,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up JDK 8
         uses: actions/setup-java@v4
@@ -22,10 +26,10 @@ jobs:
 
       - name: Set deploy environment
         run: |
-          if [ "${GITHUB_REF_NAME}" = "dev" ]; then
+          if [ "${{ github.event.inputs.branch }}" = "dev" ]; then
             echo "DEPLOY_PATH=/home/ubuntu/tomcat-dev/webapps" >> $GITHUB_ENV
             echo "TOMCAT_SERVICE=tomcat-dev" >> $GITHUB_ENV
-          elif [ "${GITHUB_REF_NAME}" = "main" ]; then
+          elif [ "${{ github.event.inputs.branch }}" = "main" ]; then
             echo "DEPLOY_PATH=/home/ubuntu/tomcat-prd/webapps" >> $GITHUB_ENV
             echo "TOMCAT_SERVICE=tomcat-prd" >> $GITHUB_ENV
           fi
@@ -35,19 +39,15 @@ jobs:
           mkdir -p build/WEB-INF/classes
           mkdir -p build/WEB-INF/lib
 
-          # Dynamic Web Project 구조 복사
           cp -r traveling_project/WebContent/* build/
 
-          # Java 소스 목록 생성
           find traveling_project/src -name "*.java" > sources.txt
 
-          # Java 소스 컴파일
           javac -encoding UTF-8 \
             -cp "traveling_project/WebContent/WEB-INF/lib/*" \
             -d build/WEB-INF/classes \
             @sources.txt
 
-          # ROOT.war 생성
           cd build
           jar -cvf ../ROOT.war .
 
