@@ -279,15 +279,15 @@
                ri.room_id AS room_id,
                ri.price AS price,
                ri.image1 AS image1,
-               ri.image1 AS image2,
-               ri.image1 AS image3,
-               ri.image1 AS image4,
-               ri.image1 AS image5,
-               ri.image1 AS image6,
-               ri.image1 AS image7,
-               ri.image1 AS image8,
-               ri.image1 AS image9,
-               ri.image1 AS image10
+               ri.image2 AS image2,
+               ri.image3 AS image3,
+               ri.image4 AS image4,
+               ri.image5 AS image5,
+               ri.image6 AS image6,
+               ri.image7 AS image7,
+               ri.image8 AS image8,
+               ri.image9 AS image9,
+               ri.image10 AS image10
         FROM room_info ri
         JOIN stay_info si
           ON ri.stay_id = si.stay_id

@@ -31,7 +31,6 @@ public class HostLoginService implements ControlQuery {
 		if(cnt > 0) {
 			List<HostInfo> hostList = loginDAO.getHostInfo(userInfo);
 			session.setAttribute("host_id", hostList.get(0).getHost_id());
-			session.setAttribute("pw", hostList.get(0).getPw());
 			session.setAttribute("name", hostList.get(0).getName());
 			res.sendRedirect(homePath + "/webPage/host/host_index.jsp");
 		} else {

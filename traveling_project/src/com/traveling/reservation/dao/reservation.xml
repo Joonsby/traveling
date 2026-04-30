@@ -42,9 +42,9 @@
 	
 	<select id="getRoomInfo2" parameterType="map" resultType="com.traveling.reservation.dto.ReservationInfo">
 		SELECT a.name name, b.stay_name stayName, c.room_name roomName
-		FROM user_info a, stay_info b
-		JOIN room_info c ON ri.stay_id = b.stay_id
-		WHERE a.user_id = #{userId} AND c.room_id = #{roomId}
+		FROM user_info u, stay_info s
+		JOIN room_info ri ON ri.stay_id = s.stay_id
+		WHERE u.user_id = #{userId} AND ri.room_id = #{roomId}
 	</select>
 	
 	<insert id="getMyPageInfo" parameterType="map">

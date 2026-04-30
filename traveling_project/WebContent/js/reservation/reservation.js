@@ -71,7 +71,7 @@ $(document).ready(function () {
     		roomId: $("#room-id").val(),
     		checkInDate: $("#check-in-date").text(),
             checkOutDate: $("#check-out-date").text(),
-            people: $("#guest-txt").val()
+            people: $("#guest-txt").text()
     	}
     	
     	// 1. 예약 초안 생성
@@ -100,7 +100,7 @@ $(document).ready(function () {
 						orderId: res.orderId,
 						orderName: res.orderName,
 						successUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentSuccess",
-						failUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentfail",
+						failUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentFail",
 				        customerName: res.customerName,
 				        customerEmail: res.customerEmail,
 				        customerMobilePhone: res.customerMobilePhone,
