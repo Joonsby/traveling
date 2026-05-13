@@ -9,12 +9,12 @@ import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.common.ParsingCommon;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.signup.dto.UserInfo;
 
-public class CreatePendingReservationService implements ControlQuery{
+public class CreatePendingReservationService implements DataControl{
 	static CreatePendingReservationService createPendingReservationService = new CreatePendingReservationService(); // 싱글톤 방식으로 객체 생성
 	public static CreatePendingReservationService instance() {
 		return createPendingReservationService;

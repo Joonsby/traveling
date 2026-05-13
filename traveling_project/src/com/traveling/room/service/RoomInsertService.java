@@ -8,11 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.room.dao.RoomManagementDAO;
 import com.traveling.room.dto.RoomInfo;
 
-public class RoomInsertService implements ControlQuery {
+public class RoomInsertService implements DataControl {
 	static RoomInsertService roomInsertService = new RoomInsertService();
 
 	public static RoomInsertService instance() {

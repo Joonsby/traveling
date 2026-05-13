@@ -4,7 +4,7 @@ $(document).ready(function() {
       var tr = $(this).closest('tr');
       var reservationId = tr.find('input[type="hidden"]').val();
       if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 확정하시겠습니까?")){          
-          location.href="/webPage/reservation/ReservationServlet?requestType=reservationUpdate&status=예약 확정&reservationId=" + reservationId
+          location.href="/reservation/accept?status=예약 확정&reservationId=" + reservationId
       }
     });
     
@@ -12,7 +12,7 @@ $(document).ready(function() {
         var tr = $(this).closest('tr');
         var reservationId = tr.find('input[type="hidden"]').val();
         if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 거부하시겠습니까?")){
-        	location.href="/webPage/reservation/ReservationServlet?requestType=reservationUpdate&status=예약 거부&reservationId=" + reservationId
+        	location.href="/reservation/accept?status=예약 거부&reservationId=" + reservationId
         }
       });
 

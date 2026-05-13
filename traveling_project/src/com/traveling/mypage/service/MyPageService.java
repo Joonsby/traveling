@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.mypage.dao.MyPageManageDAO;
 import com.traveling.mypage.dto.MyPageInfo;
 
-public class MyPageService implements ControlQuery {
+public class MyPageService implements DataControl {
 	static MyPageService mypageService = new MyPageService();
 	public static MyPageService instance() {
 		return mypageService;

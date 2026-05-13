@@ -19,10 +19,10 @@
     <main>
 	  <c:choose>
 	      <c:when test="${param.requestType eq 'user'}">
-	          <c:set var="actionUrl" value="/webPage/signup/SignupServlet?requestType=insertUserInfo" />
+	          <c:set var="actionUrl" value="/signup/user-create" />
 	      </c:when>
 	      <c:when test="${param.requestType eq 'host'}">
-	          <c:set var="actionUrl" value="/webPage/signup/SignupServlet?requestType=insertHostInfo" />
+	          <c:set var="actionUrl" value="/signup/host-create" />
 	      </c:when>
 	  </c:choose>
 	  <input type="hidden" id="requestType" name="requestType" value="${param.requestType}">

@@ -3,76 +3,69 @@ package com.traveling.stay.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.BaseController;
+import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.stay.service.CheckInListService;
 import com.traveling.stay.service.CheckOutListService;
 import com.traveling.stay.service.DetailStayInfoService;
 import com.traveling.stay.service.FilterStayInfoService;
 import com.traveling.stay.service.InsertStayInfoService;
-import com.traveling.stay.service.PopStayInfoService;
+import com.traveling.stay.service.StayRankListService;
 import com.traveling.stay.service.StayCntService;
 import com.traveling.stay.service.StayInfoService;
-import com.traveling.stay.service.StayMainService;
 
-public class StayServlet extends HttpServlet {
+public class StayController extends BaseController {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ControlQuery inter = null;
-
+		DataControl inter = null;
 		req.setCharacterEncoding("UTF-8");
-		String requestType = req.getParameter("requestType");
-		
-        if (requestType == null || requestType.trim().equals("")) {
-            requestType = "main";
-        }
-		
-		System.out.println("requestType = " + requestType);
+		String action = getAction(req, "/stay/");
+		printRequestLog(req,"StayController",action);
 		try {
-			switch (requestType) {
-			case "main":
-				inter = StayMainService.instance();
-				break;
-			case "getCheckInList":
+			switch (action) {
+			case "check-in-list":
 				inter = CheckInListService.instance();
 				break;
-			case "getCheckOutList":
+			case "check-out-list":
 				inter = CheckOutListService.instance();
 				break;
-			case "insertStayInfo":
+			case "create":
 				inter = InsertStayInfoService.instance();
 				break;
-			case "getStayInfo":
+			case "list":
 				inter = StayInfoService.instance();
 				break;
-			case "getStayCnt":
+			case "count":
 				inter = StayCntService.instance();
 				break;
-			case "getPopStayInfo":
-				inter = PopStayInfoService.instance();
+			case "popular":
+			case "top-rated":
+			case "low-price":
+				inter = StayRankListService.instance();
 				break;
-			case "getDetailStayInfo":
+			case "detail":
 				inter = DetailStayInfoService.instance();
 				break;
-			case "getFilterStayInfo":
+			case "filter":
 				inter = FilterStayInfoService.instance();
 				break;
-            default:
-                inter = StayMainService.instance();
-                break;
+			default:
+			    ViewUtil.forwardError(req, res, "잘못된 요청입니다.");
+			    return;
 			}
             if (inter != null) {
                 inter.dataCon(req, res);
             }
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new ServletException("StayServlet 처리 중 오류 발생", e);
+			printFailLog(e);
+			throw new ServletException("StayController 처리 중 오류 발생", e);
 		}
 	}
 

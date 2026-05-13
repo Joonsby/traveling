@@ -3,10 +3,10 @@ package com.traveling.signup.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.signup.dao.SignupDAO;
 
-public class HostEmailCheckService implements ControlQuery {
+public class HostEmailCheckService implements DataControl {
 	static HostEmailCheckService hostEmailCheckService = new HostEmailCheckService(); // 싱글톤 방식으로 객체 생성
 	public static HostEmailCheckService instance() {
 		return hostEmailCheckService;

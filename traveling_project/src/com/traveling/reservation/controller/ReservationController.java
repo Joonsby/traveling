@@ -3,12 +3,12 @@ package com.traveling.reservation.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.BaseController;
+import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.reservation.service.CreatePendingReservationService;
 import com.traveling.reservation.service.PaymentFailService;
 import com.traveling.reservation.service.PaymentService;
@@ -20,63 +20,58 @@ import com.traveling.reservation.service.ReservationStatusService;
 import com.traveling.reservation.service.ReservationToPlannerService;
 import com.traveling.reservation.service.RoomInfoService;
 
-public class ReservationServlet extends HttpServlet{
+public class ReservationController extends BaseController{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ControlQuery inter = null;
-		
+		DataControl inter = null;
 		req.setCharacterEncoding("UTF-8");
-		String requestType=req.getParameter("requestType");
-		System.out.println("requestType = " + requestType);
-		
+		String action = getAction(req, "/reservation/");
+		printRequestLog(req,"ReservationController",action);
 		try{
-			switch(requestType) {
-			case "goReservationPage":
+			switch(action) {
+			case "page":
 				inter = ReservationPageService.instance();
-				inter.dataCon(req, res);
 				break;
-			case "createPendingReservation":
+			case "pending-create":
 				inter = CreatePendingReservationService.instance();
-				inter.dataCon(req, res);
 				break;
-			case "paymentSuccess":
+			case "payment-success":
 			    inter = PaymentSuccessService.instance();
-			    inter.dataCon(req, res);
 			    break;
-			case "paymentFail":
+			case "payment-fail":
 			    inter = PaymentFailService.instance();
-			    inter.dataCon(req, res);
 			    break;
-			case "getReservationStatus":
+			case "status":
 				inter = ReservationStatusService.instance();
-				inter.dataCon(req, res);
 				break;
-			case "reservationUpdate":
+			case "accept":
 				inter = ReservationAcceptService.instance();
-				inter.dataCon(req, res);
 				break;
-			case "reservationReject":
+			case "reject":
 				inter = ReservationRejectService.instance();
-				inter.dataCon(req, res);
 				break;
-			case "reservationToPlanner":
+			case "planner":
 				inter = ReservationToPlannerService.instance();
-				inter.dataCon(req, res);
 				break;
-			case "getRoomInfo":
+			case "room-info":
 				inter = RoomInfoService.instance();
-				inter.dataCon(req, res);
 				break;
 			case "payment":
 				inter = PaymentService.instance();
-				inter.dataCon(req, res);
 				break;
+			default:
+			    ViewUtil.forwardError(req, res, "잘못된 요청입니다.");
+			    return;
 			}
+            if (inter != null) {
+                inter.dataCon(req, res);
+            }
 		} catch(Exception e) {
-			e.printStackTrace();
+			printFailLog(e);
+			throw new ServletException("ReservationController 처리 중 오류 발생", e);
 		}
 	}
 	

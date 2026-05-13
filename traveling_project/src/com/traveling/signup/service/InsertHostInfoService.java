@@ -3,11 +3,12 @@ package com.traveling.signup.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.signup.dao.SignupDAO;
 import com.traveling.signup.dto.HostInfo;
 
-public class InsertHostInfoService implements ControlQuery{
+public class InsertHostInfoService implements DataControl{
 	static InsertHostInfoService insertHostInfoService = new InsertHostInfoService(); // 싱글톤 방식으로 객체 생성
 	public static InsertHostInfoService instance() {
 		return insertHostInfoService;
@@ -38,8 +39,7 @@ public class InsertHostInfoService implements ControlQuery{
 		if(cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
 		} else {
-			req.setAttribute("errorMessage", "회원가입 중 오류가 발생했습니다.");
-			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+			ViewUtil.forwardError(req,res,"회원가입 중 오류가 발생했습니다.");
 		}
 	}
 }

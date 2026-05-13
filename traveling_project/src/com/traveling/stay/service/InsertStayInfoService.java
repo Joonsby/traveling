@@ -8,11 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.StayInfo;
 
-public class InsertStayInfoService implements ControlQuery  {
+public class InsertStayInfoService implements DataControl  {
 	
 	static InsertStayInfoService insertStayInfoService = new InsertStayInfoService(); // 싱글톤 방식으로 객체 생성
 	public static InsertStayInfoService instance() {

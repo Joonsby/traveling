@@ -3,42 +3,44 @@ package com.traveling.login.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.BaseController;
+import com.traveling.common.DataControl;
 import com.traveling.login.service.HostLoginService;
 import com.traveling.login.service.UserLogOutService;
 import com.traveling.login.service.UserLoginService;
 
-public class LoginServlet extends HttpServlet{
+public class LoginController extends BaseController{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		ControlQuery inter = null;
-	
+		// TODO Auto-generated method stub
+		DataControl inter = null;
 		req.setCharacterEncoding("UTF-8");
-		String requestType = req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		String action = getAction(req, "/login/");
+		printRequestLog(req,"LoginController",action);
 		try {
-			switch(requestType) {
-			case "getUserInfo":
+			switch(action) {
+			case "user":
 				inter = UserLoginService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "getHostInfo":
+			case "host":
 				inter = HostLoginService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "logOut":
+			case "logout":
 				inter = UserLogOutService.instance();
 				inter.dataCon(req, res);
 				break;
+			default:
+				forwardError(req,res,"잘못된 요청입니다.");
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
+			printFailLog(e);
+			throw new ServletException("LoginController 처리 중 오류 발생", e);
 		}
 	}
 	

@@ -5,13 +5,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.traveling.common.ControlQuery;
-import com.traveling.common.ParsingCommon;
+import com.traveling.common.DataControl;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.RoomInfo;
 
-public class ReservationPageService implements ControlQuery{
+public class ReservationPageService implements DataControl{
 	static ReservationPageService reservationPageService = new ReservationPageService(); // 싱글톤 방식으로 객체 생성
 	public static ReservationPageService instance() {
 		return reservationPageService;

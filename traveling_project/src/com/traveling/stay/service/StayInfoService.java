@@ -6,11 +6,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.StayInfo;
 
-public class StayInfoService implements ControlQuery  {
+public class StayInfoService implements DataControl  {
 	
 	static StayInfoService stayInfoService = new StayInfoService(); // 싱글톤 방식으로 객체 생성
 	public static StayInfoService instance() {
@@ -21,7 +21,7 @@ public class StayInfoService implements ControlQuery  {
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
-		String host_id = req.getParameter("host_id");
+		String host_id = (String) req.getSession().getAttribute("host_id");
 		List<StayInfo> stayInfo =  stayManagementDAO.selectStayInfo(host_id);
 		req.setAttribute("stayInfo", stayInfo);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_info.jsp");

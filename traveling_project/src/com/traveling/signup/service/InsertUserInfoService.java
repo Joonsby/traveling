@@ -3,11 +3,12 @@ package com.traveling.signup.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.signup.dao.SignupDAO;
 import com.traveling.signup.dto.UserInfo;
 
-public class InsertUserInfoService implements ControlQuery{
+public class InsertUserInfoService implements DataControl{
 	static InsertUserInfoService insertUserInfoService = new InsertUserInfoService(); // 싱글톤 방식으로 객체 생성
 	public static InsertUserInfoService instance() {
 		return insertUserInfoService;
@@ -37,7 +38,7 @@ public class InsertUserInfoService implements ControlQuery{
 		if (cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
 		} else {
-			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+			ViewUtil.forwardError(req,res,"잘못된 요청입니다.");
 		}
 	}
 		

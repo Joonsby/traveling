@@ -7,11 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.review.dao.ReviewManageDAO;
 import com.traveling.review.dto.ReviewInfo;
 
-public class ReviewInsertService implements ControlQuery{
+public class ReviewInsertService implements DataControl{
 	static ReviewInsertService reviewInsertService = new ReviewInsertService(); // 싱글톤 방식으로 객체 생성
 	public static ReviewInsertService instance() {
 		return reviewInsertService;
@@ -75,8 +76,7 @@ public class ReviewInsertService implements ControlQuery{
 			if(cnt > 0) {
 				res.sendRedirect("/webPage/login/my_info.jsp");
 			} else {
-				req.setAttribute("errorMessage", "리뷰 수정 중 오류가 발생했습니다.");
-				req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+				ViewUtil.forwardError(req,res,"리뷰 수정 중 오류가 발생했습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

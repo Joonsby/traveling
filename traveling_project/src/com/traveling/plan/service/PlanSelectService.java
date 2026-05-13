@@ -6,11 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.plan.dao.PlanManageDAO;
 import com.traveling.plan.dto.DetailPlan;
 
-public class PlanSelectService implements ControlQuery {
+public class PlanSelectService implements DataControl {
 	static PlanSelectService planSelectService = new PlanSelectService();
 
 	public static PlanSelectService instance() {

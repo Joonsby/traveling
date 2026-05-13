@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.login.dao.LoginDAO;
 import com.traveling.login.dto.HostInfo;
 import com.traveling.login.dto.UserInfo;
 
-public class HostLoginService implements ControlQuery {
+public class HostLoginService implements DataControl {
 
 	static HostLoginService hostLoginService = new HostLoginService(); // 싱글톤 방식으로 객체 생성
 	public static HostLoginService instance() {
@@ -31,7 +31,6 @@ public class HostLoginService implements ControlQuery {
 		if(cnt > 0) {
 			List<HostInfo> hostList = loginDAO.getHostInfo(userInfo);
 			session.setAttribute("host_id", hostList.get(0).getHost_id());
-			session.setAttribute("pw", hostList.get(0).getPw());
 			session.setAttribute("name", hostList.get(0).getName());
 			res.sendRedirect(homePath + "/webPage/host/host_index.jsp");
 		} else {

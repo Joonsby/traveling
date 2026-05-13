@@ -3,9 +3,9 @@ package com.traveling.reservation.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 
-public class RoomInfoService implements ControlQuery{
+public class RoomInfoService implements DataControl{
 	static RoomInfoService roomInfoService = new RoomInfoService();
 	public static RoomInfoService instance() {
 		return roomInfoService;

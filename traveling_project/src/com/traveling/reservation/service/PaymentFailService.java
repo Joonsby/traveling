@@ -3,9 +3,9 @@ package com.traveling.reservation.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 
-public class PaymentFailService implements ControlQuery{
+public class PaymentFailService implements DataControl{
 	
 	static PaymentFailService paymentFailService = new PaymentFailService();
 	public static PaymentFailService instance() {

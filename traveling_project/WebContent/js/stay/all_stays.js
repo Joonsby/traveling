@@ -13,7 +13,7 @@ function collectFilterData() {
 //중복된 AJAX 요청 로직을 처리하는 함수
 function sendFilterRequest(filterData) {
   $.ajax({
-    url: "/webPage/stay/StayServlet?requestType=getFilterStayInfo",
+    url: "/stay/filter",
     type: "POST",
     data: filterData,
     dataType: "json",
@@ -38,7 +38,7 @@ function sendFilterRequest(filterData) {
           // 숙박 정보 HTML을 구성하고 페이지에 추가합니다.
           var accommodationHTML = `
             <div class="accomodation">
-              <a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${item.stayId}">
+              <a href="/stay/detail?stay_id=${item.stayId}">
                 <div class="accomodation_box">
                   <div>
                     <img class="image" src="/images/stay_images/${item.image1}" alt="이미지1" />

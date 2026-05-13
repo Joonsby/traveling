@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.plan.dao.PlanManageDAO;
 import com.traveling.plan.dto.MyPlanner;
 
-public class SelectMyPlanService implements ControlQuery {
+public class SelectMyPlanService implements DataControl {
 	static SelectMyPlanService selectMyPlanService = new SelectMyPlanService(); // 싱글톤 방식으로 객체 생성
 	public static SelectMyPlanService instance() {
 		return selectMyPlanService;

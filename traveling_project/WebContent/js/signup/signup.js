@@ -48,9 +48,8 @@ $(document).ready(function () {
 		  const user_id = $('#id').val();
 		  $.ajax({
 			  type: 'POST',
-			  url: '/webPage/signup/SignupServlet',
+			  url: '/signup/user-id-check',
 			  data: {
-				  requestType : "checkUserId",
 				  user_id: user_id
 			  },
 			  success: function (result) {
@@ -79,9 +78,8 @@ $(document).ready(function () {
 	    console.log(emailValue);
 	    $.ajax({
 	    	type: 'POST',
-	    	url: '/webPage/signup/SignupServlet',
+	    	url: '/signup/host-email-check',
 	    	data: {
-	    		requestType : "checkHostEmail",
 	    		email : emailValue
 	    	},
 	    	success: function (result) {
@@ -110,9 +108,8 @@ $(document).ready(function () {
 		  const hostId = $('#id').val();
 		  $.ajax({
 			  type: 'POST',
-			  url: '/webPage/signup/SignupServlet',
+			  url: '/signup/host-id-check',
 			  data: {
-				  requestType : "checkHostId",
 				  hostId: hostId
 			  },
 			  success: function (result) {
@@ -138,9 +135,8 @@ $(document).ready(function () {
 	    const emailValue = $('#email').val();
 	    $.ajax({
 	    	type: 'POST',
-	    	url: '/webPage/signup/SignupServlet',
+	    	url: '/signup/user-email-check',
 	    	data: {
-	    		requestType : "checkUserEmail",
 	    		email : emailValue
 	    	},
 	    	success: function (result) {

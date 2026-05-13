@@ -161,10 +161,14 @@
                si.road_addr AS stay_addr,
                si.image1 AS image1,
                si.image2 AS image2,
+               si.latitude AS latitude,
+               si.longitude AS longitude,
                MIN(ri.price) AS min_room_price,
                MAX(rev.review_time) AS last_review_time,
-               AVG(rev.rating) AS rating_avg,
-               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content
+               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content,
+               COUNT(res.room_id) AS room_count,
+               ROUND(AVG(rev.rating), 2) AS rating_avg,
+               COUNT(rev.rating) AS rating_count
         FROM stay_info si
         JOIN room_info ri
           ON si.stay_id = ri.stay_id
@@ -187,10 +191,14 @@
                si.road_addr AS stay_addr,
                si.image1 AS image1,
                si.image2 AS image2,
+               si.latitude AS latitude,
+               si.longitude AS longitude,
                MIN(ri.price) AS min_room_price,
                MAX(rev.review_time) AS last_review_time,
-               AVG(rev.rating) AS rating_avg,
-               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content
+               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content,
+               COUNT(res.room_id) AS room_count,
+               ROUND(AVG(rev.rating), 2) AS rating_avg,
+               COUNT(rev.rating) AS rating_count
         FROM stay_info si
         JOIN room_info ri
           ON si.stay_id = ri.stay_id
@@ -279,15 +287,15 @@
                ri.room_id AS room_id,
                ri.price AS price,
                ri.image1 AS image1,
-               ri.image1 AS image2,
-               ri.image1 AS image3,
-               ri.image1 AS image4,
-               ri.image1 AS image5,
-               ri.image1 AS image6,
-               ri.image1 AS image7,
-               ri.image1 AS image8,
-               ri.image1 AS image9,
-               ri.image1 AS image10
+               ri.image2 AS image2,
+               ri.image3 AS image3,
+               ri.image4 AS image4,
+               ri.image5 AS image5,
+               ri.image6 AS image6,
+               ri.image7 AS image7,
+               ri.image8 AS image8,
+               ri.image9 AS image9,
+               ri.image10 AS image10
         FROM room_info ri
         JOIN stay_info si
           ON ri.stay_id = si.stay_id
@@ -320,10 +328,9 @@
         JOIN facility f
           ON sf.facility_code = f.facility_code
         JOIN code c
-          ON c.group_code = 'FACILITY_CATEGORY'
-         AND c.code_id = f.category_code
+          ON c.group_code = 'FACILITY'
+         AND c.code_id = f.category
         WHERE sf.stay_id = #{stay_id}
-        ORDER BY c.sort_order,
-                 f.sort_order;
+        ORDER BY c.sort_order, f.sort_order;
     </select>
 </mapper>

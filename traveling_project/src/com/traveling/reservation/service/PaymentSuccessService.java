@@ -7,15 +7,15 @@ import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonObject;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.ReservationInfo;
 
-public class PaymentSuccessService implements ControlQuery{
+public class PaymentSuccessService implements DataControl{
 	
 	static PaymentSuccessService paymentSuccessService = new PaymentSuccessService();
 	public static PaymentSuccessService instance() {
@@ -63,8 +63,7 @@ public class PaymentSuccessService implements ControlQuery{
 	    if(cnt > 0) {
 	    	res.sendRedirect(req.getContextPath() + "/webPage/reservation/pay_success.jsp");
 	    } else {
-	    	req.setAttribute("errorMessage", "결제 처리 중 오류가 발생했습니다.");
-	    	req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+	    	ViewUtil.forwardError(req,res,"결제 처리 중 오류가 발생했습니다.");
 	    }
 	}
 

@@ -9,8 +9,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.FacilityCategoryInfo;
 import com.traveling.stay.dto.FacilityInfo;
@@ -18,7 +17,7 @@ import com.traveling.stay.dto.ReviewInfo;
 import com.traveling.stay.dto.RoomInfo;
 import com.traveling.stay.dto.StayInfo;
 
-public class DetailStayInfoService implements ControlQuery  {
+public class DetailStayInfoService implements DataControl  {
 	
 	static DetailStayInfoService detailStayInfoService = new DetailStayInfoService(); // 싱글톤 방식으로 객체 생성
 	public static DetailStayInfoService instance() {

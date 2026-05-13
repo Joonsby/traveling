@@ -4,72 +4,86 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
+	
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>com.traveling.main.controller.MainController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+       <servlet-name>main</servlet-name>
+       <url-pattern>/main</url-pattern>
+    </servlet-mapping>
 
 	<servlet>
 		<servlet-name>plan</servlet-name>
-		<servlet-class>com.traveling.plan.controller.PlanServlet</servlet-class>
+		<servlet-class>com.traveling.plan.controller.PlanController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>plan</servlet-name>
-		<url-pattern>/webPage/plan/PlanServlet</url-pattern>
+		<url-pattern>/plan/*</url-pattern>
 	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>com.traveling.login.controller.LoginServlet</servlet-class>
+		<servlet-class>com.traveling.login.controller.LoginController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
-		<url-pattern>/webPage/login/LoginServlet</url-pattern>
+		<url-pattern>/login/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>signup</servlet-name>
-		<servlet-class>com.traveling.signup.controller.SignupServlet</servlet-class>
+		<servlet-class>com.traveling.signup.controller.SignupController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>signup</servlet-name>
-		<url-pattern>/webPage/signup/SignupServlet</url-pattern>
+		<url-pattern>/signup/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>stay</servlet-name>
-		<servlet-class>com.traveling.stay.controller.StayServlet</servlet-class>
+		<servlet-class>com.traveling.stay.controller.StayController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>stay</servlet-name>
-		<url-pattern>/webPage/stay/StayServlet</url-pattern>
-	</servlet-mapping>
-    <servlet-mapping>
-       <servlet-name>stay</servlet-name>
-       <url-pattern>/main</url-pattern>
-    </servlet-mapping>
+		<url-pattern>/webPage/stay/StayController</url-pattern>
+	</servlet-mapping>    
+	<servlet-mapping>
+		<servlet-name>stay</servlet-name>
+		<url-pattern>/stay/*</url-pattern>
+	</servlet-mapping>    
 	
 	<servlet>
 		<servlet-name>reservation</servlet-name>
-		<servlet-class>com.traveling.reservation.controller.ReservationServlet</servlet-class>
+		<servlet-class>com.traveling.reservation.controller.ReservationController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>reservation</servlet-name>
-		<url-pattern>/webPage/reservation/ReservationServlet</url-pattern>
+		<url-pattern>/webPage/reservation/ReservationController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>reservation</servlet-name>
+		<url-pattern>/reservation/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>review</servlet-name>
-		<servlet-class>com.traveling.review.controller.ReviewServlet</servlet-class>
+		<servlet-class>com.traveling.review.controller.ReviewController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>review</servlet-name>
-		<url-pattern>/webPage/review/ReviewServlet</url-pattern>
+		<url-pattern>/review/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>mypage</servlet-name>
-		<servlet-class>com.traveling.mypage.controller.MyPageServlet</servlet-class>
+		<servlet-class>com.traveling.mypage.controller.MyPageController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mypage</servlet-name>
-		<url-pattern>/webPage/mypage/MyPageServlet</url-pattern>
+		<url-pattern>/mypage/*</url-pattern>
 	</servlet-mapping>
 	
     <welcome-file-list>

@@ -11,22 +11,16 @@ $(document).ready(function() {
     const hostId = $('#host_id').val()
 
     $('#add_stay_btn').click(function(e) {
+    	e.preventDefault();
         $.ajax({
             type : "POST",
-            url : "/webPage/stay/StayServlet?requestType=getStayCnt",
-            data : {
-                hostId : hostId
-            },
-            success : function(result) {
-                const data = result.trim();                
-                if (data == "true") {
+            url : "/stay/count",
+            success : function(cnt) {
+                if (cnt > 0) {
                 	e.preventDefault();
-                    $("#myModal").fadeIn('fast');
-                    $("#closeModal").click(function() {
-                        $("#myModal").fadeOut('fast');
-                    });
-                } else if (data == "false") {
-                    window.location.href = "webPage/stay/add_stay.jsp";
+                	showModal('숙소 등록 제한','한 계정당 하나의 숙소만 등록할 수 있습니다.');
+                } else{
+                    window.location.href = "/webPage/stay/add_stay.jsp";
                 }
             },
         });
