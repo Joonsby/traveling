@@ -3,11 +3,11 @@ package com.traveling.signup.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.signup.dao.SignupDAO;
 import com.traveling.signup.dto.HostInfo;
 
-public class InsertHostInfoService implements ControlQuery{
+public class InsertHostInfoService implements DataControl{
 	static InsertHostInfoService insertHostInfoService = new InsertHostInfoService(); // 싱글톤 방식으로 객체 생성
 	public static InsertHostInfoService instance() {
 		return insertHostInfoService;

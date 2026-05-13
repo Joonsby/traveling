@@ -22,7 +22,7 @@
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>
 			<h2>객실 등록하기</h2>
-			<form action="/webPage/plan/PlanServlet?requestType=room_ins" method="post" enctype="multipart/form-data">
+			<form action="/webPage/plan/PlanController?requestType=room_ins" method="post" enctype="multipart/form-data">
 				<table>
 					<tbody>
 						<tr>

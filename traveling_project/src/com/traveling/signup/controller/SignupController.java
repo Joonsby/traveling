@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.signup.service.HostEmailCheckService;
 import com.traveling.signup.service.HostIdCheckService;
 import com.traveling.signup.service.InsertHostInfoService;
@@ -15,12 +15,12 @@ import com.traveling.signup.service.InsertUserInfoService;
 import com.traveling.signup.service.UserEmailCheckService;
 import com.traveling.signup.service.UserIdCheckService;
 
-public class SignupServlet extends HttpServlet{
+public class SignupController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		ControlQuery inter = null;
+		DataControl inter = null;
 		
 		req.setCharacterEncoding("UTF-8");
 		String requestType=req.getParameter("requestType");

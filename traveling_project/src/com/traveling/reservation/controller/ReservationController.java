@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.reservation.service.CreatePendingReservationService;
 import com.traveling.reservation.service.PaymentFailService;
 import com.traveling.reservation.service.PaymentService;
@@ -20,13 +20,13 @@ import com.traveling.reservation.service.ReservationStatusService;
 import com.traveling.reservation.service.ReservationToPlannerService;
 import com.traveling.reservation.service.RoomInfoService;
 
-public class ReservationServlet extends HttpServlet{
+public class ReservationController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ControlQuery inter = null;
+		DataControl inter = null;
 		
 		req.setCharacterEncoding("UTF-8");
 		String requestType=req.getParameter("requestType");

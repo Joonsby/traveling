@@ -22,7 +22,7 @@
       	<div id="accomodation_info_box">
       		<c:forEach var="stay" items="${stayList}">
       			<div class="accomodation">
-      				<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${stay.stay_id}">
+      				<a href="/webPage/stay/StayController?requestType=getDetailStayInfo&stay_id=${stay.stay_id}">
       					<div class="accomodation_box">
       						<div>
       							<img class="image" src="<c:url value="/images/stay_images/${stay.image1}"/>" alt="숙소이미지">

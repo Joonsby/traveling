@@ -33,7 +33,7 @@
         <h1 id="logo">
           <a href="<c:url value="/"/>"><img src="<c:url value="/images/logo.png"/>" alt="로고 이미지"/></a>
         </h1>
-        <form action="/webPage/stay/StayServlet?requestType=getPopStayInfo" id="accomodation_search" method="post">
+        <form action="/webPage/stay/StayController?requestType=getPopStayInfo" id="accomodation_search" method="post">
           <div class="input-group">
 	          <input type="text" id="region" name="region" class="form-control" placeholder="어디로 떠나시나요?" />
 	          <input type="text" id="check_in_date" name="check_in_date" class="form-control datepicker" placeholder="체크인 날짜" readonly />
@@ -45,9 +45,9 @@
         <ul class="right_menu">
         	<c:choose>
         		<c:when test="${not empty userId}">
-        			<li><a id="my-info" href="<c:url value="/webPage/mypage/MyPageServlet?requestType=getMyPageInfo"/>">내 정보</a></li>
-          			<li><a id="my-plan" href="/webPage/plan/PlanServlet?requestType=myplan">내 일정</a></li>
-          			<li><a id="log-out" href="<c:url value="/webPage/login/LoginServlet?requestType=logOut"/>">로그아웃</a></li>
+        			<li><a id="my-info" href="<c:url value="/webPage/mypage/MyPageController?requestType=getMyPageInfo"/>">내 정보</a></li>
+          			<li><a id="my-plan" href="/webPage/plan/PlanController?requestType=myplan">내 일정</a></li>
+          			<li><a id="log-out" href="<c:url value="/webPage/login/LoginController?requestType=logOut"/>">로그아웃</a></li>
         		</c:when>
         		<c:otherwise>
         			<li><a id="login" href="<c:url value="/webPage/login/login_select.jsp"/>">로그인</a></li>

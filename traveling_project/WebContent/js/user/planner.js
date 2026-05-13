@@ -117,7 +117,7 @@ $(document).ready(function() {
 	        
 	        // 먼저 일정을 삭제하는 AJAX 요청
 	        $.ajax({
-	            url: "/webPage/plan/PlanServlet?requestType=delPlan",
+	            url: "/webPage/plan/PlanController?requestType=delPlan",
 	            type: "POST",
 	            data: { pid: pid },
 	            success: function(response) {
@@ -152,7 +152,7 @@ $(document).ready(function() {
 	        
 	        // 새 일정을 삽입하는 AJAX 요청
 	        $.ajax({
-	            url: "/webPage/plan/PlanServlet?requestType=insPlan",
+	            url: "/webPage/plan/PlanController?requestType=insPlan",
 	            type: "POST",
 	            data: {
 	                pid: planId,
@@ -181,7 +181,7 @@ $(document).ready(function() {
 	function updateSchedule(planId) {
 	    // 일정을 업데이트하는 AJAX 요청
 	    $.ajax({
-	        url: "/webPage/plan/PlanServlet?requestType=upPlan",
+	        url: "/webPage/plan/PlanController?requestType=upPlan",
 	        type: "POST",
 	        data: { pid: planId },
 	        success: function(response) {
@@ -265,7 +265,7 @@ function createDaysTabs(countDays, checkInDate, planId) {
 	    (function (currentTab) {
 	        // AJAX 요청을 수행
 	        $.ajax({
-	            url: "/webPage/plan/PlanServlet?requestType=plan_sel",
+	            url: "/webPage/plan/PlanController?requestType=plan_sel",
 	            method: "POST",
 	            data: {
 	                planId: planId,

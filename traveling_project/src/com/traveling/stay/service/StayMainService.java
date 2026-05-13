@@ -4,10 +4,10 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.stay.dao.StayManagementDAO;
 
-public class StayMainService implements ControlQuery {
+public class StayMainService implements DataControl {
 	
 	static StayMainService mainService = new StayMainService(); // 싱글톤 방식으로 객체 생성
 	public static StayMainService instance() {

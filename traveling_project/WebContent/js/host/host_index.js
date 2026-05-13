@@ -9,7 +9,7 @@ $(document).ready(function() {
     		requestType : 'getCheckInList',
     		hostId : hostId
     	}
-    ajaxAsync('/webPage/stay/StayServlet',data,setTable);
+    ajaxAsync('/webPage/stay/StayController',data,setTable);
     data = null;
 
     buttons.click(function() {
@@ -27,14 +27,14 @@ $(document).ready(function() {
         		requestType : 'getCheckInList',
         		hostId : hostId
         	}
-        	ajaxAsync('/webPage/stay/StayServlet',data,setTable);
+        	ajaxAsync('/webPage/stay/StayController',data,setTable);
         } else if(id == 'check_out_btn'){
         	status = 'checkOut';
         	const data = {
         		requestType : 'getCheckOutList',
         		hostId : hostId
         	}
-        	ajaxAsync('/webPage/stay/StayServlet',data,setTable);
+        	ajaxAsync('/webPage/stay/StayController',data,setTable);
         } else if(id=='hosting_btn'){
         	status = 'hosting';
         } else if(id=='empty_review'){

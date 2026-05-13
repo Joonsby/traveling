@@ -7,16 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.room.service.RoomInsertService;
 
-public class RoomServlet extends HttpServlet {
+public class RoomController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ControlQuery inter = null;
+		DataControl inter = null;
 		
 		req.setCharacterEncoding("UTF-8");
 		String requestType=req.getParameter("requestType");

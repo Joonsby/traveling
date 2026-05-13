@@ -320,10 +320,9 @@
         JOIN facility f
           ON sf.facility_code = f.facility_code
         JOIN code c
-          ON c.group_code = 'FACILITY_CATEGORY'
-         AND c.code_id = f.category_code
+          ON c.group_code = 'FACILITY'
+         AND c.code_id = f.category
         WHERE sf.stay_id = #{stay_id}
-        ORDER BY c.sort_order,
-                 f.sort_order;
+        ORDER BY c.sort_order, f.sort_order;
     </select>
 </mapper>

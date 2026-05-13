@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.review.dao.ReviewManageDAO;
 import com.traveling.review.dto.ReviewInfo;
 
-public class ReviewInsertService implements ControlQuery{
+public class ReviewInsertService implements DataControl{
 	static ReviewInsertService reviewInsertService = new ReviewInsertService(); // 싱글톤 방식으로 객체 생성
 	public static ReviewInsertService instance() {
 		return reviewInsertService;

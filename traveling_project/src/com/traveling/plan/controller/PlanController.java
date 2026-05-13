@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.plan.service.PlanDeleteService;
 import com.traveling.plan.service.PlanInsertService;
 import com.traveling.plan.service.PlanSelectService;
 import com.traveling.plan.service.PlanUpdateService;
 import com.traveling.plan.service.SelectMyPlanService;
 
-public class PlanServlet extends HttpServlet {
+public class PlanController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ControlQuery inter = null;
+		DataControl inter = null;
 
 		req.setCharacterEncoding("UTF-8");
 		String requestType=req.getParameter("requestType");

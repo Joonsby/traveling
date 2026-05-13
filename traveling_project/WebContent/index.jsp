@@ -21,11 +21,11 @@
 		<!-- 가장 인기가 많은 숙소 -->
 		<section class="hotel_recommend">
 			<h2>가장 인기가 많은 숙소</h2>
-			<a href="<c:url value="/webPage/stay/StayServlet?requestType=getPopStayInfo"/>"><img src="images/view_all.png" alt="모두 보기" /></a>
+			<a href="<c:url value="/webPage/stay/StayController?requestType=getPopStayInfo"/>"><img src="images/view_all.png" alt="모두 보기" /></a>
 			<div class="slider rec_slider">
  			    <c:forEach var="popStay" items="${popStays}" begin="0" end="7">
 	 			    <div>
-	 			        <a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${popStay.stay_id}">
+	 			        <a href="/webPage/stay/StayController?requestType=getDetailStayInfo&stay_id=${popStay.stay_id}">
 	 			            <div class="image_slider">
 	 			                <img src="<c:url value="/images/stay_images/${popStay.image1}" />" alt="이미지1" />
 	 			                <img src="<c:url value="/images/stay_images/${popStay.image2}" />" alt="이미지2" />
@@ -44,42 +44,42 @@
 		<section class="korea_popular_region">
 			<h2>국내 인기 여행지</h2>
 			<div class="slider">
-				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
+				<a href="/webPage/stay/StayController?requestType=getPopStayInfo">
 					<div>
 						<img src="images/jeju.jpg" alt="제주" />
 					</div>
 					<h2>제주</h2>
 					<p>숙소 4,878개</p>
 				</a>
-				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
+				<a href="/webPage/stay/StayController?requestType=getPopStayInfo">
 					<div>
 						<img src="images/seoul.jpg" alt="서울" />
 					</div>
 					<h2>서울</h2>
 					<p>숙소 5,923개</p>
 				</a>
-				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
+				<a href="/webPage/stay/StayController?requestType=getPopStayInfo">
 					<div>
 						<img src="images/busan.jpg" alt="부산" />
 					</div>
 					<h2>부산</h2>
 					<p>숙소 2,719개</p>
 				</a>
-				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
+				<a href="/webPage/stay/StayController?requestType=getPopStayInfo">
 					<div>
 						<img src="images/sokcho.jpg" alt="속초" />
 					</div>
 					<h2>속초</h2>
 					<p>숙소 797개</p>
 				</a>
-				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
+				<a href="/webPage/stay/StayController?requestType=getPopStayInfo">
 					<div>
 						<img src="images/incheon.jpg" alt="인천" />
 					</div>
 					<h2>인천</h2>
 					<p>숙소 2,154개</p>
 				</a>
-				<a href="/webPage/stay/StayServlet?requestType=getPopStayInfo">
+				<a href="/webPage/stay/StayController?requestType=getPopStayInfo">
 					<div>
 						<img src="images/gangneung.jpg" alt="강릉" />
 					</div>
@@ -96,7 +96,7 @@
 				<div class="slider swiper-wrapper">
 					<c:forEach var="bestReviewStay" items="${bestReviewStays}" begin="0" end="7">
 	 					<div class="swiper-slide banner">
-	 						<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${bestReviewStay.stay_id}">
+	 						<a href="/webPage/stay/StayController?requestType=getDetailStayInfo&stay_id=${bestReviewStay.stay_id}">
 	 							<div class="image_slider">
 		 			                <img src="<c:url value="/images/stay_images/${bestReviewStay.image1}" />" alt="이미지1" />
 		 			                <img src="<c:url value="/images/stay_images/${bestReviewStay.image2}" />" alt="이미지2" />
@@ -121,7 +121,7 @@
 			<div class="slider pop_slider">				
 				<c:forEach var="cheapStay" items="${cheapStays}" begin="0" end="7">
 	 				<div>
-	 					<a href="/webPage/stay/StayServlet?requestType=getDetailStayInfo&stay_id=${cheapStay.stay_id}">
+	 					<a href="/webPage/stay/StayController?requestType=getDetailStayInfo&stay_id=${cheapStay.stay_id}">
 	 						<div class="image_slider">
 	 			                <img src="<c:url value="/images/stay_images/${cheapStay.image1}" />" alt="이미지1" />
 	 			                <img src="<c:url value="/images/stay_images/${cheapStay.image2}" />" alt="이미지2" />	 							

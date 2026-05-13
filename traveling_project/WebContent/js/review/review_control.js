@@ -94,7 +94,7 @@ function delete_review(event) {
 		var reservationId = $button.data("reservation_id");
 		
 		$.ajax({
-			url : "/webPage/review/ReviewServlet",
+			url : "/webPage/review/ReviewController",
 			data : {
 				requestType : 'reviewDelete',
 				reservationId : reservationId

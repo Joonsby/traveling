@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#add_stay_btn').click(function(e) {
         $.ajax({
             type : "POST",
-            url : "/webPage/stay/StayServlet?requestType=getStayCnt",
+            url : "/webPage/stay/StayController?requestType=getStayCnt",
             data : {
                 hostId : hostId
             },

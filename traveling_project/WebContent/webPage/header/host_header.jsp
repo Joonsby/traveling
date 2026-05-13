@@ -46,7 +46,7 @@
 				</li>
 				<li>
 					<a href="#">예약 정보 조회</a>
-					<a href="/webPage/reservation/ReservationServlet?requestType=getReservationStatus">예약 승인/거부</a>
+					<a href="/webPage/reservation/ReservationController?requestType=getReservationStatus">예약 승인/거부</a>
 					<a href="#">지난 예약 내역</a>
 				</li>
 				<li>
@@ -62,7 +62,7 @@
 			</ul>
 			<ul class="right_menu">
 				<li><a href="#">내 정보</a></li>
-				<li><a id="log-out" href="<c:url value="/webPage/login/LoginServlet?requestType=logOut"/>">로그아웃</a></li>
+				<li><a id="log-out" href="<c:url value="/webPage/login/LoginController?requestType=logOut"/>">로그아웃</a></li>
 			</ul>
 		</nav>
 	</header>

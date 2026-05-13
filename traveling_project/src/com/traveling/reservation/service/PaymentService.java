@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.ReservationInfo;
 
-public class PaymentService implements ControlQuery {
+public class PaymentService implements DataControl {
 	static PaymentService paymentService = new PaymentService();
 	public static PaymentService instance() {
 		return paymentService;

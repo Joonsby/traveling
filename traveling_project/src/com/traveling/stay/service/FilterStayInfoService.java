@@ -7,12 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.common.ParsingCommon;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.FilterStayInfo;
 
-public class FilterStayInfoService implements ControlQuery {
+public class FilterStayInfoService implements DataControl {
 	
 	static FilterStayInfoService filterStayInfoService = new FilterStayInfoService(); // 싱글톤 방식으로 객체 생성
 	public static FilterStayInfoService instance() {

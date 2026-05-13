@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.stay.service.CheckInListService;
 import com.traveling.stay.service.CheckOutListService;
 import com.traveling.stay.service.DetailStayInfoService;
@@ -18,13 +18,13 @@ import com.traveling.stay.service.StayCntService;
 import com.traveling.stay.service.StayInfoService;
 import com.traveling.stay.service.StayMainService;
 
-public class StayServlet extends HttpServlet {
+public class StayController extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		ControlQuery inter = null;
+		DataControl inter = null;
 
 		req.setCharacterEncoding("UTF-8");
 		String requestType = req.getParameter("requestType");
@@ -72,7 +72,7 @@ public class StayServlet extends HttpServlet {
             }
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException("StayServlet 처리 중 오류 발생", e);
+			throw new ServletException("StayController 처리 중 오류 발생", e);
 		}
 	}
 

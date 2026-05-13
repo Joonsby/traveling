@@ -3,11 +3,11 @@ package com.traveling.plan.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.plan.dao.PlanManageDAO;
 import com.traveling.plan.dto.DetailPlan;
 
-public class PlanDeleteService implements ControlQuery{
+public class PlanDeleteService implements DataControl{
 	static PlanDeleteService planDeleteService = new PlanDeleteService();
 	
 	public static PlanDeleteService instance() {

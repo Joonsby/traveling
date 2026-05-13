@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 
-public class UserLogOutService implements ControlQuery {
+public class UserLogOutService implements DataControl {
 	static UserLogOutService userLogOutService = new UserLogOutService();
 	public static UserLogOutService instance() {
 		return userLogOutService;

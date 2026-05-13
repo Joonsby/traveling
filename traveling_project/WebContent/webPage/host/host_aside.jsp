@@ -12,13 +12,13 @@
 			<li>숙소 관리</li>
 			<li><a href="<c:url value="/webPage/stay/add_stay.jsp"/>" class="add_stay_btn">숙소 등록하기</a></li>
 			<li><a href="add_room.jsp">객실 등록하기</a></li>
-			<li><a href="/webPage/stay/StayServlet?requestType=getStayInfo&host_id=<c:out value="{host_id}"/>">숙소 정보</a></li>
+			<li><a href="/webPage/stay/StayController?requestType=getStayInfo&host_id=<c:out value="{host_id}"/>">숙소 정보</a></li>
 			<li><a href="room_info.jsp">객실 정보</a></li>
 		</ul>
 		<ul>
 			<li>예약 관리</li>
 			<li><a href="#">예약 정보 조회</a></li>
-			<li><a href="/webPage/reservation/ReservationServlet?requestType=getReservationStatus">예약 승인/거부</a></li>
+			<li><a href="/webPage/reservation/ReservationController?requestType=getReservationStatus">예약 승인/거부</a></li>
 			<li><a href="#">지난 예약 내역</a></li>
 		</ul>
 		<ul>

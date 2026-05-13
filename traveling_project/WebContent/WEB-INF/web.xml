@@ -7,38 +7,38 @@
 
 	<servlet>
 		<servlet-name>plan</servlet-name>
-		<servlet-class>com.traveling.plan.controller.PlanServlet</servlet-class>
+		<servlet-class>com.traveling.plan.controller.PlanController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>plan</servlet-name>
-		<url-pattern>/webPage/plan/PlanServlet</url-pattern>
+		<url-pattern>/webPage/plan/PlanController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>com.traveling.login.controller.LoginServlet</servlet-class>
+		<servlet-class>com.traveling.login.controller.LoginController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
-		<url-pattern>/webPage/login/LoginServlet</url-pattern>
+		<url-pattern>/webPage/login/LoginController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>signup</servlet-name>
-		<servlet-class>com.traveling.signup.controller.SignupServlet</servlet-class>
+		<servlet-class>com.traveling.signup.controller.SignupController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>signup</servlet-name>
-		<url-pattern>/webPage/signup/SignupServlet</url-pattern>
+		<url-pattern>/webPage/signup/SignupController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>stay</servlet-name>
-		<servlet-class>com.traveling.stay.controller.StayServlet</servlet-class>
+		<servlet-class>com.traveling.stay.controller.StayController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>stay</servlet-name>
-		<url-pattern>/webPage/stay/StayServlet</url-pattern>
+		<url-pattern>/webPage/stay/StayController</url-pattern>
 	</servlet-mapping>
     <servlet-mapping>
        <servlet-name>stay</servlet-name>
@@ -47,29 +47,29 @@
 	
 	<servlet>
 		<servlet-name>reservation</servlet-name>
-		<servlet-class>com.traveling.reservation.controller.ReservationServlet</servlet-class>
+		<servlet-class>com.traveling.reservation.controller.ReservationController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>reservation</servlet-name>
-		<url-pattern>/webPage/reservation/ReservationServlet</url-pattern>
+		<url-pattern>/webPage/reservation/ReservationController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>review</servlet-name>
-		<servlet-class>com.traveling.review.controller.ReviewServlet</servlet-class>
+		<servlet-class>com.traveling.review.controller.ReviewController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>review</servlet-name>
-		<url-pattern>/webPage/review/ReviewServlet</url-pattern>
+		<url-pattern>/webPage/review/ReviewController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>mypage</servlet-name>
-		<servlet-class>com.traveling.mypage.controller.MyPageServlet</servlet-class>
+		<servlet-class>com.traveling.mypage.controller.MyPageController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mypage</servlet-name>
-		<url-pattern>/webPage/mypage/MyPageServlet</url-pattern>
+		<url-pattern>/webPage/mypage/MyPageController</url-pattern>
 	</servlet-mapping>
 	
     <welcome-file-list>

@@ -76,7 +76,7 @@ $(document).ready(function () {
     	
     	// 1. 예약 초안 생성
     	$.ajax({
-    		url: "/webPage/reservation/ReservationServlet",
+    		url: "/webPage/reservation/ReservationController",
     		type: "POST",
     		dataType: "json",
     		data: {
@@ -99,8 +99,8 @@ $(document).ready(function () {
 						},
 						orderId: res.orderId,
 						orderName: res.orderName,
-						successUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentSuccess",
-						failUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=paymentFail",
+						successUrl: window.location.origin + "/webPage/reservation/ReservationController?requestType=paymentSuccess",
+						failUrl: window.location.origin + "/webPage/reservation/ReservationController?requestType=paymentFail",
 				        customerName: res.customerName,
 				        customerEmail: res.customerEmail,
 				        customerMobilePhone: res.customerMobilePhone,
@@ -155,7 +155,7 @@ function requestPayment(customer) {
       },
       orderId: "-cnUiTNaALH3VDDyxV8EW", // 고유 주문번호
       orderName: "토스 티셔츠 외 2건",
-      successUrl: window.location.origin + "/webPage/reservation/ReservationServlet?requestType=payment&customer=" + encodedCustomer, // 결제 요청이 성공하면 리다이렉트되는 URL
+      successUrl: window.location.origin + "/webPage/reservation/ReservationController?requestType=payment&customer=" + encodedCustomer, // 결제 요청이 성공하면 리다이렉트되는 URL
       failUrl: window.location.origin + "/fail", // 결제 요청이 실패하면 리다이렉트되는 URL
       customerEmail: "customer123@gmail.com",
       customerName: "김토스",

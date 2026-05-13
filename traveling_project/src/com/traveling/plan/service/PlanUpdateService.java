@@ -3,11 +3,11 @@ package com.traveling.plan.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.traveling.common.ControlQuery;
+import com.traveling.common.DataControl;
 import com.traveling.plan.dao.PlanManageDAO;
 import com.traveling.plan.dto.DetailPlan;
 
-public class PlanUpdateService implements ControlQuery {
+public class PlanUpdateService implements DataControl {
 	static PlanUpdateService planUpdateService = new PlanUpdateService();
 
 	public static PlanUpdateService instance() {
