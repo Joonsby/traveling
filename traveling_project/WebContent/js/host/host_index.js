@@ -1,89 +1,103 @@
 let selectedId = 'check_in_btn';
-let status = null;
+let status = 'checkIn';
 
 $(document).ready(function() {
 	const hostId = $('#host_id').val();
     const buttons = $(".statusBtn");
-    
-    let data = {
-    		requestType : 'getCheckInList',
-    		hostId : hostId
-    	}
-    ajaxAsync('/webPage/stay/StayController',data,setTable);
-    data = null;
-
+    ajaxAsync('/stay/check-in-list',null,setTable);
     buttons.click(function() {
     	const id = $(this).attr('id');
-    	// 선택된 탭은 ajax 통신을 하지 않도록 막음
-    	if(selectedId == id){
+    	if (selectedId === id) {
     		return;
     	}
     	selectedId = id;
     	$('.statusBtn').removeClass('active');
     	$(this).addClass('active');
-        if(id == 'check_in_btn'){
-        	status = 'checkIn';
-        	const data = {
-        		requestType : 'getCheckInList',
-        		hostId : hostId
-        	}
-        	ajaxAsync('/webPage/stay/StayController',data,setTable);
-        } else if(id == 'check_out_btn'){
-        	status = 'checkOut';
-        	const data = {
-        		requestType : 'getCheckOutList',
-        		hostId : hostId
-        	}
-        	ajaxAsync('/webPage/stay/StayController',data,setTable);
-        } else if(id=='hosting_btn'){
-        	status = 'hosting';
-        } else if(id=='empty_review'){
-        	status = 'emptyReview';
-        }
+    	const actionMap = {
+    		check_in_btn: {
+    			status: 'checkIn',
+    			url: '/stay/check-in-list'
+    		},
+    		check_out_btn: {
+    			status: 'checkOut',
+    			url: '/stay/check-out-list'
+    		},
+    		hosting_btn: {
+    			status: 'hosting',
+    			url: null
+    		},
+    		empty_review: {
+    			status: 'emptyReview',
+    			url: null
+    		}
+    	};
+    	const action = actionMap[id];
+    	if (!action) {
+    		return;
+    	}
+    	status = action.status;
+    	if (action.url) {
+    		ajaxAsync(action.url, null, setTable);
+    	} else {
+    		setTable([]);
+    	}
     });
 });
 
-function setTable(result){
-	const data = JSON.parse(result);
-	const tr = $('#table-div thead tr');
-	$('#table-div').empty();
-	if(data.length > 0){
-		$('#table-div').append('<table><thead></thead><tbody></tbody></table>')
-		$('#table-div thead').append('<tr></tr>');
-		tr.append('<th>예약 번호</th>');
-		tr.append('<th>방 이름</th>');
-		tr.append('<th>사용자 이름</th>');
-		tr.append('<th>인원 수</th>');
-		tr.append('<th>가격</th>');
-		tr.append('<th>체크인 날짜</th>');
-		tr.append('<th>체크아웃 날짜</th>');
-		tr.append('<th>체크인 시간</th>');
-		tr.append('<th>체크아웃 시간</th>');
-		tr.append('<th>결제 시간</th>');
-		$.each(data, function (index, item){
-			let row = '<tr>';
-			$.each(item, function (key, value){
-				if(key != 'roomId' && key != 'hostId'){
-					row += `<td>${value}</td>`
-				}
-			});
-			row += '</tr>';
-			$('#table-div tbody').append(row);
-		});
-	} else {
-		switch(status){
-		case "checkIn":
-			$('#table-div').append('<p>오늘의 체크인 정보가 없습니다.</p>');
-			break;
-		case "checkOut":
-			$('#table-div').append('<p>오늘의 체크아웃 정보가 없습니다.</p>');
-			break;
-		case "hosting":
-			$('#table-div').append('<p>현재 호스팅중인 정보가 없습니다.</p>');
-			break;
-		case "emptyReview":
-			$('#table-div').append('<p>답변 안한 후기가 없습니다.</p>');
-			break;
-		}
+function setTable(data){
+	const $tableDiv = $('#table-div');
+	$tableDiv.empty();
+	if (!Array.isArray(data) || data.length === 0) {
+		appendEmptyMessage($tableDiv, status);
+		return;
 	}
+	appendReservationTable($tableDiv, data);
+}
+
+function appendEmptyMessage($target, status) {
+	const messageMap = {
+		checkIn: '오늘의 체크인 정보가 없습니다.',
+		checkOut: '오늘의 체크아웃 정보가 없습니다.',
+		hosting: '현재 호스팅중인 정보가 없습니다.',
+		emptyReview: '답변 안한 후기가 없습니다.'
+	};
+
+	const message = messageMap[status] || '조회된 정보가 없습니다.';
+
+	$target.append(`<p>${message}</p>`);
+}
+
+function appendReservationTable($target, data) {
+	const columns = [
+		{ key: 'reservationId', label: '예약 번호' },
+		{ key: 'roomName', label: '방 이름' },
+		{ key: 'userName', label: '사용자 이름' },
+		{ key: 'personCount', label: '인원 수' },
+		{ key: 'price', label: '가격' },
+		{ key: 'checkInDate', label: '체크인 날짜' },
+		{ key: 'checkOutDate', label: '체크아웃 날짜' },
+		{ key: 'checkInTime', label: '체크인 시간' },
+		{ key: 'checkOutTime', label: '체크아웃 시간' },
+		{ key: 'paymentTime', label: '결제 시간' }
+	];
+	const $table = $('<table></table>');
+	const $thead = $('<thead></thead>');
+	const $tbody = $('<tbody></tbody>');
+	const $headerRow = $('<tr></tr>');
+	columns.forEach(function(column) {
+		$headerRow.append(`<th>${column.label}</th>`);
+	});
+	$thead.append($headerRow);
+	data.forEach(function(item) {
+		const $row = $('<tr></tr>');
+
+		columns.forEach(function(column) {
+			$row.append(`<td>${item[column.key] || ''}</td>`);
+		});
+
+		$tbody.append($row);
+	});
+	$table.append($thead);
+	$table.append($tbody);
+	$target.append($table);
 }

@@ -6,12 +6,12 @@ import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonObject;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.ReservationInfo;
 
@@ -58,8 +58,7 @@ public class PaymentService implements DataControl {
 			req.setAttribute("message", "예약 상태가 정상적으로 변경되었습니다.");
 			req.getRequestDispatcher("/webPage/reservation/pay_success.jsp").forward(req, res);
 		} else {
-			req.setAttribute("errorMessage", "예약 상태 변경에 실패했습니다.");
-			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+			ViewUtil.forwardError(req,res,"예약 상태 변경에 실패했습니다.");
 		}
 		
 		jsonReader.close();

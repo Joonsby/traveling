@@ -161,10 +161,14 @@
                si.road_addr AS stay_addr,
                si.image1 AS image1,
                si.image2 AS image2,
+               si.latitude AS latitude,
+               si.longitude AS longitude,
                MIN(ri.price) AS min_room_price,
                MAX(rev.review_time) AS last_review_time,
-               AVG(rev.rating) AS rating_avg,
-               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content
+               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content,
+               COUNT(res.room_id) AS room_count,
+               ROUND(AVG(rev.rating), 2) AS rating_avg,
+               COUNT(rev.rating) AS rating_count
         FROM stay_info si
         JOIN room_info ri
           ON si.stay_id = ri.stay_id
@@ -187,10 +191,14 @@
                si.road_addr AS stay_addr,
                si.image1 AS image1,
                si.image2 AS image2,
+               si.latitude AS latitude,
+               si.longitude AS longitude,
                MIN(ri.price) AS min_room_price,
                MAX(rev.review_time) AS last_review_time,
-               AVG(rev.rating) AS rating_avg,
-               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content
+               SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content,
+               COUNT(res.room_id) AS room_count,
+               ROUND(AVG(rev.rating), 2) AS rating_avg,
+               COUNT(rev.rating) AS rating_count
         FROM stay_info si
         JOIN room_info ri
           ON si.stay_id = ri.stay_id

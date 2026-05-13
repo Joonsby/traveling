@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.signup.dao.SignupDAO;
 import com.traveling.signup.dto.UserInfo;
 
@@ -37,7 +38,7 @@ public class InsertUserInfoService implements DataControl{
 		if (cnt > 0) {
 			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
 		} else {
-			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+			ViewUtil.forwardError(req,res,"잘못된 요청입니다.");
 		}
 	}
 		

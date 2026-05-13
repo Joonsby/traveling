@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.review.dao.ReviewManageDAO;
 import com.traveling.review.dto.ReviewInfo;
 
@@ -75,8 +76,7 @@ public class ReviewInsertService implements DataControl{
 			if(cnt > 0) {
 				res.sendRedirect("/webPage/login/my_info.jsp");
 			} else {
-				req.setAttribute("errorMessage", "리뷰 수정 중 오류가 발생했습니다.");
-				req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+				ViewUtil.forwardError(req,res,"리뷰 수정 중 오류가 발생했습니다.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

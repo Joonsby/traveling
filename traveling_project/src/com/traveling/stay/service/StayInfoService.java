@@ -21,7 +21,7 @@ public class StayInfoService implements DataControl  {
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
-		String host_id = req.getParameter("host_id");
+		String host_id = (String) req.getSession().getAttribute("host_id");
 		List<StayInfo> stayInfo =  stayManagementDAO.selectStayInfo(host_id);
 		req.setAttribute("stayInfo", stayInfo);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_info.jsp");

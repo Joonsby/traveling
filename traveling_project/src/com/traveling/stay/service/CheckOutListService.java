@@ -22,7 +22,7 @@ public class CheckOutListService implements DataControl{
 		// TODO Auto-generated method stub
 		res.setCharacterEncoding("UTF-8");
 		StayManagementDAO stmd = StayManagementDAO.instance();
-		String hostId = req.getParameter("hostId");
+		String hostId = (String) req.getSession().getAttribute("hostId");
 		List<CheckInInfo> checkOutlist = stmd.checkOutSelect(hostId);
 		res.getWriter().write(ParsingCommon.gson.toJson(checkOutlist));
 	}

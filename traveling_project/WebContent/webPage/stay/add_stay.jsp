@@ -19,7 +19,7 @@
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>	
 			<h2>숙소 등록하기</h2>			
-			<form action="/webPage/stay/StayController?requestType=insertStayInfo&name=<c:out value="{host_id}"/>"" method="post" enctype="multipart/form-data">					
+			<form action="/stay/create" method="post" enctype="multipart/form-data">					
 				<table>
 					<tr>
 						<th>숙소 이름</th>

@@ -6,25 +6,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>my page -> 내 일정</title>
+    <title>내 일정</title>
     <!-- jquery -->
     <!-- 장소 선택 다음 지도 api -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c58ef23f11133451e52c26eedfc5668&libraries=services,clusterer,drawing"></script>
     <!-- css -->
-    <link rel="stylesheet" href="<c:url value="/css/login/member.css"/>" />
-    <link rel="stylesheet" href="<c:url value="/css/reservation/nav.css"/>" />
-    <link rel="stylesheet" href="<c:url value="/css/user/planner.css"/>" />
-    <script src="<c:url value="/js/user/planner.js"/>"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login/member.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reservation/nav.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/user/planner.css" />
+	<script src="${pageContext.request.contextPath}/js/user/planner.js"></script>
   </head>
   <body>
-    <jsp:include page="../header/header.jsp" />
     <!-- 마이페이지 공통 배너 -->
     <section id="member_status">
-      <jsp:include page="status.jsp"/>
+      <%@ include file='/webPage/user/status.jsp'%>
     </section>
     <main id="member_contents">
-      <jsp:include page="../reservation/my_page_nav.jsp"/>
+      <%@ include file='/webPage/reservation/my_page_nav.jsp'%>
       <section class="mypage-section"> <!-- 이 부분에 기능 index 페이지 -->
         <div id="planner_wrap">
           <article>
@@ -59,7 +58,7 @@
 			              	<button id="show_btn" class="show_detail" onclick="detail_plan(event)" data-plan_id="${planner.plan_id}">상세보기</button>
 			              </li>
 			              <li>
-			              	<a href="#"><img src="./images/share.png" alt=""></a>
+			              	<img src="${pageContext.request.contextPath}/images/share.png" alt="">
 			              </li>
 			              <li>
 			                <span class="planner_update_date">${planner.modified_date}</span>
@@ -103,8 +102,7 @@
       </section>
     </main>
     <div class="go_top"></div>
-    <!-- footer include -->
-    <jsp:include page="../footer/footer.jsp"/>
+    <%@ include file='/webPage/footer/footer.jsp'%>
   </body>
 
 </html>

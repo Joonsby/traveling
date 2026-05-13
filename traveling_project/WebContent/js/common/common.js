@@ -40,9 +40,15 @@ function ajaxAsync(url,data,successFunc){
 	$.ajax({
 		type: 'POST',
 		url :url,
-		data : data,
+		data : data || {},
+		dataType: "json",
 		success: function (result){
 			successFunc(result);
-		}
+		},
+        error: function(xhr) {
+            console.log('AJAX ERROR');
+            console.log('status:', xhr.status);
+            console.log('response:', xhr.responseText);
+        }
 	});
 }

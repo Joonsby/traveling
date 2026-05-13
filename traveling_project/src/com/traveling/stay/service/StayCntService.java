@@ -1,11 +1,11 @@
 package com.traveling.stay.service;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.ParsingCommon;
 import com.traveling.stay.dao.StayManagementDAO;
 
 public class StayCntService implements DataControl  {
@@ -21,14 +21,8 @@ public class StayCntService implements DataControl  {
 		HttpSession session = req.getSession();
 		String hostId = (String) session.getAttribute("host_id");		
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
-		String stayId =  Integer.toString(stayManagementDAO.countStayId(hostId));
-		if(stayId.equals("0")) {
-			req.setAttribute("result", false);
-		} else {
-			req.setAttribute("result", true);
-		}
-		RequestDispatcher dispatcher = req.getRequestDispatcher("webPage/stay/stay_sel_result.jsp");
-		dispatcher.forward(req, res);
+		int stayId =  stayManagementDAO.countStayId(hostId);
+		ParsingCommon.writeJson(res, stayId);
 	}
 
 }

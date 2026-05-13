@@ -17,7 +17,7 @@
 	<select id="getUserReservationInfo" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
 		SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') check_in_date,
 		DATE_FORMAT(r.check_out_date, '%Y.%m.%d') check_out_date, r.people, r.status,si.stay_name, si.location,
-		u.user_email
+		u.email
 		FROM reservation r
 		JOIN room_info ri
 		ON r.room_id = ri.room_id

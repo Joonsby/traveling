@@ -11,10 +11,10 @@
 	<main>
 	    <c:choose>
 	        <c:when test="${param.requestType eq 'user'}">
-	            <c:set var="actionUrl" value="/webPage/login/LoginController?requestType=getUserInfo" />
+	            <c:set var="actionUrl" value="/login/user" />
 	        </c:when>
 	        <c:when test="${param.requestType eq 'host'}">
-	            <c:set var="actionUrl" value="/webPage/login/LoginController?requestType=getHostInfo" />
+	            <c:set var="actionUrl" value="/login/host" />
 	        </c:when>
     	</c:choose>
 		<form name="user_info" action="${actionUrl}" method="post">

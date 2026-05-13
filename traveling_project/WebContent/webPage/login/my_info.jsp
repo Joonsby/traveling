@@ -81,7 +81,7 @@
 					<div class="review_modal_wrap">
 						<div id="review_modal_index">
 							<button class="close_btn">&times;</button>
-							<form action="/webPage/review/ReviewController?requestType=reviewInsert" id="review_form" method="post" enctype="multipart/form-data">
+							<form action="/review/insert" id="review_form" method="post" enctype="multipart/form-data">
 								<!-- 리뷰 form -->
 								<input type="hidden" name="rid" id="rid_hidden">
 								<div id="rm_header">

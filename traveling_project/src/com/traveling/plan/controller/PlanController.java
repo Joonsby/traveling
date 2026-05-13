@@ -3,10 +3,10 @@ package com.traveling.plan.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.traveling.common.BaseController;
 import com.traveling.common.DataControl;
 import com.traveling.plan.service.PlanDeleteService;
 import com.traveling.plan.service.PlanInsertService;
@@ -14,35 +14,34 @@ import com.traveling.plan.service.PlanSelectService;
 import com.traveling.plan.service.PlanUpdateService;
 import com.traveling.plan.service.SelectMyPlanService;
 
-public class PlanController extends HttpServlet {
+public class PlanController extends BaseController {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		DataControl inter = null;
-
 		req.setCharacterEncoding("UTF-8");
-		String requestType=req.getParameter("requestType");
-		System.out.println("requestType=" + requestType);
+		String action = getAction(req, "/plan/");
+		printRequestLog(req,"PlanController",action);
 		try {
-			switch (requestType) {
-			case "myplan":
+			switch (action) {
+			case "my":
 				inter = SelectMyPlanService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "plan_sel":
+			case "detail":
 				inter = PlanSelectService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "delPlan":
+			case "delete":
 				inter = PlanDeleteService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "insPlan":
+			case "insert":
 				inter = PlanInsertService.instance();
 				inter.dataCon(req, res);
 				break;
-			case "upPlan":
+			case "update":
 				inter = PlanUpdateService.instance();
 				inter.dataCon(req, res);
 				break;

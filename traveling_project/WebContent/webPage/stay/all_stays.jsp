@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="<c:url value="/images/logo.png"/>" type="image/x-icon"/>
     <link rel="stylesheet" href="<c:url value="/css/stay/all_stays.css"/>" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
+    <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b"></script>
     <script src="<c:url value="/js/stay/all_stays.js"/>"></script>
     <title>인기 숙소 정보</title>
   </head>
@@ -22,7 +22,7 @@
       	<div id="accomodation_info_box">
       		<c:forEach var="stay" items="${stayList}">
       			<div class="accomodation">
-      				<a href="/webPage/stay/StayController?requestType=getDetailStayInfo&stay_id=${stay.stay_id}">
+      				<a href="/stay/detail?stay_id=${stay.stay_id}">
       					<div class="accomodation_box">
       						<div>
       							<img class="image" src="<c:url value="/images/stay_images/${stay.image1}"/>" alt="숙소이미지">

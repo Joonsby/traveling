@@ -3,11 +3,11 @@ package com.traveling.reservation.service;
 
 import java.util.HashMap;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.reservation.dao.ReservationManageDAO;
 
 public class ReservationAcceptService implements DataControl {
@@ -28,8 +28,7 @@ public class ReservationAcceptService implements DataControl {
 			req.setAttribute("message", "예약 상태가 정상적으로 변경되었습니다.");
 			req.getRequestDispatcher("/webPage/reservation/ReservationController?requestType=getReservationStatus").forward(req, res);
 		} else {
-			req.setAttribute("errorMessage", "예약 상태 변경에 실패했습니다.");
-			req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
+			ViewUtil.forwardError(req,res,"예약 상태 변경에 실패했습니다.");
 		}
 	}
 }

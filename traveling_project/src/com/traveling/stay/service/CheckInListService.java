@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.traveling.common.DataControl;
 import com.traveling.common.ParsingCommon;
 import com.traveling.stay.dao.StayManagementDAO;

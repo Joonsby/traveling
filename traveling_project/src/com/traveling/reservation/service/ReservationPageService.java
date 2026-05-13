@@ -5,9 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 import com.traveling.common.DataControl;
-import com.traveling.common.ParsingCommon;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.RoomInfo;
 

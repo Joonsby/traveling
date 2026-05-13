@@ -127,8 +127,7 @@
 		<ul class="room-list">
 			<c:forEach var="room" items="${roomList}" varStatus="status">
 				<c:url var="roomImageUrl" value="/images/room_images/${room.image1}" />
-				<c:url var="reservationUrl" value="/webPage/reservation/ReservationController">
-					<c:param name="requestType" value="goReservationPage" />
+				<c:url var="reservationUrl" value="/reservation/page">
 					<c:param name="room_id" value="${room.room_id}" />
 					<c:param name="user_id" value="${sessionUserId}" />
 				</c:url>
