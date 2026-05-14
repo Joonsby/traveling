@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.reservation.dao.ReservationManageDAO;
 
 public class PaymentFailService implements DataControl{
 	
@@ -14,8 +15,13 @@ public class PaymentFailService implements DataControl{
 
 	@Override
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
+	    String orderId = req.getParameter("orderId");
 
+	    if (orderId != null && !orderId.trim().isEmpty()) {
+	        ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
+	        reservationManageDAO.updatePendingPaymentFail(orderId);
+	    }
+
+	    res.sendRedirect(req.getContextPath() + "/webPage/reservation/reservation.jsp");
 	}
-
 }

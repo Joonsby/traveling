@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>예약 완료</title>
-<link rel="stylesheet" href="<c:url value="/css/pay_success.css"/>" />
+<link rel="stylesheet" href="<c:url value="/css/reservation/pay_success.css"/>" />
 </head>
 <body>
 	<section id="success-reservation">
