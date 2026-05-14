@@ -64,8 +64,7 @@ public class StayController extends BaseController {
                 inter.dataCon(req, res);
             }
 		} catch (Exception e) {
-			printFailLog(e);
-			throw new ServletException("StayController 처리 중 오류 발생", e);
+			handleControllerException(req,res,e,"StayController",action);
 		}
 	}
 

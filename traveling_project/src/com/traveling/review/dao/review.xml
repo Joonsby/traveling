@@ -12,7 +12,7 @@
 	<select id="hasReview" parameterType="String" resultType="int">
 		select b.reservation_id review_exists
 		from reservation a
-		left join review_info b on a.reservation_id = b.reservation_id
+		join review_info b on a.reservation_id = b.reservation_id
 		where a.user_id = #{id}
 	</select>
 	

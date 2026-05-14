@@ -51,4 +51,15 @@ public abstract class BaseController extends HttpServlet{
         req.setAttribute("errorMessage", message);
         req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
     }
+    
+    /**
+     * Controller Exception 처리
+     */
+    protected void handleControllerException(HttpServletRequest req,HttpServletResponse res,Exception e,String controllerName,String action) throws ServletException, IOException {
+        printFailLog(e);
+        System.out.println("[" + controllerName + " ERROR]");
+        System.out.println("action = " + action);
+        System.out.println("uri = " + req.getRequestURI());
+        ViewUtil.forwardError(req,res,"처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    }
 }

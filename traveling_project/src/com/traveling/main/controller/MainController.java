@@ -21,9 +21,7 @@ public class MainController extends BaseController{
 			DataControl inter = MainService.instance();
 			inter.dataCon(req, res);
 		} catch(Exception e) {
-			printFailLog(e);
-		    e.printStackTrace();
-			throw new ServletException("MainController 처리 중 오류 발생", e);
+			handleControllerException(req,res,e,"MainController","main");
 		}
 	}
 }

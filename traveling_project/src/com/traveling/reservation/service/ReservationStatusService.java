@@ -23,7 +23,7 @@ public class ReservationStatusService implements DataControl {
 		ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
 		List<ReservationInfo> reservationList =  reservationManageDAO.getHostReservationInfo(hostId);
 		req.setAttribute("reservationList", reservationList);
-		req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp").forward(req, res);;
+		req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp").forward(req, res);
 	}
 	
 }

@@ -56,8 +56,7 @@ public class SignupController extends BaseController{
 				    return;
 				}
 		} catch(Exception e) {
-			printFailLog(e);
-			throw new ServletException("SignupController 처리 중 오류 발생", e);
+			handleControllerException(req,res,e,"SignupController",action);
 		}
 	}
 	

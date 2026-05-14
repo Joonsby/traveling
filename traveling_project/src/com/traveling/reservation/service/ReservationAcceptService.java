@@ -26,7 +26,7 @@ public class ReservationAcceptService implements DataControl {
 		int cnt = reservationManageDAO.reservationUpdate(updateInfo);
 		if(cnt > 0) {
 			req.setAttribute("message", "예약 상태가 정상적으로 변경되었습니다.");
-			req.getRequestDispatcher("/webPage/reservation/ReservationController?requestType=getReservationStatus").forward(req, res);
+			req.getRequestDispatcher("/reservation/status").forward(req, res);
 		} else {
 			ViewUtil.forwardError(req,res,"예약 상태 변경에 실패했습니다.");
 		}

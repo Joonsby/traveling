@@ -8,15 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ViewUtil {
 
-    public static void forwardError(
-            HttpServletRequest req,
-            HttpServletResponse res,
-            String message)
-            throws ServletException, IOException {
-
+    public static void forwardError(HttpServletRequest req, HttpServletResponse res, String message) throws ServletException, IOException {
         req.setAttribute("errorMessage", message);
-
-        req.getRequestDispatcher("/webPage/error/error.jsp")
-           .forward(req, res);
+        req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
     }
 }

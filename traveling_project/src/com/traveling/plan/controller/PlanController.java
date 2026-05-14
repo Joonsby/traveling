@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.BaseController;
 import com.traveling.common.DataControl;
+import com.traveling.common.ViewUtil;
 import com.traveling.plan.service.PlanDeleteService;
 import com.traveling.plan.service.PlanInsertService;
 import com.traveling.plan.service.PlanSelectService;
@@ -45,10 +46,12 @@ public class PlanController extends BaseController {
 				inter = PlanUpdateService.instance();
 				inter.dataCon(req, res);
 				break;
+			default:
+			    forwardError(req, res, "잘못된 요청입니다.");
+			    return;
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			handleControllerException(req,res,e,"PlanController",action);
 		}
 	}
 
