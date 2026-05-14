@@ -15,7 +15,7 @@
 		</div>
 		<div id="fee">
 			<h3>1박당 요금</h3>
-	  <div class="price-input">		      	
+	  <div class="price-input">
 	    <div class="field">
 	      <span>이상</span>		          
 	      <span>이하</span>		          

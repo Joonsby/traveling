@@ -1,16 +1,90 @@
-var map;
-var overlayMap = {};
+let $rangeInput;
+let $priceInput;
+let $range;
 
-//필터링 데이터를 수집하는 함수
+const priceGap = 10000;
+
+$(document).ready(function () {
+  initElements();
+
+  initStayMap();
+  bindMapLayoutEvents();
+
+  bindPriceInputEvents();
+  bindRangeInputEvents();
+  bindFilterEvents();
+});
+
+function initElements() {
+  $rangeInput = $(".range-input input");
+  $priceInput = $(".price-input input");
+  $range = $(".slider .progress");
+}
+
+function bindPriceInputEvents() {
+  $priceInput.on("input", function () {
+    let raw = $(this).val().replace(/,/g, "");
+    raw = raw.replace(/[^0-9]/g, "");
+
+    if (raw === "") {
+      $(this).val("");
+      return;
+    }
+
+    $(this).val(formatPrice(raw));
+  });
+
+  $priceInput.on("blur", function () {
+    normalizePriceInputs();
+    sendFilterRequest(collectFilterData());
+  });
+
+  $priceInput.on("focus", function () {
+    $(this).select();
+  });
+}
+
+function bindRangeInputEvents() {
+  $rangeInput.on("input", function () {
+    let minVal = parseInt($rangeInput.first().val(), 10);
+    let maxVal = parseInt($rangeInput.last().val(), 10);
+
+    if (maxVal - minVal < priceGap) {
+      if ($(this).hasClass("range-min")) {
+        minVal = maxVal - priceGap;
+        $rangeInput.first().val(minVal);
+      } else {
+        maxVal = minVal + priceGap;
+        $rangeInput.last().val(maxVal);
+      }
+    }
+
+    updatePriceUI(minVal, maxVal);
+  });
+
+  $rangeInput.on("change", function () {
+    sendFilterRequest(collectFilterData());
+  });
+}
+
+function bindFilterEvents() {
+  $(".rating").on("change", function () {
+    sendFilterRequest(collectFilterData());
+  });
+
+  $(".options").on("change", function () {
+    sendFilterRequest(collectFilterData());
+  });
+}
+
 function collectFilterData() {
   return {
     minPrice: $(".range-min").val(),
     maxPrice: $(".range-max").val(),
-    rating: $(".rating:checked").val(),
+    rating: $(".rating:checked").val()
   };
 }
 
-//중복된 AJAX 요청 로직을 처리하는 함수
 function sendFilterRequest(filterData) {
   $.ajax({
     url: "/stay/filter",
@@ -18,249 +92,116 @@ function sendFilterRequest(filterData) {
     data: filterData,
     dataType: "json",
     success: function (data) {
-      var accommodationBox 	= $("#accomodation_info_box");
-      var locations 		= {};
-      accommodationBox.empty();      
-
-      if (Array.isArray(data)) {
-    	  data.forEach(function (item) {
-          var formattedPrice = Number(item.min_room_price).toLocaleString();
-          var key = parseFloat(item.latitude) + "_" + parseFloat(item.longitude);
-          
-          // locations 객체를 생성합니다.
-          locations[key] = {
-            lat: parseFloat(item.latitude),
-            lng: parseFloat(item.longitude),
-            stayName: item.stay_name,
-            price: formattedPrice
-          };
-
-          // 숙박 정보 HTML을 구성하고 페이지에 추가합니다.
-          var accommodationHTML = `
-            <div class="accomodation">
-              <a href="/stay/detail?stay_id=${item.stayId}">
-                <div class="accomodation_box">
-                  <div>
-                    <img class="image" src="/images/stay_images/${item.image1}" alt="이미지1" />
-                  </div>
-                  <div>
-                    <h2 class="stay-name">${item.stay_name}</h2>
-                    <p class="avg-rating">${item.avg_rating}</p>
-                    <p class="road-addr">${item.road_addr}</p>
-                    <p class="room-price">₩ ${formattedPrice} ~</p>
-                  </div>
-                </div>
-              </a>
-            </div>`;
-          accommodationBox.append(accommodationHTML);
-        });
-        
-        // 지도에 오버레이를 생성합니다.
-        createOverlays(locations);
-      }
+      renderAccommodationList(data);
+      createOverlays(convertToLocations(data));
     }
   });
 }
 
-//오버레이를 생성하고 지도에 표시하는 함수
-function createOverlays(locations) {
-  removeOverlays(); // 기존에 있던 오버레이들을 지도에서 모두 제거합니다.
+function renderAccommodationList(data) {
+  var accommodationBox = $("#accomodation_info_box");
+  accommodationBox.empty();
 
-  for (var key in locations) {
-    if (locations.hasOwnProperty(key)) {
-      var position = locations[key];
-      var content ='<div class="center">' +
-                       '<p>' + position.stayName + '</p>' + 
-                       '<span>₩' + position.price + '</span>' +
-                   '</div>';                   
-      var customOverlay = new kakao.maps.CustomOverlay({
-        map: map,
-        position: new kakao.maps.LatLng(position.lat, position.lng),
-        content: content,
-        yAnchor: 1
-      });
-      overlayMap[key] = customOverlay; // 생성된 오버레이를 객체에 추가합니다.
-    }
+  if (!Array.isArray(data)) {
+    return;
   }
+
+  data.forEach(function (item) {
+    var formattedPrice = Number(item.min_room_price).toLocaleString();
+
+    var accommodationHTML = `
+      <div class="accomodation">
+        <a href="/stay/detail?stay_id=${item.stayId}">
+          <div class="accomodation_box">
+            <div>
+              <img class="image" src="/images/stay_images/${item.image1}" alt="이미지1" />
+            </div>
+            <div>
+              <h2 class="stay-name">${item.stay_name}</h2>
+              <p class="avg-rating">${item.avg_rating}</p>
+              <p class="road-addr">${item.road_addr}</p>
+              <p class="room-price">₩ ${formattedPrice} ~</p>
+            </div>
+          </div>
+        </a>
+      </div>`;
+
+    accommodationBox.append(accommodationHTML);
+  });
 }
 
-//오버레이를 지도에서 제거하는 함수
-function removeOverlays() {
-for (var key in overlayMap) {
- if (overlayMap.hasOwnProperty(key)) {
-   overlayMap[key].setMap(null); // 오버레이를 지도에서 제거
- }
+function convertToLocations(data) {
+  var result = {};
+
+  if (!Array.isArray(data)) {
+    return result;
+  }
+
+  data.forEach(function (item) {
+    var lat = parseFloat(item.latitude);
+    var lng = parseFloat(item.longitude);
+
+    if (isNaN(lat) || isNaN(lng)) {
+      return;
+    }
+
+    var key = item.stayId || lat + "_" + lng;
+
+    result[key] = {
+      lat: lat,
+      lng: lng,
+      stayName: item.stay_name,
+      price: Number(item.min_room_price).toLocaleString()
+    };
+  });
+
+  return result;
 }
-overlayMap = {}; // 오버레이 객체를 비웁니다.
+
+function normalizePriceInputs() {
+  const maxLimit = parseInt($rangeInput.last().prop("max"), 10);
+
+  let minPrice = parsePrice($priceInput.first().val());
+  let maxPrice = parsePrice($priceInput.last().val());
+
+  if (minPrice < 0) {
+    minPrice = 0;
+  }
+
+  if (maxPrice > maxLimit) {
+    maxPrice = maxLimit;
+  }
+
+  if (maxPrice < minPrice + priceGap) {
+    maxPrice = minPrice + priceGap;
+  }
+
+  if (maxPrice > maxLimit) {
+    maxPrice = maxLimit;
+    minPrice = maxLimit - priceGap;
+  }
+
+  updatePriceUI(minPrice, maxPrice);
 }
 
-$(document).ready(function () {            
-  var locations = {};
-  // 위도와 경도 값을 포함하는 각 요소에 대해 반복합니다.
-  $(".latitude").each(function (index, element) {
-    var latitude = parseFloat(element.value);
-    var longitudeElement = $(".longitude")[index];
-    var longitude = parseFloat(longitudeElement.value);    
+function updatePriceUI(minPrice, maxPrice) {
+  const maxLimit = parseInt($rangeInput.last().prop("max"), 10);
 
-    // 고유한 키를 생성합니다. 여기서는 위도와 경도를 조합하여 키를 만듭니다.
-    var key = latitude + "_" + longitude;
+  $priceInput.first().val(formatPrice(minPrice));
+  $priceInput.last().val(formatPrice(maxPrice));
 
-    // 위치 객체를 생성하여 locations 객체에 저장합니다.
-    locations[key] = {
-      lat: latitude,
-      lng: longitude,
-      stayName: $(".name-val")[index].value,
-      price: Number($(".price-val")[index].value).toLocaleString()
-    };    
-  });
-  
-  //locations 객체의 모든 키를 얻습니다.
-  var keys = Object.keys(locations);
+  $rangeInput.first().val(minPrice);
+  $rangeInput.last().val(maxPrice);
 
-  // 첫 번째 키를 얻습니다.
-  var firstKey = keys[0];
+  $range.css("left", (minPrice / maxLimit) * 100 + "%");
+  $range.css("right", 100 - (maxPrice / maxLimit) * 100 + "%");
+}
 
-  // 첫 번째 위치 객체를 얻습니다.
-  var firstLocation = locations[firstKey];
+function formatPrice(value) {
+  return Number(value).toLocaleString();
+}
 
-  // 첫 번째 위치의 lat과 lng 값을 얻습니다.
-  var firstLat = firstLocation.lat;
-  var firstLng = firstLocation.lng;
-
-  // 지도를 표시할 div
-  var mapContainer = document.getElementById("map");
-  var mapOption = {
-    center: new kakao.maps.LatLng(firstLat, firstLng), // 지도의 중심좌표
-    level: 6, // 지도의 확대 레벨
-  };
-
-  // 지도를 생성합니다
-  map = new kakao.maps.Map(mapContainer, mapOption);
-
-//지도에 오버레이를 추가하는 부분을 수정합니다.
-  for (var key in locations) {
-    if (locations.hasOwnProperty(key)) {
-      var location = locations[key];
-      var position = new kakao.maps.LatLng(location.lat, location.lng);
-      
-      // 커스텀 오버레이에 표시할 내용을 설정합니다.
-      var content = '<div class="center">' +
-                       '<p>' + location.stayName + '</p>' + 
-                       '<span>₩' + location.price + '</span>' +
-                     '</div>';
-                    
-
-      // 커스텀 오버레이를 생성합니다.
-      var customOverlay = new kakao.maps.CustomOverlay({
-        map: map,
-        position: position,
-        content: content,
-        yAnchor: 1
-      });
-
-      // 생성된 오버레이를 overlayMap 객체에 저장합니다.
-      overlayMap[key] = customOverlay;
-    }
-  }
-
-  // 지도 타입 변경 컨트롤을 생성한다
-  var mapTypeControl = new kakao.maps.MapTypeControl();
-
-  // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-  map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-  // 지도에 확대 축소 컨트롤을 생성한다
-  var zoomControl = new kakao.maps.ZoomControl();
-
-  // 지도의 우측에 확대 축소 컨트롤을 추가한다
-  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-  let stayRequest = new XMLHttpRequest();
-  const $rangeInput = $(".range-input input");
-  const $priceInput = $(".price-input input");
-  const $range = $(".slider .progress");
-  let priceGap = 10000;
-
-  // 숫자에 콤마를 추가하는 함수
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
-  // 문자열에서 콤마를 제거하는 함수
-  function removeCommas(str) {
-    return parseInt(str.replace(/,/g, ""), 10);
-  }
-
-  $priceInput.on("input", function (e) {
-    let minPrice = parseInt($priceInput.first().val().replace(/,/g, "")),
-      maxPrice = parseInt($priceInput.last().val().replace(/,/g, ""));
-
-    if (maxPrice - minPrice >= priceGap && maxPrice <= $rangeInput.last().prop("max")) {
-      if ($(this).hasClass("input-min")) {
-        $rangeInput.first().val(minPrice);
-        $range.css("left", (minPrice / $rangeInput.first().prop("max")) * 100 + "%");
-        $(this).val(numberWithCommas(minPrice));
-      } else {
-        $rangeInput.last().val(maxPrice);
-        $range.css("right", 100 - (maxPrice / $rangeInput.last().prop("max")) * 100 + "%");
-        $(this).val(numberWithCommas(maxPrice));
-      }
-    } else {
-      $(this).val(numberWithCommas($(this).val().replace(/,/g, "")));
-    }
-  });
-
-  $rangeInput.on("input", function () {
-    let minVal = parseInt($rangeInput.first().val());
-    let maxVal = parseInt($rangeInput.last().val());
-    if (maxVal - minVal < priceGap) {
-      if ($(this).hasClass("range-min")) {
-        $rangeInput.first().val(maxVal - priceGap);
-      } else {
-        $rangeInput.last().val(minVal + priceGap);
-      }
-    } else {
-      $priceInput.first().val(numberWithCommas(minVal));
-      $priceInput.last().val(numberWithCommas(maxVal));
-      $range.css("left", (minVal / $rangeInput.first().prop("max")) * 100 + "%");
-      $range.css("right", 100 - (maxVal / $rangeInput.last().prop("max")) * 100 + "%");
-    }
-  });
-
-  // 가격 입력 칸 blur 했을 때
-  $priceInput.on("blur", function () {
-    sendFilterRequest(collectFilterData());
-  });
-
-  // 가격 필터에서 mouseup 했을 때
-  $rangeInput.on("mouseup", function () {
-    sendFilterRequest(collectFilterData());
-  });
-
-  // input에 focus하면 전체 선택
-  $priceInput.on("focus", function () {
-    $(this).select();
-  });
-
-  // 리뷰 평점 바뀔 때 이벤트
-  $(".rating").on("change", function () {
-    sendFilterRequest(collectFilterData());
-  });
-
-  // 필터 바뀔 때 이벤트
-  $(".options").on("change", function () {
-    sendFilterRequest(collectFilterData());
-  });
-  
-  $('#side-map').click(function(){
-      $('#map').css('width','100vw');
-      map.relayout();
-      $('#map-close').show();
-  })
-  
-  $('#map-close').click(function(){
-      $('#map').css('width','933px');
-      map.relayout();
-      $(this).hide();      
-  })  
-});
+function parsePrice(value) {
+  const num = parseInt(String(value).replace(/,/g, ""), 10);
+  return isNaN(num) ? 0 : num;
+}
