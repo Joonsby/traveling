@@ -117,6 +117,7 @@
 		<input type="hidden" id="check-out-time" value="${roomList[0].check_out_time}">
 		<input type="hidden" id="standard-people" value="${roomList[0].standard_people}">
 		<input type="hidden" id="maximum-people" value="${roomList[0].maximum_people}">
+		<input type="hidden" id="extra-person-fee" value="${roomList[0].extra_person_fee}">
 	</form>
 </body>
 </html>

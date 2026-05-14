@@ -1,6 +1,8 @@
 package com.traveling.reservation.service;
 
 import java.io.StringReader;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +34,8 @@ public class CreatePendingReservationService implements DataControl{
 	    map.put("roomId", json.getString("roomId"));
 	    map.put("checkInDate", json.getString("checkInDate"));
 	    map.put("checkOutDate", json.getString("checkOutDate"));
+	    map.put("checkInTime", json.getString("checkInTime"));
+	    map.put("checkOutTime", json.getString("checkOutTime"));
 	    map.put("people", json.getString("people"));
 	    
 	    ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
@@ -40,11 +44,9 @@ public class CreatePendingReservationService implements DataControl{
 		String orderId = "RES_" + System.currentTimeMillis();
 		 
 		map.put("orderId", orderId);
-		map.put("orderId", orderId);
 		map.put("price",price);
-		map.put("status", "PENDING");
+		map.put("status", "예약 대기");
 		map.put("paymentStatus", "READY");
-		
 		int cnt = reservationManageDAO.insertReservation(map);
 		if(cnt <= 0) {
 			throw new RuntimeException("예약 초안 생성 실패");
@@ -70,20 +72,30 @@ public class CreatePendingReservationService implements DataControl{
 		ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
 		
 		int roomId = Integer.parseInt(String.valueOf(map.get("roomId")));
+		int people = Integer.parseInt(map.get("people"));
+		
 	    String checkInDate = String.valueOf(map.get("checkInDate"));
 	    String checkOutDate = String.valueOf(map.get("checkOutDate"));
 	    
 	    int basePrice = reservationManageDAO.getRoomPrice(roomId);
+	    int extraPersonFee = reservationManageDAO.getExtraPersonFee(roomId);
 	    
-	    java.time.LocalDate inDate = java.time.LocalDate.parse(checkInDate);
-	    java.time.LocalDate outDate = java.time.LocalDate.parse(checkOutDate);
+	    LocalDate inDate = LocalDate.parse(checkInDate);
+	    LocalDate outDate = LocalDate.parse(checkOutDate);
 	    
-	    int nights = (int) java.time.temporal.ChronoUnit.DAYS.between(inDate, outDate);
+	    int nights = (int) ChronoUnit.DAYS.between(inDate, outDate);
 	    
 	    if (nights <= 0) {
 	        throw new RuntimeException("숙박일수가 올바르지 않습니다.");
 	    }
 	    
-	    return Integer.toString(nights * basePrice);
+	    int standardPeople = reservationManageDAO.getStandardPeople(roomId);
+	    int additionalPeople = Math.max(0, people - standardPeople);
+	    int totalRoomPrice = nights * basePrice;
+	    int totalPeoplePrice = additionalPeople * extraPersonFee;
+	    int finalPrice = totalRoomPrice + totalPeoplePrice;
+
+	    return Integer.toString(finalPrice);
+	    
 	}
 }

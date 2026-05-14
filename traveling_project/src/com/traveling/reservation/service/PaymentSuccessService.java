@@ -54,7 +54,7 @@ public class PaymentSuccessService implements DataControl{
 	    updateMap.put("orderId", orderId);
 	    updateMap.put("paymentKey", paymentKey);
 	    updateMap.put("paymentStatus", status);
-	    updateMap.put("status", "CONFIRMED");
+	    updateMap.put("status", "예약 대기");
 	    updateMap.put("paidAmount", amount);
 	    
 	    int cnt = reservationManageDAO.updatePaymentSuccess(updateMap);

@@ -7,8 +7,8 @@
 		SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,
 		r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status
 		FROM reservation r  
-		JOIN room_info ro ON ro.room_id = r.room_id 
-		JOIN stay_info s ON s.stay_id = ro.stay_id 
+		JOIN room_info ro ON ro.room_id = r.room_id
+		JOIN stay_info s ON s.stay_id = ro.stay_id
 		JOIN host_info h ON h.host_id = s.host_id AND h.host_id = #{hostId}
 		INNER JOIN user_info u ON u.user_id = r.user_id
 		order by r.status
@@ -16,16 +16,15 @@
 	
 	<select id="getUserReservationInfo" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
 		SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') check_in_date,
-		DATE_FORMAT(r.check_out_date, '%Y.%m.%d') check_out_date, r.people, r.status,si.stay_name, si.location,
-		u.email
+		DATE_FORMAT(r.check_out_date, '%Y.%m.%d') check_out_date, r.people, r.status,si.stay_name, si.location, u.email
 		FROM reservation r
 		JOIN room_info ri
 		ON r.room_id = ri.room_id
-		AND r.user_id = #{userID}
 		JOIN stay_info si
 		ON ri.stay_id = si.stay_id
 		JOIN user_info u
 		ON r.user_id = u.user_id
+		WHERE r.user_id = #{userID}
 		order by check_in_date
 	</select>
 	
@@ -35,7 +34,7 @@
 	</update>
 	
 	<select id="getRoomInfo" parameterType="int" resultType="com.traveling.reservation.dto.RoomInfo">
-		select room_id,stay_id,room_name,content,check_in_time,check_out_time,price,standard_people,maximum_people,
+		select room_id,stay_id,room_name,content,check_in_time,check_out_time,price,standard_people,maximum_people,extra_person_fee,
 		image1,image2,image3,image4,image5,image6,image7,image8,image9,image10
 		from room_info where room_id = #{room_id}
 	</select>
@@ -52,12 +51,86 @@
 		VALUES (#{userId},#{roomId},#{checkInDate},#{checkOutDate},#{checkInTime},#{checkOutTime},#{people},#{price},now(),'예약 대기');
 	</insert>
 	
-	<insert id="insertReservationInfo" parameterType="com.traveling.stay.dto.StayInfo">
-    	
+	<insert id="insertReservationInfo" parameterType="map">
+		INSERT INTO reservation (
+	        user_id,
+	        room_id,
+	        check_in_date,
+	        check_out_date,
+	        check_in_time,
+	        check_out_time,
+	        people,
+	        price,
+	        order_id,
+	        status,
+	        payment_status,
+	        reg_date
+	    )
+	    VALUES (
+	        #{userId},
+	        #{roomId},
+	        #{checkInDate},
+	        #{checkOutDate},
+	        #{checkInTime},
+	        #{checkOutTime},
+	        #{people},
+	        #{price},
+	        #{orderId},
+	        #{status},
+	        #{paymentStatus},
+	        NOW()
+	    )
     </insert>
+    
+    <select id="getStandardPeople" parameterType="int" resultType="int">
+	    SELECT standard_people
+	    FROM room_info
+	    WHERE room_id = #{roomId}
+	</select>
     
     <select id="getRoomPrice" resultType="int" parameterType="int" >
     	SELECT price FROM room_info WHERE room_id = #{roomId}
     </select>
     
+    <select id="getByOrderId" parameterType="String" resultType="com.traveling.reservation.dto.ReservationInfo">
+	    SELECT
+	        reservation_id AS reservationId,
+	        user_id AS userId,
+	        room_id AS roomId,
+	        people,
+	        price,
+	        status,
+	        payment_status AS paymentStatus,
+	        order_id AS orderId
+	    FROM reservation
+	    WHERE order_id = #{orderId}
+	</select>
+	
+	<update id="updatePaymentSuccess" parameterType="map">
+	    UPDATE reservation
+	    SET
+	        payment_key = #{paymentKey},
+	        payment_status = #{paymentStatus},
+	        paid_amount = #{paidAmount},
+	        payment_time = NOW(),
+	        status = #{status}
+	    WHERE order_id = #{orderId}
+	      AND payment_status = '결제대기'
+	</update>
+	
+	<select id="getExtraPersonFee" parameterType="int" resultType="int">	
+	    SELECT extra_person_fee
+	    FROM room_info
+	    WHERE room_id = #{roomId}
+	</select>
+	
+	<select id="getReservationUserInfo" parameterType="String" resultType="com.traveling.signup.dto.UserInfo">
+	    SELECT
+	        user_id AS id,
+	        name,
+	        email,
+	        phone
+	    FROM user_info
+	    WHERE user_id = #{userId}
+	</select>
 </mapper>
