@@ -39,8 +39,7 @@ public class LoginController extends BaseController{
 				forwardError(req,res,"잘못된 요청입니다.");
 			}
 		} catch(Exception e) {
-			printFailLog(e);
-			throw new ServletException("LoginController 처리 중 오류 발생", e);
+			handleControllerException(req,res,e,"LoginController",action);
 		}
 	}
 	

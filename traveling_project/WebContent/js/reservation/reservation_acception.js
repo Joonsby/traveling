@@ -3,17 +3,25 @@ $(document).ready(function() {
     $(".accept_btn").click(function(){      
       var tr = $(this).closest('tr');
       var reservationId = tr.find('input[type="hidden"]').val();
-      if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 확정하시겠습니까?")){          
-          location.href="/reservation/accept?status=예약 확정&reservationId=" + reservationId
-      }
+  	  showConfirmModal(			
+		'예약 승인',
+		'예약 번호는[' + reservationId + ']입니다 \n예약을 승인하시겠습니까?',
+		function () {
+			location.href="/reservation/accept?status=예약 확정&reservationId=" + reservationId
+		}
+	  );
     });
     
     $(".reject_btn").click(function(){
         var tr = $(this).closest('tr');
         var reservationId = tr.find('input[type="hidden"]').val();
-        if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 거부하시겠습니까?")){
-        	location.href="/reservation/accept?status=예약 거부&reservationId=" + reservationId
-        }
+    	showConfirmModal(			
+    		'예약 거부',
+    		'예약 번호는[' + reservationId + ']입니다 \n예약을 거부하시겠습니까?',
+    		function () {
+    			location.href="/reservation/accept?status=예약 거부&reservationId=" + reservationId
+    		}
+    	 );        
       });
 
     // 승인 버튼

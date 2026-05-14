@@ -48,21 +48,22 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>stay</servlet-name>
-		<url-pattern>/webPage/stay/StayController</url-pattern>
-	</servlet-mapping>    
-	<servlet-mapping>
-		<servlet-name>stay</servlet-name>
 		<url-pattern>/stay/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>room</servlet-name>
+		<servlet-class>com.traveling.room.controller.RoomController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>room</servlet-name>
+		<url-pattern>/room/*</url-pattern>
 	</servlet-mapping>    
 	
 	<servlet>
 		<servlet-name>reservation</servlet-name>
 		<servlet-class>com.traveling.reservation.controller.ReservationController</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>reservation</servlet-name>
-		<url-pattern>/webPage/reservation/ReservationController</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>reservation</servlet-name>
 		<url-pattern>/reservation/*</url-pattern>

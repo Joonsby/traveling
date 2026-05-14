@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.traveling.common.DataControl;
 import com.traveling.mypage.dao.MyPageManageDAO;
 import com.traveling.mypage.dto.MyPageInfo;

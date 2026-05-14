@@ -59,15 +59,14 @@ public class ReservationController extends BaseController{
 				inter = RoomInfoService.instance();
 				break;
 			default:
-			    ViewUtil.forwardError(req, res, "잘못된 요청입니다.");
+			    forwardError(req, res, "잘못된 요청입니다.");
 			    return;
 			}
             if (inter != null) {
                 inter.dataCon(req, res);
             }
 		} catch(Exception e) {
-			printFailLog(e);
-			throw new ServletException("ReservationController 처리 중 오류 발생", e);
+		    handleControllerException(req,res,e,"ReservationController",action);
 		}
 	}
 	

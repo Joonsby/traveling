@@ -44,7 +44,7 @@
 								<c:forEach var="reservationInfo" items="${reservationList}">
 									<ul class="index_list">
 										<li><span class="r_location">${reservationInfo.location}</span></li>
-										<li class="r_chk_date">${reservationInfo.checkInDate} ~ ${reservationInfo.checkOutDate}</li>
+										<li class="r_chk_date">${reservationInfo.check_in_date} ~ ${reservationInfo.check_out_date}</li>
 										<li class="r_people">${reservationInfo.people}</li>
 										<li><a href="#" class="detail_reservation">상세보기</a></li>
 										<c:choose>

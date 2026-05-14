@@ -1,8 +1,6 @@
 package com.traveling.reservation.service;
 
 import java.io.StringReader;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.json.Json;
@@ -10,6 +8,7 @@ import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.traveling.common.DataControl;
 import com.traveling.common.ViewUtil;
 import com.traveling.reservation.dao.ReservationManageDAO;
@@ -61,19 +60,17 @@ public class PaymentSuccessService implements DataControl{
 		int insertCnt = reservationManageDAO.insertReservationFromPending(pending);
 		
 		if (insertCnt <= 0) {
-		    throw new RuntimeException("예약 생성 실패");
+			ViewUtil.forwardError(req,res,"결제 처리 중 오류가 발생했습니다.");
 		}
 		
 		reservationManageDAO.updatePendingPaymentDone(orderId);
 	    
 	    // 5. 성공 페이지 이동
-	    if(insertCnt > 0) {
-	    	ReservationInfo reservationInfo = reservationManageDAO.getReservationSuccessInfo(orderId);
-	    	req.setAttribute("reservationInfo", reservationInfo);
-	    	res.sendRedirect(req.getContextPath() + "/webPage/reservation/pay_success.jsp");
-	    } else {
-	    	ViewUtil.forwardError(req,res,"결제 처리 중 오류가 발생했습니다.");
-	    }
+    	ReservationInfo reservationInfo = reservationManageDAO.getReservationSuccessInfo(orderId);
+    	Gson gson = new Gson();
+    	System.out.println(gson.toJson(reservationInfo));
+    	req.setAttribute("reservationInfo", reservationInfo);
+    	req.getRequestDispatcher("/webPage/reservation/pay_success.jsp").forward(req, res);
 	}
 
 }
