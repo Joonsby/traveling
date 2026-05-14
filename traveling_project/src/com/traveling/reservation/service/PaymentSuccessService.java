@@ -26,41 +26,50 @@ public class PaymentSuccessService implements DataControl{
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		ReservationManageDAO reservationManageDAO = ReservationManageDAO.instance();
 		
+		
 		// TODO Auto-generated method stub
 		String paymentKey = req.getParameter("paymentKey");
 		String orderId = req.getParameter("orderId");
 		String amount = req.getParameter("amount");
 		
-		// 1. DB조회
-		List<ReservationInfo> reservationList = reservationManageDAO.getByOrderId(orderId);
+		Map<String, Object> pending = reservationManageDAO.getPendingReservationByOrderId(orderId);
 		
-		// 2. 금액 검증
-		if (reservationList.get(0).getPrice() != Integer.parseInt(amount)) {
-			throw new RuntimeException("금액 위변조");
+		if (pending == null) {
+		    throw new RuntimeException("임시 예약 정보가 없습니다.");
 		}
 		
-		// 3. 토스 승인 API 호출
-		String result = PaymentConfirmService.confirm(paymentKey,orderId,amount);
+		int dbAmount = Integer.parseInt(String.valueOf(pending.get("amount")));
+		int requestAmount = Integer.parseInt(amount);
+		
+		if (dbAmount != requestAmount) {
+		    throw new RuntimeException("금액 위변조");
+		}
+		
+		// 토스 승인 API 호출
+		String result = PaymentConfirmService.confirm(paymentKey, orderId, amount);
 		JsonObject obj = Json.createReader(new StringReader(result)).readObject();
 		
-		String status = obj.getString("status");
+		String tossStatus = obj.getString("status");
 		
-	    if (!"DONE".equals(status)) {
-	        throw new RuntimeException("결제 실패 상태");
-	    }
-	    
-	    // 4. DB UPDATE
-	    Map<String, Object> updateMap = new HashMap<>();
-	    updateMap.put("orderId", orderId);
-	    updateMap.put("paymentKey", paymentKey);
-	    updateMap.put("paymentStatus", status);
-	    updateMap.put("status", "예약 대기");
-	    updateMap.put("paidAmount", amount);
-	    
-	    int cnt = reservationManageDAO.updatePaymentSuccess(updateMap);
+		if (!"DONE".equals(tossStatus)) {
+		    throw new RuntimeException("결제 실패 상태");
+		}
+		
+		pending.put("paymentKey", paymentKey);
+		pending.put("orderId", orderId);
+		
+		int insertCnt = reservationManageDAO.insertReservationFromPending(pending);
+		
+		if (insertCnt <= 0) {
+		    throw new RuntimeException("예약 생성 실패");
+		}
+		
+		reservationManageDAO.updatePendingPaymentDone(orderId);
 	    
 	    // 5. 성공 페이지 이동
-	    if(cnt > 0) {
+	    if(insertCnt > 0) {
+	    	ReservationInfo reservationInfo = reservationManageDAO.getReservationSuccessInfo(orderId);
+	    	req.setAttribute("reservationInfo", reservationInfo);
 	    	res.sendRedirect(req.getContextPath() + "/webPage/reservation/pay_success.jsp");
 	    } else {
 	    	ViewUtil.forwardError(req,res,"결제 처리 중 오류가 발생했습니다.");

@@ -46,22 +46,6 @@ public class ReservationManageDAO {
 		return roomList;
 	}
 	
-	public List<ReservationInfo> getRoomInfo2(Map<String, String> reservationInfo){
-		SqlSession s = f.openSession();
-		List<ReservationInfo> roomList = s.selectList("getRoomInfo2",reservationInfo);
-		s.close();
-		return roomList;
-	}
-	
-	// 예약 버튼 누르고 결제 로직 처리하기 전에 PENDING으로 insert 
-	public int insertReservation(Map<String, String> reservationInfo) {
-		SqlSession s = f.openSession();
-		int cnt = s.insert("insertReservationInfo",reservationInfo);
-		s.commit();
-		s.close();
-		return cnt;
-	}
-	
 	// 객실 가격 정보 가져오기
 	public int getRoomPrice(int roomId) {
 		SqlSession s = f.openSession();
@@ -78,22 +62,6 @@ public class ReservationManageDAO {
 		return userInfo;
 	}
 	
-	// 
-	public List<ReservationInfo> getByOrderId(String orderId) {
-		SqlSession s = f.openSession();
-		List<ReservationInfo> reservationList = s.selectList("getByOrderId",orderId);
-		s.close();
-		return reservationList;
-	}
-	
-	public int updatePaymentSuccess(Map<String, Object> updateMap) {
-		SqlSession s = f.openSession();
-		int cnt = s.update("updatePaymentSuccess",updateMap);
-		s.commit();
-		s.close();
-		return cnt;
-	}
-	
 	// 객실 기준 인원
 	public int getStandardPeople(int roomId) {
 	    SqlSession s = f.openSession();
@@ -108,5 +76,51 @@ public class ReservationManageDAO {
 	    int fee = s.selectOne("getExtraPersonFee", roomId);
 	    s.close();
 	    return fee;
+	}
+	
+	public int insertPendingReservation(Map<String, String> reservationInfo) {
+	    SqlSession s = f.openSession();
+	    int cnt = s.insert("insertPendingReservation", reservationInfo);
+	    s.commit();
+	    s.close();
+	    return cnt;
+	}
+
+	public Map<String, Object> getPendingReservationByOrderId(String orderId) {
+	    SqlSession s = f.openSession();
+	    Map<String, Object> pending = s.selectOne("getPendingReservationByOrderId", orderId);
+	    s.close();
+	    return pending;
+	}
+
+	public int insertReservationFromPending(Map<String, Object> reservationInfo) {
+	    SqlSession s = f.openSession();
+	    int cnt = s.insert("insertReservationFromPending", reservationInfo);
+	    s.commit();
+	    s.close();
+	    return cnt;
+	}
+
+	public int updatePendingPaymentDone(String orderId) {
+	    SqlSession s = f.openSession();
+	    int cnt = s.update("updatePendingPaymentDone", orderId);
+	    s.commit();
+	    s.close();
+	    return cnt;
+	}
+
+	public int updatePendingPaymentFail(String orderId) {
+	    SqlSession s = f.openSession();
+	    int cnt = s.update("updatePendingPaymentFail", orderId);
+	    s.commit();
+	    s.close();
+	    return cnt;
+	}
+	
+	public ReservationInfo getReservationSuccessInfo(String orderId) {
+	    SqlSession s = f.openSession();
+	    ReservationInfo info = s.selectOne("getReservationSuccessInfo", orderId);
+	    s.close();
+	    return info;
 	}
 }

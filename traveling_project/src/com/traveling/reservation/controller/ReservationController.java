@@ -11,7 +11,6 @@ import com.traveling.common.DataControl;
 import com.traveling.common.ViewUtil;
 import com.traveling.reservation.service.CreatePendingReservationService;
 import com.traveling.reservation.service.PaymentFailService;
-import com.traveling.reservation.service.PaymentService;
 import com.traveling.reservation.service.PaymentSuccessService;
 import com.traveling.reservation.service.ReservationAcceptService;
 import com.traveling.reservation.service.ReservationPageService;
@@ -58,9 +57,6 @@ public class ReservationController extends BaseController{
 				break;
 			case "room-info":
 				inter = RoomInfoService.instance();
-				break;
-			case "payment":
-				inter = PaymentService.instance();
 				break;
 			default:
 			    ViewUtil.forwardError(req, res, "잘못된 요청입니다.");

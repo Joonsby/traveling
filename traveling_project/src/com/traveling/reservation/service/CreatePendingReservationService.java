@@ -45,9 +45,7 @@ public class CreatePendingReservationService implements DataControl{
 		 
 		map.put("orderId", orderId);
 		map.put("price",price);
-		map.put("status", "예약 대기");
-		map.put("paymentStatus", "READY");
-		int cnt = reservationManageDAO.insertReservation(map);
+		int cnt = reservationManageDAO.insertPendingReservation(map);
 		if(cnt <= 0) {
 			throw new RuntimeException("예약 초안 생성 실패");
 		}
@@ -56,7 +54,7 @@ public class CreatePendingReservationService implements DataControl{
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", "SUCCESS");
 		result.put("orderId", orderId);
-		result.put("amount", price);
+		result.put("amount", Integer.parseInt(price));
 		result.put("orderName", "숙소 예약");
 		result.put("customerName",userId);
 		
