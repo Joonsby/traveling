@@ -1,7 +1,7 @@
 package com.traveling.reservation.dto;
 
 public class RoomInfo {
-	private int room_id, stay_id, price, standard_people, maximum_people;
+	private int room_id, stay_id, price, standard_people, maximum_people, extra_person_fee;
 	private String room_name, content, check_in_time, check_out_time;
 	private String image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
 	public int getRoom_id() {
@@ -33,6 +33,12 @@ public class RoomInfo {
 	}
 	public void setMaximum_people(int maximum_people) {
 		this.maximum_people = maximum_people;
+	}
+	public int getExtra_person_fee() {
+		return extra_person_fee;
+	}
+	public void setExtra_person_fee(int extra_person_fee) {
+		this.extra_person_fee = extra_person_fee;
 	}
 	public String getRoom_name() {
 		return room_name;
@@ -118,6 +124,5 @@ public class RoomInfo {
 	public void setImage10(String image10) {
 		this.image10 = image10;
 	}
-	
 	
 }

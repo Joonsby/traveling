@@ -73,7 +73,7 @@ public class ReservationManageDAO {
 	// 예약 고객 사용자 정보
 	public UserInfo getUserInfo(String userId){
 		SqlSession s = f.openSession();
-		UserInfo userInfo = s.selectOne("getUserInfo", userId);
+		UserInfo userInfo = s.selectOne("getReservationUserInfo", userId);
 		s.close();
 		return userInfo;
 	}
@@ -92,5 +92,21 @@ public class ReservationManageDAO {
 		s.commit();
 		s.close();
 		return cnt;
+	}
+	
+	// 객실 기준 인원
+	public int getStandardPeople(int roomId) {
+	    SqlSession s = f.openSession();
+	    int standardPeople = s.selectOne("getStandardPeople", roomId);
+	    s.close();
+	    return standardPeople;
+	}
+	
+	// 객실 추가 요금
+	public int getExtraPersonFee(int roomId) {
+	    SqlSession s = f.openSession();
+	    int fee = s.selectOne("getExtraPersonFee", roomId);
+	    s.close();
+	    return fee;
 	}
 }

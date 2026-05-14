@@ -22,11 +22,13 @@ let finalPrice 			= 0;
 let roomPrice 			= 0;
 let additionalPeople 	= 0;
 let standardPeople 		= 0;
+let extraPersonFee 		= 0;
 
 $(document).ready(function () {
 	currentPeople = Number($('#standard-people').val());
 	roomPrice = Number($('#room-price').val());
 	standardPeople = Number($('#standard-people').val());
+	extraPersonFee = Number($('#extra-person-fee').val());
     const today = new Date();
     const tomorrow = addDays(today, 1);
     
@@ -71,18 +73,27 @@ $(document).ready(function () {
     		roomId: $("#room-id").val(),
     		checkInDate: $("#check-in-date").text(),
             checkOutDate: $("#check-out-date").text(),
+            checkInTime: $("#check-in-time").val(),
+            checkOutTime: $("#check-out-time").val(),
             people: $("#guest-txt").text()
     	}
     	
     	// 1. 예약 초안 생성
     	$.ajax({
-    		url: "/reservatioin/pending-create",
+    		url: "/reservation/pending-create",
     		type: "POST",
     		dataType: "json",
     		data: {
     			reservation: JSON.stringify(reservation)
     		},
     		success: function(res){
+    			const amount = Number(res.amount);
+    			
+    			if(isNaN(amount) || amount <= 0){
+    				showModal('결제 오류','결제 금액이 올바르지 않습니다.');
+    				return;
+    			}
+    			
     			if(res.result !== "SUCCESS"){
     				showModal('예약 생성 실패!','예약 생성에 실패 했습니다');
     				return;
@@ -94,7 +105,7 @@ $(document).ready(function () {
 						method: "CARD",
 						amount: {
 							currency: "KRW",
-							value: res.amount
+							value: amount
 						},
 						orderId: res.orderId,
 						orderName: res.orderName,
@@ -112,19 +123,6 @@ $(document).ready(function () {
     			});
     		}
     	});
-    	
-        /*const customer = {
-            userId: $("#customer-id").val(),
-            price: parseInt($("#final-price").text().replace(/[^0-9]/g, ""), 10),
-            roomName: $("#room-name").text(),
-            roomId: $("#room-id").val(),
-            checkInDate: $("#check-in-date").text(),
-            checkOutDate: $("#check-out-date").text(),
-            people: parseInt($("#guest-txt").text(), 10),
-            checkInTime: $("#check-in-time").val(),
-            checkOutTime: $("#check-out-time").val()
-        };*/
-//        requestPayment(customer);
     });
     calRoomPrice();
 });
@@ -172,7 +170,7 @@ function requestPayment(customer) {
 function calRoomPrice(){
 	totalRoomPrice = currentDay * roomPrice; // 객실 요금
 	additionalPeople = currentPeople - standardPeople // 인원추가 요금
-	totalPeoplePrice = additionalPeople * 15000; // 총 요금
+	totalPeoplePrice = additionalPeople * extraPersonFee; // 총 요금
 	finalPrice = totalRoomPrice + totalPeoplePrice;
     $('#total_room_price').text('￦' + totalRoomPrice.toLocaleString());
     $('#total_pers_price').text('￦' + totalPeoplePrice.toLocaleString());
