@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header/header.jsp"%>
-<%
-	pageContext.setAttribute("stayList",request.getAttribute("stayList"));
-	pageContext.setAttribute("filterList",request.getAttribute("filterList"));
-%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,8 +8,9 @@
     <link rel="stylesheet" href="<c:url value="/css/stay/all_stays.css"/>" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b"></script>
+    <script src="<c:url value="/js/stay/stay_map.js"/>"></script>
     <script src="<c:url value="/js/stay/all_stays.js"/>"></script>
-    <title>인기 숙소 정보</title>
+    <title>숙소 목록</title>
   </head>
   <body>
     <main class="clearfix">
