@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../header/host_header.jsp"%>
+<%@ include file="../host/host_header.jsp"%>
 <c:set var="reservationList" value="${requestScope.reservationList}" />
 <!DOCTYPE html>
 <html>

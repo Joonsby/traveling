@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../header/host_header.jsp"%>
+<%@ include file="../host/host_header.jsp"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.traveling.stay.dto.CheckInInfo"%>
 <%@ page import="java.text.DecimalFormat"%>

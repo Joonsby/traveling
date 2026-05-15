@@ -17,6 +17,16 @@ $(window).on('scroll',function(){
 })
 
 $(document).ready(function() {
+	$('#mobileMenuBtn').click(function(){
+	    $('#mobileSidebar').addClass('active');
+	    $('#sidebarDim').addClass('active');
+	});
+	
+	$('#mobileCloseBtn').click(function(){
+	    $('#mobileSidebar').removeClass('active');
+	    $('#sidebarDim').removeClass('active');
+	});
+	
 	flatpickr.localize(flatpickr.l10ns.ko);
 	
 	flatpickr("#check_in_date", {

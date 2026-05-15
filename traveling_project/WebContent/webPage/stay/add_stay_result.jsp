@@ -24,7 +24,7 @@
 <title>숙소 등록 완료</title>
 </head>
 <body>
-	<%@ include file="../header/host_header.jsp"%>
+	<%@ include file="../host/host_header.jsp"%>
 	<main>		
 		<div id="content1">
 			<img src="../../images/logo.png" alt="">
