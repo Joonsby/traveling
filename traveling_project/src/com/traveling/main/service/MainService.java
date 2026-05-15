@@ -20,12 +20,6 @@ public class MainService implements DataControl{
 		req.setAttribute("bestReviewStays", stayManagementDAO.bestReviewStaySelect());
 		req.setAttribute("cheapStays", stayManagementDAO.cheapStaySelect());
 		
-//		req.setAttribute("pageTitle", "메인 페이지");
-//		req.setAttribute("pageCssList", Arrays.asList("/css/main/style.css"));
-//		req.setAttribute("pageJsList", Arrays.asList("/js/main/main.js"));
-//		req.setAttribute("contentPage", "/webPage/index.jsp");
-//		req.getRequestDispatcher("/webPage/layout/user_layout.jsp").forward(req, res);
-		
 		LayoutForward.user(req, res, "메인페이지", "/webPage/main/main_content.jsp", new String[] {"/css/main/style.css"}, new String[] {"/js/main/main.js"});
 	}
 }

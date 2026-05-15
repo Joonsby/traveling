@@ -27,8 +27,8 @@
         <li><a href="/login/logout">로그아웃</a></li>
       </c:when>
       <c:otherwise>
-        <li><a href="<c:url value="/webPage/login/login_select.jsp"/>">로그인</a></li>
-        <li><a href="<c:url value="/webPage/signup/signup_select.jsp"/>">회원 가입</a></li>
+        <li><a href="<c:url value="/login/select"/>">로그인</a></li>
+        <li><a href="<c:url value="/signup/select"/>">회원 가입</a></li>
       </c:otherwise>
     </c:choose>
   </ul>
