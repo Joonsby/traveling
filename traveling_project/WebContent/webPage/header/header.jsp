@@ -16,7 +16,7 @@
         <input type="text" id="region" name="region" class="form-control" placeholder="어디로 떠나시나요?" />
         <input type="text" id="check_in_date" name="check_in_date" class="form-control datepicker" placeholder="체크인 날짜" readonly />
         <input type="text" id="check_out_date" name="check_out_date" class="form-control datepicker" placeholder="체크아웃 날짜" readonly />
-        <input type="number" id="people_num" name="people_num" class="form-control" placeholder="인원 수를 선택하세요" min="1" max="15"/>
+        <input type="number" id="people_num" name="people_num" class="form-control" placeholder="인원" min="1" max="15"/>
         <input type="submit" id="search_btn" class="form-control" value="검색하기" />
       </div>
     </form>

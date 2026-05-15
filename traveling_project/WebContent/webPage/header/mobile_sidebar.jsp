@@ -13,8 +13,8 @@
 
   <form action="/stay/popular" id="mobile_search" method="post">
     <input type="text" name="region" placeholder="어디로 떠나시나요?" />
-    <input type="text" name="check_in_date" class="datepicker" placeholder="체크인 날짜" readonly />
-    <input type="text" name="check_out_date" class="datepicker" placeholder="체크아웃 날짜" readonly />
+    <input type="text" id="mobile_check_in_date" name="check_in_date" class="datepicker check-in-date" placeholder="체크인 날짜" readonly />
+	<input type="text" id="mobile_check_out_date" name="check_out_date" class="datepicker check-out-date" placeholder="체크아웃 날짜" readonly />
     <input type="number" name="people_num" placeholder="인원 수를 선택하세요" min="1" max="15"/>
     <input type="submit" value="검색하기" />
   </form>

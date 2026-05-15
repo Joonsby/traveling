@@ -577,7 +577,11 @@ h2 {
 
 .event {
 	width: 1200px;
-	margin: 0 auto;
+	margin: 0 auto 100px;
+}
+
+.event_slider{
+	display:block;
 }
 
 .event .event_slider a {
@@ -648,4 +652,247 @@ h2 {
 /* 마이페이지 section */
 .mypage-section {
 	margin: 0;
+}
+
+/* =========================
+   Main Responsive
+========================= */
+
+/* 태블릿 이하 */
+@media (max-width: 1200px) {
+	.korea_popular_region .slider {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 40px 30px;
+	}
+	
+	.korea_popular_region .slider a {
+		width: calc(33.333% - 20px);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.hotel_recommend,
+	#best-review-stays,
+	.popular_accomodation,
+	.event,
+	.korea_popular_region .slider {
+		width: 92%;
+	}
+
+	#video {
+		height: 600px;
+	}
+
+	.rec_slider > button,
+	.pop_slider > button,
+	.event .event_slider .slick-arrow,
+	#best-review-stays .swiper-button-prev,
+	#best-review-stays .swiper-button-next {
+		display: none !important;
+	}
+
+	.popular_accomodation .slider div img {
+		width: 100%;
+	}
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+	
+    .event .event_slider {
+        position: relative;
+    }
+
+    .event .event_slider .slick-dots {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+
+        width: 100% !important;
+        margin: 18px auto 0 !important;
+        padding: 0 !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .event .event_slider .slick-dots li {
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .event .event_slider .slick-dots li button {
+        display: block !important;
+        width: 10px !important;
+        height: 10px !important;
+        padding: 0 !important;
+    }
+	
+	.slick-arrow,
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none !important;
+    }
+	
+	
+	#video {
+		height: 360px;
+	}
+
+	section {
+		margin-top: 40px;
+	}
+
+	h2 {
+		font-size: 22px;
+		margin: 14px 0;
+	}
+
+	.hotel_recommend,
+	#best-review-stays,
+	.popular_accomodation,
+	.event {
+		width: 92%;
+		margin: 50px auto;
+	}
+
+	.hotel_recommend > a,
+	.popular_accomodation > a,
+	#best-review-stays .swiper > a {
+		float: none;
+		display: block;
+		width: 120px;
+		margin: 0 0 16px auto;
+	}
+
+	.hotel_recommend > a img,
+	.popular_accomodation > a img,
+	#best-review-stays .swiper > a img {
+		width: 100%;
+	}
+
+	.hotel_recommend .slider div h3,
+	.popular_accomodation .slider div h3,
+	#best-review-stays .slider div h3 {
+		font-size: 15px;
+	}
+
+	.hotel_recommend .slider div p,
+	.popular_accomodation .slider div p,
+	#best-review-stays .slider div p {
+		font-size: 13px;
+	}
+
+	.review {
+		font-size: 12px;
+		line-height: 18px;
+		-webkit-line-clamp: 2;
+	}
+
+	.korea_popular_region {
+		margin: 60px 0;
+	}
+
+	.korea_popular_region .slider {
+		width: 92%;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 24px 18px;
+	}
+
+	.korea_popular_region .slider a {
+		width: 30%;
+		min-width: 90px;
+	}
+
+	.korea_popular_region .slider div {
+		width: 90px;
+		height: 90px;
+		margin: 0 auto 10px;
+	}
+
+	.korea_popular_region .slider div img {
+		width: 90px;
+		height: 90px;
+		object-fit: cover;
+	}
+
+	.korea_popular_region .slider a h2 {
+		font-size: 16px;
+		margin: 8px 0 4px;
+	}
+
+	.korea_popular_region .slider a p {
+		font-size: 12px;
+		margin: 0;
+	}
+
+	#best-review-stays .swiper > h2 {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	#best-review-stays .swiper-pagination {
+		margin: 16px 0;
+	}
+
+	.event h2 {
+		font-size: 22px;
+		margin-bottom: 16px;
+	}
+
+	.event .event_slider a {
+		margin: 0 4px;
+	}
+
+	.go_top {
+		display: none;
+	}
+}
+
+/* 아주 작은 모바일 */
+@media (max-width: 480px) {
+	#video {
+		height: 260px;
+	}
+
+	.hotel_recommend,
+	#best-review-stays,
+	.popular_accomodation,
+	.event {
+		width: 94%;
+		margin: 40px auto;
+	}
+
+	h2 {
+		font-size: 20px;
+	}
+
+	.korea_popular_region .slider a {
+		width: 45%;
+	}
+
+	.korea_popular_region .slider div {
+		width: 82px;
+		height: 82px;
+	}
+
+	.korea_popular_region .slider div img {
+		width: 82px;
+		height: 82px;
+	}
+
+	.hotel_recommend > a,
+	.popular_accomodation > a,
+	#best-review-stays .swiper > a {
+		width: 100px;
+	}
 }
