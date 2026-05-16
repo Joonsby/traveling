@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.traveling.stay.dto.StayInfo" %>
 <%@ page import="java.util.List" %>
-<%@ include file="../header/host_header.jsp"%>
+<%@ include file="../host/host_header.jsp"%>
 <% 
 	List<StayInfo> stayInfo = (List<StayInfo>) request.getAttribute("stayInfo");
 	String path = request.getContextPath();	

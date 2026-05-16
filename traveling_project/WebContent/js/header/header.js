@@ -1,5 +1,7 @@
 var checkInDate = null;
 var checkOutDate = null;
+var mobileCheckInDate = null;
+var mobileCheckOutDate = null;
 var scrolling = false;
 
 $(window).on('scroll',function(){
@@ -14,11 +16,29 @@ $(window).on('scroll',function(){
             flatpickrInstance.close();
         }
     });
-})
+});
+
+$(document).keydown(function(e){
+    if(e.key === 'Escape'){
+        closeMobileSidebar();
+    }
+});
 
 $(document).ready(function() {
-	flatpickr.localize(flatpickr.l10ns.ko);
+	$('#mobileMenuBtn').click(function(){
+		openMobileSidebar();
+	});
 	
+	$('#mobileCloseBtn').click(function(){
+		closeMobileSidebar();
+	});
+	
+	$('#sidebarDim').click(function(){
+	    closeMobileSidebar();
+	});
+	
+	flatpickr.localize(flatpickr.l10ns.ko);
+	// 체크인
 	flatpickr("#check_in_date", {
 		minDate: 'today',
 		onClose : [
@@ -32,6 +52,7 @@ $(document).ready(function() {
 			}
 		]
 	});
+	// 체크아웃
 	flatpickr("#check_out_date", {
 		minDate: new Date().fp_incr(1),
 		onChange : [
@@ -45,31 +66,63 @@ $(document).ready(function() {
 			}
 		]
 	});
+	// 모바일 체크인
+	flatpickr("#mobile_check_in_date", {
+	    minDate: 'today',
+	    disableMobile: true,
+
+	    onClose: [
+	        function(selectedDates, dateStr, instance) {
+
+	            mobileCheckInDate = Number(
+	                replaceAllString(dateStr, '-', '')
+	            );
+
+	            if (
+	                mobileCheckOutDate != null &&
+	                mobileCheckInDate > mobileCheckOutDate
+	            ) {
+	                showModal(
+	                    '체크인 날짜',
+	                    '체크인 날짜를 다시 선택하시기 바랍니다.'
+	                );
+
+	                $('#mobile_check_in_date').val('');
+	                mobileCheckInDate = null;
+	            }
+	        }
+	    ]
+	});
+	// 모바일 체크아웃
+	flatpickr("#mobile_check_out_date", {
+	    minDate: new Date().fp_incr(1),
+	    disableMobile: true,
+
+	    onChange: [
+	        function(selectedDates, dateStr, instance) {
+
+	            mobileCheckOutDate = Number(
+	                replaceAllString(dateStr, '-', '')
+	            );
+
+	            if (
+	                mobileCheckOutDate < mobileCheckInDate
+	            ) {
+	                showModal(
+	                    '체크아웃 날짜',
+	                    '체크아웃 날짜를 다시 선택하시기 바랍니다.'
+	                );
+
+	                $('#mobile_check_out_date').val('');
+	                mobileCheckOutDate = null;
+	            }
+	        }
+	    ]
+	});
 	
 	// 검색하기 버튼 클릭
-	$('#search_btn').click(function(e){
-		if($('#region').val() == null || $('#region').val() == ''){
-			e.preventDefault();
-			showModal('여행 지역 선택','여행하실 지역을 입력해주시기 바랍니다.');
-			return;
-		}
-		if($('#check_in_date').val() == null || $('#check_in_date').val() == ''){
-			e.preventDefault();
-			showModal('체크인 날짜','체크인 날짜를 입력해주시기 바랍니다.');
-			return;
-		}
-		if($('#check_out_date').val() == null || $('#check_out_date').val() == ''){
-			e.preventDefault();
-			showModal('체크아웃 날짜','체크아웃 날짜를 입력해주시기 바랍니다.');
-			return;
-		}
-		if($('#people_num').val() == null || $('#people_num').val() == ''){
-			e.preventDefault();
-			showModal('인원수 선택','여행하실 인원수를 선택해 주시기 바랍니다.');
-			return;
-		}
-		
-		
+	$('#search_btn').click(function(e) {
+	    validateSearchForm($(this).closest('form'), e);
 	});
 	
 	// 인원수 체크
@@ -85,6 +138,11 @@ $(document).ready(function() {
     	$(this).hide();
     });
     
+    // 모바일
+    $('#mobile_search').submit(function(e) {
+        validateSearchForm($(this), e);
+    });
+    
     // 로그아웃 버튼
     $('#log-out').click(function(e){
     	e.preventDefault();
@@ -96,17 +154,57 @@ $(document).ready(function() {
 			}
 		);
     });  
-
-    // 위로 가기 버튼
-    $('div.go_top').hide();
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-            $('div.go_top').fadeIn();
-        } else {
-            $('div.go_top').fadeOut();
-        }
-    });
-    $('div.go_top').click(function() {
-        $('html,body').animate({scrollTop : 0},0);
-    });
 });
+
+function validateSearchForm($form, e) {
+    const region = $form.find('input[name="region"]').val();
+    const checkInDate = $form.find('input[name="check_in_date"]').val();
+    const checkOutDate = $form.find('input[name="check_out_date"]').val();
+    const peopleNum = $form.find('input[name="people_num"]').val();
+
+    if (region == null || region.trim() == '') {
+        e.preventDefault();
+        showModal('여행 지역 선택', '여행하실 지역을 입력해주시기 바랍니다.');
+        return false;
+    }
+
+    if (checkInDate == null || checkInDate.trim() == '') {
+        e.preventDefault();
+        showModal('체크인 날짜', '체크인 날짜를 입력해주시기 바랍니다.');
+        return false;
+    }
+
+    if (checkOutDate == null || checkOutDate.trim() == '') {
+        e.preventDefault();
+        showModal('체크아웃 날짜', '체크아웃 날짜를 입력해주시기 바랍니다.');
+        return false;
+    }
+
+    if (peopleNum == null || peopleNum.trim() == '') {
+        e.preventDefault();
+        showModal('인원수 선택', '여행하실 인원수를 선택해 주시기 바랍니다.');
+        return false;
+    }
+
+    return true;
+}
+
+function openMobileSidebar() {
+    $('#mobileSidebar').addClass('active');
+    $('#sidebarDim').addClass('active');
+
+    $('body').css({
+        overflow: 'hidden',
+        height: '100vh'
+    });
+}
+
+function closeMobileSidebar() {
+    $('#mobileSidebar').removeClass('active');
+    $('#sidebarDim').removeClass('active');
+
+    $('body').css({
+        overflow: '',
+        height: ''
+    });
+}

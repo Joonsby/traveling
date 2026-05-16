@@ -29,7 +29,7 @@
     <title>예약 관리</title>
   </head>
   <body>
-	<%@ include file="../header/host_header.jsp"%>
+	<%@ include file="../host/host_header.jsp"%>
     <%@ include file="../footer/footer.jsp"%>
   </body>
 </html>

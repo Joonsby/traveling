@@ -1,14 +1,27 @@
 body {
   background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+  margin: 0;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a{
+	display:block;
 }
 
 main {
   margin: 140px auto 100px;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   border: 1px solid #ccc;
   background: #fff;
   border-radius: 10px;
-  font-family: 'Gowun Dodum', sans-serif;  
+  font-family: 'Gowun Dodum', sans-serif;
+  overflow: hidden;
 }
 
 #img {
@@ -18,9 +31,11 @@ main {
 
 #section img {
   width: 300px;
+  max-width: 80%;
   margin: 0 auto;
 }
 
+/* STEP */
 #step {
   display: flex;
   justify-content: center;
@@ -29,15 +44,20 @@ main {
   border: 1px solid #ccc;
   user-select: none;
   margin-bottom: 30px;
+  padding: 0;
 }
 
 #step li {
   width: 25%;
-  height: 100px;
-  line-height: 100px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 10px;
   border-right: 1px solid #ccc;
-  background: #f5f5f5;  
+  background: #f5f5f5;
+  word-break: keep-all;
 }
 
 #step li:nth-child(2) {
@@ -46,18 +66,19 @@ main {
 }
 
 #step li:last-child {
-  border: 0;
+  border-right: 0;
 }
 
 #agree_all_checkbox {
   margin: 15px 0;
-  font-size:18px;
-  font-weight:bold;
+  font-size: 18px;
+  font-weight: bold;
   user-select: none;
 }
 
-.agree_checkbox + label{
-    user-select: none;    
+.agree_checkbox + label {
+  user-select: none;
+  line-height: 1.5;
 }
 
 .agree {
@@ -69,6 +90,7 @@ main {
 .agree h2 {
   display: inline-block;
   margin: 20px 0 10px;
+  font-size: 24px;
 }
 
 .agree_content {
@@ -76,7 +98,8 @@ main {
   overflow-y: scroll;
   border: 1px solid #ccc;
   margin-bottom: 20px;
-  padding: 10px 20px;  
+  padding: 10px 20px;
+  line-height: 1.7;
 }
 
 #agree2,
@@ -85,13 +108,17 @@ main {
 }
 
 #agree_btn {
-  width: 400px;
+  width : 80%;
   height: 50px;
   border-radius: 10px;
   border: 1px solid #ccc;
   background: #1aa3ff;
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  line-height:50px;
+  margin: 20px auto 40px;
+  text-align:center;
 }
 
 #agree_btn:hover {
@@ -102,4 +129,132 @@ main {
   display: block;
   text-align: center;
   margin: 50px 0 100px;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media screen and (max-width: 1024px) {
+
+  main {
+    margin-top: 120px;
+  }
+
+  .agree {
+    width: 90%;
+  }
+
+  #step li {
+    font-size: 15px;
+    min-height: 80px;
+  }
+
+  .agree h2 {
+    font-size: 22px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media screen and (max-width: 768px) {
+
+  body {
+    padding: 0 10px;
+  }
+
+  main {
+    margin: 100px auto 50px;
+    border-radius: 8px;
+  }
+
+  #img {
+    margin-top: 30px;
+  }
+
+  #section img {
+    width: 220px;
+  }
+
+  .agree {
+    width: 95%;
+    padding-top: 20px;
+  }
+
+  /* step 세로 느낌 방지 */
+  #step {
+    flex-wrap: wrap;
+  }
+
+  #step li {
+    width: 50%;
+    min-height: 70px;
+    line-height: normal;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #step li:nth-child(2) {
+    border-right: 0;
+  }
+
+  #step li:nth-child(1),
+  #step li:nth-child(2) {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .agree h2 {
+    display: block;
+    font-size: 20px;
+    margin: 15px 0 10px;
+  }
+
+  #agree_all_checkbox {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .agree_content {
+    height: 220px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .agree_checkbox + label {
+    font-size: 14px;
+  }
+
+  #agree_btn {
+    height: 50px;
+    font-size: 15px;
+    margin:20px auto;
+  }
+
+  #section > p {
+    margin: 40px 0 60px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media screen and (max-width: 480px) {
+
+  #step li {
+    font-size: 13px;
+    min-height: 60px;
+  }
+
+  .agree h2 {
+    font-size: 18px;
+  }
+
+  .agree_content {
+    font-size: 13px;
+  }
+
+  #agree_all_checkbox {
+    font-size: 15px;
+  }
 }

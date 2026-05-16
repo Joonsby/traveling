@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../header/header.jsp"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="<c:url value="/css/login/login.css"/>" />
-<script src="<c:url value="/js/login/login.js"/>"></script>
-<title>로그인 화면</title>
-</head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <body>
 	<main>
 	    <c:choose>
@@ -53,9 +46,11 @@
 					</tr>
 					<tr>
 						<td id="search">
-							<a href="#">아이디 찾기</a>
-							<a href="#">비밀번호 찾기</a>
-							<a href="<c:url value="/webPage/signup/signup_select.jsp"/>">회원가입</a>
+						  <div class="search_left">
+						    <a href="/login/find-id">아이디 찾기</a>
+						    <a href="/login/find-pw">비밀번호 찾기</a>
+						  </div>
+						  <a href="/signup/select" class="signup_link">회원가입</a>
 						</td>
 					</tr>
 				</tbody>
@@ -63,6 +58,4 @@
 			<br />
 		</form>
 	</main>
-	<%@ include file='../footer/footer.jsp'%>
 </body>
-</html>

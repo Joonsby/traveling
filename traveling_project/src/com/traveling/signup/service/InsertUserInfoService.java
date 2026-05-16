@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.LayoutForward;
 import com.traveling.common.ViewUtil;
 import com.traveling.signup.dao.SignupDAO;
 import com.traveling.signup.dto.UserInfo;
@@ -36,9 +37,9 @@ public class InsertUserInfoService implements DataControl{
 		
 		int cnt = signupDAO.insertUserInfo(userInfo);
 		if (cnt > 0) {
-			res.sendRedirect(req.getContextPath() + "/webPage/signup/signup_complete.jsp");
+			LayoutForward.user(req, res, "회원가입 완료", "/webPage/signup/signup_complete.jsp", new String[] {"/css/signup/signup_complete.css"}, new String[] {""});
 		} else {
-			ViewUtil.forwardError(req,res,"잘못된 요청입니다.");
+			ViewUtil.forwardError(req,res,"회원가입 중 오류가 발생했습니다.");
 		}
 	}
 		

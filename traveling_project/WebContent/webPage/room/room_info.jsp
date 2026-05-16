@@ -28,7 +28,7 @@
 <title>호스트 페이지</title>
 </head>
 <body>
-	<%@ include file="../header/host_header.jsp"%>
+	<%@ include file="../host/host_header.jsp"%>
 	<main>
 		<%@ include file="../host/host_aside.jsp"%>
 		<section>

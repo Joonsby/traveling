@@ -62,8 +62,6 @@ main {
   border-top: 1px solid #fff;  
 }
 
-/* �쉶�썝媛��엯 �젣紐� */
-
 th {
   width: 200px;
   text-align: left;  
@@ -78,6 +76,32 @@ td {
   background: #fff;
   border:1px solid #e4e7eb;    
   align-items:center;  
+}
+
+#sign_up_table td {
+    vertical-align: middle;
+}
+
+#sign_up_table td input,
+#sign_up_table td select {
+    box-sizing: border-box;
+}
+
+#news_agency,
+#email,
+#birth_raw {
+    width: 40%;
+}
+
+.addr_td {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#birth .available_text,
+#birth .error_text {
+    width: 100%;
 }
 
 
@@ -117,36 +141,6 @@ td {
   border-radius:8px;
 }
 
-#agency_td label {  
-  float:left;
-  font-size: 14px;
-  width: 16.665%;
-  height: 30px;
-  line-height: 30px;
-  background: #fff;
-  border: 1px solid #999;	
-  border-right: 0;
-  text-align: center;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-#agency_td label:first-of-type {
-  border-radius: 5px 0 0 5px;
-}
-
-#agency_td label:last-of-type {
-  border-radius: 0 5px 5px 0;
-  border-right: 1px solid #999;
-}
-
-#agency_td input[type='radio']:checked + label {
-  border-right: 0;
-  background: #1aa3ff;
-  color: #fff;
-  font-weight: bold;
-}
-
 #agency_text{
   margin-top: 5px;
   font-size:13px;  
@@ -163,10 +157,22 @@ td {
   color: #000;
 }
 
+.birth-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
 
-#sign_up_table #birth select {
-  width: 20%;
-  height: 30px;
+#sign_up_table td .birth_input {
+    width: 90px;
+    text-align: center;
+    padding-left: 0;
+}
+
+.birth-input-wrap span {
+    color: #333;
+    font-weight: bold;
 }
 
 input[type='radio'] {
@@ -283,4 +289,198 @@ input#sign_up_cancel:hover {
   font-weight: bold;
   margin:5px 0 0;
   color: #1aa3ff;
+}
+
+.hidden-guide {
+    color: #999;
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    main {
+        width: 92%;
+        margin: 100px auto 80px;
+        padding: 40px 0;
+    }
+
+    #sign_up_table,
+    #step {
+        width: 88%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background: #f5f7fa;
+    }
+
+    main {
+        width: 92%;
+        margin: 80px auto 50px;
+        padding: 28px 0;
+        border-radius: 12px;
+    }
+
+    #sign_up_section img {
+        width: 180px;
+    }
+
+    #step {
+        width: 88%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    #step li {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        box-sizing: border-box;
+        font-size: 12px;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #step li:nth-child(2n) {
+        border-right: 0;
+    }
+
+    #step li:nth-child(3),
+    #step li:nth-child(4) {
+        border-bottom: 0;
+    }
+
+    #sign_up_table,
+    #sign_up_table tbody,
+    #sign_up_table tr,
+    #sign_up_table th,
+    #sign_up_table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #sign_up_table {
+        width: 88%;
+    }
+
+    #sign_up_table th {
+        height: auto;
+        padding: 14px 12px 6px;
+        border-bottom: 0;
+        background: #fff;
+    }
+
+    #sign_up_table td {
+        padding: 6px 12px 14px;
+        border-top: 0;
+    }
+
+    #sign_up_table td input,
+    #sign_up_table td select {
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+    }
+
+    #news_agency,
+    #email,
+    #birth_raw {
+        width: 100%;
+    }
+
+    /* 성별 border 겹침 수정 */
+    #gender_td {
+        display: flex !important;
+        gap: 0;
+        padding: 6px 12px 14px;
+    }
+
+    #gender_td label {
+        float: none;
+        width: 50%;
+        height: 42px;
+        line-height: 42px;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    #gender_td label:first-of-type {
+        border-right: 0;
+        border-radius: 7px 0 0 7px;
+    }
+
+    #gender_td label:last-of-type {
+        border-left: 1px solid #999;
+        border-radius: 0 7px 7px 0;
+    }
+
+    #gender_td input[type='radio']:checked + label {
+        background: #1aa3ff;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    /* 주소 2줄 이상 gap 수정 */
+    #sign_up_table .addr_td {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #sign_up_table #sample4_postcode,
+    #sign_up_table #post_search_btn {
+        width: calc(50% - 4px) !important;
+    }
+
+    #sign_up_table #sample4_roadAddress,
+    #sign_up_table #sample4_jibunAddress,
+    #sign_up_table #sample4_detailAddress,
+    #sign_up_table #sample4_extraAddress {
+        width: 100% !important;
+    }
+
+    #sign_up_table .business_num {
+        width: calc((100% - 24px) / 3) !important;
+    }
+
+    input#sign_up_btn,
+    input#sign_up_cancel {
+        width: 42%;
+        margin-top: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        width: 94%;
+        margin: 60px auto 40px;
+        padding: 22px 0;
+    }
+
+    #step,
+    #sign_up_table {
+        width: 92%;
+    }
+
+    #sign_up_section img {
+        width: 150px;
+    }
+
+    #sign_up_table td .birth_input {
+        width: 100%;
+    }
+
+    .birth-input-wrap {
+        display: grid;
+        grid-template-columns: 1fr auto;
+    }
+
+    input#sign_up_btn,
+    input#sign_up_cancel {
+        width: 44%;
+    }
 }
