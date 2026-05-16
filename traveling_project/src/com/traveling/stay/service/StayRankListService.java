@@ -37,7 +37,7 @@ public class StayRankListService implements DataControl {
 			throw new IllegalArgumentException("잘못된 숙소 목록 요청: " + uri);
 		}
 		req.setAttribute("stayList", stayList);
-		String[] cssList = new String[] { "/css/stay/all_stays.css" };
+		String[] cssList = new String[] { "/css/stay/all_stays.css", "/css/stay/all_stays_aside.css" };
 		String[] jsList = new String[] { "/js/stay/stay_map.js", "/js/stay/all_stays.js" };
 		LayoutForward.user(req, res, "숙소 목록", "/webPage/stay/all_stays.jsp", cssList, jsList);
 	}

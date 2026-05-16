@@ -3,8 +3,8 @@ body{
 }
 
 #login_table {
-  width: 500px;  
-  margin: 250px auto 170px;
+  width: 500px;
+  margin: clamp(32px, 6vw, 100px) auto;
   padding: 60px 50px;
   background: #fff;
   border-radius: 20px;
@@ -68,8 +68,9 @@ tr:has(#error_text){
   color: #fff;
 }
 
-#search a:last-child {
-  float: right;
+#search{
+  display:flex;
+  justify-content: space-between;
 }
 
 #search a {

@@ -1,80 +1,109 @@
+:root{
+  --primary: #1aa3ff;
+  --bg-start: #e6fbff;
+  --bg-end: #d8f2ff;
+  --max-width: 1100px;
+}
+
+/* Page base */
+*{box-sizing: border-box}
+html,body{height:100%;}
 body {
-    background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
-  }
-  
-  main{
-      margin: 140px auto 100px;
-      padding: 50px 0;
-      width:1700px;
-      border:1px solid #ccc;
-      background:#fff;
-      border-radius:10px;
-      font-family: 'Gowun Dodum', sans-serif;
-  }
+  margin:0;
+  padding:0;
+  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+  font-family: 'Gowun Dodum', sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
-  #content1{
-      width:80%;
-      margin:0 auto;
-      margin-top: 50px;    
-      padding:50px 150px;      
-      border-top: 2px solid #ccc;
-      border-bottom: 2px solid #ccc;
-      display:flex;
-      justify-content: space-between;      
-      align-items: center;
-  }
+/* container: fluid but limited */
+main{
+  margin-inline: auto;
+  margin-block: clamp(32px, 6vw, 100px)  ;
+  padding: clamp(16px, 2.5vw, 30px);
+  width: min(95%, var(--max-width));
+  border:1px solid rgba(0,0,0,0.06);
+  background:#fff;
+  border-radius:10px;
+}
 
-  #content1 img{
-    width:500px;        
-  }
+#content1{
+  width:100%;
+  margin:0 auto;
+  padding: clamp(12px,1.8vw,30px);
+  border-top: 2px solid #f1f1f1;
+  border-bottom: 2px solid #f1f1f1;
+  display:flex;
+  align-items: center;
+  gap: clamp(12px,1.8vw,24px);
+  justify-content: flex-start;
+}
 
-  #content1 h2{    
-    font-size:32px;
-  } 
-  
-  #join{
-      width:80%;
-      margin:50px auto 0;
-      display:flex;
-      justify-content: center;      
-  }
-  
-  #join li{
-      width:50%;
-      border:1px solid #999;
-      text-align:center;
-      padding:50px 0;
-      border-radius:10px 0 0 10px;
-  }
-  
-  #join li:last-child{
-      border-radius:0 10px 10px 0;
-      border-left:none;
-  }
-  
-  #join li h3{
-      font-size:32px;
-      margin-bottom: 10px;
-  }
-  
-  #join li p{
-      text-transform: uppercase;
-      font-size:24px;
-      font-weight:bold;
-      color:#1aa3ff;
-      margin-bottom: 20px;
-  }
-  
-  #join li a input[type="button"]{
-      width:200px;
-      height:40px;
-      background:#1aa3ff;  
-      color:#fff;
-      border:none;
-      border-radius:5px;
-      cursor:pointer;
-  }
-  
-  #join li a input[type="button"]:hover{
-      background:#000;
-  }
+#content1 img{
+  flex: 0 0 40%;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  display:block;
+}
+
+#content1 h2{
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  margin:0;
+  line-height:1.2;
+}
+
+#join{
+  width:100%;
+  margin: clamp(16px,2.5vw,30px) auto 0;
+  display:flex;
+  justify-content: center;
+  gap: clamp(10px,2vw,20px);
+  flex-wrap: wrap;
+}
+
+#join li{
+  flex: 1 1 calc(50% - 12px);
+  min-width: 220px;
+  border:1px solid #dcdcdc;
+  text-align:center;
+  padding: clamp(16px,2vw,30px);
+  border-radius:10px;
+  background:#fff;
+}
+
+#join li h3{font-size: clamp(1rem, 1.6vw, 1.4rem); margin-bottom:0.5rem}
+#join li p{ text-transform:uppercase; font-size: clamp(0.9rem,1.6vw,1.1rem); font-weight:700;color:var(--primary); margin-bottom:1rem}
+
+#join li a input[type="button"]{
+  display:inline-block;
+  width: auto;
+  min-width: 120px;
+  padding: .6rem 1rem;
+  height: auto;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+#join li a input[type="button"]:hover{opacity:0.95}
+
+/* Small screens: stack content and make image smaller */
+@media (max-width: 900px) {
+  #content1{ flex-direction: column; text-align:center; padding:16px; }
+  #content1 img{ flex-basis: 60%; max-width:320px; }
+  #content1 h2{ font-size: 1.15rem; }
+  #join li{ flex: 1 1 100%; }
+}
+
+@media (max-width: 480px) {
+  main{ margin-block: 32px; padding: 12px; }
+  #content1 img{ flex-basis: 70%; max-width:260px; }
+  #content1 h2{ font-size: 1rem; }
+  #join li{ padding:12px; }
+  #join li a input[type="button"]{ min-width: 100px; padding:.5rem .8rem }
+}

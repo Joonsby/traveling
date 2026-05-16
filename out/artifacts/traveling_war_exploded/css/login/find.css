@@ -16,7 +16,7 @@ main {
 .find_table {
   width: 100%;
   max-width: 500px;
-  margin: 250px auto 170px;
+  margin: clamp(32px, 6vw, 100px) auto;
   padding: 60px 50px;
   background: #fff;
   border-radius: 20px;

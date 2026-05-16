@@ -30,9 +30,13 @@
 
           <tr>
             <td class="find_link">
-              <a href="/login/select">로그인</a>
-              <a href="/login/find-pw/page">비밀번호 찾기</a>
-              <a href="/signup/select">회원가입</a>
+              <div >
+                <a href="/login/select">로그인</a>
+                <a href="/login/find-pw">비밀번호 찾기</a>
+              </div>
+              <div>
+                <a href="/signup/select">회원가입</a>
+              </div>
             </td>
           </tr>
         </tbody>

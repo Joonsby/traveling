@@ -134,10 +134,6 @@ $(document).ready(function() {
 		}
 	});
     
-    $('#my_info').on('mouseleave',function(){
-    	$(this).hide();
-    });
-    
     // 모바일
     $('#mobile_search').submit(function(e) {
         validateSearchForm($(this), e);
@@ -190,21 +186,17 @@ function validateSearchForm($form, e) {
 }
 
 function openMobileSidebar() {
-    $('#mobileSidebar').addClass('active');
-    $('#sidebarDim').addClass('active');
-
-    $('body').css({
-        overflow: 'hidden',
-        height: '100vh'
-    });
+	$('#mobileSidebar').addClass('active');
+	$('#sidebarDim').addClass('active');
+	$('body').css({
+		overflow: 'hidden'
+	});
 }
 
 function closeMobileSidebar() {
-    $('#mobileSidebar').removeClass('active');
-    $('#sidebarDim').removeClass('active');
-
-    $('body').css({
-        overflow: '',
-        height: ''
-    });
+	$('#mobileSidebar').removeClass('active');
+	$('#sidebarDim').removeClass('active');
+	$('body').css({
+		overflow: ''
+	});
 }
