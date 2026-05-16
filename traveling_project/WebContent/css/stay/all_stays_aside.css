@@ -1,6 +1,6 @@
 aside {
     margin: 20px 20px 0 90px;
-    width: 20%;
+    min-width: 350px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -63,7 +63,7 @@ aside {
 	line-height:30px;
 	position:absolute;
 	top:0px;
-	left:8px;	
+	left:8px;
 }
 
 .field .won:last-of-type{

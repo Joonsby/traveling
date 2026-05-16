@@ -1,10 +1,14 @@
 let $rangeInput;
 let $priceInput;
 let $range;
+let $filterSheet;
+let $backdrop;
 
 const priceGap = 10000;
 
 $(document).ready(function () {
+  $filterSheet = $('#filter-sheet');
+  $backdrop = $('#filter-backdrop');
   initElements();
 
   initStayMap();
@@ -13,6 +17,36 @@ $(document).ready(function () {
   bindPriceInputEvents();
   bindRangeInputEvents();
   bindFilterEvents();
+
+  $('#mobile-filter-btn').on('click', function () {
+    openFilterSheet();
+  });
+
+  $('#filter-close-btn, #filter-backdrop, #filter-apply-btn').on('click', function () {
+    closeFilterSheet();
+  });
+
+  $('#mobile-map-btn').on('click', function () {
+    $('#map').show();
+    $('#map-close').show();
+  });
+
+  $('#filter-reset-btn').on('click', function () {
+    $('.rating').prop('checked', false);
+    $('#rating_all').prop('checked', true);
+
+    $('.options').prop('checked', false);
+
+    $('.input-min').val('0');
+    $('.input-max').val('500,000');
+    $('.range-min').val('0');
+    $('.range-max').val('500000');
+
+    $('.slider .progress').css({
+      left: '0%',
+      right: '0%'
+    });
+  });
 });
 
 function initElements() {
@@ -75,6 +109,18 @@ function bindFilterEvents() {
   $(".options").on("change", function () {
     sendFilterRequest(collectFilterData());
   });
+}
+
+function openFilterSheet() {
+  $filterSheet.addClass('active');
+  $backdrop.addClass('active');
+  $('body').addClass('filter-open');
+}
+
+function closeFilterSheet() {
+  $filterSheet.removeClass('active');
+  $backdrop.removeClass('active');
+  $('body').removeClass('filter-open');
 }
 
 function collectFilterData() {

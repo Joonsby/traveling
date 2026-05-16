@@ -21,7 +21,9 @@
             <jsp:include page="/webPage/common/stay_card.jsp"/>
         </c:forEach>
     </div>
-    <span id="rec_show_review" class="show_review">리뷰 모두 보기</span>
+    <div class="show_review_wrap">
+        <button id="rec_show_review" class="show_review">리뷰 모두 보기</button>
+    </div>
 </section>
 
 <section class="korea_popular_region">
@@ -76,7 +78,9 @@
             <jsp:include page="/webPage/common/stay_card.jsp"/>
         </c:forEach>
     </div>
-    <span id="pop_show_review" class="show_review">리뷰 모두 보기</span>
+    <div class="show_review_wrap">
+        <button id="pop_show_review" class="show_review">리뷰 모두 보기</button>
+    </div>
 </section>
 
 <section class="event">
