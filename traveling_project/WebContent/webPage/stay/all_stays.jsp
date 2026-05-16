@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<main class="clearfix">
+<div id="main-wrap" class="clearfix">
 <%@ include file="all_stays_aside.jsp" %>
   <section id="accomodation_info" class="clearfix">
 	<div id="accomodation_info_box">
@@ -30,5 +30,5 @@
   </section>
   <div id="map"></div>
   <div id="map-close">목록 보기</div>
-</main>
+</div>
 

@@ -1,11 +1,12 @@
-main {
-	margin: 0 auto;
+#main-wrap{
+	display:flex;
+	justify-content:space-between;
+	align-items: flex-start;
 }
 
 #accomodation_info {
 	display: flex;
-	width: 1453px;
-	float: left;
+	width: 30%;
 	margin: 0;
 	position: relative;
 }
@@ -28,16 +29,13 @@ main {
 }
 
 .accomodation_box div:first-child {
-	width: 200px;
+	width: 40%;
 	height: 200px;
 	overflow: hidden;
 	position: relative;
 }
 
 .accomodation_box div:first-child img {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
 	transition: all 0.2s ease 0s;
 	height: 100%;
 }
@@ -47,7 +45,7 @@ main {
 }
 
 .accomodation_box div:last-child {
-	width: 300px;
+	width: 60%;
 }
 
 #accomodation_info .accomodation h2, #accomodation_info .accomodation span, #accomodation_info .accomodation p {
@@ -78,11 +76,12 @@ main {
 }
 
 #map {	
-	width: 933px;
-	height: 100%;
+	width: 50%;
+	height:100vh;
 	position:fixed;
 	top:80px;
 	right:0;
+	display:none;
 }
 
 #more {
