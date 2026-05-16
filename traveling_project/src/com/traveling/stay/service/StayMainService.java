@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.LayoutForward;
 import com.traveling.stay.dao.StayManagementDAO;
 
 public class StayMainService implements DataControl {
@@ -19,7 +20,8 @@ public class StayMainService implements DataControl {
 		req.setAttribute("popStays", stayManagementDAO.popStaySelect());
 		req.setAttribute("bestReviewStays", stayManagementDAO.bestReviewStaySelect());
 		req.setAttribute("cheapStays", stayManagementDAO.cheapStaySelect());
-		
-        req.getRequestDispatcher("index.jsp").forward(req, res);
+
+		// Forward to main via layout (user)
+		LayoutForward.user(req, res, "Home", "/index.jsp", null, null);
 	}
 }

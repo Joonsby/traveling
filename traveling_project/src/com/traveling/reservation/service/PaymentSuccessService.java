@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.traveling.common.DataControl;
 import com.traveling.common.ViewUtil;
+import com.traveling.common.LayoutForward;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.ReservationInfo;
 
@@ -69,8 +70,10 @@ public class PaymentSuccessService implements DataControl{
     	ReservationInfo reservationInfo = reservationManageDAO.getReservationSuccessInfo(orderId);
     	Gson gson = new Gson();
     	System.out.println(gson.toJson(reservationInfo));
-    	req.setAttribute("reservationInfo", reservationInfo);
-    	req.getRequestDispatcher("/webPage/reservation/pay_success.jsp").forward(req, res);
+				 req.setAttribute("reservationInfo", reservationInfo);
+													 // Use layout forward for user pages and include page-specific css
+													 String[] cssList = new String[] { "/css/reservation/pay_success.css" };
+													 LayoutForward.user(req, res, "결제 완료", "/webPage/reservation/pay_success.jsp", cssList, null);
 	}
 
 }
