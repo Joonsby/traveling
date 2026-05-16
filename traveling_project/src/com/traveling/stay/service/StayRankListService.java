@@ -2,11 +2,12 @@ package com.traveling.stay.service;
 
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
+// ...existing imports...
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.LayoutForward;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.StayInfo;
 
@@ -36,8 +37,9 @@ public class StayRankListService implements DataControl {
 			throw new IllegalArgumentException("잘못된 숙소 목록 요청: " + uri);
 		}
 		req.setAttribute("stayList", stayList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/stay/all_stays.jsp");
-		dispatcher.forward(req, res);
+		String[] cssList = new String[] { "/css/stay/all_stays.css" };
+		String[] jsList = new String[] { "/js/stay/stay_map.js", "/js/stay/all_stays.js" };
+		LayoutForward.user(req, res, "숙소 목록", "/webPage/stay/all_stays.jsp", cssList, jsList);
 	}
 
 }

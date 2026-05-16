@@ -5,11 +5,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
+// ...existing imports...
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.LayoutForward;
 import com.traveling.stay.dao.StayManagementDAO;
 import com.traveling.stay.dto.FacilityCategoryInfo;
 import com.traveling.stay.dto.FacilityInfo;
@@ -27,8 +28,8 @@ public class DetailStayInfoService implements DataControl  {
 	@Override
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
-		int stayId = Integer.parseInt((String) req.getParameter("stay_id"));
-		
+		int stayId = Integer.parseInt(req.getParameter("stay_id"));
+
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		
 		List<StayInfo> detailStayList =  stayManagementDAO.selectStayInfo(stayId); 		// 숙소 정보
@@ -59,8 +60,9 @@ public class DetailStayInfoService implements DataControl  {
 		req.setAttribute("reviewList", reviewList);
 		req.setAttribute("facilityList", new ArrayList<>(facilityCategoryMap.values()));
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/webPage/stay/detail_stay.jsp");
-		dispatcher.forward(req, res);
+		String[] cssList = new String[] { "/css/stay/detail_stay.css" };
+		String[] jsList = new String[] { "/js/stay/detail_stay.js" };
+		LayoutForward.user(req, res, "숙소 상세", "/webPage/stay/detail_stay.jsp", cssList, jsList);
 	}
 
 }

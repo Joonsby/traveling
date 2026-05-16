@@ -49,6 +49,7 @@ public abstract class BaseController extends HttpServlet{
      */
     protected void forwardError(HttpServletRequest req, HttpServletResponse res, String message) throws ServletException, IOException {
         req.setAttribute("errorMessage", message);
+        // Forward directly using RequestDispatcher (do not use LayoutForward for error pages)
         req.getRequestDispatcher("/webPage/error/error.jsp").forward(req, res);
     }
     

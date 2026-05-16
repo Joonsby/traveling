@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.LayoutForward;
 import com.traveling.reservation.dao.ReservationManageDAO;
 import com.traveling.reservation.dto.ReservationInfo;
 
@@ -23,7 +24,16 @@ public class ReservationStatusService implements DataControl {
 		ReservationManageDAO reservationManageDAO = new ReservationManageDAO();
 		List<ReservationInfo> reservationList =  reservationManageDAO.getHostReservationInfo(hostId);
 		req.setAttribute("reservationList", reservationList);
-		req.getRequestDispatcher("/webPage/reservation/reservation_acception.jsp").forward(req, res);
+		// Host page through layout with host css/js
+		String[] cssList = new String[] {
+			"/css/host/host_common.css",
+			"/css/host/host_aside.css",
+			"/css/reservation/reservation_acception.css"
+		};
+		String[] jsList = new String[] {
+			"/js/reservation/reservation_acception.js"
+		};
+		LayoutForward.host(req, res, "예약 관리", "/webPage/reservation/reservation_acception.jsp", cssList, jsList);
 	}
 	
 }
