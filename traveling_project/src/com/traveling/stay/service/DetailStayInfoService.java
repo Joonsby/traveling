@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.traveling.common.DataControl;
 import com.traveling.common.LayoutForward;
 import com.traveling.stay.dao.StayManagementDAO;

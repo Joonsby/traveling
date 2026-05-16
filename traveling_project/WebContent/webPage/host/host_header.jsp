@@ -39,10 +39,10 @@
       </li>
     </ul>
 
-    <ul class="right_menu">
-      <li><a href="#">내 정보</a></li>
-      <li><a id="log-out" href="<c:url value="/login/logout"/>">로그아웃</a></li>
-    </ul>
+    <div class="right_menu">
+      <div class="menu-item"><a href="#">내 정보</a></div>
+      <div class="menu-item"><a id="log-out" href="<c:url value="/login/logout"/>">로그아웃</a></div>
+    </div>
 
     <button type="button" id="hostMobileMenuBtn" class="mobile-menu-btn">☰</button>
   </nav>

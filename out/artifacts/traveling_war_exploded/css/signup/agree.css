@@ -1,7 +1,6 @@
 body {
   background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
   margin: 0;
-  padding: 0 15px;
   box-sizing: border-box;
 }
 
@@ -181,7 +180,7 @@ main {
     padding-top: 20px;
   }
 
-  /* step ¼¼·Î ´À³¦ ¹æÁö */
+  /* step ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
   #step {
     flex-wrap: wrap;
   }
