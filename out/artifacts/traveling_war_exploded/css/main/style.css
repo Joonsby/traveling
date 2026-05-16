@@ -34,7 +34,7 @@ section {
 
 /* 호텔 추천 */
 .hotel_recommend {
-	width: 1200px;
+	width: 90%;
 	margin: 5% auto;
 }
 
@@ -221,25 +221,31 @@ h2 {
 }
 
 /* 리뷰 모두 보기 */
-.hotel_recommend>.show_review {
+.show_review_wrap{
 	margin: 30px 0;
-	display: block;
 	text-align: center;
-	cursor: pointer;
 }
 
-.hotel_recommend>.show_review:hover {
-	color: #1200ff;
+.show_review {
+	padding: 5px 10px;
+	background:#1aa3ff;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	cursor: pointer;
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+.show_review:hover {
+	background:#000;
+	color: #fff !important;
 }
 
 /* 국내 인기 여행지  */
 .korea_popular_region {
-	margin: 100px 0;
-}
-
-.korea_popular_region .slider {
-	width: 1200px;
-	margin: 0 auto;
+	margin: 5% auto;
+	width:90%;
 }
 
 .korea_popular_region>h2 {
@@ -277,7 +283,7 @@ h2 {
 /* 가장 평점이 높은 숙소 */
 #best-review-stays {
 	position: relative;
-	width: 1200px;
+	width: 90%;
 	margin: 0 auto;
 }
 
@@ -394,7 +400,7 @@ h2 {
 
 /* 인기 숙소 */
 .popular_accomodation {
-	width: 1200px;
+	width: 90%;
 	margin: 100px auto 0;
 }
 
@@ -563,8 +569,9 @@ h2 {
 	cursor: pointer;
 }
 
-.popular_accomodation>.after_style:hover {
-	color: #1200ff;
+.popular_accomodation>.show_review:hover {
+	background: #000;
+	color: #fff !important;
 }
 
 /* 이벤트 */
@@ -576,7 +583,7 @@ h2 {
 }
 
 .event {
-	width: 1200px;
+	width: 90%;
 	margin: 0 auto 100px;
 }
 
@@ -676,8 +683,8 @@ h2 {
 	.hotel_recommend,
 	#best-review-stays,
 	.popular_accomodation,
-	.event,
-	.korea_popular_region .slider {
+	.event {
+
 		width: 92%;
 	}
 
@@ -798,12 +805,11 @@ h2 {
 	}
 
 	.korea_popular_region {
-		margin: 60px 0;
+		margin: 60px auto;
 	}
 
 	.korea_popular_region .slider {
-		width: 92%;
-		flex-wrap: wrap;
+		margin:0 auto;
 		justify-content: center;
 		gap: 24px 18px;
 	}

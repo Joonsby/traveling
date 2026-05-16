@@ -79,18 +79,19 @@ main{
 #join li a input[type="button"]{
   display:inline-block;
   width: auto;
-  min-width: 120px;
-  padding: .6rem 1rem;
+  padding: .6rem 2rem;
   height: auto;
   background:var(--primary);
-  color:#fff;
-  border:none;
-  border-radius:6px;
+  border:1px solid #ccc;
+  border-radius:5px;
   cursor:pointer;
   font-weight:600;
 }
 
-#join li a input[type="button"]:hover{opacity:0.95}
+#join li a input[type="button"]:hover{
+  color:#fff;
+  background:#000;
+}
 
 /* Small screens: stack content and make image smaller */
 @media (max-width: 900px) {
