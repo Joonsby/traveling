@@ -76,17 +76,25 @@ $(document).ready(function() {
     // 마커를 표시할 지도 객체
     });
 
-    $('.reservation-a').click(function(e) {
+    // Use event delegation for better reliability with dynamic/deferred elements
+    $(document).on('click', '.reservation-a', function(e) {
         var userID = $(this).data('id');
         if (!userID) {
             e.preventDefault();
-            showConfirmModal(
+            // Check if showConfirmModal function exists before calling
+            if(typeof showConfirmModal === 'function'){
+                showConfirmModal(
                     "로그인 필요",
                     "예약 하려면 로그인이 필요합니다. 로그인 화면으로 이동하시겠습니까?",
                     function() {
                         window.location.href = '/login/select';
                     }
                 );
+            } else {
+                // fallback if common.js not loaded
+                alert('로그인이 필요합니다.');
+                window.location.href = '/login/select';
+            }
         }
-    })
+    });
 });
