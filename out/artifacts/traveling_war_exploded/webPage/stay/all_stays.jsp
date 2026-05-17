@@ -8,10 +8,10 @@
 
 <div id="filter-backdrop"></div>
 
-<div id="main-wrap" class="clearfix">
+<div id="main-wrap">
 	<div class="list-wrap">
 		<%@ include file="all_stays_aside.jsp" %>
-		<section id="accomodation_info" class="clearfix">
+		<section id="accomodation_info">
 			<div id="accomodation_info_box">
 				<c:forEach var="stay" items="${stayList}">
 					<div class="accomodation">
@@ -26,7 +26,7 @@
 									<input type="hidden" class="price-val" value="${stay.min_room_price}">
 									<input type="hidden" class="name-val" value="${stay.stay_name}">
 									<h2 class="stay-name">${stay.stay_name}</h2>
-									<p class="avg-rating">${stay.rating_avg}</p>
+									<p class="avg-rating">⭐️ ${stay.rating_avg}</p>
 									<p class="road-addr">${stay.road_addr}</p>
 									<p class="room-price">₩ <fmt:formatNumber value="${stay.min_room_price}" pattern="#,###" /> ~</p>
 								</div>

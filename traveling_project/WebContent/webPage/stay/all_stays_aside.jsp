@@ -18,11 +18,17 @@
 				<span>이하</span>
 			</div>
 			<div class="field">
-				<input type="text" class="input-min" value="0" />
-				<span class="won">₩</span>
-				<div class="separator">-</div>
-				<input type="text" class="input-max" value="500,000" />
-				<span class="won">₩</span>
+				<div class="input-wrapper">
+					<input type="text" class="input-min" value="0" />
+					<span class="won">₩</span>
+				</div>
+				<div class="separator">
+					<span>-</span>
+				</div>
+				<div class="input-wrapper">
+					<input type="text" class="input-max" value="500,000" />
+					<span class="won">₩</span>
+				</div>
 			</div>
 		</div>
 

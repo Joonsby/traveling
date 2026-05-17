@@ -283,7 +283,7 @@ h2 {
 /* 가장 평점이 높은 숙소 */
 #best-review-stays {
 	position: relative;
-	width: 1200px;
+	width: 90%;
 	margin: 0 auto;
 }
 
@@ -400,7 +400,7 @@ h2 {
 
 /* 인기 숙소 */
 .popular_accomodation {
-	width: 1200px;
+	width: 90%;
 	margin: 100px auto 0;
 }
 
@@ -493,8 +493,10 @@ h2 {
 
 .popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide h3,
 .popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide p {
+	line-height: 1.5;
 	white-space:nowrap;
 	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .pop_slider .slick-dots {
@@ -583,7 +585,7 @@ h2 {
 }
 
 .event {
-	width: 1200px;
+	width: 90%;
 	margin: 0 auto 100px;
 }
 

@@ -493,8 +493,10 @@ h2 {
 
 .popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide h3,
 .popular_accomodation>.pop_slider>.slick-list>.slick-track>.slick-slide p {
+	line-height: 1.5;
 	white-space:nowrap;
 	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .pop_slider .slick-dots {

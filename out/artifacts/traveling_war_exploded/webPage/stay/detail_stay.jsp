@@ -56,19 +56,15 @@
 	</div>
 
 	<div class="amenity">
-		<h3 id="amenity-title">편의시설</h3>
-		<div class="stay-amenity-content">
-			<c:forEach var="category" items="${facilityList}">
-				<div class="amenity-category">
-					<b>${category.categoryName}</b>
-					<hr>
-					<c:forEach var="facilityName" items="${category.facilityList}">
-						<span>${facilityName}</span>
-					</c:forEach>
-				</div>
-			</c:forEach>
-		</div>
-		<input type="button" id="amenity-close" value="닫기">
+		<c:forEach var="category" items="${facilityList}">
+			<div class="amenity-category">
+				<b>${category.categoryName}</b>
+				<hr>
+				<c:forEach var="facilityName" items="${category.facilityList}">
+					<span>${facilityName}</span>
+				</c:forEach>
+			</div>
+		</c:forEach>
 	</div>
 
 	<div id="modal-backdrop"></div>
@@ -107,7 +103,7 @@
 <!-- 객실 예약 -->
 <section class="detail-stay-room">
 	<h2>객실</h2>
-	<ul class="room-list">
+	<div class="room-list">
 		<c:forEach var="room" items="${roomList}" varStatus="status">
 			<c:url var="roomImageUrl" value="/images/room_images/${room.image1}" />
 			<c:url var="reservationUrl" value="/reservation/page">
@@ -115,7 +111,7 @@
 				<c:param name="user_id" value="${sessionUserId}" />
 			</c:url>
 
-			<li class="room-item" data-room_id="${room.room_id}">
+			<div class="room-item" data-room_id="${room.room_id}">
 				<div class="room-item-wrap">
 					<div class="room-item-image">
 						<img src="${roomImageUrl}" alt="객실이미지" />
@@ -125,30 +121,32 @@
 							<h2>${room.roomName}</h2>
 						</div>
 						<div class="room-info-detail">
-							<ul class="room-info-list">
-								<li class="room-content">
+							<div class="room-info-list">
+								<div class="room-content">
 									<h4>방 소개</h4>
-									<span>${room.content}</span>
-								</li>
-								<li class="room-min-people">
-									<h4>기준 인원</h4>
-									<span>${room.stdPeople}명</span>
-								</li>
-								<li class="room-max-people">
-									<h4>최대 인원</h4>
-									<span>${room.maxPeople}명</span>
-								</li>
-							</ul>
-							<div class="room-to-reservation">
-								<a href="${reservationUrl}" class="reservation-a" data-id="<c:out value='${sessionUserId}' />">예약하기</a>
-								<span class="room-price">₩ <fmt:formatNumber value="${room.price}"/></span>
+									<p>${room.content}</p>
+								</div>
+								<div id="room-people">
+									<div class="room-min-people">
+										<h4>기준 인원</h4>
+										<p>${room.stdPeople}명</p>
+									</div>
+									<div class="room-max-people">
+										<h4>최대 인원</h4>
+										<p>${room.maxPeople}명</p>
+									</div>
+								</div>
+								<p class="room-price">가격 : ₩ <fmt:formatNumber value="${room.price}"/></p>
 							</div>
+						</div>
+						<div class="room-to-reservation">
+							<a href="${reservationUrl}" class="reservation-a" data-id="<c:out value='${sessionUserId}' />">예약하기</a>
 						</div>
 					</div>
 				</div>
-			</li>
+			</div>
 		</c:forEach>
-	</ul>
+	</div>
 </section>
 
 <!-- 숙소 위치 -->

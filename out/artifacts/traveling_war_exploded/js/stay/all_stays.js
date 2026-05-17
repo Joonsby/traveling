@@ -3,12 +3,13 @@ let $priceInput;
 let $range;
 let $filterSheet;
 let $backdrop;
-
+let windowWidth;
 const priceGap = 10000;
 
 $(document).ready(function () {
   $filterSheet = $('#filter-sheet');
   $backdrop = $('#filter-backdrop');
+  windowWidth = $(window).width();
   initElements();
 
   initStayMap();
@@ -115,12 +116,14 @@ function openFilterSheet() {
   $filterSheet.addClass('active');
   $backdrop.addClass('active');
   $('body').addClass('filter-open');
+  $('.filter-sheet-actions').css('display', 'flex');
 }
 
 function closeFilterSheet() {
   $filterSheet.removeClass('active');
   $backdrop.removeClass('active');
   $('body').removeClass('filter-open');
+  $('.filter-sheet-actions').hide();
 }
 
 function collectFilterData() {

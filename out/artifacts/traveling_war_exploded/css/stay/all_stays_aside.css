@@ -1,6 +1,5 @@
 aside {
-    margin: 20px 20px 0 90px;
-    min-width: 350px;
+    width:50%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -46,15 +45,20 @@ aside {
 }
 
 .price-input .field {
-	position:relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 5px;
 }
 
+.input-wrapper{
+	width:45%;
+	position:relative;
+}
+
 .field span {
-	width: 41%;
+	width: 45%;
+	text-align: center;
 }
 
 .field .won{
@@ -62,21 +66,18 @@ aside {
 	height:30px;
 	line-height:30px;
 	position:absolute;
-	top:0px;
-	left:8px;
-}
-
-.field .won:last-of-type{
-	left:182px;
+	top:0;
+	left:5%;
 }
 
 .field input {
-	width: 100%;
+	width:100%;
+	text-align: center;
 	height: 30px;
 	outline: none;
 	font-size: 19px;
 	border-radius: 5px;
-	text-align: center;
+
 	border: 1px solid #999;
 	-moz-appearance: textfield;
 }
@@ -87,7 +88,7 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
 }
 
 .price-input .separator {
-	width: 130px;
+	width: 10%;
 	display: flex;
 	font-size: 19px;
 	align-items: center;
