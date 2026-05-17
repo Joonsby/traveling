@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.traveling.common.DataControl;
+import com.traveling.common.LayoutForward;
 import com.traveling.login.dao.LoginDAO;
 import com.traveling.login.dto.UserInfo;
 

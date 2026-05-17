@@ -84,7 +84,7 @@ $(document).ready(function() {
                     "로그인 필요",
                     "예약 하려면 로그인이 필요합니다. 로그인 화면으로 이동하시겠습니까?",
                     function() {
-                        window.location.href = '/login/user';
+                        window.location.href = '/login/select';
                     }
                 );
         }
