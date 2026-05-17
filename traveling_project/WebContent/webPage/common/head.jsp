@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
 <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/air-datepicker@3.6.0/air-datepicker.css">
 
 <link rel="stylesheet" href="<c:url value="/css/common/reset.css"/>" />
 <link rel="stylesheet" href="<c:url value="/css/common/common.css"/>" />
@@ -27,3 +28,5 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.6.0/air-datepicker.js"></script>
+<script src="https://js.tosspayments.com/v2/standard"></script>

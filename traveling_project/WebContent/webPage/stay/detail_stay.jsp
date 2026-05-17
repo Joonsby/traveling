@@ -56,19 +56,15 @@
 	</div>
 
 	<div class="amenity">
-		<h3 id="amenity-title">편의시설</h3>
-		<div class="stay-amenity-content">
-			<c:forEach var="category" items="${facilityList}">
-				<div class="amenity-category">
-					<b>${category.categoryName}</b>
-					<hr>
-					<c:forEach var="facilityName" items="${category.facilityList}">
-						<span>${facilityName}</span>
-					</c:forEach>
-				</div>
-			</c:forEach>
-		</div>
-		<input type="button" id="amenity-close" value="닫기">
+		<c:forEach var="category" items="${facilityList}">
+			<div class="amenity-category">
+				<b>${category.categoryName}</b>
+				<hr>
+				<c:forEach var="facilityName" items="${category.facilityList}">
+					<span>${facilityName}</span>
+				</c:forEach>
+			</div>
+		</c:forEach>
 	</div>
 
 	<div id="modal-backdrop"></div>
@@ -130,19 +126,21 @@
 									<h4>방 소개</h4>
 									<p>${room.content}</p>
 								</div>
-								<div class="room-min-people">
-									<h4>기준 인원</h4>
-									<p>${room.stdPeople}명</p>
+								<div id="room-people">
+									<div class="room-min-people">
+										<h4>기준 인원</h4>
+										<p>${room.stdPeople}명</p>
+									</div>
+									<div class="room-max-people">
+										<h4>최대 인원</h4>
+										<p>${room.maxPeople}명</p>
+									</div>
 								</div>
-								<div class="room-max-people">
-									<h4>최대 인원</h4>
-									<p>${room.maxPeople}명</p>
-								</div>
+								<p class="room-price">가격 : ₩ <fmt:formatNumber value="${room.price}"/></p>
 							</div>
 						</div>
 						<div class="room-to-reservation">
 							<a href="${reservationUrl}" class="reservation-a" data-id="<c:out value='${sessionUserId}' />">예약하기</a>
-							<span class="room-price">₩ <fmt:formatNumber value="${room.price}"/></span>
 						</div>
 					</div>
 				</div>

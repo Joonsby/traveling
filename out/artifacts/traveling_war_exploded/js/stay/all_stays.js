@@ -116,12 +116,14 @@ function openFilterSheet() {
   $filterSheet.addClass('active');
   $backdrop.addClass('active');
   $('body').addClass('filter-open');
+  $('.filter-sheet-actions').css('display', 'flex');
 }
 
 function closeFilterSheet() {
   $filterSheet.removeClass('active');
   $backdrop.removeClass('active');
   $('body').removeClass('filter-open');
+  $('.filter-sheet-actions').hide();
 }
 
 function collectFilterData() {

@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+h2{
+	margin:0;
+}
+
 #modal-backdrop{
 	position:fixed;
 	width:100%;
@@ -21,7 +25,6 @@
 
 .room-name h4{
 	display: block;
-    width: 157px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -45,17 +48,11 @@
 	color:#fff;
 }
 
-.amenity{	
-    position: fixed;
-    width: 700px;    
-    background: #f9f9f9;
-    padding: 50px 100px 30px;
-    text-align: center;
+.amenity{
+	width: 700px;
+    background: #fff;
+    padding: 0 20px 10px;
     border: 1px solid #ccc;
-    border-radius: 30px;
-    left: 50%;
-    top: 20%;
-    transform: translateX(-50%);
     z-index: 100;
     display:none;
 }
@@ -88,7 +85,7 @@
 }
 
 section {
-	max-width: 1200px;
+	max-width: 90%;
 	margin: 20px auto;
 	border:1px solid #c2c2c2;	
 	background:#fcfcfc;
@@ -101,15 +98,7 @@ section {
 	background-color: #f3f3f3;	
 }
 
-.stay-amenity-content {
-	text-align: left;
-    padding: 0 20px 10px;
-    overflow-y: scroll;
-    border: 1px solid #ccc;
-    height: 500px;
-    background: #fff;    
-}
-.stay-amenity-content span{
+.amenity-category span{
 	display:block;
 	margin:5px 0;
 }
@@ -120,14 +109,14 @@ section {
 }
 
 .room-item-image{
-	width:512px;
-	height:320px;
+	width:50%;
 	overflow:hidden;
 }
 
 .room-item-image img{
-	width:512px;
-	height:320px;
+	width:100%;
+	height:100%;
+	object-fit:cover;
 }
 
 .room-item-wrap {
@@ -136,9 +125,12 @@ section {
 }
 
 .room-item-info {
+	display:flex;
+	flex-direction: column;
 	text-align: left;
-	width: 512px;
-	height:320px;	
+	width: 50%;
+	padding:0 20px;
+	justify-content: space-between;
 }
 
 .room-item-info h2{
@@ -150,12 +142,13 @@ section {
 	font-size:16px;
 }
 
-.room-info-name {
-	margin-bottom: 10px;
+.room-to-reservation{
+	display:flex;
+	align-items:center;
 }
 
 .room-info-list li span {
-	font-size: 15.5px;
+	font-size: 16px;
 	font-weight: lighter;	
 }
 
@@ -178,11 +171,8 @@ section {
 	margin:0;
 }
 
-.room-to-reservation {
-	margin-top: 28px;
-}
-
 .reservation-a {
+	display: inline-block;
 	padding: 10px 20px;
     border-radius: 6px;
     background-color: black;
@@ -190,11 +180,8 @@ section {
 }
 
 .room-price {
-	margin-left: 15px;
-}
-
-.detail-stay-info{
-	padding: 20px 200px;
+	font-size: 24px;
+	font-weight: bold;
 }
 
 .detail-stay-location {
@@ -264,21 +251,19 @@ section {
 .stay-review-content-wrap {
 	width:33.3%;
 	display: flex;
-    justify-content: left;
+    justify-content: space-between;
     border: 1px solid #ccc;
     padding: 10px;
     margin-left: 10px;
     border-radius:5px;
-}
-
-.stay-review-image{
-	width:150px;
-	height:150px;
+	gap:20px;
 }
 
 .stay-review-content {
+	display:flex;
+	flex-direction:column;
+	width:70%;
 	text-align: left;
-	margin-left:10px;
 }
 
 .stay-review-content h3{
@@ -302,30 +287,31 @@ section {
 }
 
 .review-content-wrap {
-    height: 90px;
+    height: 100%;
     background-color: #f3f3f3;
     border-radius: 10px;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
+	flex-direction: column;
+
 }
 
 #review-content{
 	overflow: hidden;
 	text-overflow: ellipsis;
-	  display: -webkit-box;
+	display: -webkit-box;
   -webkit-line-clamp: 2;    /* 라인 수 제한 */
   -webkit-box-orient: vertical;
+	white-space: nowrap;
 }
 
 #stay_name{
 	text-align:center;
-	margin-top:110px;
+	margin-top:40px;
 }
 
 .swiper {
-	width: 1200px;		
+	width: 90%;
 	margin-top:30px;	
 	user-select:none;
 	margin-left: auto;
@@ -362,13 +348,132 @@ div.swiper-button-next{
 }
 
 #map{
-	width:1040px;
+	width:100%;
 	height:585px;
 	border:1px solid #ccc;
 }
 
 #swiper-box{
 	margin:20px auto;
-	width:1360px;	
 	position:relative;
 }
+
+/* 반응형 레이아웃 (1200px 이하) */
+@media (max-width: 1200px) {
+	.swiper-button-next,
+	.swiper-button-prev{
+		display:none;
+	}
+
+	/* 리뷰 섹션 - 한 줄에 1개씩 */
+	.stay-review-wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.stay-review-content-wrap {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	/* 객실 섹션 - 한 줄에 1개씩 */
+	.room-item-wrap {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	.room-item-image {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.room-item-info {
+		width: 100%;
+		padding: 0;
+	}
+
+	.room-to-reservation {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.room-price {
+		margin-left: 0;
+	}
+
+	/* 섹션 padding 조정 */
+	section {
+		padding: 20px 30px;
+	}
+
+	/* 모바일: 리뷰 텍스트 넘침 시 말줄임(ellipsis) 처리 및 별 아이콘 항상 표시 */
+	.stay-review-content {
+		/* flex 컨테이너 안에서 텍스트가 잘리도록 허용 */
+		width: auto;
+		flex: 1 1 auto;
+		min-width: 0; /* 중요한 속성: flex item에서 overflow 동작을 위해 필요 */
+		overflow: hidden;
+	}
+
+	.stay-review-content h3 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1; /* 제목은 1줄로 */
+		-webkit-box-orient: vertical;
+		white-space: normal;
+	}
+
+	.stay-review-content p,
+	.stay-review-content h4 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2; /* 본문은 최대 2줄 */
+		-webkit-box-orient: vertical;
+		white-space: nowrap;
+	}
+
+	/* 별 아이콘(평점) 영역이 부모의 overflow에 의해 잘리지 않도록 고정 폭/비축소 설정 */
+	.review-writter-star,
+	.review-writter .review-writter-star {
+		flex: 0 0 auto; /* shrink 하지 않음 */
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		min-width: 60px; /* 충분한 공간 확보 */
+		margin-left: 10px;
+		z-index: 2;
+	}
+
+	/* 편의시설 팝업 크기 조정 */
+	.amenity {
+		width: 90%;
+		padding: 10px 20px;
+	}
+
+	.reservation-a {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* Modal-specific adjustments for cloned amenity content */
+#Modal .modal-header,
+#Modal .modal-body,
+#Modal .modal-footer{
+	background-color: #f9f9f9;
+}
+#Modal .modal-body {
+	max-height: 70vh; /* allow scrolling inside modal if amenity content is tall */
+	overflow-y: auto;
+}
+
+.modal-amenity-clone {
+	position: static !important;
+	width: 100% !important;
+	border-radius: 10px;
+}
+

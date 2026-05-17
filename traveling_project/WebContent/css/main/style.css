@@ -496,6 +496,7 @@ h2 {
 	line-height: 1.5;
 	white-space:nowrap;
 	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .pop_slider .slick-dots {

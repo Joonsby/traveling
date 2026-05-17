@@ -13,12 +13,31 @@ $(document).ready(function() {
             nextEl : ".swiper-button-next",
             prevEl : ".swiper-button-prev",
         },
+        breakpoints: {
+            // 1200px 이하: 2개씩
+            0: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+            },
+            // 1200px 이상: 3개씩
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            }
+        }
     });
 
-    $('#amenity-btn').click(function() {
-        $('.amenity').show();
-        $('body').css('overflow', 'hidden');
-        $('#modal-backdrop').show();
+    $('#amenity-btn').click(function(e) {
+        e.preventDefault();
+        // Use common.js helper to show amenity inside the shared Bootstrap modal
+        if(typeof showAmenityModal === 'function'){
+            showAmenityModal('편의시설', '.amenity');
+        } else {
+            // fallback to original behavior if helper not available
+            $('.amenity').show();
+            $('body').css('overflow', 'hidden');
+            $('#modal-backdrop').show();
+        }
     });
 
     $('#amenity-close').click(function() {
