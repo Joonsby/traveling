@@ -283,7 +283,7 @@ h2 {
 /* 가장 평점이 높은 숙소 */
 #best-review-stays {
 	position: relative;
-	width: 90%;
+	width: 1200px;
 	margin: 0 auto;
 }
 
@@ -400,7 +400,7 @@ h2 {
 
 /* 인기 숙소 */
 .popular_accomodation {
-	width: 90%;
+	width: 1200px;
 	margin: 100px auto 0;
 }
 
@@ -583,7 +583,7 @@ h2 {
 }
 
 .event {
-	width: 90%;
+	width: 1200px;
 	margin: 0 auto 100px;
 }
 

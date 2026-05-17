@@ -3,12 +3,13 @@ let $priceInput;
 let $range;
 let $filterSheet;
 let $backdrop;
-
+let windowWidth;
 const priceGap = 10000;
 
 $(document).ready(function () {
   $filterSheet = $('#filter-sheet');
   $backdrop = $('#filter-backdrop');
+  windowWidth = $(window).width();
   initElements();
 
   initStayMap();

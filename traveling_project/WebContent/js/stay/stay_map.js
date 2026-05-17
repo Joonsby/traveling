@@ -2,6 +2,13 @@ var map;
 var overlayMap = {};
 var locations = {};
 
+$(window).resize(function(){
+  windowWidth = $(window).width();
+  if(windowWidth > 1200){
+    $("#map").show();
+  }
+});
+
 function initStayMap() {
   locations = collectInitialLocations();
 
@@ -109,12 +116,12 @@ function bindMapLayoutEvents() {
   });
 
   $("#map-close").on("click", function () {
-    $("#map").css("width", "933px");
-
-    if (map) {
-      map.relayout();
+    if(windowWidth > 1200){
+      $("#map").css("width", "48%");
+      if (map) map.relayout();
+    } else{
+        $("#map").hide();
     }
-
     $(this).hide();
   });
 }
