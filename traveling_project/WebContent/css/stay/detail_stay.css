@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+h2{
+	margin:0;
+}
+
 #modal-backdrop{
 	position:fixed;
 	width:100%;
@@ -21,7 +25,6 @@
 
 .room-name h4{
 	display: block;
-    width: 157px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -88,7 +91,7 @@
 }
 
 section {
-	max-width: 1200px;
+	max-width: 90%;
 	margin: 20px auto;
 	border:1px solid #c2c2c2;	
 	background:#fcfcfc;
@@ -120,14 +123,12 @@ section {
 }
 
 .room-item-image{
-	width:512px;
-	height:320px;
+	width:50%;
 	overflow:hidden;
 }
 
 .room-item-image img{
-	width:512px;
-	height:320px;
+	width:100%;
 }
 
 .room-item-wrap {
@@ -136,9 +137,12 @@ section {
 }
 
 .room-item-info {
+	display:flex;
+	flex-direction: column;
 	text-align: left;
-	width: 512px;
-	height:320px;	
+	width: 50%;
+	padding:0 20px;
+	justify-content: space-between;
 }
 
 .room-item-info h2{
@@ -150,12 +154,13 @@ section {
 	font-size:16px;
 }
 
-.room-info-name {
-	margin-bottom: 10px;
+.room-to-reservation{
+	display:flex;
+	align-items:center;
 }
 
 .room-info-list li span {
-	font-size: 15.5px;
+	font-size: 16px;
 	font-weight: lighter;	
 }
 
@@ -178,11 +183,8 @@ section {
 	margin:0;
 }
 
-.room-to-reservation {
-	margin-top: 28px;
-}
-
 .reservation-a {
+	display: inline-block;
 	padding: 10px 20px;
     border-radius: 6px;
     background-color: black;
@@ -190,11 +192,9 @@ section {
 }
 
 .room-price {
+	font-size: 24px;
+	font-weight: bold;
 	margin-left: 15px;
-}
-
-.detail-stay-info{
-	padding: 20px 200px;
 }
 
 .detail-stay-location {
@@ -269,16 +269,19 @@ section {
     padding: 10px;
     margin-left: 10px;
     border-radius:5px;
+	gap:20px;
 }
 
 .stay-review-image{
-	width:150px;
+	width:30%;
 	height:150px;
 }
 
 .stay-review-content {
+	display:flex;
+	flex-direction:column;
+	width:70%;
 	text-align: left;
-	margin-left:10px;
 }
 
 .stay-review-content h3{
@@ -302,13 +305,13 @@ section {
 }
 
 .review-content-wrap {
-    height: 90px;
+    height: 100%;
     background-color: #f3f3f3;
     border-radius: 10px;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
+	flex-direction: column;
+
 }
 
 #review-content{
@@ -321,11 +324,11 @@ section {
 
 #stay_name{
 	text-align:center;
-	margin-top:110px;
+	margin-top:40px;
 }
 
 .swiper {
-	width: 1200px;		
+	width: 90%;
 	margin-top:30px;	
 	user-select:none;
 	margin-left: auto;
@@ -362,13 +365,12 @@ div.swiper-button-next{
 }
 
 #map{
-	width:1040px;
+	width:100%;
 	height:585px;
 	border:1px solid #ccc;
 }
 
 #swiper-box{
 	margin:20px auto;
-	width:1360px;	
 	position:relative;
 }
