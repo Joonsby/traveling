@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com/traveling/signup/dao/signup.xml">
+	
+	<select id="checkUserId" resultType="int" parameterType="String">
+		select count(*) from user_info
+		where user_id = #{userId}
+	</select>
+	
+	<select id="checkUserEmail" resultType="int" parameterType="String">
+		select count(*) from user_info
+		where substring_index(email,'@',1) = #{email} 
+	</select>
+	
+	<insert id="insertUserInfo" parameterType="com.traveling.signup.dto.UserInfo">
+		insert into user_info values (#{id},#{pw},#{name},#{news_agency},
+		#{phone},#{mail},#{birth},#{gender},#{post_code},#{road_addr},#{jibun_addr},
+		#{detail_addr},#{reference_addr},date_format(now(), '%Y%m%d%H%i%s'))
+	</insert>
+	
+	<select id="checkHostId" resultType="int" parameterType="String">
+		select count(*) from host_info
+		where host_id = #{hostId}
+	</select>
+	
+	<select id="checkHostEmail" resultType="int" parameterType="String">
+		select count(*) from host_info
+		where substring_index(email,'@',1) = #{email}
+	</select>
+	
+	<insert id="insertHostInfo" parameterType="com.traveling.signup.dto.HostInfo">
+		insert into host_info values (#{host_id},#{pw},#{name},#{news_agency},
+		#{phone},#{business_num},#{mail},#{birth},#{gender},#{post_code},#{road_addr},#{jibun_addr},
+		#{detail_addr},#{reference_addr},date_format(now(), '%Y%m%d%H%i%s'))
+	</insert>
+	
+</mapper>

@@ -1,0 +1,53 @@
+.info{
+	font-size:14px;	
+	line-height:2;	
+}
+
+#stay-name{
+	display:inline-block;
+}
+
+#stay-name-edit{
+	float:right;
+}
+
+#addr-box{
+	margin:0;
+	display:inline-block;
+	border:0;	
+}
+
+#addr-edit-btn{
+	float:right;
+}
+
+#host-phone{
+	display:inline-block;
+}
+
+#image-edit-btn{
+	display:block;
+	margin:0 auto;
+}
+
+#content-edit-btn{
+	display:block;
+	margin:10px auto 0;
+}
+
+
+#phone-edit-btn{
+	float:right;
+}
+
+#amenties_edit_btn{
+	display:block;
+	margin:0 auto;
+}
+
+.img-box{
+	width:128px;
+	height:128px;
+	overflow:hidden;
+}
+
