@@ -3,7 +3,7 @@
 # =========================
 build/
 bin/
-out/
+**/out/
 target/
 
 *.class
@@ -29,11 +29,13 @@ dbinfo.properties
 .classpath
 .settings/
 .metadata/
+.tern-project
 
 # =========================
 # Tomcat
 # =========================
 .smarttomcat/
+run-tomcat.ps1
 
 # =========================
 # OS
