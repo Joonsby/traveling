@@ -1,0 +1,419 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+main {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.find_container {
+  width: 100%;
+}
+
+.find_table {
+  width: 100%;
+  max-width: 500px;
+  margin: clamp(32px, 6vw, 100px) auto;
+  padding: 60px 50px;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  border-collapse: separate;
+}
+
+.find_table th {
+  font-size: 28px;
+  padding-bottom: 20px;
+  color: #1aa3ff;
+}
+
+.find_table td {
+  padding-top: 10px;
+}
+
+.find_table input[type="text"],
+.find_table input[type="email"],
+.find_table input[type="password"],
+.find_table input[type="tel"] {
+  width: 100%;
+  height: 42px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-family: inherit;
+}
+
+.find_table input:focus {
+  outline: none;
+  border: 3px solid #1aa3ff;
+}
+
+.find_btn {
+  width: 100%;
+  height: 42px;
+  background: #1aa3ff;
+  color: #fff;
+  border: 1px solid #1aa3ff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.find_btn:hover {
+  background: #000;
+  border-color: #000;
+}
+
+.find_btn:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.find_btn.secondary {
+  background: #fff;
+  color: #1aa3ff;
+  border: 2px solid #1aa3ff;
+  margin-top: 10px;
+}
+
+.find_btn.secondary:hover {
+  background: #f0f0f0;
+}
+
+/* 방식 선택 탭 */
+.find_method_tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding: 0 0 20px 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.find_tab_btn {
+  flex: 1;
+  padding: 12px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.find_tab_btn:hover {
+  background: #e8e8e8;
+}
+
+.find_tab_btn.active {
+  background: #1aa3ff;
+  color: #fff;
+  border-color: #1aa3ff;
+}
+
+/* 방식별 섹션 */
+.find_method_section {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.find_method_section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 인증코드 입력 래퍼 */
+.code_input_wrapper {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.code_input_wrapper input {
+  flex: 1;
+  height: 42px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.code_input_wrapper input:focus {
+  outline: none;
+  border: 3px solid #1aa3ff;
+}
+
+.verify_code_btn {
+  width: 70px;
+  height: 42px;
+  background: #ff9900;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.verify_code_btn:hover {
+  background: #ff7700;
+}
+
+.verify_code_btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 버튼 그룹 */
+.button_group {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 결과 섹션 */
+.result_section {
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result_message {
+  text-align: center;
+  padding: 20px;
+  background: #f0f8ff;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+.result_message p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.result_message span {
+  font-weight: bold;
+  color: #1aa3ff;
+  font-size: 18px;
+}
+
+/* 비밀번호 강도 표시 */
+.pw_strength_indicator {
+  padding: 10px 0;
+  display: block !important;
+}
+
+.strength_bar {
+  display: inline-block;
+  width: 0%;
+  height: 8px;
+  background: #ff4444;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#pw_strength_text {
+  font-size: 12px;
+  margin-left: 8px;
+  color: #666;
+}
+
+/* 메시지 박스 */
+.message_box {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #1aa3ff;
+  z-index: 1000;
+  max-width: 90%;
+}
+
+.message_box.success {
+  border-left-color: #00c400;
+  background: #f0fff0;
+}
+
+.message_box.error {
+  border-left-color: #ff4444;
+  background: #fff0f0;
+}
+
+.message_box p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Step 섹션 */
+.find_step_section {
+  display: none;
+}
+
+.find_step_section.active {
+  display: block;
+}
+
+/* 하단 링크 */
+.find_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.find_link div {
+  display: flex;
+  gap: 15px;
+}
+
+.find_link a {
+  color: rgba(0, 0, 0, .5);
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.find_link a:hover {
+  color: #1aa3ff;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0 10px;
+  }
+
+  .find_table {
+    margin: 120px auto 70px;
+    padding: 40px 25px;
+    border-radius: 15px;
+  }
+
+  .find_table th {
+    font-size: 24px;
+  }
+
+  .find_table input[type="text"],
+  .find_table input[type="email"],
+  .find_table input[type="password"],
+  .find_table input[type="tel"],
+  .find_btn {
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .find_method_tabs {
+    gap: 8px;
+  }
+
+  .find_tab_btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .code_input_wrapper {
+    gap: 6px;
+  }
+
+  .verify_code_btn {
+    width: 65px;
+    font-size: 11px;
+  }
+
+  .find_link_left {
+    display: flex;
+    gap: 8px;
+  }
+
+  .find_link_right {
+    display: flex;
+  }
+
+  .find_link a {
+    color: rgba(0, 0, 0, .5);
+    text-decoration: underline;
+    font-size: 14px;
+  }
+
+  .find_link a:hover {
+    color: #1aa3ff;
+  }
+
+  .find_method_tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .find_link div {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .find_table {
+    margin: 90px auto 50px;
+    padding: 35px 18px;
+  }
+
+  .find_table th {
+    font-size: 21px;
+  }
+
+  .find_link {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .find_link div {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .find_link a {
+    text-align: center;
+  }
+
+  .message_box {
+    top: 60px;
+    max-width: 80%;
+    font-size: 12px;
+  }
+}

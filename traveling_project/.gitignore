@@ -1,3 +1,64 @@
-/build
-/bin
+# =========================
+# Build
+# =========================
+/build/
+/bin/
+/out/
+/target/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Sensitive
+# =========================
 dbinfo.properties
+*.pem
+
+# =========================
+# Eclipse Workspace
+# =========================
+.metadata/
+
+# =========================
+# IntelliJ User Settings
+# =========================
+.idea/
+.smarttomcat/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+.idea/httpRequests/
+.idea/dataSources/
+.idea/dataSources.local.xml
+
+# =========================
+# IntelliJ caches
+# =========================
+.idea/caches/
+.idea/libraries/
+
+# =========================
+# Keep shared project settings
+# =========================
+!.idea/artifacts/
+!.idea/modules.xml
+!*.iml
+
+# =========================
+# Eclipse project settings
+# =========================
+!.project
+!.classpath
+!.settings/
+
+# IntelliJ
+*.iml

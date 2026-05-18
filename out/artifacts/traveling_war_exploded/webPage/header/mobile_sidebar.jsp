@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="userId" value="${sessionScope.id}"/>
+
+<div id="mobileSidebar" class="mobile-sidebar">
+  <div class="mobile-sidebar-header">
+    <a href="<c:url value="/"/>" class="mobile-logo">
+      <img src="<c:url value="/images/logo.png"/>" alt="로고 이미지"/>
+    </a>
+    <button type="button" id="mobileCloseBtn" class="mobile-close-btn">×</button>
+  </div>
+
+  <form action="/stay/popular" id="mobile_search" method="post">
+    <input type="text" name="region" placeholder="어디로 떠나시나요?" />
+    <input type="text" id="mobile_check_in_date" name="check_in_date" class="datepicker check-in-date" placeholder="체크인 날짜" readonly />
+	<input type="text" id="mobile_check_out_date" name="check_out_date" class="datepicker check-out-date" placeholder="체크아웃 날짜" readonly />
+    <input type="number" name="people_num" placeholder="인원 수를 선택하세요" min="1" max="15"/>
+    <input type="submit" value="검색하기" />
+  </form>
+
+  <div class="mobile-right-menu">
+    <c:choose>
+      <c:when test="${not empty userId}">
+        <div class="menu-item"><a href="/mypage/home">내 정보</a></div>
+        <div class="menu-item"><a href="/plan/my">내 일정</a></div>
+        <div class="menu-item"><a href="/login/logout">로그아웃</a></div>
+      </c:when>
+      <c:otherwise>
+        <div class="menu-item"><a href="<c:url value="/login/select"/>">로그인</a></div>
+        <div class="menu-item"><a href="<c:url value="/signup/select"/>">회원 가입</a></div>
+      </c:otherwise>
+    </c:choose>
+  </div>
+</div>
+
+<div id="sidebarDim" class="sidebar-dim"></div>
