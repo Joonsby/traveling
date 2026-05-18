@@ -18,6 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/traveling_project/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/traveling_project/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/queries" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
@@ -26,7 +27,9 @@
           <root url="file://$MODULE_DIR$/traveling_project/WebContent/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/mybatis-3.5.13-sources.jar!/" />
+        </SOURCES>
         <jarDirectory url="file://$MODULE_DIR$/traveling_project/WebContent/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
