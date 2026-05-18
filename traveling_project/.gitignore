@@ -29,6 +29,7 @@ dbinfo.properties
 .classpath
 .settings/
 .metadata/
+.tern-project
 
 # =========================
 # Tomcat
