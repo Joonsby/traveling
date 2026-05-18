@@ -1,21 +1,42 @@
-# Java 프로젝트에서 일반적으로 무시되는 파일 및 디렉토리 목록
-/build
-/bin
-
-# dbinfo.properties 파일은 민감한 정보가 포함될 수 있으므로 Git에서 제외
-dbinfo.properties
-
-# IDE 설정 파일
-.idea/
-*.iml
-
-# 빌드 산출물
+# =========================
+# Build Output
+# =========================
+build/
+bin/
 out/
 target/
 
-# Tomcat 설정
+*.class
+
+# =========================
+# Sensitive Config
+# =========================
+dbinfo.properties
+.env
+*.env
+
+# =========================
+# IntelliJ
+# =========================
+.idea/
+*.iml
+*.iws
+
+# =========================
+# Eclipse
+# =========================
+.project
+.classpath
+.settings/
+.metadata/
+
+# =========================
+# Tomcat
+# =========================
 .smarttomcat/
 
-# OS 파일
+# =========================
+# OS
+# =========================
 .DS_Store
 Thumbs.db
