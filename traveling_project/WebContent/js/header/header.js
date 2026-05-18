@@ -4,6 +4,17 @@ var mobileCheckInDate = null;
 var mobileCheckOutDate = null;
 var scrolling = false;
 
+$(document).on('click', 'a.log-out', function(e){
+	e.preventDefault();
+	showConfirmModal(
+		'로그아웃',
+		'정말 로그아웃하시겠습니까?',
+		function () {
+			window.location.href = $(this).attr('href');
+		}
+	);
+});
+
 $(window).on('scroll',function(){
 	if(!scrolling){
 		scrolling = true;
@@ -138,18 +149,6 @@ $(document).ready(function() {
     $('#mobile_search').submit(function(e) {
         validateSearchForm($(this), e);
     });
-    
-    // 로그아웃 버튼
-    $('#log-out').click(function(e){
-    	e.preventDefault();
-    	showConfirmModal(			
-			'로그아웃',
-			'정말 로그아웃하시겠습니까?',
-			function () {
-				window.location.href = $('#log-out').attr('href');
-			}
-		);
-    });  
 });
 
 function validateSearchForm($form, e) {

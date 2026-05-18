@@ -21,7 +21,7 @@
 			<c:when test="${not empty userId}">
 				<div class="menu-item"><a id="my_info" href="/mypage/home">내 정보</a></div>
 				<div class="menu-item"><a id="my-plan" href="/plan/my">내 일정</a></div>
-				<div class="menu-item"><a id="log-out" href="/login/logout">로그아웃</a></div>
+				<div class="menu-item"><a id="log-out" class="log-out" href="/login/logout">로그아웃</a></div>
 			</c:when>
 			<c:otherwise>
 				<div class="menu-item"><a id="login" href="/login/select">로그인</a></div>
