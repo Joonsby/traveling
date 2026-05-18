@@ -92,7 +92,7 @@ header {
 
 /* adapt to .menu-item elements instead of li */
 #menu_nav .right_menu .menu-item {
-	padding: 5px;
+	padding: 15px;
 }
 
 #menu_nav .right_menu .menu-item a:hover {
