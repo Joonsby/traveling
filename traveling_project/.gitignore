@@ -3,7 +3,7 @@
 # =========================
 build/
 bin/
-out/
+**/out/
 target/
 
 *.class
