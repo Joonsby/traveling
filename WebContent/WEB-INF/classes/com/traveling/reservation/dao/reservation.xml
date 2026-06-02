@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com/traveling/reservation/dao/reservation.xml">
+	<select id="getHostReservationInfo" resultType="com.traveling.reservation.dto.ReservationAcceptionDTO" parameterType="String">
+		SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,
+		r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status
+		FROM reservation r
+		JOIN room_info ro ON ro.room_id = r.room_id
+		JOIN stay_info s ON s.stay_id = ro.stay_id
+		JOIN host_info h ON h.host_id = s.host_id AND h.host_id = #{hostId}
+		INNER JOIN user_info u ON u.user_id = r.user_id
+		order by r.status
+	</select>
+
+	<select id="getUserReservationInfo" parameterType="String" resultType="com.traveling.review.dto.MyPageInfo">
+		SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') check_in_date,
+		DATE_FORMAT(r.check_out_date, '%Y.%m.%d') check_out_date, r.people, r.status, si.stay_name, si.location, u.email
+		FROM reservation r
+		JOIN room_info ri
+		ON r.room_id = ri.room_id
+		JOIN stay_info si
+		ON ri.stay_id = si.stay_id
+		JOIN user_info u
+		ON r.user_id = u.user_id
+		WHERE r.user_id = #{userID}
+		order by check_in_date
+	</select>
+
+	<update id="reservationUpdate" parameterType="map">
+		update reservation set status = #{status}
+		where reservation_id = #{reservationId} and status = '예약 대기'
+	</update>
+
+	<select id="getRoomInfo" parameterType="int" resultType="com.traveling.reservation.dto.RoomInfo">
+		select room_id,stay_id,room_name,content,check_in_time,check_out_time,price,standard_people,maximum_people,extra_person_fee,
+		image1,image2,image3,image4,image5,image6,image7,image8,image9,image10
+		from room_info where room_id = #{room_id}
+	</select>
+
+	<insert id="getMyPageInfo" parameterType="map">
+		INSERT INTO reservation (user_id, room_id, check_in_date, check_out_date,check_in_time,check_out_time,people,price,payment_time,status)
+		VALUES (#{userId},#{roomId},#{checkInDate},#{checkOutDate},#{checkInTime},#{checkOutTime},#{people},#{price},now(),'예약 대기');
+	</insert>
+
+    <select id="getStandardPeople" parameterType="int" resultType="int">
+	    SELECT standard_people
+	    FROM room_info
+	    WHERE room_id = #{roomId}
+	</select>
+
+    <select id="getRoomPrice" resultType="int" parameterType="int" >
+    	SELECT price FROM room_info WHERE room_id = #{roomId}
+    	</select>
+
+	<select id="getExtraPersonFee" parameterType="int" resultType="int">
+	    SELECT extra_person_fee
+	    FROM room_info
+	    WHERE room_id = #{roomId}
+	</select>
+
+	<select id="getReservationUserInfo" parameterType="String" resultType="com.traveling.signup.dto.UserInfo">
+	    SELECT
+	        user_id AS id,
+	        name,
+	        email,
+	        phone
+	    FROM user_info
+	    WHERE user_id = #{userId}
+	</select>
+
+	<insert id="insertPendingReservation" parameterType="map">
+	    INSERT INTO pending_reservation (
+	        order_id,
+	        user_id,
+	        room_id,
+	        check_in_date,
+	        check_out_date,
+	        check_in_time,
+	        check_out_time,
+	        people,
+	        amount,
+	        payment_status
+	    )
+	    VALUES (
+	        #{orderId},
+	        #{userId},
+	        #{roomId},
+	        #{checkInDate},
+	        #{checkOutDate},
+	        #{checkInTime},
+	        #{checkOutTime},
+	        #{people},
+	        #{price},
+	        '결제대기'
+	    )
+	</insert>
+
+	<select id="getPendingReservationByOrderId" parameterType="String" resultType="map">
+	    SELECT
+	        pending_id AS pendingId,
+	        order_id AS orderId,
+	        user_id AS userId,
+	        room_id AS roomId,
+	        check_in_date AS checkInDate,
+	        check_out_date AS checkOutDate,
+	        check_in_time AS checkInTime,
+	        check_out_time AS checkOutTime,
+	        people,
+	        amount,
+	        payment_status AS paymentStatus
+	    FROM pending_reservation
+	    WHERE order_id = #{orderId}
+	</select>
+
+	<insert id="insertReservationFromPending" parameterType="map">
+	    INSERT INTO reservation (
+	        user_id,
+	        room_id,
+	        check_in_date,
+	        check_out_date,
+	        check_in_time,
+	        check_out_time,
+	        people,
+	        price,
+	        order_id,
+	        payment_key,
+	        payment_status,
+	        paid_amount,
+	        payment_time,
+	        status,
+	        reg_date
+	    )
+	    VALUES (
+	        #{userId},
+	        #{roomId},
+	        #{checkInDate},
+	        #{checkOutDate},
+	        #{checkInTime},
+	        #{checkOutTime},
+	        #{people},
+	        #{amount},
+	        #{orderId},
+	        #{paymentKey},
+	        '결제완료',
+	        #{amount},
+	        NOW(),
+	        '예약 대기',
+	        NOW()
+	    )
+	</insert>
+
+	<update id="updatePendingPaymentDone" parameterType="String">
+	    UPDATE pending_reservation
+	    SET payment_status = '결제완료'
+	    WHERE order_id = #{orderId}
+	      AND payment_status = '결제대기'
+	</update>
+
+	<update id="updatePendingPaymentFail" parameterType="String">
+	    UPDATE pending_reservation
+	    SET payment_status = '결제실패'
+	    WHERE order_id = #{orderId}
+	      AND payment_status = '결제대기'
+	</update>
+
+	<select id="getReservationSuccessInfo" parameterType="String" resultType="com.traveling.reservation.dto.ReservationInfo">
+	    SELECT
+	        r.reservation_id AS reservationId,
+	        r.user_id AS userId,
+	        u.name AS name,
+	        si.stay_name AS stayName,
+	        ri.room_name AS roomName,
+	        DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS checkInDate,
+	        DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS checkOutDate,
+	        r.people AS people,
+	        r.price AS price,
+	        r.status AS status
+	    FROM reservation r
+	    JOIN user_info u
+	        ON r.user_id = u.user_id
+	    JOIN room_info ri
+	        ON r.room_id = ri.room_id
+	    JOIN stay_info si
+	        ON ri.stay_id = si.stay_id
+	    WHERE r.order_id = #{orderId}
+</select>
+</mapper>

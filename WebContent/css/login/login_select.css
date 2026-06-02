@@ -1,0 +1,110 @@
+:root{
+  --primary: #1aa3ff;
+  --bg-start: #e6fbff;
+  --bg-end: #d8f2ff;
+  --max-width: 1100px;
+}
+
+/* Page base */
+*{box-sizing: border-box}
+html,body{height:100%;}
+body {
+  margin:0;
+  padding:0;
+  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
+  font-family: 'Gowun Dodum', sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* container: fluid but limited */
+main{
+  margin-inline: auto;
+  margin-block: clamp(32px, 6vw, 100px)  ;
+  padding: clamp(16px, 2.5vw, 30px);
+  width: min(95%, var(--max-width));
+  border:1px solid rgba(0,0,0,0.06);
+  background:#fff;
+  border-radius:10px;
+}
+
+#content1{
+  width:100%;
+  margin:0 auto;
+  padding: clamp(12px,1.8vw,30px);
+  border-top: 2px solid #f1f1f1;
+  border-bottom: 2px solid #f1f1f1;
+  display:flex;
+  align-items: center;
+  gap: clamp(12px,1.8vw,24px);
+  justify-content: flex-start;
+}
+
+#content1 img{
+  flex: 0 0 40%;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  display:block;
+}
+
+#content1 h2{
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  margin:0;
+  line-height:1.2;
+}
+
+#join{
+  width:100%;
+  margin: clamp(16px,2.5vw,30px) auto 0;
+  display:flex;
+  justify-content: center;
+  gap: clamp(10px,2vw,20px);
+  flex-wrap: wrap;
+}
+
+#join li{
+  flex: 1 1 calc(50% - 12px);
+  min-width: 220px;
+  border:1px solid #dcdcdc;
+  text-align:center;
+  padding: clamp(16px,2vw,30px);
+  border-radius:10px;
+  background:#fff;
+}
+
+#join li h3{font-size: clamp(1rem, 1.6vw, 1.4rem); margin-bottom:0.5rem}
+#join li p{ text-transform:uppercase; font-size: clamp(0.9rem,1.6vw,1.1rem); font-weight:700;color:var(--primary); margin-bottom:1rem}
+
+#join li a input[type="button"]{
+  display:inline-block;
+  width: auto;
+  padding: .6rem 2rem;
+  height: auto;
+  background:var(--primary);
+  border:1px solid #ccc;
+  border-radius:5px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+#join li a input[type="button"]:hover{
+  color:#fff;
+  background:#000;
+}
+
+/* Small screens: stack content and make image smaller */
+@media (max-width: 900px) {
+  #content1{ flex-direction: column; text-align:center; padding:16px; }
+  #content1 img{ flex-basis: 60%; max-width:320px; }
+  #content1 h2{ font-size: 1.15rem; }
+  #join li{ flex: 1 1 100%; }
+}
+
+@media (max-width: 480px) {
+  main{ margin-block: 32px; padding: 12px; }
+  #content1 img{ flex-basis: 70%; max-width:260px; }
+  #content1 h2{ font-size: 1rem; }
+  #join li{ padding:12px; }
+  #join li a input[type="button"]{ min-width: 100px; padding:.5rem .8rem }
+}

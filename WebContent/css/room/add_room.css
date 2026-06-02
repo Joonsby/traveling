@@ -1,0 +1,35 @@
+td input[type="button"]{
+	width:30px;
+	border-radius:100%;
+	font-size:20px;
+	background:#fff;
+}
+
+.people_num{
+	font-size:20px;
+	margin:0 5px;
+}
+
+#file_delete_all{
+	border-radius:5px;
+	background:#1aa3ff;	
+}
+#att_zone{
+	flex-wrap:wrap;	
+}
+#att_zone > div{
+	width:20%;
+}
+
+#att_zone > div:nth-child(5) ~ div{	
+	margin-top:10px;
+}
+
+#content_error_text{
+	margin-bottom: 10px;
+}
+
+input[name="check_in_time"],
+input[name="check_out_time"]{
+	cursor:pointer;
+}

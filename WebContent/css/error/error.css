@@ -1,0 +1,56 @@
+/* 전체 화면 중앙 정렬 */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* 카드 형태 */
+.container {
+    text-align: center;
+
+    background: white;
+    padding: 40px 60px;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+    width: 400px;
+}
+
+/* 제목 */
+.container h2 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+/* 메시지 */
+.container p {
+    color: #555;
+    margin: 10px 0;
+}
+
+/* 버튼 */
+.container button {
+    margin: 10px;
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.container button:hover {
+    background-color: #2980b9;
+}
