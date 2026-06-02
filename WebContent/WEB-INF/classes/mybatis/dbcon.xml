@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="config/dbinfo.properties"/>
+
+    <environments default="local">
+        <environment id="local">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${local.db.driver}" />
+                <property name="url" value="${local.db.url}" />
+                <property name="username" value="${local.db.username}" />
+                <property name="password" value="${local.db.password}" />
+            </dataSource>
+        </environment>
+
+        <environment id="dev">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${dev.db.driver}" />
+                <property name="url" value="${dev.db.url}" />
+                <property name="username" value="${dev.db.username}" />
+                <property name="password" value="${dev.db.password}" />
+            </dataSource>
+        </environment>
+
+        <environment id="prod">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${prod.db.driver}" />
+                <property name="url" value="${prod.db.url}" />
+                <property name="username" value="${prod.db.username}" />
+                <property name="password" value="${prod.db.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/traveling/login/dao/login.xml"/>
+        <mapper resource="com/traveling/signup/dao/signup.xml"/>
+        <mapper resource="com/traveling/stay/dao/stay.xml"/>
+        <mapper resource="com/traveling/room/dao/room.xml"/>
+        <mapper resource="com/traveling/plan/dao/plan.xml"/>
+        <mapper resource="com/traveling/reservation/dao/reservation.xml"/>
+        <mapper resource="com/traveling/review/dao/review.xml"/>
+        <mapper resource="com/traveling/mypage/dao/mypage.xml"/>
+    </mappers>
+</configuration>

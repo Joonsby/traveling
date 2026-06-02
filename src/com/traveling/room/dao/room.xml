@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com/traveling/room/dao/room.xml">
+	<insert id="roomInfoInsert" parameterType="com.traveling.room.dto.RoomInfo">
+		INSERT INTO room_info
+		(stay_id, room_name, content,check_in_time,check_out_time, price, standard_people, maximum_people,
+		image1, image2, image3, image4, image5,
+		image6, image7, image8, image9,
+		image10)
+		VALUES(
+		#{stayId},#{roomName},#{content},#{checkInTime},#{checkOutTime},#{price},#{stdPeople},#{maxPeople},
+		#{image1},#{image2},#{image3},#{image4},#{image5},#{image6},#{image7},#{image8},#{image9},#{image10}
+		);
+	</insert>
+</mapper>
