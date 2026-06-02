@@ -20,16 +20,11 @@ dbinfo.properties
 # =========================
 .idea/
 *.iml
-*.iws
 
 # =========================
 # Eclipse
 # =========================
-**/.project
-**/.classpath
 **/.settings/
-**/.metadata/
-**/.tern-project
 
 # =========================
 # Tomcat
