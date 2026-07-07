@@ -1,0 +1,13 @@
+.git
+.github
+.settings
+.vscode
+.idea
+*.iml
+build
+target/generated-sources
+target/generated-test-sources
+.env
+.env.example
+README.md
+docker-compose.yml

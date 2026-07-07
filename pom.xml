@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.traveling</groupId>
+    <artifactId>traveling</artifactId>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>		
+		<flyway.version>10.20.1</flyway.version>
+		<mysql.version>8.0.33</mysql.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.13</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.json</groupId>
+            <artifactId>javax.json-api</artifactId>
+            <version>1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cos</groupId>
+            <artifactId>cos</artifactId>
+            <version>05Nov2002</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/WebContent/WEB-INF/lib/cos.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+	    <finalName>ROOT</finalName>
+	    <sourceDirectory>src</sourceDirectory>
+
+	    <resources>
+	        <resource>
+	            <directory>src</directory>
+	            <excludes>
+	                <exclude>**/*.java</exclude>
+	            </excludes>
+	        </resource>
+	        <resource>
+	            <directory>resources</directory>
+	        </resource>
+	    </resources>
+
+	    <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-war-plugin</artifactId>
+	            <version>3.4.0</version>
+	            <configuration>
+	                <warSourceDirectory>WebContent</warSourceDirectory>
+	                <failOnMissingWebXml>false</failOnMissingWebXml>
+	            </configuration>
+	        </plugin>
+
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <version>3.13.0</version>
+	            <configuration>
+	                <source>25</source>
+	                <target>25</target>
+	                <encoding>UTF-8</encoding>
+	            </configuration>
+	        </plugin>
+
+		<plugin>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-maven-plugin</artifactId>
+			<version>${flyway.version}</version>
+			<dependencies>
+				<dependency>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-mysql</artifactId>
+					<version>${flyway.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>com.mysql</groupId>
+					<artifactId>mysql-connector-j</artifactId>
+					<version>${mysql.version}</version>
+				</dependency>
+			</dependencies>
+			<configuration>
+				<url>jdbc:mysql://localhost:3307/traveling?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Seoul&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</url>
+				<user>traveling</user>
+				<password>traveling_local</password>
+				<locations>
+					<location>filesystem:src/main/resources/db/migration</location>
+				</locations>
+				<baselineOnMigrate>true</baselineOnMigrate>
+				<baselineVersion>1</baselineVersion>
+			</configuration>
+		</plugin>
+	    </plugins>
+	</build>
+
+</project>
