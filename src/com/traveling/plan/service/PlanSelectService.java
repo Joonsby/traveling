@@ -21,7 +21,7 @@ public class PlanSelectService implements DataControl {
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
 		
-		int pid = new Integer(req.getParameter("planId"));
+		int pid = Integer.parseInt(req.getParameter("planId"));
 		String chk = req.getParameter("planDate");
 
 		DetailPlan dp = new DetailPlan();

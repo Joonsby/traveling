@@ -85,7 +85,6 @@ public class FindIdResultService implements DataControl {
 			return userId.replaceAll(".", "*");
 		}
 		int showCount = 2;
-		String visible = userId.substring(0, showCount) + userId.substring(userId.length() - showCount);
 		int maskCount = userId.length() - 2 * showCount;
 		String mask = "";
 		for (int i = 0; i < maskCount; i++) {

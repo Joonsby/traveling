@@ -18,7 +18,7 @@ public class PlanDeleteService implements DataControl{
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
 		
-		int pid = new Integer(req.getParameter("pid"));
+		int pid = Integer.parseInt(req.getParameter("pid"));
 		
 		DetailPlan dp = new DetailPlan();
 		dp.setPlan_id(pid);

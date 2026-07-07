@@ -19,7 +19,7 @@ public class PlanInsertService implements DataControl {
 		PlanManageDAO planManageDAO = PlanManageDAO.instance();
 		
 		DetailPlan dp = new DetailPlan();
-		int pid = new Integer(req.getParameter("pid"));
+		int pid = Integer.parseInt(req.getParameter("pid"));
 		String pdate = req.getParameter("pdate");
 		String pst = req.getParameter("pst");
 		String pet = req.getParameter("pet");

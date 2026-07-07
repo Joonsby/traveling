@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.traveling.common.BaseController;
 import com.traveling.common.DataControl;
-import com.traveling.common.ViewUtil;
 import com.traveling.mypage.service.MyPageService;
 
 public class MyPageController extends BaseController{

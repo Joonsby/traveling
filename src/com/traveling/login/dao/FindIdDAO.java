@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.traveling.db.DBCon;
 import com.traveling.login.dto.AuthCode;
-import com.traveling.signup.dto.UserInfo;
 
 public class FindIdDAO {
 	static FindIdDAO findIdDAO = new FindIdDAO();
