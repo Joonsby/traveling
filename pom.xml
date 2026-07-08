@@ -69,7 +69,7 @@
 	            </excludes>
 	        </resource>
 	        <resource>
-	            <directory>resources</directory>
+	            <directory>src/main/resources</directory>
 	        </resource>
 	    </resources>
 
@@ -93,35 +93,7 @@
 	                <target>17</target>
 	                <encoding>UTF-8</encoding>
 	            </configuration>
-	        </plugin>
-
-		<plugin>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-maven-plugin</artifactId>
-			<version>${flyway.version}</version>
-			<dependencies>
-				<dependency>
-					<groupId>org.flywaydb</groupId>
-					<artifactId>flyway-mysql</artifactId>
-					<version>${flyway.version}</version>
-				</dependency>
-				<dependency>
-					<groupId>com.mysql</groupId>
-					<artifactId>mysql-connector-j</artifactId>
-					<version>${mysql.version}</version>
-				</dependency>
-			</dependencies>
-			<configuration>
-				<url>jdbc:mysql://localhost:3307/traveling?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Seoul&amp;allowPublicKeyRetrieval=true&amp;useSSL=false</url>
-				<user>traveling</user>
-				<password>traveling_local</password>
-				<locations>
-					<location>filesystem:src/main/resources/db/migration</location>
-				</locations>
-				<baselineOnMigrate>true</baselineOnMigrate>
-				<baselineVersion>1</baselineVersion>
-			</configuration>
-		</plugin>
+	        </plugin>		
 	    </plugins>
 	</build>
 

@@ -14,7 +14,6 @@ public class MainService implements DataControl{
 	}
 	@Override
 	public void dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		req.setAttribute("popStays", stayManagementDAO.popStaySelect());
 		req.setAttribute("bestReviewStays", stayManagementDAO.bestReviewStaySelect());
