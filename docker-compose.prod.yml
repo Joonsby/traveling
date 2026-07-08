@@ -11,18 +11,25 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 20      
 
   flyway:
     image: flyway/flyway:10
+    container_name: traveling-flyway
     depends_on:
-      - mysql
-    command: >
-      -url=jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
-      -user=${MYSQL_USER}
-      -password=${MYSQL_PASSWORD}
-      -locations=filesystem:/flyway/sql
-      -baselineOnMigrate=true
-      migrate
+      mysql:
+        condition: service_healthy
+    command:
+      - -url=jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+      - -user=${MYSQL_USER}
+      - -password=${MYSQL_PASSWORD}
+      - -locations=filesystem:/flyway/sql
+      - -baselineOnMigrate=true
+      - migrate
     volumes:
       - ./src/main/resources/db/migration:/flyway/sql
 
@@ -30,8 +37,8 @@ services:
     image: ghcr.io/joonsby/traveling:latest
     container_name: traveling-tomcat
     depends_on:
-      - mysql
-      - flyway
+      flyway:
+        condition: service_completed_successfully
     environment:
       APP_ENV: local
       DB_HOST: mysql
