@@ -1,0 +1,46 @@
+services:
+  mysql:
+    image: mysql:8.0.42
+    container_name: traveling-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  flyway:
+    image: flyway/flyway:10
+    depends_on:
+      - mysql
+    command: >
+      -url=jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+      -user=${MYSQL_USER}
+      -password=${MYSQL_PASSWORD}
+      -locations=filesystem:/flyway/sql
+      -baselineOnMigrate=true
+      migrate
+    volumes:
+      - ./src/main/resources/db/migration:/flyway/sql
+
+  tomcat:
+    image: ghcr.io/joonsby/traveling:latest
+    container_name: traveling-tomcat
+    depends_on:
+      - mysql
+      - flyway
+    environment:
+      APP_ENV: local
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "${TOMCAT_PORT}:8080"
+
+volumes:
+  mysql_data:

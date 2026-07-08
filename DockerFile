@@ -7,8 +7,7 @@ COPY pom.xml .
 COPY src ./src
 COPY WebContent ./WebContent
 
-RUN mvn clean package -DskipTests
-
+RUN MAVEN_OPTS="-Xmx512m" mvn clean package -DskipTests
 
 # 2단계: Tomcat에 WAR 배포
 FROM tomcat:9.0-jdk17-temurin

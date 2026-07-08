@@ -1,34 +1,69 @@
-name: Deploy Docker
+name: Deploy Docker Image
 
 on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/joonsby/traveling:latest
+
 jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build -f DockerFile -t $IMAGE_NAME .
+
+      - name: Push Docker image
+        run: |
+          docker push $IMAGE_NAME
+
   deploy:
+    needs: build-and-push
     runs-on: self-hosted
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Sync project files
+      - name: Sync deploy files
         run: |
+          mkdir -p /home/ubuntu/apps/traveling
           rsync -av --delete \
             --exclude '.git' \
             --exclude '.github' \
             --exclude '.env' \
+            --exclude 'target' \
+            --exclude 'WebContent' \
+            --exclude 'src/main/java' \
+            --exclude 'src/com' \
             ./ /home/ubuntu/apps/traveling/
 
-      - name: Deploy with Docker Compose
+      - name: Deploy on EC2
         run: |
           cd /home/ubuntu/apps/traveling
-          docker compose down || true
-          docker compose up -d --build --remove-orphans
-          docker compose ps
+          docker compose -f docker-compose.prod.yml pull
+          docker compose -f docker-compose.prod.yml up -d --remove-orphans
+          docker compose -f docker-compose.prod.yml ps
 
       - name: Show logs
         run: |
           cd /home/ubuntu/apps/traveling
-          docker compose logs --tail=100 tomcat
-          docker compose logs --tail=100 flyway
+          docker compose -f docker-compose.prod.yml logs --tail=100 flyway || true
+          docker compose -f docker-compose.prod.yml logs --tail=100 tomcat || true
