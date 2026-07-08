@@ -12,10 +12,11 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -P 3306 -u${MYSQL_USER} -p${MYSQL_PASSWORD} --silent"]
       interval: 5s
       timeout: 3s
-      retries: 20      
+      retries: 30
+      start_period: 30s
 
   flyway:
     image: flyway/flyway:10
@@ -24,6 +25,7 @@ services:
       mysql:
         condition: service_healthy
     command:
+      - -connectRetries=30
       - -url=jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
       - -user=${MYSQL_USER}
       - -password=${MYSQL_PASSWORD}
