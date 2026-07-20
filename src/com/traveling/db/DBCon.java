@@ -21,7 +21,7 @@ public class DBCon { // DB 연결옹 클래스
 			String env = System.getProperty("env", getEnv("APP_ENV", "local"));
 
 			String dbHost = getEnv("DB_HOST", "localhost");
-			String dbPort = getEnv("DB_PORT", "3307");
+			String dbPort = getEnv("DB_PORT", "3306");
 			String dbName = getEnv("DB_NAME", "traveling");
 			String dbUser = getEnv("DB_USER", "traveling");
 			String dbPassword = getEnv("DB_PASSWORD", "traveling_local");

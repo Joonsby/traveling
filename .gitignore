@@ -2,18 +2,8 @@
 # Build Output
 # =========================
 build/
-bin/
-out/
-target/
 
 *.class
-
-# =========================
-# Sensitive Config
-# =========================
-dbinfo.properties
-.env
-*.env
 
 # =========================
 # IntelliJ
@@ -24,7 +14,7 @@ dbinfo.properties
 # =========================
 # Eclipse
 # =========================
-**/.settings/
+# Eclipse Dynamic Web Project settings are intentionally versioned.
 
 # =========================
 # Tomcat
